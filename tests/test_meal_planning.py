@@ -16,6 +16,45 @@ from check_embedding import ROOT
 class MealPlanningTests(unittest.TestCase):
     question='两个人吃晚饭，30分钟内做好，推荐两菜一汤。'
 
+    def test_long_term_taste_ranks_verified_matches_without_blocking_a_complete_menu(self):
+        request={**meal_request('今晚两个人，30分钟，难度最多1，推荐两道菜。'),
+                 'constraints':{'max_difficulty':1}}
+        for dimension,value,notice in (
+            ('flavor','清淡','清淡口味偏好相符'),
+            ('spice_level','1','没有从本次所选菜谱的原文核实到长期口味偏好的匹配'),
+        ):
+            result=plan_meal(request,load_chunks(),seed='taste-test',
+                             taste_preferences=[{'dimension':dimension,'value':value,'polarity':'like'}])
+            self.assertTrue(result['meal_plan']['complete'])
+            self.assertLessEqual(result['meal_plan']['estimated_minutes'],30)
+            self.assertTrue(all(row['difficulty']==1 for row in result['recommendations']))
+            self.assertIn(notice,result['short_answer']+' '.join(row['reason'] for row in result['recommendations']))
+        hard=[{'dimension':'avoid_ingredient','value':'香菜','polarity':'avoid','strength':'hard'}]
+        with policy(hard):
+            result=plan_meal(request,load_chunks(),seed='taste-test',
+                             taste_preferences=[{'dimension':'flavor','value':'清淡','polarity':'like'}])
+        self.assertTrue(result['meal_plan']['complete'])
+        self.assertNotIn('皮蛋豆腐',[row['title'] for row in result['recommendations']])
+        self.assertIn('没有从本次所选菜谱的原文核实到长期口味偏好的匹配',result['short_answer'])
+
+    def test_timed_dinner_recommendation_keeps_exact_dish_count_and_limits(self):
+        import asyncio
+        from dialogue_harness import DialogueHarness
+
+        async def run():
+            chat=DialogueHarness()
+            for question in ('今晚两个人，30分钟，难度最多1，推荐两道菜。',
+                             '明晚给我推荐2道菜，2个人，半个小时，难度不超过1。'):
+                prepared,result,_=await chat.turn(question)
+                self.assertEqual(prepared['nlu']['path'],'fast')
+                data=result['outputs'][-1]['result']
+                self.assertEqual(data['status'],'verified',data['short_answer'])
+                menu=data['meal_plan']
+                self.assertEqual(tuple(menu[k] for k in ('meal_type','people','minutes','max_difficulty','dishes','soups')),
+                                 ('dinner',2,30,1,2,0))
+                self.assertLessEqual(menu['estimated_minutes'],30)
+        asyncio.run(run())
+
     def test_composition_has_precedence_and_dedicated_route(self):
         task=advance_task(self.question,None)
         self.assertEqual(task['action'],'meal_plan')

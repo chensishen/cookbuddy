@@ -38,7 +38,7 @@ def reduce_turn(plan,session,previous,rows):
     pending=session.slots.get('nlu_pending',{})
     pending_conditions=(pending.get('slot')=='conditions'
                         and q in pending.get('options',[]))
-    independent=(literal.recommend and not literal.resume
+    independent=(intent!='meal_plan' and literal.recommend and not literal.resume
                  and not continuation_request(q) and not pending_conditions)
     if s.get('reset_context'):prior=None
     model_independent=(intent=='ingredient_recommend'

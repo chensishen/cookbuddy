@@ -14,6 +14,19 @@ class DB:
     def __init__(self,db,pg):self.db=db;self.pg=pg
     def execute(self,sql,args=()):return self.db.execute(sql.replace('?', '%s') if self.pg else sql,args)
 
+
+def effective_taste_rows(rows):
+    """Use the latest explicit default when light flavor and heat were saved separately."""
+    candidates=[row for row in rows if (row.dimension=='flavor' and row.value=='清淡')
+                or (row.dimension=='spice_level' and row.value in {'1','2','3'})]
+    if len({row.dimension for row in candidates})<2:return rows
+    defaults=[row for row in candidates if row.source=='explicit' and row.strength=='soft' and row.polarity=='like']
+    if len({row.dimension for row in defaults})<2:return rows
+    latest=max(defaults,key=lambda row:max(row.updated_at,row.last_confirmed_at or row.updated_at))
+    return [row for row in rows if row not in defaults or row.dimension==latest.dimension
+            or (latest.source_turn_ref and row.source_turn_ref==latest.source_turn_ref)]
+
+
 class ProfileStore:
     def __init__(self,legacy=None,path=None):
         self.legacy=legacy;self.path=str(path) if path is not None else None
@@ -58,13 +71,13 @@ class ProfileStore:
             (include_expired or not r['valid_to'] or r['valid_to']>stamp())]
     def load_profile(self,uid):
         if not self.enabled(uid):return {'hard_constraints':[],'soft_prefs':[]}
-        active=[p for p in self.prefs(uid,('active',)) if p.dimension not in SESSION_ONLY]
+        active=effective_taste_rows([p for p in self.prefs(uid,('active',)) if p.dimension not in SESSION_ONLY])
         return {'hard_constraints':[asdict(p) for p in active if p.strength=='hard'],
                 'soft_prefs':[{**asdict(p),'effective_confidence':effective(p)} for p in active if p.strength=='soft' and effective(p)>=.2]}
     def _insert(self,db,p):
         data=asdict(p);keys=list(data)
         db.execute('INSERT INTO user_prefs('+','.join(keys)+') VALUES('+','.join('?' for _ in keys)+')',tuple(data[k] for k in keys))
-    def apply(self,uid,sid,turn,c,expected_epoch=None,expected_version=None,target_id=None):
+    def apply(self,uid,sid,turn,c,expected_epoch=None,expected_version=None,target_id=None,*,direct_food_forget=False):
         identity(uid);identity(sid);identity(turn)
         if c.dimension=='inventory' and target_id:raise ValueError('inventory_is_session_memory')
         # Re-extraction recomputes absolute expiry times. They and probabilistic
@@ -114,6 +127,11 @@ class ProfileStore:
                         decision=ask('relax_hard',forced,c)
                     else:decision=Decision('UPDATE',forced.id,item(c,previous=forced),reason='management_update')
             target=next((p for p in rows if p.id==decision.target_id),None)
+            forget_now=(direct_food_forget and decision.action=='ASK' and c.op=='revoke' and c.source=='explicit'
+                        and target is not None and target.id==target_id and target.status=='active'
+                        and target.dimension=='avoid_ingredient' and target.version==expected_version)
+            if forget_now:
+                decision=Decision('DELETE',target.id,reason='explicit_food_preference_forget')
             if expected_version is not None and (not target or target.version!=expected_version):raise ValueError('memory_version_conflict')
             if decision.action=='NOOP' and target and c.op=='set':
                 alpha=settings()['long_term']['strength_alpha']
@@ -124,6 +142,13 @@ class ProfileStore:
                 changed=db.execute('UPDATE user_prefs SET status=?,updated_at=? WHERE user_id=? AND id=? AND version=? AND status=?',
                     ('deleted' if decision.action=='DELETE' else 'superseded',stamp(),uid,target.id,target.version,target.status))
                 if changed.rowcount!=1:raise ValueError('memory_version_conflict')
+                if forget_now:
+                    # Invalidate queued extraction from before the deletion, as for confirmed removals.
+                    db.execute('INSERT INTO memory_settings(user_id,enabled,epoch) VALUES(?,1,1) ON CONFLICT(user_id) DO UPDATE SET epoch=memory_settings.epoch+1',(uid,))
+                    pending=db.execute('SELECT id,payload_json FROM pending_confirmations WHERE user_id=?',(uid,)).fetchall()
+                    for row in pending:
+                        if json.loads(row['payload_json']).get('target_id')==target.id:
+                            db.execute('DELETE FROM pending_confirmations WHERE user_id=? AND id=?',(uid,row['id']))
             new=decision.new_item
             if new:
                 new=replace(new,user_id=uid,source_turn_ref=turn)

@@ -50,7 +50,7 @@ def compound_recipe_candidates(question):
 def prepare(p):
     from cookbuddy.store import Store
     from cookbuddy.ltm.runtime import MemoryRuntime
-    from cookbuddy.ltm.management import parse_command
+    from cookbuddy.ltm.management import memory_only_write,parse_command
     from cookbuddy.session import SessionState,append_message,update_slots
     from recipe_tools import load_chunks
     from src.nlu.router import understand
@@ -62,7 +62,7 @@ def prepare(p):
     enabled=memory.enabled;level=memory.level
     session_key=(uid,sid)
     session=memory.session or _SHORT_SESSION_CACHE.get(session_key) or SessionState(uid,sid)
-    if (memory.management and parse_command(q)) or memory.confirmation:
+    if (memory.management and (parse_command(q) or memory_only_write(q))) or memory.confirmation:
         # Explicit memory commands are complete turns of their own. Incidental
         # session notices must not prevent the same turn from handling a recipe.
         session_enabled=level!=0
@@ -75,7 +75,8 @@ def prepare(p):
             'hard':memory.hard,'slots':session.slots,'summary':session.summary,'messages':session.messages,
             'task':{'state':None,'action':'none','question':q,'boundary':False,'parser_version':6},
             'pending_confirmation':session.pending_confirmation,'events':memory.events,'profile':[],
-            'management':memory.confirmation or memory.management,'notice':memory.notice,'input_notice':'',
+            'management':memory.confirmation or memory.management,'memory_confirmation':None,
+            'notice':memory.notice,'input_notice':'',
             'epoch':store.memory_epoch(uid),'recipe_conflict':None,
             'nlu':{'intent':'preference_update','confidence':1.,'slots':{},'path':'fast',
                    'answer_mode':'memory','errors':[],'original':q,'normalized':q,
@@ -307,7 +308,20 @@ def execute(p):
         if op=='meal':
             from cookbuddy.meal_planning import plan_meal,meal_request
             request=a.get('request') or meal_request(a.get('question',''))
-            return check_result(plan_meal(request,load_chunks())) if request else {'status':'insufficient','short_answer':'请说明人数、整餐时间及菜汤数量。','sources':[],'evidence':[]}
+            if not request:return {'status':'insufficient','short_answer':'请说明人数、整餐时间及菜汤数量。','sources':[],'evidence':[]}
+            prefs=[]
+            if cfg['memory']['mode']=='M6' and not (request.get('constraints') or {}).get('taste'):
+                from cookbuddy.store import Store,valid_id
+                if valid_id(uid):
+                    from cookbuddy.ltm.profile_store import ProfileStore
+                    try:
+                        prefs=[row for row in ProfileStore(Store()).load_profile(uid)['soft_prefs']
+                               if row['dimension'] in ('flavor','spice_level') and row['polarity']=='like']
+                    except Exception:
+                        # Taste preference is an ordering hint; the menu itself
+                        # must still be planned when the profile is unavailable.
+                        prefs=[]
+            return check_result(plan_meal(request,load_chunks(),taste_preferences=prefs))
         if op=='search':
             from ask_test_recipes import run_stage
             from search_filters import filter_policy

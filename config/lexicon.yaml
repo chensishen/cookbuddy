@@ -8,6 +8,7 @@ meal_types:
   dinner:
     label: 晚餐
     synonyms: [晚餐, 晚饭, 晚上吃, 晚间, 夜饭]
+    exact_synonyms: [今晚, 明晚]
   snack_late:
     label: 夜宵
     synonyms: [夜宵, 宵夜]

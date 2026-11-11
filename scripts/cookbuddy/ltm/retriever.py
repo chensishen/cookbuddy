@@ -16,6 +16,19 @@ def flavor_feature(text,value):
     return None
 
 
+def taste_preference_match(text,pref):
+    if pref.get('polarity')!='like':return None
+    value=str(pref['value'])
+    if pref['dimension']=='flavor':
+        label=value
+    elif pref['dimension']=='spice_level':
+        label={'0':'不辣','1':'微辣','2':'中辣','3':'重辣'}.get(value)
+    else:return None
+    if not label:return None
+    feature=flavor_feature(text,label)
+    return (label,feature) if feature else None
+
+
 def personalize(rows,profile,temp=None,recent=(),k=3,strict_flavor=False,inventory=()):
     if not rows:return []
     cfg=settings()['retrieval'];weights=cfg['personalization'];temp=temp or {}
@@ -38,8 +51,10 @@ def personalize(rows,profile,temp=None,recent=(),k=3,strict_flavor=False,invento
                 score+=weights['difficulty']*(1 if row['difficulty']<=int(value) else -.5)
                 if row['difficulty']<=int(value):reasons.append('原文预估难度'+str(row['difficulty'])+'星，在你偏好的'+value+'星以内')
             if dim=='spice_level':
-                spicy=row.get('spice_match') not in (None,'none','optional')
-                if spicy==(int(value)>0):score+=weights['flavor']
+                match=taste_preference_match(text,pref)
+                if match:
+                    label,feature=match
+                    score+=weights['flavor'];reasons.append('原文简介写明“'+feature+'”，与你的'+label+'口味偏好相符')
         if reasons:row['reason']='；'.join(reasons)+'。'+row.get('reason','')
         elif prefs:row['reason']='尚未核实到与现有偏好的直接匹配，作为备选供你比较。'+row.get('reason','')
         if row.get('title') in recent:score-=weights['repeat_penalty']

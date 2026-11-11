@@ -18,7 +18,7 @@ class MemoryRuntime:
         self.level=6
         self.management=None
         import re
-        from .management import parse_command,handle_command
+        from .management import parse_command,handle_command,memory_only_write
         command=parse_command(question)
         clearing=bool(re.fullmatch(r'(?:请)?(?:忘掉|忘记|删除|清空)(?:我(?:的)?)?(?:所有)?(?:长期)?记忆[。！! ]*',question.strip()))
         self.candidates=[] if clearing or command else rule_extract(question)
@@ -32,7 +32,8 @@ class MemoryRuntime:
         if not self.enabled:
             try:self.session=store.session_context(uid,sid,job)
             except AssertionError:self.session=None
-            if command:self.management=handle_command(command,self.prefs,uid,sid,job,enabled=False)
+            if command or memory_only_write(question):
+                self.management=handle_command(command,self.prefs,uid,sid,job,enabled=False,allow_enable=self.level!=0)
             return
         self.session=store.session_context(uid,sid,job)
         temporary=self.session.slots['temp_constraints']

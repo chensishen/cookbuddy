@@ -7,9 +7,12 @@ from .recommendation_schema import NUMBERS,new_state
 from .recommendation_turn import interpret
 
 NUMBER=r'(?:\d{1,3}|[一二两三四五六七八九十]{1,3})'
+DISH_COUNT=r'(?:推荐|安排|想做|做|来|只要)\s*('+NUMBER+r')\s*道\s*菜(?!谱)'
+HALF_HOUR=r'半\s*(?:个\s*)?小时'
 PRICE_WAIVER=r'(?:不需要|不用|无需|不)(?:核实|考虑)(?:采购)?(?:价格|预算)|(?:采购)?(?:价格|预算)(?:先|暂时)?(?:不需要|不用|无需|不)(?:核实|考虑)'
 PANTRY_PERMISSION=r'(?<!不)(?:可以|允许|可)(?:使用|用)常备调料'
 PRICE_LIMIT=r'(?:采购)?(?:总)?(?:预算|价格)(?:总共|为|是|最多|上限|不超过|不超|控制在)?\s*\d+(?:\.\d+)?\s*(?:元|块)(?:以内)?(?:[，,、 ]*(?:必须)?(?:保证)?(?:不超过|不超))?'
+SIMPLE_PREFERENCE=r'(?:尽量|尽可能)简单(?:一些|一点|点)?|简单(?:一些|一点|点)(?:就好|就行)?'
 
 
 def accepted_offer_minutes(question,offer):
@@ -25,7 +28,7 @@ def accepted_offer_minutes(question,offer):
 
 
 def unresolved_conditions(values,question):
-    """Only explicit permissions/cancellations may clear earlier conditions."""
+    """Keep unresolved limits after removing supported wording and explicit waivers."""
     permissions=[p for p in (PRICE_WAIVER,PANTRY_PERMISSION) if re.search(p,question)]
     if PRICE_WAIVER in permissions:permissions.append(PRICE_LIMIT)
     unresolved=[]
@@ -55,18 +58,21 @@ def meal_request(question):
     mixed=re.search(r'('+NUMBER+r')荤('+NUMBER+r')素('+NUMBER+r')汤',question)
     from .lexicon import planning_request,meal_match
     match=planning_request(question)
-    if not (composition or mixed or match):
-        return None
     people=re.search(r'('+NUMBER+r')\s*(?:个)?人',question)
     minutes=re.search(r'('+NUMBER+r')\s*分钟',question)
     hours=re.search(r'('+NUMBER+r')\s*(?:个)?小时',question)
+    half_hour=re.search(HALF_HOUR,question)
+    timed=minutes or hours or half_hour
+    counted=re.search(DISH_COUNT,question) if people or timed else None
+    if not (composition or mixed or match or (counted and people and timed)):
+        return None
     request={'meal_type':(match or meal_match(question))['meal_type'],
              'people':number(people[1]) if people else None,
-             'minutes':number(minutes[1]) if minutes else number(hours[1])*60 if hours else None,
-             'dishes':number(composition[1]) if composition else number(mixed[1])+number(mixed[2]) if mixed else 2,
-             'soups':number(composition[2]) if composition else number(mixed[3]) if mixed else 1,
+             'minutes':number(minutes[1]) if minutes else number(hours[1])*60 if hours else 30 if half_hour else None,
+             'dishes':number(composition[1]) if composition else number(mixed[1])+number(mixed[2]) if mixed else number(counted[1]) if counted else 2,
+             'soups':number(composition[2]) if composition else number(mixed[3]) if mixed else 0 if counted else 1,
              'meat':number(mixed[1]) if mixed else None,'vegetables':number(mixed[2]) if mixed else None,
-             'explicit_composition':bool(composition or mixed),'question':question}
+             'explicit_composition':bool(composition or mixed or counted),'question':question}
     return request
 
 
@@ -113,20 +119,21 @@ def meal_conditions(question,*,consume_constraints=True):
     residual=question
     if consume_constraints:
         for permission in (PRICE_WAIVER,PANTRY_PERMISSION):residual=re.sub(permission,'',residual)
-    from .lexicon import settings as lexicon_settings
-    meal_words='|'.join(re.escape(word) for item in lexicon_settings()['meal_types'].values() for word in item['synonyms'])
+    from .lexicon import meal_aliases
+    meal_words='|'.join(re.escape(word) for word in meal_aliases())
     residual=re.sub(r'(?:继续|重新|照旧)(?:按(?:照)?)?(?='+NUMBER+r'|'+meal_words+r'|[，,。.;；、\s]*$)','',residual)
     residual=re.sub(r'(?:按照|按|改成|改为|换成)\s*(?=(?:'+meal_words+r'))','',residual)
     residual=re.sub(r'(?:整餐|用餐|制作|可用)?时间(?:预算)?(?:改成|改为|改到|调整到|调整为|增加到|缩短到|设为)?\s*(?='+NUMBER+r'\s*(?:分钟|(?:个)?小时))','',residual)
     residual=re.sub(r'(?:还是|仍然|仍旧|保持|照旧)\s*(?='+NUMBER+r'\s*(?:(?:个)?人|分钟|(?:个)?小时|(?:道)?菜))','',residual)
     for pattern in (r''+NUMBER+r'\s*(?:个)?人(?:的)?',r'(?:有)?'+NUMBER+r'\s*分钟(?:以内|内)?',r''+NUMBER+r'\s*(?:个)?小时(?:以内|内)?',
                     r''+NUMBER+r'\s*(?:道)?菜\s*[、，,和加配+及]*\s*'+NUMBER+r'\s*(?:道|份)?汤',
-                    r''+NUMBER+r'荤'+NUMBER+r'素'+NUMBER+r'汤'):
+                    r''+NUMBER+r'荤'+NUMBER+r'素'+NUMBER+r'汤',DISH_COUNT,HALF_HOUR+r'(?:以内|内)?'):
         residual=re.sub(pattern,'',residual)
     if consume_constraints:
         for edit in turn.edits:residual=residual.replace(edit.evidence,'')
     from .lexicon import strip_meal_words
     residual=strip_meal_words(residual)
+    residual=re.sub(SIMPLE_PREFERENCE,'',residual)
     if consume_constraints and meal_difficulty(question) is not None:
         from search_filters import DIFFICULTY_LIMIT_PATTERN
         residual=re.sub(DIFFICULTY_LIMIT_PATTERN,'',residual)
@@ -136,7 +143,7 @@ def meal_conditions(question,*,consume_constraints=True):
     return state,residual
 
 
-def plan_meal(request,chunks,*,seed=None):
+def plan_meal(request,chunks,*,seed=None,taste_preferences=()):
     people,budget,dishes,soups=(request[k] for k in ('people','minutes','dishes','soups'))
     if (people is not None and not 1<=people<=20) or (budget is not None and budget<1) or not 1<=dishes or not 0<=soups or dishes+soups>6:
         return clarification('请说明1–20人的用餐人数，以及合计不超过6道的菜、汤数量。')
@@ -163,7 +170,9 @@ def plan_meal(request,chunks,*,seed=None):
             parts=[]
             if others:parts.append('还需要确认：'+'、'.join(others))
             if prices:parts.append('价格或预算（'+'、'.join(prices)+'）当前无法核实')
-            return clarification('；'.join(parts)+'。请补充可操作的条件，价格条件可以回复“价格不用核实”。')
+            message='；'.join(parts)+'。请补充可操作的条件。'
+            if prices:message+='价格条件可以回复“价格不用核实”。'
+            return clarification(message)
         if constraints.get('taste'):edits.append(Edit('set','tastes',(constraints['taste'],),''))
         if request.get('ingredients'):edits.append(Edit('set','ingredients',tuple(request['ingredients']),''))
         if request.get('mode'):edits.append(Edit('set','mode',(request['mode'],),''))
@@ -186,13 +195,13 @@ def plan_meal(request,chunks,*,seed=None):
     kind,template,meal_notice=resolve_template(request)
     seed=request.get('selection_seed',0) if seed is None else seed
     planner=MenuPlanner()
-    best,missing=planner.plan(request,chunks,state,template,seed=seed)
+    best,missing=planner.plan(request,chunks,state,template,seed=seed,taste_preferences=taste_preferences)
     alternative=None;completion_notice=''
     if request.get('accepted_sources') and set(request['accepted_sources'])!={r['source'] for r in best}:
         completion_notice='原完整方案在当前限制下无法原样安排，以下为重新核对后的搭配。'
     if template['budget'] is not None and any(not s.get('optional') for s in missing):
         expanded={**template,'budget':template.get('max_total_minutes')}
-        rows,gaps=planner.plan(request,chunks,state,expanded,seed=seed,fastest=True)
+        rows,gaps=planner.plan(request,chunks,state,expanded,seed=seed,fastest=True,taste_preferences=taste_preferences)
         if rows and not any(not s.get('optional') for s in gaps):
             minutes=sum(r['duration']['minutes'] for r in rows)
             if minutes<=template['budget']:
@@ -222,7 +231,9 @@ def plan_meal(request,chunks,*,seed=None):
         estimate=row['duration'];start=elapsed;elapsed+=estimate['minutes']
         duration=f'{estimate["minutes"]:g}';role=row['role_label']
         chosen.append({**{k:v for k,v in row.items() if k not in ('duration','tie')},
-                       'reason':('作为这餐的'+role)+'，原文预计从准备到完成约'+duration+'分钟。'})
+                       'reason':('作为这餐的'+role)+'，原文预计从准备到完成约'+duration+'分钟。'
+                       +''.join('原文简介写明“'+feature+'”，与你的'+label+'口味偏好相符。'
+                                for label,feature in row.get('taste_matches',[]))})
         refs=list(row['evidence'])+[{'source':row['source'],'title':row['title'],'section':'简介',
               'start_line':estimate['line'],'end_line':estimate['line'],'quote':estimate['quote'],'evidence_type':'markdown_original'}]
         for ref in refs:
@@ -236,6 +247,10 @@ def plan_meal(request,chunks,*,seed=None):
     summary+='（'+lexicon()['meal_types'][kind]['label']+'）\n'+ '、'.join(r['title'] for r in best)
     if meal_notice:summary+='\n\n'+meal_notice
     if completion_notice:summary+='\n\n'+completion_notice
+    if taste_preferences:
+        matched_names=[r['title'] for r in best if r.get('taste_matches')]
+        if matched_names:summary+='\n\n已按长期口味偏好优先选菜。原文能核实匹配的菜：'+'、'.join(matched_names)+'。'
+        else:summary+='\n\n没有从本次所选菜谱的原文核实到长期口味偏好的匹配。'
     if missing_labels:
         requested=str(request.get('dishes',dishes))+'道菜＋'+str(request.get('soups',soups))+'道汤'
         actual=str(sum(r['category'] not in ('soup','drink') for r in best))+'道菜＋'+str(sum(r['category']=='soup' for r in best))+'道汤'

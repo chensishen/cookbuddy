@@ -7,6 +7,25 @@ from cookbuddy.session import SessionState
 
 
 class MemoryCommandFlowTests(unittest.TestCase):
+    def test_explicit_preference_write_and_read_bypass_recipe_routing(self):
+        from cookbuddy.ltm.management import parse_command
+
+        read='你记得我哪些饮食偏好?'
+        for question in ('请记住，我喜欢微辣，不吃香菜。',read):
+            with self.subTest(question=question):
+                session=SessionState('u','s')
+                management={'decision':'UPDATE','message':'微辣；不吃香菜','needs_confirmation':False}
+                runtime=SimpleNamespace(enabled=True,level=5,session=session,previous_task=None,
+                    hard=[],events=[],confirmation=None,management=management,notice='',candidates=[],
+                    apply_soft=lambda *args:None,context_items=lambda **kwargs:[])
+                with patch('cookbuddy.store.Store'),\
+                        patch('cookbuddy.ltm.runtime.MemoryRuntime',return_value=runtime),\
+                        patch('src.nlu.router.understand',side_effect=AssertionError('recipe routing called')):
+                    prepared=worker.prepare({'user_id':'u','session_id':'s','request_id':'job','question':question})
+                self.assertEqual(prepared['task']['action'],'none')
+                self.assertEqual(prepared['management'],management)
+        self.assertEqual(parse_command(read),('read',''))
+
     def test_management_command_skips_recipe_reduction_and_preserves_slots(self):
         session=SessionState('u','s')
         session.slots['temp_constraints']={'tastes':['辣味']}

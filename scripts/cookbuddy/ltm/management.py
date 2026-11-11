@@ -4,6 +4,17 @@ from .guard import normalize
 from .models import Candidate,SESSION_ONLY
 
 
+def memory_only_write(question):
+    """An explicit save without a separate cooking request."""
+    match=re.match(r'\s*(?:请(?:你)?|帮我)?(?:记住|记下|记一下)[\s，,：:]*',question)
+    if not match:return False
+    return not re.search(
+        r'推荐|安排|搭配|挑|选菜|找菜|怎么|如何|多久|多少|哪些菜|什么菜|'
+        r'能否|能不能|可以做|做(?:[一两二三四五六七八九十\d]+道|饭|菜|一餐|一顿)|'
+        r'做法|原文|全文|步骤|图片|照片|配方|菜谱|换(?:成|一道|个菜)',
+        question[match.end():])
+
+
 def parse_command(question):
     raw=question.strip()
     text=raw.rstrip('。！!？? ').strip()
@@ -12,11 +23,14 @@ def parse_command(question):
     # cannot be used to write a profile entry.
     if re.fullmatch(r'(?:我说)?(?:以后|今后|从现在起)?(?:也|再)?不要(?:再)?(?:记忆|记住|保存|记录)(?:我的)?(?:这些|这样)?(?:饮食)?(?:偏好|口味|忌口|信息)?',text):
         return ('disable','')
+    if re.fullmatch(r'(?:请)?(?:帮我)?(?:重新)?(?:恢复|开启|打开|启用)(?:我的)?长期(?:饮食偏好)?记忆',text):
+        return ('enable','')
     taste=(r'(?:请告诉我)?我(?:之前|以前|先前)(?:告诉过你|跟你说过)(?:什么|哪些)口味偏好',
            r'我的口味偏好(?:有哪些|是什么)')
     if any(re.fullmatch(pattern,text) for pattern in taste):return ('read','taste')
     read=(r'(?:请)?(?:查看|列出|告诉我|说说)(?:一下)?(?:你)?(?:还)?(?:记得|记住|保存|记录)?的?我的(?:哪些)?(?:饮食)?(?:偏好|画像|记忆|忌口)',
           r'你(?:还)?(?:记得|记住|保存|记录)(?:了)?我的(?:哪些|什么)?(?:饮食)?(?:偏好|画像|记忆|忌口)(?:有哪些|是什么|吗)?',
+          r'你(?:现在)?(?:还)?(?:记得|记住|保存|记录)(?:了)?我(?:的)?(?:哪些|什么)(?:饮食|口味)?(?:偏好|忌口)(?:吗)?',
           r'我的(?:饮食)?(?:偏好|画像|记忆|忌口)(?:有哪些|是什么)',
           r'我(?:有|还保留了)(?:什么|哪些)(?:口味|饮食)?(?:偏好|记忆|忌口)',
           r'(?:请告诉我)?我(?:不吃|不能吃|忌口)(?:什么|哪些食材)',
@@ -44,6 +58,7 @@ def parse_command(question):
 
 def preference_target(target):
     target=re.sub(r'(?:这条|这个|这一条|的)?(?:饮食偏好|偏好|限制|记忆|记录|条目|提醒|忌口)$','',target)
+    target=re.sub(r'(?:这条|这一条)$','',target)
     target=re.sub(r'^(?:我(?:的)?)(?:一直|从来)?','',target)
     target=re.sub(r'^(?:对)','',target)
     target=re.sub(r'^(?:不太喜欢|不喜欢|不太爱吃|不爱吃|不吃|喜欢吃|喜欢|爱吃)','',target)
@@ -63,7 +78,12 @@ def describe(pref):
     return labels.get(dim,dim)+'：'+value
 
 
-def handle_command(command,prefs,uid,sid,turn,enabled=True):
+def handle_command(command,prefs,uid,sid,turn,enabled=True,*,allow_enable=True):
+    if command==('enable','') and allow_enable:
+        if not enabled:prefs.set_enabled(uid,True)
+        return {'decision':'NOOP' if enabled else 'UPDATE',
+                'message':'长期饮食偏好记忆已开启。你可以重新告诉我想保存的偏好。已清除的记录不会恢复。',
+                'needs_confirmation':False}
     if not enabled:
         return {'decision':'NOOP','message':'长期记忆已关闭，当前不会读取或修改已保存的偏好。','needs_confirmation':False}
     rows=[p for p in prefs.prefs(uid) if p.status=='active' and p.dimension!='inventory']
@@ -77,7 +97,8 @@ def handle_command(command,prefs,uid,sid,turn,enabled=True):
     if action=='conflict':
         return {'decision':'NOOP','message':'要忘记和保留的是同一项偏好，请明确要保留还是忘记；本次未修改记忆。','needs_confirmation':False}
     if action=='read':
-        rows=[p for p in rows if p.dimension not in SESSION_ONLY]
+        from .profile_store import effective_taste_rows
+        rows=effective_taste_rows([p for p in rows if p.dimension not in SESSION_ONLY])
         if target=='taste':rows=[p for p in rows if p.dimension in ('flavor','spice_level')]
         message='目前没有已保存的饮食偏好。' if not rows else '目前记得的偏好和限制：\n'+'\n'.join('- '+describe(p) for p in rows)
         return {'decision':'NOOP','message':message,'needs_confirmation':False}
@@ -87,7 +108,10 @@ def handle_command(command,prefs,uid,sid,turn,enabled=True):
         return {'decision':'NOOP','message':message,'needs_confirmation':False}
     item=matches[0]
     candidate=Candidate(item.dimension,item.value,item.polarity,item.strength,op='revoke')
-    result=prefs.apply(uid,sid,turn,candidate,expected_version=item.version,target_id=item.id)
+    result=prefs.apply(uid,sid,turn,candidate,expected_version=item.version,target_id=item.id,
+                       direct_food_forget=item.dimension=='avoid_ingredient' and item.strength=='hard')
     if result['decision']=='DELETE':result['message']='已忘记「'+describe(item)+'」这条偏好，其他记忆保留。'
-    elif result['decision']=='ASK':result['message']='「'+describe(item)+'」是硬性限制，需要确认后才能移除。'
+    elif result['decision']=='ASK':
+        label=describe(item)
+        result['message']='「'+label+'」是硬性限制。要移除，请回复「确认忘记'+label+'这条记录」。要继续保留，请回复「保留」。'
     return result

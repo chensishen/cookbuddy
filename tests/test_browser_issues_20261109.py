@@ -17,6 +17,30 @@ from src.nlu.router import understand
 
 
 class BrowserIssueTests(unittest.TestCase):
+    def test_simple_breakfast_does_not_block_later_meals(self):
+        from dialogue_harness import DialogueHarness
+
+        async def run():
+            chat=DialogueHarness()
+            for kind,question in (
+                ('breakfast','帮我安排两个人的早餐，30分钟，尽量简单。'),
+                ('lunch','帮我安排两个人的午餐，30分钟，想做两菜一汤。'),
+                ('dinner','帮我安排两个人的晚餐，30分钟，想做两菜一汤。'),
+            ):
+                prepared,result,_=await chat.turn(question)
+                data=result['outputs'][-1]['result']
+                self.assertEqual(data['status'],'verified',data['short_answer'])
+                meal=data['meal_plan']
+                self.assertEqual((meal['meal_type'],meal['people'],meal['minutes']),(kind,2,30))
+                self.assertLessEqual(meal['estimated_minutes'],30)
+                if kind!='breakfast':
+                    self.assertEqual((meal['dishes'],meal['soups']),(2,1))
+                self.assertEqual(prepared['task']['meal_request']['constraints']['unresolved'],[])
+                # Conversations saved before the repair can still contain this residue.
+                chat.session.slots['meal_request']['constraints']['unresolved']=['尽量简单']
+
+        asyncio.run(run())
+
     def test_combined_positive_and_negative_preferences_are_both_saved(self):
         rows=rule_extract('请记住：我喜欢黑胡椒，不喜欢芹菜。')
         self.assertEqual(

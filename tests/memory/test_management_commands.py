@@ -45,6 +45,18 @@ class ManagementCommandTests(unittest.TestCase):
         self.assertEqual(len(self.prefs.prefs('other')),1)
         self.assertEqual(self.prefs.prefs('u',('deleted',))[0].value,'香菜')
 
+    def test_latest_light_taste_is_the_effective_default_for_reads_and_planning(self):
+        self.seed(Candidate('spice_level','1'))
+        self.seed(Candidate('flavor','清淡'),'new-taste')
+        self.seed(Candidate('avoid_ingredient','香菜','avoid','hard'),'avoid')
+        result=self.handle('你记得我哪些饮食偏好？','read')
+        self.assertIn('清淡',result['message'])
+        self.assertIn('不吃香菜',result['message'])
+        self.assertNotIn('微辣',result['message'])
+        profile=self.prefs.load_profile('u')
+        self.assertEqual([(p['dimension'],p['value']) for p in profile['soft_prefs']],[('flavor','清淡')])
+        self.assertEqual([p['value'] for p in profile['hard_constraints']],['香菜'])
+
     def test_hard_limit_confirmation_and_empty_read(self):
         self.assertIn('没有已保存',self.handle('查看我的偏好')['message'])
         self.seed(Candidate('allergy','花生','avoid','hard'))
@@ -54,6 +66,29 @@ class ManagementCommandTests(unittest.TestCase):
         confirmed=self.prefs.confirm('u','s','确认忘记对花生过敏这条记录')
         self.assertEqual(confirmed['decision'],'UPDATE')
         self.assertEqual(self.prefs.prefs('u'),[])
+
+    def test_forget_bare_reference_suffix_deletes_hard_food_preference_directly(self):
+        self.seed(Candidate('avoid_ingredient','香菜','avoid','hard'))
+        self.seed(Candidate('spice_level','1'),'taste')
+        result=self.handle('请忘掉我不吃香菜这条。')
+        self.assertEqual(result['decision'],'DELETE')
+        self.assertFalse(result['needs_confirmation'])
+        self.assertEqual(self.prefs.pending('u','s'),[])
+        self.assertEqual([(p.dimension,p.value) for p in self.prefs.prefs('u')],[('spice_level','1')])
+
+    def test_restore_command_reenables_future_writes_without_restoring_cleared_data(self):
+        self.seed(Candidate('spice_level','1'))
+        self.handle('以后不要记住我的饮食偏好。')
+        self.assertFalse(self.prefs.enabled('u'))
+        store=MagicMock()
+        store.session_context.return_value=SessionState('u','s')
+        with patch('cookbuddy.ltm.runtime.ProfileStore',return_value=self.prefs):
+            runtime=MemoryRuntime(store,'u','s','job','恢复长期记忆')
+        self.assertIn('已开启',runtime.management['message'])
+        self.assertTrue(self.prefs.enabled('u'))
+        self.assertEqual(self.prefs.prefs('u'),[])
+        self.seed(Candidate('spice_level','1'),'new')
+        self.assertIn('微辣',self.handle('查看我的偏好','read')['message'])
 
     def test_runtime_natural_confirmation_does_not_readd_hard_limit(self):
         self.seed(Candidate('allergy','花生','avoid','hard'))

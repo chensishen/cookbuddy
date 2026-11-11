@@ -120,8 +120,9 @@ def validate_menu(rows,template,grouped,state):
 
 
 class MenuPlanner:
-    def plan(self,request,chunks,state,template,*,seed=0,fastest=False):
-        from .meal_planning import duration_estimate
+    def plan(self,request,chunks,state,template,*,seed=0,fastest=False,taste_preferences=()):
+        from .meal_planning import SIMPLE_PREFERENCE,duration_estimate
+        from .ltm.retriever import taste_preference_match
         from search_filters import filter_chunks
         grouped={}
         for row in chunks:grouped.setdefault(row['source'],[]).append(row)
@@ -146,25 +147,31 @@ class MenuPlanner:
                 matched=matched_inventory(required,optional,uncertain,stock)
                 coverage=len(required & stock)/len(required) if required else 0
                 tie=hashlib.sha256((str(seed or 0)+template['meal_type']+row['source']).encode()).hexdigest()
+                taste_matches=[match for pref in taste_preferences
+                               if (match:=taste_preference_match(row.get('description',''),pref))]
                 pool.append({**row,'category':category,'difficulty':metadata[row['source']]['difficulty'],
+                    'taste_matches':taste_matches,
                     'duration':estimate,'coverage':coverage,'primary_ingredients':sorted(primary_ingredients(row)),
                     'matched':sorted(matched),'missing':sorted(required-stock),'optional':sorted(optional),
                     'tools':sorted(tools),'unresolved':uncertain,'evidence':row['evidence']+refs,'tie':tie})
             # Keep the bounded recall pool: trimming to the fastest 25 excluded
             # dishes that become useful when the user has more time.
             pools[categories]=sorted(pool,key=lambda r:(r['duration']['minutes'],r['tie']))
+        prefer_simple=bool(re.search(SIMPLE_PREFERENCE,request.get('question','')))
         required_ids={s['slot_id'] for s in template['slots'] if not s.get('optional')}
         def rank(rows):
             methods=[next((m for m in ('炒','蒸','煮','烤','拌','煎','炖') if m in row['title']),'其他') for row in rows]
             elapsed=sum(r['duration']['minutes'] for r in rows)
             coverage=(-len({r['role'] for r in rows if r['slot_id'] in required_ids}),
                       -sum(r['slot_id'] in required_ids for r in rows),-len(rows))
-            if fastest:return (*coverage,elapsed,tuple(r['tie'] for r in rows))
+            taste_matches=sum(len(r['taste_matches']) for r in rows)
+            if fastest:return (*coverage,elapsed,-taste_matches,tuple(r['tie'] for r in rows))
             target=(template['budget']*templates()['selection']['target_budget_fraction']*len(rows)/len(template['slots'])
                     if template['budget'] is not None else None)
             suitability=sum(any(m in r['title'] for m in template.get('preferred_methods',[]))
                             for r in rows if r['category'] not in ('soup','drink'))
-            return (*coverage,-sum(r['source'] in accepted for r in rows),sum(r['source'] in previous for r in rows),-sum(r['coverage'] for r in rows),
+            return (*coverage,-sum(r['source'] in accepted for r in rows),-taste_matches,sum(r['source'] in previous for r in rows),-sum(r['coverage'] for r in rows),
+                sum(r['difficulty'] for r in rows) if prefer_simple else 0,
                 abs(elapsed-target) if target is not None else 0,-suitability,
                 len(methods)-len(set(methods)),-len({r['category'] for r in rows}),
                 -sum(r.get('rerank_score',0) for r in rows),tuple(r['tie'] for r in rows))

@@ -7,7 +7,7 @@ from contextlib import contextmanager
 from recipe_catalog import build_catalog,CATEGORIES
 
 FILTERS=ContextVar('recipe_search_filters',default=None)
-DIFFICULTY_LIMIT_PATTERN=r'难度\s*(?:不超过|不高于|至多|≤|<=)\s*([1-5])(?![\d.点])\s*(?:星|级)?(?!\s*[星级半\d.点/／])'
+DIFFICULTY_LIMIT_PATTERN=r'难度\s*(?:不超过|不高于|至多|最多|≤|<=)\s*([1-5])(?![\d.点])\s*(?:星|级)?(?!\s*[星级半\d.点/／])'
 
 
 def ingredient_terms(values):
