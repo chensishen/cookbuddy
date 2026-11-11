@@ -1,0 +1,121 @@
+[
+  {
+    "intent": "identity_capability",
+    "confidence": 0.99,
+    "slots": {
+      "dish": "",
+      "section": "",
+      "ingredients": [],
+      "exclude_refs": [],
+      "selected_ref": null,
+      "replace_ref": null,
+      "limit": null,
+      "mode": null,
+      "request_kind": "facts",
+      "constraints": {},
+      "raw_noise": []
+    },
+    "needs_clarification": false,
+    "clarify_question": null,
+    "options": [],
+    "assumptions": [],
+    "rewrite_query": "你是谁",
+    "answer_mode": "general_chat",
+    "matches": [],
+    "original": "你是谁",
+    "normalized": "你是谁",
+    "ignored_tokens": [],
+    "path": "model",
+    "fallback": null,
+    "errors": [],
+    "elapsed_ms": 1953.575
+  },
+  {
+    "intent": "recipe_section",
+    "confidence": 0.92,
+    "slots": {
+      "dish": "基础牛奶面包",
+      "section": "酵头的制作",
+      "ingredients": [],
+      "exclude_refs": [],
+      "selected_ref": null,
+      "replace_ref": null,
+      "limit": null,
+      "mode": null,
+      "request_kind": "facts",
+      "constraints": {},
+      "raw_noise": []
+    },
+    "needs_clarification": false,
+    "clarify_question": null,
+    "options": [],
+    "assumptions": [
+      "“酵投”按同音笔误理解为“酵头”；“那一小段”指选中菜谱中的酵头制作章节"
+    ],
+    "rewrite_query": "基础牛奶面包的酵头制作部分",
+    "answer_mode": "grounded_recipe",
+    "matches": [
+      {
+        "score": 1.0,
+        "level": "L0",
+        "ambiguous": false
+      },
+      {
+        "score": 0.99,
+        "level": "L1",
+        "ambiguous": false
+      }
+    ],
+    "original": "能不能只给我酵投制作的那一小段呀",
+    "normalized": "能不能只给我酵投制作的那一小段呀",
+    "ignored_tokens": [],
+    "path": "model",
+    "fallback": null,
+    "errors": [],
+    "elapsed_ms": 2060.599
+  },
+  {
+    "intent": "follow_up",
+    "confidence": 0.82,
+    "slots": {
+      "dish": "",
+      "section": "",
+      "ingredients": [],
+      "exclude_refs": [
+        {
+          "type": "ordinal",
+          "value": 2
+        }
+      ],
+      "selected_ref": null,
+      "replace_ref": null,
+      "limit": null,
+      "mode": null,
+      "request_kind": "facts",
+      "constraints": {},
+      "raw_noise": [
+        "1"
+      ]
+    },
+    "needs_clarification": false,
+    "clarify_question": null,
+    "options": [],
+    "assumptions": [
+      "末尾孤立数字1视为无意义噪声",
+      "指的是上一轮推荐列表中的第2道菜",
+      "我按「不要刚才第二道」理解了，末尾多余内容未作为新条件，不对请告诉我。"
+    ],
+    "rewrite_query": "不要刚才推荐中的第二道菜",
+    "answer_mode": "grounded_recipe",
+    "matches": [],
+    "original": "不要刚才第二道1",
+    "normalized": "不要刚才第二道",
+    "ignored_tokens": [
+      "1"
+    ],
+    "path": "model",
+    "fallback": null,
+    "errors": [],
+    "elapsed_ms": 1863.951
+  }
+]

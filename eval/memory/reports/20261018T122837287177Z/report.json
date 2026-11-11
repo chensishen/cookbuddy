@@ -1,0 +1,1261 @@
+{
+  "run_id": "20261018T122837287177Z",
+  "commit": null,
+  "commit_note": "仓库尚无提交时 commit 为 null；另存代码哈希",
+  "code_sha256": "be83472bd4dbdbd052dc6e8c95cb75437f03a407aa453b018b349eaf671353b5",
+  "dataset_sha256": "5ec37e34c35081968eceb595ed647c5e05f7b2f54a7758603b7d99ad06daf75b",
+  "configuration": {
+    "short_term": {
+      "window_turns": 6,
+      "window_max_tokens": 1500,
+      "summary_max_tokens": 400,
+      "slots_max_tokens": 150,
+      "session_ttl_hours": 24,
+      "idle_flush_minutes": 30
+    },
+    "long_term": {
+      "implicit_promote_evidence": 3,
+      "implicit_promote_sessions": 2,
+      "implicit_conf_cap": 0.6,
+      "promote_conf_cap": 0.8,
+      "half_life_days": {
+        "implicit": 60,
+        "explicit_soft": 180
+      },
+      "archive_conf_threshold": 0.2,
+      "strength_alpha": 0.3,
+      "inventory_ttl_days": 3,
+      "temporary_default_days": 30,
+      "max_events_per_user": 200
+    },
+    "retrieval": {
+      "episodic_top_k": 3,
+      "episodic_sim_threshold": 0.55,
+      "episodic_weights": {
+        "sim": 0.6,
+        "recency": 0.25,
+        "importance": 0.15
+      },
+      "personalization": {
+        "flavor": 0.1,
+        "difficulty": 0.1,
+        "cuisine": 0.05,
+        "repeat_penalty": 0.15
+      },
+      "explore_slots": 1
+    },
+    "confirmation": {
+      "expire_turns": 3,
+      "expire_hours": 24
+    },
+    "models": {
+      "extractor": "deepseek-flash",
+      "summarizer": "deepseek-flash"
+    },
+    "experiments": {
+      "level": "M6",
+      "hard_filter_mode": "code_enforced",
+      "scope_detection": "on",
+      "confirm_relax": "on"
+    }
+  },
+  "scope": "15 个自建确定性诊断对话；SQLite 本地时间；不含模型/网络延迟。token 为保守上界，不是供应商计费。非独立盲测。",
+  "results": [
+    {
+      "level": "M0",
+      "scope_detection": "on",
+      "confirm_relax": "on",
+      "hard_filter_mode": "code_enforced",
+      "metrics": {
+        "update_correctness": 0.125,
+        "final_profile_correctness": 0.3333333333333333,
+        "miswrite_rate": 0.0,
+        "hard_constraint_violation_rate": 0.6666666666666666,
+        "hard_dishes_checked": 3,
+        "coreference_accuracy": 0.0,
+        "extraction_precision": 1.0,
+        "extraction_recall": 1.0,
+        "context_token_upper_bound_mean": 0,
+        "local_memory_p95_ms": 2.4110000231303275,
+        "local_p95_latency_increment_ms": 0.0
+      },
+      "cases": [
+        {
+          "id": "R1-hard",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R2-session",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R3-update",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R4-revoke",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R5-retain",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R6-duplicate",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R7-implicit",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R8-temporary",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R9-multi",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R12-assistant",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-document",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-quote",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "inventory-ttl",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "equipment",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "scope-explicit",
+          "decisions": [],
+          "final_profile_correct": false
+        }
+      ]
+    },
+    {
+      "level": "M1",
+      "scope_detection": "on",
+      "confirm_relax": "on",
+      "hard_filter_mode": "code_enforced",
+      "metrics": {
+        "update_correctness": 0.125,
+        "final_profile_correctness": 0.3333333333333333,
+        "miswrite_rate": 0.0,
+        "hard_constraint_violation_rate": 0.6666666666666666,
+        "hard_dishes_checked": 3,
+        "coreference_accuracy": 0.0,
+        "extraction_precision": 1.0,
+        "extraction_recall": 1.0,
+        "context_token_upper_bound_mean": 25.416666666666668,
+        "local_memory_p95_ms": 0.9247080015484244,
+        "local_p95_latency_increment_ms": -1.486292021581903
+      },
+      "cases": [
+        {
+          "id": "R1-hard",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R2-session",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R3-update",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R4-revoke",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R5-retain",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R6-duplicate",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R7-implicit",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R8-temporary",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R9-multi",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R12-assistant",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-document",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-quote",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "inventory-ttl",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "equipment",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "scope-explicit",
+          "decisions": [],
+          "final_profile_correct": false
+        }
+      ]
+    },
+    {
+      "level": "M2",
+      "scope_detection": "on",
+      "confirm_relax": "on",
+      "hard_filter_mode": "code_enforced",
+      "metrics": {
+        "update_correctness": 0.125,
+        "final_profile_correctness": 0.3333333333333333,
+        "miswrite_rate": 0.0,
+        "hard_constraint_violation_rate": 0.6666666666666666,
+        "hard_dishes_checked": 3,
+        "coreference_accuracy": 1.0,
+        "extraction_precision": 1.0,
+        "extraction_recall": 1.0,
+        "context_token_upper_bound_mean": 25.416666666666668,
+        "local_memory_p95_ms": 0.6181670178193599,
+        "local_p95_latency_increment_ms": -1.7928330053109676
+      },
+      "cases": [
+        {
+          "id": "R1-hard",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R2-session",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R3-update",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R4-revoke",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R5-retain",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R6-duplicate",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R7-implicit",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R8-temporary",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R9-multi",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R12-assistant",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-document",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-quote",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "inventory-ttl",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "equipment",
+          "decisions": [],
+          "final_profile_correct": false
+        },
+        {
+          "id": "scope-explicit",
+          "decisions": [],
+          "final_profile_correct": false
+        }
+      ]
+    },
+    {
+      "level": "M3",
+      "scope_detection": "on",
+      "confirm_relax": "on",
+      "hard_filter_mode": "code_enforced",
+      "metrics": {
+        "update_correctness": 0.6666666666666666,
+        "final_profile_correctness": 0.9333333333333333,
+        "miswrite_rate": 0.0,
+        "hard_constraint_violation_rate": 0.0,
+        "hard_dishes_checked": 3,
+        "coreference_accuracy": 1.0,
+        "extraction_precision": 1.0,
+        "extraction_recall": 1.0,
+        "context_token_upper_bound_mean": 25.416666666666668,
+        "local_memory_p95_ms": 0.14229200314730406,
+        "local_p95_latency_increment_ms": -2.2687080199830234
+      },
+      "cases": [
+        {
+          "id": "R1-hard",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R2-session",
+          "decisions": [
+            "SESSION_ONLY"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R3-update",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R4-revoke",
+          "decisions": [
+            "ADD",
+            "DELETE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R5-retain",
+          "decisions": [
+            "ADD",
+            "DELETE"
+          ],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R6-duplicate",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R7-implicit",
+          "decisions": [
+            "ADD",
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R8-temporary",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R9-multi",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-assistant",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-document",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-quote",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "inventory-ttl",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "equipment",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "scope-explicit",
+          "decisions": [
+            "ADD",
+            "SESSION_ONLY"
+          ],
+          "final_profile_correct": true
+        }
+      ]
+    },
+    {
+      "level": "M4",
+      "scope_detection": "on",
+      "confirm_relax": "on",
+      "hard_filter_mode": "code_enforced",
+      "metrics": {
+        "update_correctness": 0.7916666666666666,
+        "final_profile_correctness": 0.9333333333333333,
+        "miswrite_rate": 0.0,
+        "hard_constraint_violation_rate": 0.0,
+        "hard_dishes_checked": 3,
+        "coreference_accuracy": 1.0,
+        "extraction_precision": 1.0,
+        "extraction_recall": 1.0,
+        "context_token_upper_bound_mean": 25.416666666666668,
+        "local_memory_p95_ms": 2.40604201098904,
+        "local_p95_latency_increment_ms": -0.004958012141287327
+      },
+      "cases": [
+        {
+          "id": "R1-hard",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R2-session",
+          "decisions": [
+            "SESSION_ONLY"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R3-update",
+          "decisions": [
+            "ADD",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R4-revoke",
+          "decisions": [
+            "ADD",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R5-retain",
+          "decisions": [
+            "ADD",
+            "UPDATE"
+          ],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R6-duplicate",
+          "decisions": [
+            "ADD",
+            "NOOP"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R7-implicit",
+          "decisions": [
+            "ADD",
+            "NOOP",
+            "NOOP"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R8-temporary",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R9-multi",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-assistant",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-document",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-quote",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "inventory-ttl",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "equipment",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "scope-explicit",
+          "decisions": [
+            "ADD",
+            "SESSION_ONLY"
+          ],
+          "final_profile_correct": true
+        }
+      ]
+    },
+    {
+      "level": "M5",
+      "scope_detection": "on",
+      "confirm_relax": "on",
+      "hard_filter_mode": "code_enforced",
+      "metrics": {
+        "update_correctness": 1.0,
+        "final_profile_correctness": 1.0,
+        "miswrite_rate": 0.0,
+        "hard_constraint_violation_rate": 0.0,
+        "hard_dishes_checked": 3,
+        "coreference_accuracy": 1.0,
+        "extraction_precision": 1.0,
+        "extraction_recall": 1.0,
+        "context_token_upper_bound_mean": 25.416666666666668,
+        "local_memory_p95_ms": 5.453207995742559,
+        "local_p95_latency_increment_ms": 3.042207972612232
+      },
+      "cases": [
+        {
+          "id": "R1-hard",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R2-session",
+          "decisions": [
+            "SESSION_ONLY"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R3-update",
+          "decisions": [
+            "ADD",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R4-revoke",
+          "decisions": [
+            "ADD",
+            "ASK",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R5-retain",
+          "decisions": [
+            "ADD",
+            "ASK",
+            "NOOP"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R6-duplicate",
+          "decisions": [
+            "ADD",
+            "NOOP"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R7-implicit",
+          "decisions": [
+            "ADD",
+            "NOOP",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R8-temporary",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R9-multi",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-assistant",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-document",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-quote",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "inventory-ttl",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "equipment",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "scope-explicit",
+          "decisions": [
+            "ADD",
+            "SESSION_ONLY"
+          ],
+          "final_profile_correct": true
+        }
+      ]
+    },
+    {
+      "level": "M6",
+      "scope_detection": "on",
+      "confirm_relax": "on",
+      "hard_filter_mode": "code_enforced",
+      "metrics": {
+        "update_correctness": 1.0,
+        "final_profile_correctness": 1.0,
+        "miswrite_rate": 0.0,
+        "hard_constraint_violation_rate": 0.0,
+        "hard_dishes_checked": 3,
+        "coreference_accuracy": 1.0,
+        "extraction_precision": 1.0,
+        "extraction_recall": 1.0,
+        "context_token_upper_bound_mean": 25.416666666666668,
+        "local_memory_p95_ms": 2.2000829922035336,
+        "local_p95_latency_increment_ms": -0.2109170309267938
+      },
+      "cases": [
+        {
+          "id": "R1-hard",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R2-session",
+          "decisions": [
+            "SESSION_ONLY"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R3-update",
+          "decisions": [
+            "ADD",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R4-revoke",
+          "decisions": [
+            "ADD",
+            "ASK",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R5-retain",
+          "decisions": [
+            "ADD",
+            "ASK",
+            "NOOP"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R6-duplicate",
+          "decisions": [
+            "ADD",
+            "NOOP"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R7-implicit",
+          "decisions": [
+            "ADD",
+            "NOOP",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R8-temporary",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R9-multi",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-assistant",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-document",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-quote",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "inventory-ttl",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "equipment",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "scope-explicit",
+          "decisions": [
+            "ADD",
+            "SESSION_ONLY"
+          ],
+          "final_profile_correct": true
+        }
+      ]
+    },
+    {
+      "level": "M6",
+      "scope_detection": "off",
+      "confirm_relax": "on",
+      "hard_filter_mode": "code_enforced",
+      "metrics": {
+        "update_correctness": 0.9166666666666666,
+        "final_profile_correctness": 0.8666666666666667,
+        "miswrite_rate": 0.4,
+        "hard_constraint_violation_rate": 0.0,
+        "hard_dishes_checked": 3,
+        "coreference_accuracy": 1.0,
+        "extraction_precision": 1.0,
+        "extraction_recall": 1.0,
+        "context_token_upper_bound_mean": 25.416666666666668,
+        "local_memory_p95_ms": 1.920957991387695
+      },
+      "cases": [
+        {
+          "id": "R1-hard",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R2-session",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R3-update",
+          "decisions": [
+            "ADD",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R4-revoke",
+          "decisions": [
+            "ADD",
+            "ASK",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R5-retain",
+          "decisions": [
+            "ADD",
+            "ASK",
+            "NOOP"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R6-duplicate",
+          "decisions": [
+            "ADD",
+            "NOOP"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R7-implicit",
+          "decisions": [
+            "ADD",
+            "NOOP",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R8-temporary",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R9-multi",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-assistant",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-document",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-quote",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "inventory-ttl",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "equipment",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "scope-explicit",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": false
+        }
+      ]
+    },
+    {
+      "level": "M6",
+      "scope_detection": "on",
+      "confirm_relax": "off",
+      "hard_filter_mode": "code_enforced",
+      "metrics": {
+        "update_correctness": 0.8333333333333334,
+        "final_profile_correctness": 0.9333333333333333,
+        "miswrite_rate": 0.0,
+        "hard_constraint_violation_rate": 0.0,
+        "hard_dishes_checked": 3,
+        "coreference_accuracy": 1.0,
+        "extraction_precision": 1.0,
+        "extraction_recall": 1.0,
+        "context_token_upper_bound_mean": 25.416666666666668,
+        "local_memory_p95_ms": 1.8819580145645887
+      },
+      "cases": [
+        {
+          "id": "R1-hard",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R2-session",
+          "decisions": [
+            "SESSION_ONLY"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R3-update",
+          "decisions": [
+            "ADD",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R4-revoke",
+          "decisions": [
+            "ADD",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R5-retain",
+          "decisions": [
+            "ADD",
+            "UPDATE"
+          ],
+          "final_profile_correct": false
+        },
+        {
+          "id": "R6-duplicate",
+          "decisions": [
+            "ADD",
+            "NOOP"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R7-implicit",
+          "decisions": [
+            "ADD",
+            "NOOP",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R8-temporary",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R9-multi",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-assistant",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-document",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-quote",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "inventory-ttl",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "equipment",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "scope-explicit",
+          "decisions": [
+            "ADD",
+            "SESSION_ONLY"
+          ],
+          "final_profile_correct": true
+        }
+      ]
+    },
+    {
+      "level": "M6",
+      "scope_detection": "on",
+      "confirm_relax": "on",
+      "hard_filter_mode": "prompt_only",
+      "metrics": {
+        "update_correctness": 1.0,
+        "final_profile_correctness": 1.0,
+        "miswrite_rate": 0.0,
+        "hard_constraint_violation_rate": 0.6666666666666666,
+        "hard_dishes_checked": 3,
+        "coreference_accuracy": 1.0,
+        "extraction_precision": 1.0,
+        "extraction_recall": 1.0,
+        "context_token_upper_bound_mean": 25.416666666666668,
+        "local_memory_p95_ms": 1.9355000113137066
+      },
+      "cases": [
+        {
+          "id": "R1-hard",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R2-session",
+          "decisions": [
+            "SESSION_ONLY"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R3-update",
+          "decisions": [
+            "ADD",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R4-revoke",
+          "decisions": [
+            "ADD",
+            "ASK",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R5-retain",
+          "decisions": [
+            "ADD",
+            "ASK",
+            "NOOP"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R6-duplicate",
+          "decisions": [
+            "ADD",
+            "NOOP"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R7-implicit",
+          "decisions": [
+            "ADD",
+            "NOOP",
+            "UPDATE"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R8-temporary",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R9-multi",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-assistant",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-document",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "R12-quote",
+          "decisions": [],
+          "final_profile_correct": true
+        },
+        {
+          "id": "inventory-ttl",
+          "decisions": [
+            "ADD",
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "equipment",
+          "decisions": [
+            "ADD"
+          ],
+          "final_profile_correct": true
+        },
+        {
+          "id": "scope-explicit",
+          "decisions": [
+            "ADD",
+            "SESSION_ONLY"
+          ],
+          "final_profile_correct": true
+        }
+      ]
+    }
+  ]
+}

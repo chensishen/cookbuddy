@@ -1,0 +1,84 @@
+name: cookbuddy
+services:
+  recipe-etcd:
+    image: gcr.io/etcd-development/etcd:v3.5.33
+    command: ["etcd", "--config-file=/etc/etcd.yaml"]
+    volumes:
+      - cookbuddy-recipes:/var/lib/milvus
+      - ./standaloneEtcd.yaml:/etc/etcd.yaml:ro
+    healthcheck:
+      test: ["CMD", "etcdctl", "--endpoints=http://127.0.0.1:2379", "endpoint", "health"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  memory-etcd:
+    image: gcr.io/etcd-development/etcd:v3.5.33
+    command: ["etcd", "--config-file=/etc/etcd.yaml"]
+    volumes:
+      - cookbuddy-memory:/var/lib/milvus
+      - ./standaloneEtcd.yaml:/etc/etcd.yaml:ro
+    healthcheck:
+      test: ["CMD", "etcdctl", "--endpoints=http://127.0.0.1:2379", "endpoint", "health"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  postgres:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_USER: cookbuddy
+      POSTGRES_DB: cookbuddy
+      POSTGRES_PASSWORD: ${COOKBUDDY_DB_PASSWORD:?required}
+    ports: ["127.0.0.1:55433:5432"]
+    volumes: ["cookbuddy-postgres:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cookbuddy -d cookbuddy"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+  memory-milvus:
+    image: milvusdb/milvus:v3.0.2
+    command: ["milvus", "run", "standalone"]
+    environment:
+      ETCD_USE_EMBED: "false"
+      ETCD_ENDPOINTS: memory-etcd:2379
+      COMMON_STORAGETYPE: local
+      DEPLOY_MODE: STANDALONE
+    ports: ["127.0.0.1:19532:19530", "127.0.0.1:9093:9091"]
+    volumes:
+      - cookbuddy-memory:/var/lib/milvus
+    depends_on:
+      memory-etcd:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+  recipe-milvus:
+    image: milvusdb/milvus:v3.0.2
+    command: ["milvus", "run", "standalone"]
+    environment:
+      ETCD_USE_EMBED: "false"
+      ETCD_ENDPOINTS: recipe-etcd:2379
+      COMMON_STORAGETYPE: local
+      DEPLOY_MODE: STANDALONE
+    ports: ["127.0.0.1:19530:19530", "127.0.0.1:9094:9091"]
+    volumes:
+      - cookbuddy-recipes:/var/lib/milvus
+    depends_on:
+      recipe-etcd:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+volumes:
+  cookbuddy-postgres:
+  cookbuddy-memory:
+  cookbuddy-recipes:

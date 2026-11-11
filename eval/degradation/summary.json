@@ -1,0 +1,35 @@
+{
+  "tests": {
+    "passed": 862,
+    "skipped": "43",
+    "failures": "0",
+    "errors": "0",
+    "time": "75.645"
+  },
+  "matrix_correct": "154/154",
+  "matrix_full_slot_parity": "132/132",
+  "routes": {
+    "route_correct": 248,
+    "route_total": 248,
+    "fallback_correct": 186,
+    "fallback_total": 186,
+    "meal_type_correct": 60,
+    "meal_total": 60
+  },
+  "offline_rule_ms": {
+    "0.5": 317.936,
+    "0.95": 840.22
+  },
+  "live_structural_checks": "11/11",
+  "live_limited_answers": 1,
+  "live_menu_seconds": {
+    "0.5": 5.617,
+    "0.95": 6.113
+  },
+  "source_grounding": {
+    "sources": 6,
+    "same_evidence": true,
+    "after_exact_accuracy": 1.0,
+    "after_citation_accuracy": 1.0
+  }
+}

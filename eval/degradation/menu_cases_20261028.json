@@ -1,0 +1,364 @@
+[
+  {
+    "question": "两个人，15分钟，安排早餐",
+    "titles": [
+      "微波炉荷包蛋",
+      "皮蛋豆腐",
+      "牛油果拉西"
+    ],
+    "plan": {
+      "complete": true,
+      "meal_type": "breakfast",
+      "missing_roles": [],
+      "alternative": null,
+      "max_total_minutes": 15,
+      "max_difficulty": 2,
+      "people": 2,
+      "dishes": 2,
+      "soups": 0,
+      "minutes": 15,
+      "estimated_minutes": 12.0,
+      "timing_basis": "sum_of_source_total_estimates"
+    }
+  },
+  {
+    "question": "两个人，30分钟，安排早餐",
+    "titles": [
+      "微波炉荷包蛋",
+      "吐司果酱",
+      "耙耙柑茶"
+    ],
+    "plan": {
+      "complete": true,
+      "meal_type": "breakfast",
+      "missing_roles": [],
+      "alternative": null,
+      "max_total_minutes": 25,
+      "max_difficulty": 2,
+      "people": 2,
+      "dishes": 2,
+      "soups": 0,
+      "minutes": 30,
+      "estimated_minutes": 19.0,
+      "timing_basis": "sum_of_source_total_estimates"
+    }
+  },
+  {
+    "question": "两个人，60分钟，安排早餐",
+    "titles": [
+      "微波炉荷包蛋",
+      "吐司果酱",
+      "耙耙柑茶"
+    ],
+    "plan": {
+      "complete": true,
+      "meal_type": "breakfast",
+      "missing_roles": [],
+      "alternative": null,
+      "max_total_minutes": 25,
+      "max_difficulty": 2,
+      "people": 2,
+      "dishes": 2,
+      "soups": 0,
+      "minutes": 60,
+      "estimated_minutes": 19.0,
+      "timing_basis": "sum_of_source_total_estimates"
+    }
+  },
+  {
+    "question": "两个人，15分钟，安排午餐",
+    "titles": [
+      "蒜苔炒肉末",
+      "炒滑蛋"
+    ],
+    "plan": {
+      "complete": false,
+      "meal_type": "lunch",
+      "missing_roles": [
+        "soup"
+      ],
+      "alternative": {
+        "estimated_minutes": 25.0,
+        "recipes": [
+          {
+            "title": "蒜苔炒肉末",
+            "source": "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+            "role": "main",
+            "minutes": 10.0,
+            "time_quote": "蒜苔炒肉末是北方家常菜，咸鲜脆嫩，蒜香浓郁。蒜苔富含膳食纤维和维生素，五花肉提供蛋白质，荤素搭配均衡。做法简单，备料轻松，新手也能快速上手。从切配到出锅大约只需 10 分钟。",
+            "time_line": 3
+          },
+          {
+            "title": "皮蛋豆腐",
+            "source": "data/HowToCook/dishes/vegetable_dish/皮蛋豆腐.md",
+            "role": "veg",
+            "minutes": 5.0,
+            "time_quote": "皮蛋豆腐是一道清爽开胃的凉拌家常菜，松花蛋 Q 弹滑嫩，嫩豆腐入口即化，咸香微酸的口味特别下饭。豆腐富含优质植物蛋白和钙，皮蛋则提供铁、维生素 A 等营养素，搭配食用易于消化吸收。制作过程几乎零门槛，新手也能轻松完成，从备料到上桌仅需 大约 5 分钟。",
+            "time_line": 3
+          },
+          {
+            "title": "金针菇汤",
+            "source": "data/HowToCook/dishes/soup/金针菇汤.md",
+            "role": "soup",
+            "minutes": 10.0,
+            "time_quote": "这是一道清淡爽口的家常汤品，口味鲜美，属简易快手菜。金针菇含有丰富的氨基酸和膳食纤维，加鸡蛋还能补充优质蛋白。制作门槛极低，新手也能轻松驾驭，从备菜到出锅大约只需 10 分钟。",
+            "time_line": 3
+          }
+        ]
+      },
+      "max_total_minutes": 15,
+      "max_difficulty": 3,
+      "people": 2,
+      "dishes": 2,
+      "soups": 0,
+      "minutes": 15,
+      "estimated_minutes": 15.0,
+      "timing_basis": "sum_of_source_total_estimates"
+    }
+  },
+  {
+    "question": "两个人，30分钟，安排午餐",
+    "titles": [
+      "蒜苔炒肉末",
+      "皮蛋豆腐",
+      "金针菇汤"
+    ],
+    "plan": {
+      "complete": true,
+      "meal_type": "lunch",
+      "missing_roles": [],
+      "alternative": null,
+      "max_total_minutes": 30,
+      "max_difficulty": 3,
+      "people": 2,
+      "dishes": 2,
+      "soups": 1,
+      "minutes": 30,
+      "estimated_minutes": 25.0,
+      "timing_basis": "sum_of_source_total_estimates"
+    }
+  },
+  {
+    "question": "两个人，60分钟，安排午餐",
+    "titles": [
+      "荷兰豆炒腊肠",
+      "凉拌豆腐",
+      "紫菜蛋花汤"
+    ],
+    "plan": {
+      "complete": true,
+      "meal_type": "lunch",
+      "missing_roles": [],
+      "alternative": null,
+      "max_total_minutes": 60,
+      "max_difficulty": 3,
+      "people": 2,
+      "dishes": 2,
+      "soups": 1,
+      "minutes": 60,
+      "estimated_minutes": 45.0,
+      "timing_basis": "sum_of_source_total_estimates"
+    }
+  },
+  {
+    "question": "两个人，15分钟，安排晚餐",
+    "titles": [
+      "蒜苔炒肉末",
+      "鸡蛋花"
+    ],
+    "plan": {
+      "complete": false,
+      "meal_type": "dinner",
+      "missing_roles": [
+        "soup"
+      ],
+      "alternative": {
+        "estimated_minutes": 25.0,
+        "recipes": [
+          {
+            "title": "蒜苔炒肉末",
+            "source": "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+            "role": "main",
+            "minutes": 10.0,
+            "time_quote": "蒜苔炒肉末是北方家常菜，咸鲜脆嫩，蒜香浓郁。蒜苔富含膳食纤维和维生素，五花肉提供蛋白质，荤素搭配均衡。做法简单，备料轻松，新手也能快速上手。从切配到出锅大约只需 10 分钟。",
+            "time_line": 3
+          },
+          {
+            "title": "皮蛋豆腐",
+            "source": "data/HowToCook/dishes/vegetable_dish/皮蛋豆腐.md",
+            "role": "veg",
+            "minutes": 5.0,
+            "time_quote": "皮蛋豆腐是一道清爽开胃的凉拌家常菜，松花蛋 Q 弹滑嫩，嫩豆腐入口即化，咸香微酸的口味特别下饭。豆腐富含优质植物蛋白和钙，皮蛋则提供铁、维生素 A 等营养素，搭配食用易于消化吸收。制作过程几乎零门槛，新手也能轻松完成，从备料到上桌仅需 大约 5 分钟。",
+            "time_line": 3
+          },
+          {
+            "title": "金针菇汤",
+            "source": "data/HowToCook/dishes/soup/金针菇汤.md",
+            "role": "soup",
+            "minutes": 10.0,
+            "time_quote": "这是一道清淡爽口的家常汤品，口味鲜美，属简易快手菜。金针菇含有丰富的氨基酸和膳食纤维，加鸡蛋还能补充优质蛋白。制作门槛极低，新手也能轻松驾驭，从备菜到出锅大约只需 10 分钟。",
+            "time_line": 3
+          }
+        ]
+      },
+      "max_total_minutes": 15,
+      "max_difficulty": 3,
+      "people": 2,
+      "dishes": 2,
+      "soups": 0,
+      "minutes": 15,
+      "estimated_minutes": 15.0,
+      "timing_basis": "sum_of_source_total_estimates"
+    }
+  },
+  {
+    "question": "两个人，30分钟，安排晚餐",
+    "titles": [
+      "蒜苔炒肉末",
+      "皮蛋豆腐",
+      "金针菇汤"
+    ],
+    "plan": {
+      "complete": true,
+      "meal_type": "dinner",
+      "missing_roles": [],
+      "alternative": null,
+      "max_total_minutes": 30,
+      "max_difficulty": 3,
+      "people": 2,
+      "dishes": 2,
+      "soups": 1,
+      "minutes": 30,
+      "estimated_minutes": 25.0,
+      "timing_basis": "sum_of_source_total_estimates"
+    }
+  },
+  {
+    "question": "两个人，60分钟，安排晚餐",
+    "titles": [
+      "蒜苔炒肉末",
+      "清蒸南瓜",
+      "西红柿鸡蛋汤"
+    ],
+    "plan": {
+      "complete": true,
+      "meal_type": "dinner",
+      "missing_roles": [],
+      "alternative": null,
+      "max_total_minutes": 60,
+      "max_difficulty": 3,
+      "people": 2,
+      "dishes": 2,
+      "soups": 1,
+      "minutes": 60,
+      "estimated_minutes": 45.0,
+      "timing_basis": "sum_of_source_total_estimates"
+    }
+  },
+  {
+    "question": "两个人，30分钟，想做三菜一汤。",
+    "titles": [
+      "皮蛋豆腐",
+      "蒜苔炒肉末",
+      "金针菇汤"
+    ],
+    "plan": {
+      "complete": false,
+      "meal_type": "lunch",
+      "missing_roles": [
+        "dish"
+      ],
+      "alternative": {
+        "estimated_minutes": 35.0,
+        "recipes": [
+          {
+            "title": "乾隆白菜",
+            "source": "data/HowToCook/dishes/vegetable_dish/乾隆白菜/乾隆白菜.md",
+            "role": "dish",
+            "minutes": 10.0,
+            "time_quote": "乾隆白菜是一道经典的北京风味凉菜，以手撕白菜心拌上浓稠芝麻酱汁，口感酸甜爽脆、醇厚开胃。白菜富含维生素和膳食纤维，芝麻酱则带来优质脂肪与钙质，清爽解腻又营养。全程不炒不煮，调酱拌匀即可，对新手十分友好，一般仅需 10 分钟便能端上餐桌。",
+            "time_line": 3
+          },
+          {
+            "title": "皮蛋豆腐",
+            "source": "data/HowToCook/dishes/vegetable_dish/皮蛋豆腐.md",
+            "role": "dish",
+            "minutes": 5.0,
+            "time_quote": "皮蛋豆腐是一道清爽开胃的凉拌家常菜，松花蛋 Q 弹滑嫩，嫩豆腐入口即化，咸香微酸的口味特别下饭。豆腐富含优质植物蛋白和钙，皮蛋则提供铁、维生素 A 等营养素，搭配食用易于消化吸收。制作过程几乎零门槛，新手也能轻松完成，从备料到上桌仅需 大约 5 分钟。",
+            "time_line": 3
+          },
+          {
+            "title": "水油焖蔬菜",
+            "source": "data/HowToCook/dishes/vegetable_dish/水油焖蔬菜.md",
+            "role": "dish",
+            "minutes": 10.0,
+            "time_quote": "水油焖蔬菜是一道简单快手的家常佐餐，通过沸水加几滴油和调料，让叶菜口感软嫩、色泽油亮，既清爽又带有淡淡油香。这种做法有助于提高脂溶性维生素的吸收率，比生吃蔬菜更有营养价值。烹饪难度低，对新手非常友好，从洗菜到出锅一般只需 10 分钟。",
+            "time_line": 3
+          },
+          {
+            "title": "金针菇汤",
+            "source": "data/HowToCook/dishes/soup/金针菇汤.md",
+            "role": "soup",
+            "minutes": 10.0,
+            "time_quote": "这是一道清淡爽口的家常汤品，口味鲜美，属简易快手菜。金针菇含有丰富的氨基酸和膳食纤维，加鸡蛋还能补充优质蛋白。制作门槛极低，新手也能轻松驾驭，从备菜到出锅大约只需 10 分钟。",
+            "time_line": 3
+          }
+        ]
+      },
+      "max_total_minutes": 30,
+      "max_difficulty": 3,
+      "people": 2,
+      "dishes": 2,
+      "soups": 1,
+      "minutes": 30,
+      "estimated_minutes": 25.0,
+      "timing_basis": "sum_of_source_total_estimates"
+    }
+  },
+  {
+    "question": "两个人，35分钟，想做三菜一汤。",
+    "titles": [
+      "皮蛋豆腐",
+      "蒜蓉炒芹菜",
+      "蒜苔炒肉末",
+      "金针菇汤"
+    ],
+    "plan": {
+      "complete": true,
+      "meal_type": "lunch",
+      "missing_roles": [],
+      "alternative": null,
+      "max_total_minutes": 35,
+      "max_difficulty": 3,
+      "people": 2,
+      "dishes": 3,
+      "soups": 1,
+      "minutes": 35,
+      "estimated_minutes": 35.0,
+      "timing_basis": "sum_of_source_total_estimates"
+    }
+  },
+  {
+    "question": "两个人，60分钟，想做三菜一汤。",
+    "titles": [
+      "凉拌豆腐",
+      "蒜蓉炒芹菜",
+      "蒜苔炒肉末",
+      "西红柿鸡蛋汤"
+    ],
+    "plan": {
+      "complete": true,
+      "meal_type": "lunch",
+      "missing_roles": [],
+      "alternative": null,
+      "max_total_minutes": 60,
+      "max_difficulty": 3,
+      "people": 2,
+      "dishes": 3,
+      "soups": 1,
+      "minutes": 60,
+      "estimated_minutes": 45.0,
+      "timing_basis": "sum_of_source_total_estimates"
+    }
+  }
+]

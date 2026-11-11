@@ -1,0 +1,1712 @@
+{
+  "scope": "live configured APIs, isolated identity; assertions are structural, factual prose needs review",
+  "records": [
+    {
+      "question": "帮我安排早餐。",
+      "expected": "breakfast",
+      "checks": {
+        "done": false,
+        "elapsed": false,
+        "request_id": false,
+        "notice_accurate": true,
+        "meal_type": false,
+        "source_backed": false,
+        "quotes_exact": true
+      },
+      "passed": false,
+      "result": {
+        "question": "帮我安排早餐。",
+        "mode": "auto",
+        "status": "agent_unavailable",
+        "outputs": [],
+        "steps": [],
+        "elapsed_seconds": 0,
+        "error": "本次查询未完成，请稍后重试。",
+        "error_code": "TimeoutError"
+      },
+      "state": "failed",
+      "wall_seconds": 52.829
+    },
+    {
+      "question": "换一套，不要刚才的。",
+      "expected": "breakfast",
+      "checks": {
+        "done": false,
+        "elapsed": false,
+        "request_id": false,
+        "notice_accurate": true,
+        "meal_type": false,
+        "source_backed": false,
+        "quotes_exact": true
+      },
+      "passed": false,
+      "result": {
+        "question": "换一套，不要刚才的。",
+        "mode": "auto",
+        "status": "agent_unavailable",
+        "outputs": [],
+        "steps": [],
+        "elapsed_seconds": 0,
+        "error": "本次查询未完成，请稍后重试。",
+        "error_code": "TimeoutError"
+      },
+      "state": "failed",
+      "wall_seconds": 54.126
+    },
+    {
+      "question": "帮我安排午餐，两个人，60分钟。",
+      "expected": "lunch",
+      "checks": {
+        "done": false,
+        "elapsed": true,
+        "request_id": true,
+        "notice_accurate": true,
+        "meal_type": false,
+        "source_backed": false,
+        "quotes_exact": true
+      },
+      "passed": false,
+      "result": {
+        "question": "帮我安排午餐，两个人，60分钟。",
+        "mode": "auto",
+        "status": "agent_unavailable",
+        "outputs": [],
+        "steps": [],
+        "elapsed_seconds": 64.48425454200333,
+        "error": "本次查询未完成，请稍后重试。",
+        "error_code": "TimeoutError",
+        "capability": "unclear",
+        "degraded": true,
+        "reason": "dependency_unavailable",
+        "quality_limited": true,
+        "unsupported_in_fallback": false,
+        "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：6730710726224a5aaf8e9af1072ec3ad）",
+        "request_id": "6730710726224a5aaf8e9af1072ec3ad",
+        "trace": {
+          "request_id": "6730710726224a5aaf8e9af1072ec3ad",
+          "outcome": "failed",
+          "error_code": "TimeoutError",
+          "frames": [
+            {
+              "module": "runtime.py",
+              "function": "service",
+              "line": 51
+            },
+            {
+              "module": "pipeline.py",
+              "function": "call",
+              "line": 77
+            },
+            {
+              "module": "tasks.py",
+              "function": "wait_for",
+              "line": 519
+            },
+            {
+              "module": "timeouts.py",
+              "function": "__aexit__",
+              "line": 115
+            }
+          ]
+        }
+      },
+      "state": "failed",
+      "wall_seconds": 68.91
+    },
+    {
+      "question": "换一套。",
+      "expected": "lunch",
+      "checks": {
+        "done": false,
+        "elapsed": true,
+        "request_id": true,
+        "notice_accurate": true,
+        "meal_type": false,
+        "source_backed": false,
+        "quotes_exact": true
+      },
+      "passed": false,
+      "result": {
+        "question": "换一套。",
+        "mode": "auto",
+        "status": "agent_unavailable",
+        "outputs": [],
+        "steps": [],
+        "elapsed_seconds": 29.986473124998156,
+        "error": "本次查询未完成，请稍后重试。",
+        "error_code": "TimeoutError",
+        "capability": "unclear",
+        "degraded": true,
+        "reason": "dependency_unavailable",
+        "quality_limited": true,
+        "unsupported_in_fallback": false,
+        "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：0411d4a3adba456e9381a46f00d6b6ec）",
+        "request_id": "0411d4a3adba456e9381a46f00d6b6ec",
+        "trace": {
+          "request_id": "0411d4a3adba456e9381a46f00d6b6ec",
+          "outcome": "failed",
+          "error_code": "TimeoutError",
+          "frames": [
+            {
+              "module": "runtime.py",
+              "function": "service",
+              "line": 51
+            },
+            {
+              "module": "pipeline.py",
+              "function": "call",
+              "line": 77
+            },
+            {
+              "module": "tasks.py",
+              "function": "wait_for",
+              "line": 519
+            },
+            {
+              "module": "timeouts.py",
+              "function": "__aexit__",
+              "line": 115
+            }
+          ]
+        }
+      },
+      "state": "failed",
+      "wall_seconds": 34.97
+    },
+    {
+      "question": "帮我安排晚餐。",
+      "expected": "dinner",
+      "checks": {
+        "done": false,
+        "elapsed": true,
+        "request_id": true,
+        "notice_accurate": true,
+        "meal_type": false,
+        "source_backed": false,
+        "quotes_exact": true
+      },
+      "passed": false,
+      "result": {
+        "question": "帮我安排晚餐。",
+        "mode": "auto",
+        "status": "agent_unavailable",
+        "outputs": [],
+        "steps": [],
+        "elapsed_seconds": 24.062857041004463,
+        "error": "本次查询未完成，请稍后重试。",
+        "error_code": "TimeoutError",
+        "capability": "unclear",
+        "degraded": true,
+        "reason": "dependency_unavailable",
+        "quality_limited": true,
+        "unsupported_in_fallback": false,
+        "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：cd9e1f72c333412e824f1032cdb42cf6）",
+        "request_id": "cd9e1f72c333412e824f1032cdb42cf6",
+        "trace": {
+          "request_id": "cd9e1f72c333412e824f1032cdb42cf6",
+          "outcome": "failed",
+          "error_code": "TimeoutError",
+          "frames": [
+            {
+              "module": "runtime.py",
+              "function": "service",
+              "line": 51
+            },
+            {
+              "module": "pipeline.py",
+              "function": "call",
+              "line": 77
+            },
+            {
+              "module": "tasks.py",
+              "function": "wait_for",
+              "line": 519
+            },
+            {
+              "module": "timeouts.py",
+              "function": "__aexit__",
+              "line": 115
+            }
+          ]
+        }
+      },
+      "state": "failed",
+      "wall_seconds": 25.757
+    },
+    {
+      "question": "帮我安排宵夜。",
+      "expected": "snack_late",
+      "checks": {
+        "done": false,
+        "elapsed": true,
+        "request_id": true,
+        "notice_accurate": true,
+        "meal_type": false,
+        "source_backed": false,
+        "quotes_exact": true
+      },
+      "passed": false,
+      "result": {
+        "question": "帮我安排宵夜。",
+        "mode": "auto",
+        "status": "agent_unavailable",
+        "outputs": [],
+        "steps": [],
+        "elapsed_seconds": 27.667777583003044,
+        "error": "本次查询未完成，请稍后重试。",
+        "error_code": "TimeoutError",
+        "capability": "unclear",
+        "degraded": true,
+        "reason": "dependency_unavailable",
+        "quality_limited": true,
+        "unsupported_in_fallback": false,
+        "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：b8cadc1fe6bf403781a1859636a95a6a）",
+        "request_id": "b8cadc1fe6bf403781a1859636a95a6a",
+        "trace": {
+          "request_id": "b8cadc1fe6bf403781a1859636a95a6a",
+          "outcome": "failed",
+          "error_code": "TimeoutError",
+          "frames": [
+            {
+              "module": "runtime.py",
+              "function": "service",
+              "line": 51
+            },
+            {
+              "module": "pipeline.py",
+              "function": "call",
+              "line": 77
+            },
+            {
+              "module": "tasks.py",
+              "function": "wait_for",
+              "line": 519
+            },
+            {
+              "module": "timeouts.py",
+              "function": "__aexit__",
+              "line": 115
+            }
+          ]
+        }
+      },
+      "state": "failed",
+      "wall_seconds": 29.278
+    },
+    {
+      "question": "安排早参",
+      "expected": "breakfast",
+      "checks": {
+        "done": true,
+        "elapsed": true,
+        "request_id": true,
+        "notice_accurate": true,
+        "meal_type": true,
+        "source_backed": true,
+        "quotes_exact": true
+      },
+      "passed": true,
+      "result": {
+        "question": "安排早参",
+        "mode": "langchain",
+        "status": "completed",
+        "outputs": [
+          {
+            "tool": "plan_meal",
+            "result": {
+              "status": "verified",
+              "short_answer": "### 参考菜单：2道菜＋0道汤（早餐）\n煮泡面加蛋、凉拌豆腐、牛油果拉西\n\n### 时间安排\n1. 0–10分钟：按原文准备并完成煮泡面加蛋。\n2. 10–20分钟：按原文准备并完成凉拌豆腐。\n3. 20–25分钟：按原文准备并完成牛油果拉西。\n\n按各菜原文总耗时依次相加，预计约25分钟；你未限定时间，先按此作为参考。如有独立汤锅，也可在做汤时切配下一道菜。原文时间为估计，实际受备料、熟练程度和份量影响。\n\n### 份量与准备\n人数未指定，份量可按实际用餐人数调整。具体用量和调料请查看各菜原文，按实际食量准备；增加份量后耗时可能延长。",
+              "recommendation_kind": "preference",
+              "recommendations": [
+                {
+                  "difficulty": 1,
+                  "title": "煮泡面加蛋",
+                  "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                  "description": "煮泡面加蛋是一道便捷的快手主食，口感顺滑，汤味浓郁，适合随时填饱肚子。",
+                  "reason": "作为这餐的主食，原文预计从准备到完成约10分钟。",
+                  "main_ingredients": [
+                    "泡面",
+                    "鸡蛋",
+                    "水"
+                  ],
+                  "notice": "",
+                  "spice_match": "none",
+                  "evidence": [
+                    {
+                      "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                      "title": "煮泡面加蛋",
+                      "section": "简介",
+                      "start_line": 3,
+                      "end_line": 3,
+                      "quote": "煮泡面加蛋是一道便捷的快手主食，口感顺滑，汤味浓郁，适合随时填饱肚子。主要提供碳水化合物和蛋白质，能快速补充能量。做法极其简单，只需烧水、煮面、打入鸡蛋煮熟，新手也能轻松掌握，全程大约 10 分钟即可完成。",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                      "title": "煮泡面加蛋",
+                      "section": "简介",
+                      "start_line": 5,
+                      "end_line": 5,
+                      "quote": "预估烹饪难度：★",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                      "title": "煮泡面加蛋",
+                      "section": "必备原料和工具",
+                      "start_line": 11,
+                      "end_line": 13,
+                      "quote": "- 泡面\n- 鸡蛋\n- 水",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "title": "煮泡面加蛋",
+                      "section": "必备原料和工具",
+                      "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                      "quote": "## 必备原料和工具\n\n- 泡面\n- 鸡蛋\n- 水",
+                      "start_line": 9,
+                      "end_line": 13
+                    }
+                  ],
+                  "rerank_score": 0,
+                  "category": "staple",
+                  "coverage": 0.0,
+                  "primary_ingredients": [
+                    "泡面",
+                    "鸡蛋"
+                  ],
+                  "matched": [],
+                  "missing": [
+                    "水",
+                    "泡面",
+                    "鸡蛋"
+                  ],
+                  "optional": [],
+                  "tools": [],
+                  "unresolved": [],
+                  "role": "main_staple",
+                  "role_label": "主食",
+                  "slot_id": "main_staple_1"
+                },
+                {
+                  "difficulty": 2,
+                  "title": "凉拌豆腐",
+                  "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                  "description": "这道凉菜清爽可口，富含植物蛋白和钙质，低脂健康，制作简单快捷，一般初学者只需要 10 分钟即可完成。",
+                  "reason": "作为这餐的配菜，原文预计从准备到完成约10分钟。",
+                  "main_ingredients": [
+                    "豆腐 （推荐选用北豆腐或老豆腐）",
+                    "小葱",
+                    "大蒜",
+                    "香油"
+                  ],
+                  "notice": "",
+                  "spice_match": "none",
+                  "evidence": [
+                    {
+                      "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                      "title": "凉拌豆腐",
+                      "section": "简介",
+                      "start_line": 3,
+                      "end_line": 3,
+                      "quote": "这道凉菜清爽可口，富含植物蛋白和钙质，低脂健康，制作简单快捷，一般初学者只需要 10 分钟即可完成。",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                      "title": "凉拌豆腐",
+                      "section": "简介",
+                      "start_line": 5,
+                      "end_line": 5,
+                      "quote": "预估烹饪难度：★★",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                      "title": "凉拌豆腐",
+                      "section": "必备原料和工具",
+                      "start_line": 11,
+                      "end_line": 13,
+                      "quote": "- 豆腐 （推荐选用北豆腐或老豆腐）\n- 小葱\n- 大蒜",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                      "title": "凉拌豆腐",
+                      "section": "必备原料和工具",
+                      "start_line": 15,
+                      "end_line": 15,
+                      "quote": "- 香油",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "title": "凉拌豆腐",
+                      "section": "必备原料和工具",
+                      "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                      "quote": "## 必备原料和工具\n\n- 豆腐 （推荐选用北豆腐或老豆腐）\n- 小葱\n- 大蒜\n- 生抽\n- 香油\n- 醋（可选）\n- 白糖（可选）\n- 辣椒油（可选）",
+                      "start_line": 9,
+                      "end_line": 18
+                    }
+                  ],
+                  "rerank_score": 0,
+                  "category": "vegetable_dish",
+                  "coverage": 0.0,
+                  "primary_ingredients": [
+                    "豆腐"
+                  ],
+                  "matched": [],
+                  "missing": [
+                    "大蒜",
+                    "小葱",
+                    "生抽",
+                    "香油"
+                  ],
+                  "optional": [
+                    "白糖",
+                    "辣椒油",
+                    "醋"
+                  ],
+                  "tools": [],
+                  "unresolved": [
+                    "豆腐 （推荐选用北豆腐或老豆腐）"
+                  ],
+                  "role": "protein_side",
+                  "role_label": "配菜",
+                  "slot_id": "protein_side_1"
+                },
+                {
+                  "difficulty": 1,
+                  "title": "牛油果拉西",
+                  "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                  "description": "这是一款融合了印度传统酸奶饮品“拉西”的创新饮品，口感绵密顺滑、清甜不腻，特别适合作为早餐或午后提神饮品。",
+                  "reason": "作为这餐的饮品或汤，原文预计从准备到完成约5分钟。",
+                  "main_ingredients": [
+                    "原味酸奶 (Plain yogurt)",
+                    "熟透的牛油果",
+                    "蜂蜜",
+                    "冷牛奶"
+                  ],
+                  "notice": "",
+                  "spice_match": "none",
+                  "evidence": [
+                    {
+                      "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                      "title": "牛油果拉西",
+                      "section": "简介",
+                      "start_line": 3,
+                      "end_line": 3,
+                      "quote": "这是一款融合了印度传统酸奶饮品“拉西”的创新饮品，口感绵密顺滑、清甜不腻，特别适合作为早餐或午后提神饮品。牛油果富含单不饱和脂肪酸与膳食纤维，搭配酸奶的优质蛋白和益生菌，一杯便能提供持久饱腹感。制作极为简单，新手也能零失败，从备料到享用只需 大约 5 分钟。",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                      "title": "牛油果拉西",
+                      "section": "简介",
+                      "start_line": 5,
+                      "end_line": 5,
+                      "quote": "预估烹饪难度：★",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                      "title": "牛油果拉西",
+                      "section": "必备原料和工具",
+                      "start_line": 11,
+                      "end_line": 14,
+                      "quote": "- 原味酸奶 (Plain yogurt)\n- 熟透的牛油果\n- 蜂蜜\n- 冷牛奶",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "title": "牛油果拉西",
+                      "section": "必备原料和工具",
+                      "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                      "quote": "## 必备原料和工具\n\n- 原味酸奶 (Plain yogurt)\n- 熟透的牛油果\n- 蜂蜜\n- 冷牛奶\n- 小豆蔻粉（可选）\n- 薄荷叶或坚果碎（可选，用于装饰）\n- 搅拌机（破壁机/榨汁机）",
+                      "start_line": 9,
+                      "end_line": 17
+                    }
+                  ],
+                  "rerank_score": 0,
+                  "category": "drink",
+                  "coverage": 0.0,
+                  "primary_ingredients": [
+                    "原味酸奶",
+                    "牛奶",
+                    "牛油果",
+                    "蜂蜜"
+                  ],
+                  "matched": [],
+                  "missing": [
+                    "冷牛奶",
+                    "原味酸奶",
+                    "熟透的牛油果",
+                    "蜂蜜"
+                  ],
+                  "optional": [
+                    "小豆蔻粉"
+                  ],
+                  "tools": [
+                    "搅拌机"
+                  ],
+                  "unresolved": [
+                    "薄荷叶或坚果碎（可选，用于装饰）"
+                  ],
+                  "role": "drink_or_soup",
+                  "role_label": "饮品或汤",
+                  "slot_id": "drink_or_soup_1"
+                }
+              ],
+              "sources": [
+                {
+                  "reference_id": 1,
+                  "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                  "title": "煮泡面加蛋",
+                  "section": "简介",
+                  "line": 3
+                },
+                {
+                  "reference_id": 2,
+                  "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                  "title": "煮泡面加蛋",
+                  "section": "简介",
+                  "line": 5
+                },
+                {
+                  "reference_id": 3,
+                  "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                  "title": "煮泡面加蛋",
+                  "section": "必备原料和工具",
+                  "line": 11
+                },
+                {
+                  "reference_id": 4,
+                  "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                  "title": "煮泡面加蛋",
+                  "section": "必备原料和工具",
+                  "line": 9
+                },
+                {
+                  "reference_id": 5,
+                  "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                  "title": "煮泡面加蛋",
+                  "section": "简介",
+                  "line": 3
+                },
+                {
+                  "reference_id": 6,
+                  "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                  "title": "凉拌豆腐",
+                  "section": "简介",
+                  "line": 3
+                },
+                {
+                  "reference_id": 7,
+                  "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                  "title": "凉拌豆腐",
+                  "section": "简介",
+                  "line": 5
+                },
+                {
+                  "reference_id": 8,
+                  "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                  "title": "凉拌豆腐",
+                  "section": "必备原料和工具",
+                  "line": 11
+                },
+                {
+                  "reference_id": 9,
+                  "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                  "title": "凉拌豆腐",
+                  "section": "必备原料和工具",
+                  "line": 15
+                },
+                {
+                  "reference_id": 10,
+                  "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                  "title": "凉拌豆腐",
+                  "section": "必备原料和工具",
+                  "line": 9
+                },
+                {
+                  "reference_id": 11,
+                  "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                  "title": "凉拌豆腐",
+                  "section": "简介",
+                  "line": 3
+                },
+                {
+                  "reference_id": 12,
+                  "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                  "title": "牛油果拉西",
+                  "section": "简介",
+                  "line": 3
+                },
+                {
+                  "reference_id": 13,
+                  "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                  "title": "牛油果拉西",
+                  "section": "简介",
+                  "line": 5
+                },
+                {
+                  "reference_id": 14,
+                  "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                  "title": "牛油果拉西",
+                  "section": "必备原料和工具",
+                  "line": 11
+                },
+                {
+                  "reference_id": 15,
+                  "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                  "title": "牛油果拉西",
+                  "section": "必备原料和工具",
+                  "line": 9
+                },
+                {
+                  "reference_id": 16,
+                  "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                  "title": "牛油果拉西",
+                  "section": "简介",
+                  "line": 3
+                }
+              ],
+              "evidence": [
+                {
+                  "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                  "title": "煮泡面加蛋",
+                  "section": "简介",
+                  "start_line": 3,
+                  "end_line": 3,
+                  "quote": "煮泡面加蛋是一道便捷的快手主食，口感顺滑，汤味浓郁，适合随时填饱肚子。主要提供碳水化合物和蛋白质，能快速补充能量。做法极其简单，只需烧水、煮面、打入鸡蛋煮熟，新手也能轻松掌握，全程大约 10 分钟即可完成。",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 1
+                },
+                {
+                  "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                  "title": "煮泡面加蛋",
+                  "section": "简介",
+                  "start_line": 5,
+                  "end_line": 5,
+                  "quote": "预估烹饪难度：★",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 2
+                },
+                {
+                  "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                  "title": "煮泡面加蛋",
+                  "section": "必备原料和工具",
+                  "start_line": 11,
+                  "end_line": 13,
+                  "quote": "- 泡面\n- 鸡蛋\n- 水",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 3
+                },
+                {
+                  "title": "煮泡面加蛋",
+                  "section": "必备原料和工具",
+                  "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                  "quote": "## 必备原料和工具\n\n- 泡面\n- 鸡蛋\n- 水",
+                  "start_line": 9,
+                  "end_line": 13,
+                  "reference_id": 4
+                },
+                {
+                  "source": "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+                  "title": "煮泡面加蛋",
+                  "section": "简介",
+                  "start_line": 3,
+                  "end_line": 3,
+                  "quote": "煮泡面加蛋是一道便捷的快手主食，口感顺滑，汤味浓郁，适合随时填饱肚子。主要提供碳水化合物和蛋白质，能快速补充能量。做法极其简单，只需烧水、煮面、打入鸡蛋煮熟，新手也能轻松掌握，全程大约 10 分钟即可完成。",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 5
+                },
+                {
+                  "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                  "title": "凉拌豆腐",
+                  "section": "简介",
+                  "start_line": 3,
+                  "end_line": 3,
+                  "quote": "这道凉菜清爽可口，富含植物蛋白和钙质，低脂健康，制作简单快捷，一般初学者只需要 10 分钟即可完成。",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 6
+                },
+                {
+                  "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                  "title": "凉拌豆腐",
+                  "section": "简介",
+                  "start_line": 5,
+                  "end_line": 5,
+                  "quote": "预估烹饪难度：★★",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 7
+                },
+                {
+                  "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                  "title": "凉拌豆腐",
+                  "section": "必备原料和工具",
+                  "start_line": 11,
+                  "end_line": 13,
+                  "quote": "- 豆腐 （推荐选用北豆腐或老豆腐）\n- 小葱\n- 大蒜",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 8
+                },
+                {
+                  "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                  "title": "凉拌豆腐",
+                  "section": "必备原料和工具",
+                  "start_line": 15,
+                  "end_line": 15,
+                  "quote": "- 香油",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 9
+                },
+                {
+                  "title": "凉拌豆腐",
+                  "section": "必备原料和工具",
+                  "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                  "quote": "## 必备原料和工具\n\n- 豆腐 （推荐选用北豆腐或老豆腐）\n- 小葱\n- 大蒜\n- 生抽\n- 香油\n- 醋（可选）\n- 白糖（可选）\n- 辣椒油（可选）",
+                  "start_line": 9,
+                  "end_line": 18,
+                  "reference_id": 10
+                },
+                {
+                  "source": "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+                  "title": "凉拌豆腐",
+                  "section": "简介",
+                  "start_line": 3,
+                  "end_line": 3,
+                  "quote": "这道凉菜清爽可口，富含植物蛋白和钙质，低脂健康，制作简单快捷，一般初学者只需要 10 分钟即可完成。",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 11
+                },
+                {
+                  "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                  "title": "牛油果拉西",
+                  "section": "简介",
+                  "start_line": 3,
+                  "end_line": 3,
+                  "quote": "这是一款融合了印度传统酸奶饮品“拉西”的创新饮品，口感绵密顺滑、清甜不腻，特别适合作为早餐或午后提神饮品。牛油果富含单不饱和脂肪酸与膳食纤维，搭配酸奶的优质蛋白和益生菌，一杯便能提供持久饱腹感。制作极为简单，新手也能零失败，从备料到享用只需 大约 5 分钟。",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 12
+                },
+                {
+                  "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                  "title": "牛油果拉西",
+                  "section": "简介",
+                  "start_line": 5,
+                  "end_line": 5,
+                  "quote": "预估烹饪难度：★",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 13
+                },
+                {
+                  "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                  "title": "牛油果拉西",
+                  "section": "必备原料和工具",
+                  "start_line": 11,
+                  "end_line": 14,
+                  "quote": "- 原味酸奶 (Plain yogurt)\n- 熟透的牛油果\n- 蜂蜜\n- 冷牛奶",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 14
+                },
+                {
+                  "title": "牛油果拉西",
+                  "section": "必备原料和工具",
+                  "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                  "quote": "## 必备原料和工具\n\n- 原味酸奶 (Plain yogurt)\n- 熟透的牛油果\n- 蜂蜜\n- 冷牛奶\n- 小豆蔻粉（可选）\n- 薄荷叶或坚果碎（可选，用于装饰）\n- 搅拌机（破壁机/榨汁机）",
+                  "start_line": 9,
+                  "end_line": 17,
+                  "reference_id": 15
+                },
+                {
+                  "source": "data/HowToCook/dishes/drink/牛油果拉西.md",
+                  "title": "牛油果拉西",
+                  "section": "简介",
+                  "start_line": 3,
+                  "end_line": 3,
+                  "quote": "这是一款融合了印度传统酸奶饮品“拉西”的创新饮品，口感绵密顺滑、清甜不腻，特别适合作为早餐或午后提神饮品。牛油果富含单不饱和脂肪酸与膳食纤维，搭配酸奶的优质蛋白和益生菌，一杯便能提供持久饱腹感。制作极为简单，新手也能零失败，从备料到享用只需 大约 5 分钟。",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 16
+                }
+              ],
+              "images": [],
+              "answer_method": "meal_planning",
+              "meal_plan": {
+                "complete": true,
+                "meal_type": "breakfast",
+                "missing_roles": [],
+                "max_total_minutes": 25,
+                "max_difficulty": 2,
+                "people": null,
+                "dishes": 2,
+                "soups": 0,
+                "minutes": null,
+                "estimated_minutes": 25.0,
+                "timing_basis": "sum_of_source_total_estimates"
+              }
+            }
+          }
+        ],
+        "steps": [
+          {
+            "phase": "tool",
+            "tool": "plan_meal",
+            "status": "ok",
+            "elapsed_ms": 2910.313
+          }
+        ],
+        "elapsed_seconds": 14.248017790996528,
+        "capability": "meal_plan",
+        "degraded": false,
+        "reason": null,
+        "quality_limited": false,
+        "unsupported_in_fallback": false,
+        "service_notice": "",
+        "request_id": "db2f2e9f6c0a48f5b425a931b52191d4",
+        "text": "### 参考菜单：2道菜＋0道汤（早餐）\n煮泡面加蛋、凉拌豆腐、牛油果拉西\n\n### 时间安排\n1. 0–10分钟：按原文准备并完成煮泡面加蛋。\n2. 10–20分钟：按原文准备并完成凉拌豆腐。\n3. 20–25分钟：按原文准备并完成牛油果拉西。\n\n按各菜原文总耗时依次相加，预计约25分钟；你未限定时间，先按此作为参考。如有独立汤锅，也可在做汤时切配下一道菜。原文时间为估计，实际受备料、熟练程度和份量影响。\n\n### 份量与准备\n人数未指定，份量可按实际用餐人数调整。具体用量和调料请查看各菜原文，按实际食量准备；增加份量后耗时可能延长。\n\n1. **煮泡面加蛋**\n煮泡面加蛋是一道便捷的快手主食，口感顺滑，汤味浓郁，适合随时填饱肚子。\n推荐理由：作为这餐的主食，原文预计从准备到完成约10分钟。\n已有：尚未确认。\n还需确认或准备：水、泡面、鸡蛋。\n\n2. **凉拌豆腐**\n这道凉菜清爽可口，富含植物蛋白和钙质，低脂健康，制作简单快捷，一般初学者只需要 10 分钟即可完成。\n推荐理由：作为这餐的配菜，原文预计从准备到完成约10分钟。\n已有：尚未确认。\n还需确认或准备：大蒜、小葱、生抽、香油。\n可选：白糖、辣椒油、醋。\n待核对：豆腐 （推荐选用北豆腐或老豆腐）。\n\n3. **牛油果拉西**\n这是一款融合了印度传统酸奶饮品“拉西”的创新饮品，口感绵密顺滑、清甜不腻，特别适合作为早餐或午后提神饮品。\n推荐理由：作为这餐的饮品或汤，原文预计从准备到完成约5分钟。\n已有：尚未确认。\n还需确认或准备：冷牛奶、原味酸奶、熟透的牛油果、蜂蜜。\n可选：小豆蔻粉。\n待核对：薄荷叶或坚果碎（可选，用于装饰）。\n\n来源：\n《煮泡面加蛋》· 简介 · data/HowToCook/dishes/staple/煮泡面加蛋.md · L3\n《煮泡面加蛋》· 简介 · data/HowToCook/dishes/staple/煮泡面加蛋.md · L5\n《煮泡面加蛋》· 必备原料和工具 · data/HowToCook/dishes/staple/煮泡面加蛋.md · L11\n《煮泡面加蛋》· 必备原料和工具 · data/HowToCook/dishes/staple/煮泡面加蛋.md · L9\n《煮泡面加蛋》· 简介 · data/HowToCook/dishes/staple/煮泡面加蛋.md · L3\n《凉拌豆腐》· 简介 · data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md · L3\n《凉拌豆腐》· 简介 · data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md · L5\n《凉拌豆腐》· 必备原料和工具 · data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md · L11\n《凉拌豆腐》· 必备原料和工具 · data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md · L15\n《凉拌豆腐》· 必备原料和工具 · data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md · L9\n《凉拌豆腐》· 简介 · data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md · L3\n《牛油果拉西》· 简介 · data/HowToCook/dishes/drink/牛油果拉西.md · L3\n《牛油果拉西》· 简介 · data/HowToCook/dishes/drink/牛油果拉西.md · L5\n《牛油果拉西》· 必备原料和工具 · data/HowToCook/dishes/drink/牛油果拉西.md · L11\n《牛油果拉西》· 必备原料和工具 · data/HowToCook/dishes/drink/牛油果拉西.md · L9\n《牛油果拉西》· 简介 · data/HowToCook/dishes/drink/牛油果拉西.md · L3",
+        "trace": {
+          "request_id": "db2f2e9f6c0a48f5b425a931b52191d4",
+          "outcome": "done",
+          "stages": [
+            {
+              "phase": "service",
+              "operation": "prepare",
+              "status": "ok",
+              "elapsed_ms": 10273.092
+            },
+            {
+              "phase": "understanding",
+              "intent": "meal_plan",
+              "confidence": 0.82,
+              "path": "model",
+              "fallback": null,
+              "matches": [],
+              "elapsed_ms": 4999.937,
+              "errors": []
+            },
+            {
+              "phase": "service",
+              "operation": "meal",
+              "status": "ok",
+              "elapsed_ms": 2903.345
+            },
+            {
+              "phase": "tool",
+              "tool": "plan_meal",
+              "status": "ok",
+              "elapsed_ms": 2910.313
+            },
+            {
+              "phase": "service",
+              "operation": "persist",
+              "status": "ok",
+              "elapsed_ms": 2088.967
+            },
+            {
+              "phase": "overall",
+              "elapsed_ms": 16353.804
+            }
+          ],
+          "model_calls": 1,
+          "model_call_count_scope": "http_attempts",
+          "agent_model_calls": 0,
+          "agent_http_calls": 0,
+          "service_model_calls": 1,
+          "service_api_calls": 1,
+          "unknown_usage_calls": 0,
+          "api_usage": [
+            {
+              "phase": "nlu_understanding",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 185,
+                "prompt_tokens": 1772,
+                "total_tokens": 1957
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            }
+          ],
+          "metering_incomplete": false,
+          "tool_calls": 1,
+          "usage": {
+            "input_tokens": 1772,
+            "output_tokens": 185
+          },
+          "degraded": false,
+          "filtered_out": 0,
+          "checkpoint_bytes": 0,
+          "checkpoint_oversize": false
+        },
+        "queue_seconds": 0.162
+      },
+      "state": "done",
+      "wall_seconds": 27.371
+    },
+    {
+      "question": "查看基础牛奶面包的完整原文和图片。",
+      "expected": "source",
+      "checks": {
+        "done": false,
+        "elapsed": true,
+        "request_id": true,
+        "notice_accurate": true,
+        "source_backed": false,
+        "quotes_exact": true
+      },
+      "passed": false,
+      "result": {
+        "question": "查看基础牛奶面包的完整原文和图片。",
+        "mode": "auto",
+        "status": "agent_unavailable",
+        "outputs": [],
+        "steps": [],
+        "elapsed_seconds": 25.00685841700033,
+        "error": "本次查询未完成，请稍后重试。",
+        "error_code": "TimeoutError",
+        "capability": "unclear",
+        "degraded": true,
+        "reason": "dependency_unavailable",
+        "quality_limited": true,
+        "unsupported_in_fallback": false,
+        "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：e855b504a95d416c93aaf03901991508）",
+        "request_id": "e855b504a95d416c93aaf03901991508",
+        "trace": {
+          "request_id": "e855b504a95d416c93aaf03901991508",
+          "outcome": "failed",
+          "error_code": "TimeoutError",
+          "frames": [
+            {
+              "module": "runtime.py",
+              "function": "service",
+              "line": 51
+            },
+            {
+              "module": "pipeline.py",
+              "function": "call",
+              "line": 77
+            },
+            {
+              "module": "tasks.py",
+              "function": "wait_for",
+              "line": 519
+            },
+            {
+              "module": "timeouts.py",
+              "function": "__aexit__",
+              "line": 115
+            }
+          ]
+        }
+      },
+      "state": "failed",
+      "wall_seconds": 26.286
+    },
+    {
+      "question": "只看酵头制作的图片。",
+      "expected": "images",
+      "checks": {
+        "done": false,
+        "elapsed": true,
+        "request_id": true,
+        "notice_accurate": true,
+        "chapter_images": false,
+        "quotes_exact": true
+      },
+      "passed": false,
+      "result": {
+        "question": "只看酵头制作的图片。",
+        "mode": "auto",
+        "status": "agent_unavailable",
+        "outputs": [],
+        "steps": [],
+        "elapsed_seconds": 42.357267042003514,
+        "error": "本次查询未完成，请稍后重试。",
+        "error_code": "TimeoutError",
+        "capability": "unclear",
+        "degraded": true,
+        "reason": "dependency_unavailable",
+        "quality_limited": true,
+        "unsupported_in_fallback": false,
+        "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：d72e1687d7b4449e9d0fc13df67e3d54）",
+        "request_id": "d72e1687d7b4449e9d0fc13df67e3d54",
+        "trace": {
+          "request_id": "d72e1687d7b4449e9d0fc13df67e3d54",
+          "outcome": "failed",
+          "error_code": "TimeoutError",
+          "frames": [
+            {
+              "module": "runtime.py",
+              "function": "service",
+              "line": 51
+            },
+            {
+              "module": "pipeline.py",
+              "function": "call",
+              "line": 77
+            },
+            {
+              "module": "tasks.py",
+              "function": "wait_for",
+              "line": 519
+            },
+            {
+              "module": "timeouts.py",
+              "function": "__aexit__",
+              "line": 115
+            }
+          ]
+        }
+      },
+      "state": "failed",
+      "wall_seconds": 48.936
+    },
+    {
+      "question": "酵头需要多少酵母、水温多少、发酵多久？请区分静置时间和发酵时间，并给出依据。",
+      "expected": "facts",
+      "checks": {
+        "done": true,
+        "elapsed": true,
+        "request_id": true,
+        "notice_accurate": true,
+        "source_backed": true,
+        "quotes_exact": true
+      },
+      "passed": true,
+      "result": {
+        "question": "酵头需要多少酵母、水温多少、发酵多久？请区分静置时间和发酵时间，并给出依据。",
+        "mode": "langchain",
+        "status": "completed",
+        "outputs": [
+          {
+            "tool": "search_recipes",
+            "result": {
+              "answer": "## 简短回答\n\n酵头用酵母 2 g。 [2]\n\n用 30℃ 温水（以不烫手为宜），先将酵母和温水混合均匀后静置 5 分钟，再与面粉混合搅拌。 [1][2]\n\n盖上布，放到温暖的地方发酵 45 ~ 60 分钟；完成后表面应有很多气泡、体积明显增大。 [1]\n\n静置 5 分钟指酵母与温水混合后的等待；发酵 45 ~ 60 分钟指盖布后放置温暖处的时间，两者不同。 [1]\n\n## 原文依据\n\n[2] 原文第 64–76 行\n\n> - **酵头**\n>   - 面粉 1 cup （盛一杯后用勺子挂掉多余的部分，不要晃动）\n>   - 30 ℃ 温水（以不烫手为宜） 1 cup\n>   - 酵母 2 g\n>   - 盐 2 g\n> - **面团**\n>   - 面粉 2½ cup\n>   - 鸡蛋 1 个\n>   - 糖或糖浆 ⅛ cup\n>   - 奶制品 混合后共 ¼ cup （奶粉需要和水混合。）\n>   - 黄油或玉米油 ⅛ cup\n>   - 谷朊粉 ¼ ~ ½ cup （可选）\n>   - 香草精 3 g （可选）\n\n[1] 原文第 86–94 行\n\n> 1. 首先，将酵母和 ***30℃ 的温水*** 用刮刀或厨具混合均匀，静置 5 分钟。之后与面粉混合，搅拌均匀。此时的酵头应该是**特别粘稠**的面糊。\n> \n> ![用布盖上酵头](./4-2酵头2.jpg)\n> \n> 2. 用布盖上面糊，将面糊放置到**温暖的地方**进行发酵，时长为 45 ~ 60 分钟。\n> \n> ![酵头的最终形态](./4-3酵头3.jpg)\n> \n> 3. 最终的面糊应该是表面有很多气泡的且体积明显增大。\n\n## 来源\n\n- [1] 基础牛奶面包 / 操作 > 酵头的制作\n  原文路径：`data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md`；章节行号：80–109；[查看原文](/Users/admin/Documents/ChatGPT/agent项目/data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md:80)\n- [2] 基础牛奶面包 / 计算\n  原文路径：`data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md`；章节行号：54–76；[查看原文](/Users/admin/Documents/ChatGPT/agent项目/data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md:54)\n",
+              "short_answer": "酵头用酵母 2 g。 [2]\n\n用 30℃ 温水（以不烫手为宜），先将酵母和温水混合均匀后静置 5 分钟，再与面粉混合搅拌。 [1][2]\n\n盖上布，放到温暖的地方发酵 45 ~ 60 分钟；完成后表面应有很多气泡、体积明显增大。 [1]\n\n静置 5 分钟指酵母与温水混合后的等待；发酵 45 ~ 60 分钟指盖布后放置温暖处的时间，两者不同。 [1]",
+              "display_blocks": [
+                {
+                  "id": "answer-1",
+                  "kind": "answer",
+                  "text": "酵头用酵母 2 g。",
+                  "heading": "",
+                  "anchors": [
+                    {
+                      "reference_id": 2,
+                      "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                      "section": "计算",
+                      "start_line": 64,
+                      "end_line": 67,
+                      "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf"
+                    }
+                  ],
+                  "step_number": null,
+                  "step_key": null
+                },
+                {
+                  "id": "answer-2",
+                  "kind": "answer",
+                  "text": "用 30℃ 温水（以不烫手为宜），先将酵母和温水混合均匀后静置 5 分钟，再与面粉混合搅拌。",
+                  "heading": "",
+                  "anchors": [
+                    {
+                      "reference_id": 2,
+                      "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                      "section": "计算",
+                      "start_line": 66,
+                      "end_line": 66,
+                      "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf"
+                    },
+                    {
+                      "reference_id": 1,
+                      "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                      "section": "操作 > 酵头的制作",
+                      "start_line": 86,
+                      "end_line": 86,
+                      "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf"
+                    }
+                  ],
+                  "step_number": null,
+                  "step_key": null
+                },
+                {
+                  "id": "answer-3",
+                  "kind": "answer",
+                  "text": "盖上布，放到温暖的地方发酵 45 ~ 60 分钟；完成后表面应有很多气泡、体积明显增大。",
+                  "heading": "",
+                  "anchors": [
+                    {
+                      "reference_id": 1,
+                      "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                      "section": "操作 > 酵头的制作",
+                      "start_line": 90,
+                      "end_line": 90,
+                      "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf"
+                    },
+                    {
+                      "reference_id": 1,
+                      "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                      "section": "操作 > 酵头的制作",
+                      "start_line": 94,
+                      "end_line": 94,
+                      "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf"
+                    }
+                  ],
+                  "step_number": null,
+                  "step_key": null
+                },
+                {
+                  "id": "answer-4",
+                  "kind": "answer",
+                  "text": "静置 5 分钟指酵母与温水混合后的等待；发酵 45 ~ 60 分钟指盖布后放置温暖处的时间，两者不同。",
+                  "heading": "",
+                  "anchors": [
+                    {
+                      "reference_id": 1,
+                      "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                      "section": "操作 > 酵头的制作",
+                      "start_line": 86,
+                      "end_line": 90,
+                      "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf"
+                    }
+                  ],
+                  "step_number": null,
+                  "step_key": null
+                }
+              ],
+              "display_source": [],
+              "status": "verified",
+              "answer_method": "model_generation",
+              "validation": "明确食材的基础推荐由程序比较原料表；其他问题由模型核对。引用由程序生成，摘录逐字核对，另由模型核对回答与原文依据覆盖；模型语义核对仍可能出错。status 为 validation_failed 时不展示生成内容。",
+              "evidence": [
+                {
+                  "reference_id": 2,
+                  "start_line": 64,
+                  "end_line": 76,
+                  "quote": "- **酵头**\n  - 面粉 1 cup （盛一杯后用勺子挂掉多余的部分，不要晃动）\n  - 30 ℃ 温水（以不烫手为宜） 1 cup\n  - 酵母 2 g\n  - 盐 2 g\n- **面团**\n  - 面粉 2½ cup\n  - 鸡蛋 1 个\n  - 糖或糖浆 ⅛ cup\n  - 奶制品 混合后共 ¼ cup （奶粉需要和水混合。）\n  - 黄油或玉米油 ⅛ cup\n  - 谷朊粉 ¼ ~ ½ cup （可选）\n  - 香草精 3 g （可选）",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "title": "基础牛奶面包",
+                  "section": "计算"
+                },
+                {
+                  "reference_id": 1,
+                  "start_line": 86,
+                  "end_line": 94,
+                  "quote": "1. 首先，将酵母和 ***30℃ 的温水*** 用刮刀或厨具混合均匀，静置 5 分钟。之后与面粉混合，搅拌均匀。此时的酵头应该是**特别粘稠**的面糊。\n\n![用布盖上酵头](./4-2酵头2.jpg)\n\n2. 用布盖上面糊，将面糊放置到**温暖的地方**进行发酵，时长为 45 ~ 60 分钟。\n\n![酵头的最终形态](./4-3酵头3.jpg)\n\n3. 最终的面糊应该是表面有很多气泡的且体积明显增大。",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 酵头的制作"
+                }
+              ],
+              "sources": [
+                {
+                  "reference_id": 1,
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 酵头的制作",
+                  "line": 80
+                },
+                {
+                  "reference_id": 2,
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "title": "基础牛奶面包",
+                  "section": "计算",
+                  "line": 54
+                }
+              ],
+              "images": [],
+              "assumption_notice": "我按「基础牛奶面包的酵头制作」理解了，不对请告诉我。"
+            }
+          }
+        ],
+        "steps": [
+          {
+            "phase": "tool",
+            "tool": "search_recipes",
+            "status": "ok",
+            "elapsed_ms": 3331.602
+          }
+        ],
+        "elapsed_seconds": 15.635051416000351,
+        "capability": "recipe_lookup",
+        "degraded": false,
+        "reason": null,
+        "quality_limited": false,
+        "unsupported_in_fallback": false,
+        "service_notice": "",
+        "request_id": "8ffbaf10c74f46ccb365f7872d6fce3b",
+        "text": "我按「基础牛奶面包的酵头制作」理解了，不对请告诉我。\n酵头用酵母 2 g。 [2]\n\n用 30℃ 温水（以不烫手为宜），先将酵母和温水混合均匀后静置 5 分钟，再与面粉混合搅拌。 [1][2]\n\n盖上布，放到温暖的地方发酵 45 ~ 60 分钟；完成后表面应有很多气泡、体积明显增大。 [1]\n\n静置 5 分钟指酵母与温水混合后的等待；发酵 45 ~ 60 分钟指盖布后放置温暖处的时间，两者不同。 [1]\n\n来源：\n《基础牛奶面包》· 操作 > 酵头的制作 · data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md · L80\n《基础牛奶面包》· 计算 · data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md · L54",
+        "trace": {
+          "request_id": "8ffbaf10c74f46ccb365f7872d6fce3b",
+          "outcome": "done",
+          "stages": [
+            {
+              "phase": "service",
+              "operation": "prepare",
+              "status": "ok",
+              "elapsed_ms": 6450.657
+            },
+            {
+              "phase": "understanding",
+              "intent": "recipe_lookup",
+              "confidence": 0.88,
+              "path": "model",
+              "fallback": null,
+              "matches": [
+                {
+                  "score": 1.0,
+                  "level": "L1",
+                  "ambiguous": false
+                }
+              ],
+              "elapsed_ms": 4091.041,
+              "errors": []
+            },
+            {
+              "phase": "service",
+              "operation": "fact",
+              "status": "ok",
+              "elapsed_ms": 336.498
+            },
+            {
+              "phase": "service",
+              "operation": "search",
+              "status": "ok",
+              "elapsed_ms": 3330.049,
+              "rerank": {
+                "budget_ms": 1999.104,
+                "elapsed_ms": 1488.053,
+                "last_phase": "finished",
+                "finished": true,
+                "reason": null,
+                "timings_ms": {
+                  "startup": 51.979,
+                  "imports": 63.529,
+                  "data_load": 53.351,
+                  "prepare": 258.768,
+                  "admission": 5.403,
+                  "api": 935.107,
+                  "finalize": 9.219,
+                  "finished": 110.698
+                }
+              }
+            },
+            {
+              "phase": "tool",
+              "tool": "search_recipes",
+              "status": "ok",
+              "elapsed_ms": 3331.602
+            },
+            {
+              "phase": "service",
+              "operation": "answer",
+              "status": "ok",
+              "elapsed_ms": 5179.61
+            },
+            {
+              "phase": "service",
+              "operation": "persist",
+              "status": "ok",
+              "elapsed_ms": 470.122
+            },
+            {
+              "phase": "overall",
+              "elapsed_ms": 16113.36
+            }
+          ],
+          "model_calls": 4,
+          "model_call_count_scope": "http_attempts",
+          "agent_model_calls": 0,
+          "agent_http_calls": 0,
+          "service_model_calls": 4,
+          "service_api_calls": 6,
+          "unknown_usage_calls": 0,
+          "api_usage": [
+            {
+              "phase": "nlu_understanding",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 186,
+                "prompt_tokens": 1906,
+                "total_tokens": 2092
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            },
+            {
+              "phase": "embedding",
+              "model": "Qwen/Qwen3-VL-Embedding-8B",
+              "usage": {
+                "prompt_tokens": 74,
+                "completion_tokens": 0,
+                "total_tokens": 74
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            },
+            {
+              "phase": "rerank",
+              "model": "Qwen/Qwen3-Reranker-8B",
+              "usage": {},
+              "billed_units": {
+                "input_tokens": 4377,
+                "output_tokens": 0
+              },
+              "outcome": "http_success"
+            },
+            {
+              "phase": "generation",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 245,
+                "prompt_tokens": 7268,
+                "total_tokens": 7513
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            },
+            {
+              "phase": "support",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 51,
+                "prompt_tokens": 1284,
+                "total_tokens": 1335
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            },
+            {
+              "phase": "completeness",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 53,
+                "prompt_tokens": 6323,
+                "total_tokens": 6376
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            }
+          ],
+          "metering_incomplete": false,
+          "tool_calls": 1,
+          "usage": {
+            "input_tokens": 16781,
+            "output_tokens": 535
+          },
+          "degraded": false,
+          "filtered_out": 0,
+          "checkpoint_bytes": 0,
+          "checkpoint_oversize": false
+        },
+        "queue_seconds": 0.534
+      },
+      "state": "done",
+      "wall_seconds": 34.885
+    },
+    {
+      "question": "面包的烘烤温度和时间是多少？原文有没有根据烤箱表现调整的方法？",
+      "expected": "facts",
+      "checks": {
+        "done": true,
+        "elapsed": true,
+        "request_id": true,
+        "notice_accurate": true,
+        "source_backed": true,
+        "quotes_exact": true
+      },
+      "passed": true,
+      "result": {
+        "question": "面包的烘烤温度和时间是多少？原文有没有根据烤箱表现调整的方法？",
+        "mode": "langchain",
+        "status": "completed",
+        "outputs": [
+          {
+            "tool": "search_recipes",
+            "result": {
+              "answer": "## 简短回答\n\n烘烤时先以上下火 180℃ 烤 30 分钟，然后调至 165℃ 再烤 10 分钟。 [1]\n\n原文有根据烤箱表现调整的方法：若 30 分钟后没有明显变色，说明温度过低，可提高 5～10℃ 或多烘烤 5～10 分钟；烤完品尝若表面发苦（只要不苦都不算烘焙过度），说明温度过高，可尝试降低 5～10℃ 或减少 5～10 分钟；若外部已呈焦糖色但里面没熟，则降低 5～15℃ 并延长 10～20 分钟。另外经济型烤箱密闭性差可能受热不均，可以降低温度延长烘焙时间。 [1][2]\n\n## 原文依据\n\n[1] 原文第 139–159 行\n\n> 4.此时面团应该有原来的两倍大。在面板或硅胶垫上撒上薄薄的一层面粉（可以看见面板或硅胶垫的厚度即可），然后将面团拿出，用手压瘪面团排气。\n> 5.之后使用擀面杖，擀成 1 cm 的厚片。并紧实、不留空隙地从一边卷起来。\n> 6.然后旋转 90° ，重复步骤 4、步骤 5 。\n> 7.将面包整形，放到垫了硅油纸的烤盘或者涂抹油脂的模具内。注意接缝处朝下。\n> \n> >可以在烤盘上用喷均匀喷洒一层油或用黄油涂抹薄薄一层再放上硅油纸。这样硅油纸就不会随意移动了。\n> \n> 8.在托盘或模具内，发酵 30 ~ 45 分钟 。\n> \n> >如发酵发生问题，请参阅酵头制作下对于发酵失败的解决方法。\n> \n> 9.于此同时，预热烤箱。\n> \n> >烤箱的预热：将烤箱调到最高温度下空烤至少 20 分钟。\n> \n> 10.在面包上用剪子或者刀划开几条缝作为面包的花纹。\n> 11.用刷子刷上蛋液。（可选）\n> \n> ![基础牛奶面包-预览图-9](./4-6成品面包.jpg)\n> \n> 11.放入烤箱，上下火 180℃ 烤制 30 分钟，然后调 165 ℃ 再烤 10 分钟。\n\n[1] 原文第 161–163 行\n\n> >不同的烤箱的温度不一样。在烤制过程中，观察面包，如果 30 分钟后没有明显的变色，那么温度过低。这时提高 5 ~ 10 ℃ 或多烘烤 5 ~ 10 分钟\n> >在烤制结束后，品尝面包，如果面包表面发苦（注意，只要不苦都不算烘焙过度），那么温度过高，尝试降低 5 ~ 10 ℃ 或减少 5 ~ 10 分钟的烤制时间;\n> >如果外部已经呈焦糖色但里面却没有熟，那么降低 5 ~ 15 ℃ 并延长 10 ~ 20 分钟的烤制时间。\n\n[2] 原文第 42–42 行\n\n> >- ④烤箱：烘烤食材。烤箱分为小型的经济型烤箱和大型的专业烤箱。经济型烤箱因密闭性差，因此可能受热不均，这时可以降低温度延长烘焙时间。烤箱必须先预热。后面的章节会展开细说。\n\n## 来源\n\n- [1] 基础牛奶面包 / 操作 > 面团的制作\n  原文路径：`data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md`；章节行号：139–164；[查看原文](/Users/admin/Documents/ChatGPT/agent项目/data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md:139)\n- [2] 基础牛奶面包 / 必备原料和工具 > 可选材料、工具及材料、工具的介绍\n  原文路径：`data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md`；章节行号：33–49；[查看原文](/Users/admin/Documents/ChatGPT/agent项目/data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md:33)\n",
+              "short_answer": "烘烤时先以上下火 180℃ 烤 30 分钟，然后调至 165℃ 再烤 10 分钟。 [1]\n\n原文有根据烤箱表现调整的方法：若 30 分钟后没有明显变色，说明温度过低，可提高 5～10℃ 或多烘烤 5～10 分钟；烤完品尝若表面发苦（只要不苦都不算烘焙过度），说明温度过高，可尝试降低 5～10℃ 或减少 5～10 分钟；若外部已呈焦糖色但里面没熟，则降低 5～15℃ 并延长 10～20 分钟。另外经济型烤箱密闭性差可能受热不均，可以降低温度延长烘焙时间。 [1][2]",
+              "display_blocks": [
+                {
+                  "id": "answer-1",
+                  "kind": "answer",
+                  "text": "烘烤时先以上下火 180℃ 烤 30 分钟，然后调至 165℃ 再烤 10 分钟。",
+                  "heading": "",
+                  "anchors": [
+                    {
+                      "reference_id": 1,
+                      "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                      "section": "操作 > 面团的制作",
+                      "start_line": 159,
+                      "end_line": 159,
+                      "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf"
+                    }
+                  ],
+                  "step_number": null,
+                  "step_key": null
+                },
+                {
+                  "id": "answer-2",
+                  "kind": "answer",
+                  "text": "原文有根据烤箱表现调整的方法：若 30 分钟后没有明显变色，说明温度过低，可提高 5～10℃ 或多烘烤 5～10 分钟；烤完品尝若表面发苦（只要不苦都不算烘焙过度），说明温度过高，可尝试降低 5～10℃ 或减少 5～10 分钟；若外部已呈焦糖色但里面没熟，则降低 5～15℃ 并延长 10～20 分钟。另外经济型烤箱密闭性差可能受热不均，可以降低温度延长烘焙时间。",
+                  "heading": "",
+                  "anchors": [
+                    {
+                      "reference_id": 1,
+                      "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                      "section": "操作 > 面团的制作",
+                      "start_line": 161,
+                      "end_line": 163,
+                      "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf"
+                    },
+                    {
+                      "reference_id": 2,
+                      "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                      "section": "必备原料和工具 > 可选材料、工具及材料、工具的介绍",
+                      "start_line": 42,
+                      "end_line": 42,
+                      "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf"
+                    }
+                  ],
+                  "step_number": null,
+                  "step_key": null
+                }
+              ],
+              "display_source": [],
+              "status": "verified",
+              "answer_method": "model_generation",
+              "validation": "明确食材的基础推荐由程序比较原料表；其他问题由模型核对。引用由程序生成，摘录逐字核对，另由模型核对回答与原文依据覆盖；模型语义核对仍可能出错。status 为 validation_failed 时不展示生成内容。",
+              "evidence": [
+                {
+                  "reference_id": 1,
+                  "start_line": 139,
+                  "end_line": 159,
+                  "quote": "4.此时面团应该有原来的两倍大。在面板或硅胶垫上撒上薄薄的一层面粉（可以看见面板或硅胶垫的厚度即可），然后将面团拿出，用手压瘪面团排气。\n5.之后使用擀面杖，擀成 1 cm 的厚片。并紧实、不留空隙地从一边卷起来。\n6.然后旋转 90° ，重复步骤 4、步骤 5 。\n7.将面包整形，放到垫了硅油纸的烤盘或者涂抹油脂的模具内。注意接缝处朝下。\n\n>可以在烤盘上用喷均匀喷洒一层油或用黄油涂抹薄薄一层再放上硅油纸。这样硅油纸就不会随意移动了。\n\n8.在托盘或模具内，发酵 30 ~ 45 分钟 。\n\n>如发酵发生问题，请参阅酵头制作下对于发酵失败的解决方法。\n\n9.于此同时，预热烤箱。\n\n>烤箱的预热：将烤箱调到最高温度下空烤至少 20 分钟。\n\n10.在面包上用剪子或者刀划开几条缝作为面包的花纹。\n11.用刷子刷上蛋液。（可选）\n\n![基础牛奶面包-预览图-9](./4-6成品面包.jpg)\n\n11.放入烤箱，上下火 180℃ 烤制 30 分钟，然后调 165 ℃ 再烤 10 分钟。",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 面团的制作"
+                },
+                {
+                  "reference_id": 1,
+                  "start_line": 161,
+                  "end_line": 163,
+                  "quote": ">不同的烤箱的温度不一样。在烤制过程中，观察面包，如果 30 分钟后没有明显的变色，那么温度过低。这时提高 5 ~ 10 ℃ 或多烘烤 5 ~ 10 分钟\n>在烤制结束后，品尝面包，如果面包表面发苦（注意，只要不苦都不算烘焙过度），那么温度过高，尝试降低 5 ~ 10 ℃ 或减少 5 ~ 10 分钟的烤制时间;\n>如果外部已经呈焦糖色但里面却没有熟，那么降低 5 ~ 15 ℃ 并延长 10 ~ 20 分钟的烤制时间。",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 面团的制作"
+                },
+                {
+                  "reference_id": 2,
+                  "start_line": 42,
+                  "end_line": 42,
+                  "quote": ">- ④烤箱：烘烤食材。烤箱分为小型的经济型烤箱和大型的专业烤箱。经济型烤箱因密闭性差，因此可能受热不均，这时可以降低温度延长烘焙时间。烤箱必须先预热。后面的章节会展开细说。",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "title": "基础牛奶面包",
+                  "section": "必备原料和工具 > 可选材料、工具及材料、工具的介绍"
+                }
+              ],
+              "sources": [
+                {
+                  "reference_id": 1,
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 面团的制作",
+                  "line": 139
+                },
+                {
+                  "reference_id": 2,
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "title": "基础牛奶面包",
+                  "section": "必备原料和工具 > 可选材料、工具及材料、工具的介绍",
+                  "line": 33
+                }
+              ],
+              "images": []
+            }
+          }
+        ],
+        "steps": [
+          {
+            "phase": "tool",
+            "tool": "search_recipes",
+            "status": "ok",
+            "elapsed_ms": 2827.565
+          }
+        ],
+        "elapsed_seconds": 12.825002124998719,
+        "capability": "recipe_lookup",
+        "degraded": false,
+        "reason": null,
+        "quality_limited": false,
+        "unsupported_in_fallback": false,
+        "service_notice": "",
+        "request_id": "0bfc25090f3e49cd9b5c749bf44d63ad",
+        "text": "烘烤时先以上下火 180℃ 烤 30 分钟，然后调至 165℃ 再烤 10 分钟。 [1]\n\n原文有根据烤箱表现调整的方法：若 30 分钟后没有明显变色，说明温度过低，可提高 5～10℃ 或多烘烤 5～10 分钟；烤完品尝若表面发苦（只要不苦都不算烘焙过度），说明温度过高，可尝试降低 5～10℃ 或减少 5～10 分钟；若外部已呈焦糖色但里面没熟，则降低 5～15℃ 并延长 10～20 分钟。另外经济型烤箱密闭性差可能受热不均，可以降低温度延长烘焙时间。 [1][2]\n\n来源：\n《基础牛奶面包》· 操作 > 面团的制作 · data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md · L139\n《基础牛奶面包》· 必备原料和工具 > 可选材料、工具及材料、工具的介绍 · data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md · L33",
+        "trace": {
+          "request_id": "0bfc25090f3e49cd9b5c749bf44d63ad",
+          "outcome": "done",
+          "stages": [
+            {
+              "phase": "service",
+              "operation": "prepare",
+              "status": "ok",
+              "elapsed_ms": 3787.907
+            },
+            {
+              "phase": "understanding",
+              "intent": "recipe_lookup",
+              "confidence": 0.9,
+              "path": "model",
+              "fallback": null,
+              "matches": [
+                {
+                  "score": 1.0,
+                  "level": "L1",
+                  "ambiguous": false
+                }
+              ],
+              "elapsed_ms": 2588.713,
+              "errors": []
+            },
+            {
+              "phase": "service",
+              "operation": "fact",
+              "status": "ok",
+              "elapsed_ms": 272.001
+            },
+            {
+              "phase": "service",
+              "operation": "search",
+              "status": "ok",
+              "elapsed_ms": 2826.125,
+              "rerank": {
+                "budget_ms": 1998.849,
+                "elapsed_ms": 1172.34,
+                "last_phase": "finished",
+                "finished": true,
+                "reason": null,
+                "timings_ms": {
+                  "startup": 35.006,
+                  "imports": 54.207,
+                  "data_load": 62.961,
+                  "prepare": 169.356,
+                  "admission": 3.915,
+                  "api": 750.83,
+                  "finalize": 8.192,
+                  "finished": 87.873
+                }
+              }
+            },
+            {
+              "phase": "tool",
+              "tool": "search_recipes",
+              "status": "ok",
+              "elapsed_ms": 2827.565
+            },
+            {
+              "phase": "service",
+              "operation": "answer",
+              "status": "ok",
+              "elapsed_ms": 5626.388
+            },
+            {
+              "phase": "service",
+              "operation": "persist",
+              "status": "ok",
+              "elapsed_ms": 710.733
+            },
+            {
+              "phase": "overall",
+              "elapsed_ms": 13541.692
+            }
+          ],
+          "model_calls": 4,
+          "model_call_count_scope": "http_attempts",
+          "agent_model_calls": 0,
+          "agent_http_calls": 0,
+          "service_model_calls": 4,
+          "service_api_calls": 6,
+          "unknown_usage_calls": 0,
+          "api_usage": [
+            {
+              "phase": "nlu_understanding",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 117,
+                "prompt_tokens": 2027,
+                "total_tokens": 2144
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            },
+            {
+              "phase": "embedding",
+              "model": "Qwen/Qwen3-VL-Embedding-8B",
+              "usage": {
+                "prompt_tokens": 67,
+                "completion_tokens": 0,
+                "total_tokens": 67
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            },
+            {
+              "phase": "rerank",
+              "model": "Qwen/Qwen3-Reranker-8B",
+              "usage": {},
+              "billed_units": {
+                "input_tokens": 4342,
+                "output_tokens": 0
+              },
+              "outcome": "http_success"
+            },
+            {
+              "phase": "generation",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 234,
+                "prompt_tokens": 7260,
+                "total_tokens": 7494
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            },
+            {
+              "phase": "support",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 48,
+                "prompt_tokens": 1594,
+                "total_tokens": 1642
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            },
+            {
+              "phase": "completeness",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 55,
+                "prompt_tokens": 6361,
+                "total_tokens": 6416
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            }
+          ],
+          "metering_incomplete": false,
+          "tool_calls": 1,
+          "usage": {
+            "input_tokens": 17242,
+            "output_tokens": 454
+          },
+          "degraded": false,
+          "filtered_out": 0,
+          "checkpoint_bytes": 0,
+          "checkpoint_oversize": false
+        },
+        "queue_seconds": 0.09
+      },
+      "state": "done",
+      "wall_seconds": 16.422
+    }
+  ]
+}

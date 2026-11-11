@@ -1,0 +1,31 @@
+{"id": "meal-1", "question": "帮我安排早餐。", "intent": "meal_plan", "meal_type": "breakfast"}
+{"id": "meal-2", "question": "帮我安排早饭。", "intent": "meal_plan", "meal_type": "breakfast"}
+{"id": "meal-3", "question": "帮我安排早点。", "intent": "meal_plan", "meal_type": "breakfast"}
+{"id": "meal-4", "question": "帮我安排早上吃。", "intent": "meal_plan", "meal_type": "breakfast"}
+{"id": "meal-5", "question": "帮我安排早晨吃。", "intent": "meal_plan", "meal_type": "breakfast"}
+{"id": "meal-6", "question": "帮我安排清早。", "intent": "meal_plan", "meal_type": "breakfast"}
+{"id": "meal-7", "question": "帮我安排早饭吃。", "intent": "meal_plan", "meal_type": "breakfast"}
+{"id": "meal-8", "question": "帮我安排午餐。", "intent": "meal_plan", "meal_type": "lunch"}
+{"id": "meal-9", "question": "帮我安排午饭。", "intent": "meal_plan", "meal_type": "lunch"}
+{"id": "meal-10", "question": "帮我安排中饭。", "intent": "meal_plan", "meal_type": "lunch"}
+{"id": "meal-11", "question": "帮我安排中午吃。", "intent": "meal_plan", "meal_type": "lunch"}
+{"id": "meal-12", "question": "帮我安排午间。", "intent": "meal_plan", "meal_type": "lunch"}
+{"id": "meal-13", "question": "帮我安排晚餐。", "intent": "meal_plan", "meal_type": "dinner"}
+{"id": "meal-14", "question": "帮我安排晚饭。", "intent": "meal_plan", "meal_type": "dinner"}
+{"id": "meal-15", "question": "帮我安排晚上吃。", "intent": "meal_plan", "meal_type": "dinner"}
+{"id": "meal-16", "question": "帮我安排晚间。", "intent": "meal_plan", "meal_type": "dinner"}
+{"id": "meal-17", "question": "帮我安排夜饭。", "intent": "meal_plan", "meal_type": "dinner"}
+{"id": "meal-18", "question": "帮我安排夜宵。", "intent": "meal_plan", "meal_type": "snack_late"}
+{"id": "meal-19", "question": "帮我安排宵夜。", "intent": "meal_plan", "meal_type": "snack_late"}
+{"id": "noise-19", "question": "安排早参", "intent": "meal_plan", "meal_type": "breakfast", "perturbed": true}
+{"id": "noise-20", "question": "安排下早餐吧", "intent": "meal_plan", "meal_type": "breakfast", "perturbed": true}
+{"id": "noise-21", "question": "请帮我安排早餐 1", "intent": "meal_plan", "meal_type": "breakfast", "perturbed": true}
+{"id": "noise-22", "question": "早餐安排一下", "intent": "meal_plan", "meal_type": "breakfast", "perturbed": true}
+{"id": "unspecified", "question": "今天吃什么", "intent": "meal_plan", "slots": {}}
+{"id": "inventory", "question": "我有番茄和鸡蛋，推荐两道菜", "intent": "ingredient_recommend", "slots": {"ingredients": ["番茄", "鸡蛋"], "mode": "inventory", "limit": 2}}
+{"id": "recipe", "question": "查看基础牛奶面包完整原文", "intent": "recipe_lookup", "slots": {"dish": "基础牛奶面包", "request_kind": "source"}}
+{"id": "section", "question": "只看基础牛奶面包酵头制作的图片", "intent": "recipe_section", "slots": {"dish": "基础牛奶面包", "section": "酵头的制作", "request_kind": "images"}}
+{"id": "identity", "question": "你是谁", "intent": "identity_capability", "slots": {}}
+{"id": "greeting", "question": "你好", "intent": "chitchat", "slots": {}}
+{"id": "remember", "question": "请记住我喜欢微辣", "intent": "preference_update", "slots": {}}
+{"id": "forget", "question": "请忘掉我的口味偏好", "intent": "preference_update", "slots": {}}

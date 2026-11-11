@@ -1,0 +1,7 @@
+# 在独立评测venv安装，避免改变运行服务的锁定依赖。
+ragas==0.4.2
+langchain==0.3.27
+langchain-community==0.3.31
+langchain-openai==0.3.35
+langchain-core==0.3.79
+instructor==1.11.3

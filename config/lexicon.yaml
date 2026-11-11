@@ -1,0 +1,17 @@
+meal_types:
+  breakfast:
+    label: 早餐
+    synonyms: [早餐, 早饭, 早点, 早上吃, 早晨吃, 清早, 早饭吃]
+  lunch:
+    label: 午餐
+    synonyms: [午餐, 午饭, 中饭, 中午吃, 午间]
+  dinner:
+    label: 晚餐
+    synonyms: [晚餐, 晚饭, 晚上吃, 晚间, 夜饭]
+  snack_late:
+    label: 夜宵
+    synonyms: [夜宵, 宵夜]
+fillers: [一下, 一点, 一份, 吧, 呢, 啊, 请, 帮我, 给我, 我想, 我要, 下]
+intents:
+  plan_menu:
+    triggers: [安排, 来个, 配个, 搭配, 吃什么, 推荐一顿, 做一桌, 定个菜单, 规划, 推荐, 准备]

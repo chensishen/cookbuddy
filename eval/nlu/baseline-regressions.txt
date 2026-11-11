@@ -1,0 +1,55 @@
+Executing <Task pending name='Task-2' coro=<ReportedRegressions.test_identity_never_searches() running at /Users/admin/Documents/ChatGPT/agent项目/tests/test_nlu_regressions.py:45> wait_for=<Task pending name='Task-6' coro=<RunnableCallable.ainvoke() running at /opt/anaconda3/envs/py3.12.11/lib/python3.12/site-packages/langgraph/_internal/_runnable.py:452> cb=[Task.task_wakeup()] created at /opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/tasks.py:422> cb=[_run_until_complete_cb() at /opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/base_events.py:181] created at /opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/runners.py:100> took 1.282 seconds
+FFExecuting <Task finished name='Task-41' coro=<ReportedRegressions.test_section_filler_keeps_same_evidence() done, defined at /Users/admin/Documents/ChatGPT/agent项目/tests/test_nlu_regressions.py:50> exception=AssertionError("'insufficient' != 'verified_source'\n- insufficient\n+ verified_source\n") created at /opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/runners.py:100> took 0.128 seconds
+F
+======================================================================
+FAIL: test_identity_never_searches (test_nlu_regressions.ReportedRegressions.test_identity_never_searches)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/admin/Documents/ChatGPT/agent项目/tests/test_nlu_regressions.py", line 46, in test_identity_never_searches
+    self.assertIn('cookbuddy',result['text'])
+AssertionError: 'cookbuddy' not found in '已核对的原文事实\n\n来源：\n《蒸水蛋》· 操作 · data/HowToCook/dishes/vegetable_dish/蒸水蛋.md · L12'
+
+======================================================================
+FAIL: test_rejected_ordinal_with_noise (test_nlu_regressions.ReportedRegressions.test_rejected_ordinal_with_noise)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/admin/Documents/ChatGPT/agent项目/tests/test_nlu_regressions.py", line 62, in test_rejected_ordinal_with_noise
+    self.assertEqual(noisy['task']['action'],'recommend')
+AssertionError: 'clarify' != 'recommend'
+- clarify
++ recommend
+
+
+======================================================================
+FAIL: test_section_filler_keeps_same_evidence (test_nlu_regressions.ReportedRegressions.test_section_filler_keeps_same_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/admin/Documents/ChatGPT/agent项目/tests/test_nlu_regressions.py", line 57, in test_section_filler_keeps_same_evidence
+    self.assertEqual(noisy['status'],'verified_source')
+AssertionError: 'insufficient' != 'verified_source'
+- insufficient
++ verified_source
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.436s
+
+FAILED (failures=3)

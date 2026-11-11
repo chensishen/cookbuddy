@@ -1,0 +1,54 @@
+{
+  "short_term": {
+    "window_turns": 6,
+    "window_max_tokens": 1500,
+    "summary_max_tokens": 400,
+    "slots_max_tokens": 150,
+    "session_ttl_hours": 24,
+    "idle_flush_minutes": 30
+  },
+  "long_term": {
+    "implicit_promote_evidence": 3,
+    "implicit_promote_sessions": 2,
+    "implicit_conf_cap": 0.6,
+    "promote_conf_cap": 0.8,
+    "half_life_days": {
+      "implicit": 60,
+      "explicit_soft": 180
+    },
+    "archive_conf_threshold": 0.2,
+    "strength_alpha": 0.3,
+    "temporary_default_days": 30,
+    "max_events_per_user": 200
+  },
+  "retrieval": {
+    "episodic_top_k": 3,
+    "episodic_sim_threshold": 0.55,
+    "episodic_weights": {
+      "sim": 0.6,
+      "recency": 0.25,
+      "importance": 0.15
+    },
+    "personalization": {
+      "flavor": 0.1,
+      "difficulty": 0.1,
+      "cuisine": 0.05,
+      "repeat_penalty": 0.15
+    },
+    "explore_slots": 1
+  },
+  "confirmation": {
+    "expire_turns": 3,
+    "expire_hours": 24
+  },
+  "models": {
+    "extractor": "workbuddy-ai/deepseek-v4.1-flash",
+    "summarizer": "workbuddy-ai/deepseek-v4.1-flash"
+  },
+  "experiments": {
+    "level": "M6",
+    "hard_filter_mode": "code_enforced",
+    "scope_detection": "on",
+    "confirm_relax": "on"
+  }
+}

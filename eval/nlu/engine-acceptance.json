@@ -1,0 +1,1577 @@
+{
+  "passed": true,
+  "scope": "seven real engine turns; includes persistence, NLU, tools, source evidence and exclusions",
+  "records": [
+    {
+      "case": "identity",
+      "result": {
+        "question": "你是谁",
+        "mode": "langchain",
+        "status": "completed",
+        "outputs": [
+          {
+            "tool": "general_chat",
+            "result": {
+              "status": "verified_source",
+              "short_answer": "我是 cookbuddy，可以按食材找菜谱、回答做法和用量问题、查看原文与图片，也可以按人数和时间安排一餐。",
+              "sources": [],
+              "evidence": [],
+              "clarification_options": []
+            }
+          }
+        ],
+        "steps": [],
+        "elapsed_seconds": 2.604658374999417,
+        "degraded": false,
+        "text": "我是 cookbuddy，可以按食材找菜谱、回答做法和用量问题、查看原文与图片，也可以按人数和时间安排一餐。",
+        "trace": {
+          "request_id": "40839e0cf9be4883b2a59b120c84dc32",
+          "outcome": "done",
+          "stages": [
+            {
+              "phase": "service",
+              "operation": "prepare",
+              "status": "ok",
+              "elapsed_ms": 2504.883
+            },
+            {
+              "phase": "understanding",
+              "intent": "identity_capability",
+              "confidence": 0.99,
+              "path": "model",
+              "fallback": null,
+              "matches": [],
+              "elapsed_ms": 1853.949,
+              "errors": []
+            },
+            {
+              "phase": "service",
+              "operation": "persist",
+              "status": "ok",
+              "elapsed_ms": 203.4
+            },
+            {
+              "phase": "overall",
+              "elapsed_ms": 2811.854
+            }
+          ],
+          "model_calls": 1,
+          "model_call_count_scope": "http_attempts",
+          "agent_model_calls": 0,
+          "agent_http_calls": 0,
+          "service_model_calls": 1,
+          "service_api_calls": 1,
+          "unknown_usage_calls": 0,
+          "api_usage": [
+            {
+              "phase": "nlu_understanding",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 102,
+                "prompt_tokens": 676,
+                "total_tokens": 778
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            }
+          ],
+          "metering_incomplete": false,
+          "tool_calls": 0,
+          "usage": {
+            "input_tokens": 676,
+            "output_tokens": 102
+          },
+          "degraded": false,
+          "filtered_out": 0,
+          "checkpoint_bytes": 0,
+          "checkpoint_oversize": false
+        }
+      }
+    },
+    {
+      "case": "select_recipe",
+      "result": {
+        "question": "查看基础牛奶面包原文",
+        "mode": "langchain",
+        "status": "completed",
+        "outputs": [
+          {
+            "tool": "clarify",
+            "result": {
+              "status": "verified_source",
+              "short_answer": "你想查看哪个章节？",
+              "sources": [],
+              "evidence": [],
+              "clarification_options": [
+                "附加内容",
+                "计算",
+                "简介"
+              ]
+            }
+          }
+        ],
+        "steps": [],
+        "elapsed_seconds": 4.178224708004564,
+        "degraded": false,
+        "text": "你想查看哪个章节？",
+        "trace": {
+          "request_id": "1510da3eb3b84c84bc33baede64b29bb",
+          "outcome": "done",
+          "stages": [
+            {
+              "phase": "service",
+              "operation": "prepare",
+              "status": "ok",
+              "elapsed_ms": 4178.165
+            },
+            {
+              "phase": "understanding",
+              "intent": "recipe_section",
+              "confidence": 0.86,
+              "path": "model",
+              "fallback": null,
+              "matches": [
+                {
+                  "score": 1.0,
+                  "level": "L1",
+                  "ambiguous": false
+                },
+                {
+                  "score": 0.5125790161234642,
+                  "level": "L5",
+                  "ambiguous": false
+                }
+              ],
+              "elapsed_ms": 3579.348,
+              "errors": []
+            },
+            {
+              "phase": "service",
+              "operation": "persist",
+              "status": "ok",
+              "elapsed_ms": 195.754
+            },
+            {
+              "phase": "overall",
+              "elapsed_ms": 4377.645
+            }
+          ],
+          "model_calls": 1,
+          "model_call_count_scope": "http_attempts",
+          "agent_model_calls": 0,
+          "agent_http_calls": 0,
+          "service_model_calls": 1,
+          "service_api_calls": 4,
+          "unknown_usage_calls": 0,
+          "api_usage": [
+            {
+              "phase": "nlu_understanding",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 124,
+                "prompt_tokens": 735,
+                "total_tokens": 859
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            },
+            {
+              "phase": "intent_nlu_match",
+              "model": "Qwen/Qwen3-VL-Embedding-8B",
+              "usage": {
+                "prompt_tokens": 17,
+                "completion_tokens": 0,
+                "total_tokens": 17
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            },
+            {
+              "phase": "intent_nlu_candidate",
+              "model": "Qwen/Qwen3-VL-Embedding-8B",
+              "usage": {
+                "prompt_tokens": 17,
+                "completion_tokens": 0,
+                "total_tokens": 17
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            },
+            {
+              "phase": "intent_nlu_candidate",
+              "model": "Qwen/Qwen3-VL-Embedding-8B",
+              "usage": {
+                "prompt_tokens": 17,
+                "completion_tokens": 0,
+                "total_tokens": 17
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            }
+          ],
+          "metering_incomplete": false,
+          "tool_calls": 0,
+          "usage": {
+            "input_tokens": 735,
+            "output_tokens": 124
+          },
+          "degraded": false,
+          "filtered_out": 0,
+          "checkpoint_bytes": 0,
+          "checkpoint_oversize": false
+        }
+      }
+    },
+    {
+      "case": "chapter_clean",
+      "result": {
+        "question": "只看酵头制作",
+        "mode": "langchain",
+        "status": "completed",
+        "outputs": [
+          {
+            "tool": "get_recipe_detail",
+            "result": {
+              "status": "verified_source",
+              "assumption_notice": "我按「基础牛奶面包的酵头的制作」理解了，不对请告诉我。",
+              "short_answer": "### 酵头的制作\n\n酵头是预发酵的产物，通过预发酵，不仅可以提升成功率，而且更长的发酵时间会让面包的风味更好。如果有条件，酵头应该发酵 4 天以达到最佳风味。但对新手来说， 30 分钟的发酵的酵头所呈现的成品就已经很可观了。接下来制作酵头。\n\n![发酵前酵头的理想状态](./4-1酵头1.jpg)\n\n1. 首先，将酵母和 ***30℃ 的温水*** 用刮刀或厨具混合均匀，静置 5 分钟。之后与面粉混合，搅拌均匀。此时的酵头应该是**特别粘稠**的面糊。\n\n![用布盖上酵头](./4-2酵头2.jpg)\n\n2. 用布盖上面糊，将面糊放置到**温暖的地方**进行发酵，时长为 45 ~ 60 分钟。\n\n![酵头的最终形态](./4-3酵头3.jpg)\n\n3. 最终的面糊应该是表面有很多气泡的且体积明显增大。\n\n**发酵失败了？看看这里：**\n\n>1. 确定酵母没有过期\n>2. 确定水温合适\n>3. 延长发酵时间，可以放在冷藏室内过夜\n>4. 可能温度不够，这时可以将烤箱预热至 60℃ ，停止加热后放到烤箱内进行发酵\n>5. 可以再加入等量的酵母搅拌均匀再次发酵并延长发酵时间\n>6. 可以尝试加入 3g 糖再次发酵\n\n**如何制作“永久的”酵头？**\n\n>有了酵头，随时开烤面包就不是梦！“永久的”酵头可以按下面的方法制作：\n>\n>1. 按上述方法制作好酵头后，放到阴凉的地方（甚至是冷藏室！）每1-3天在上面撒上薄薄的一层面粉（只要看不见面糊的厚度就可以！）再次搅拌，然后继续盖上布发酵。如果发酵过快体积过大，可以扔掉一部分。\n\n>2. 等到开始制作面包时，只需留下发酵前体积的酵头继续发酵，剩下的用于面包的制作。\n>3. 久而久之，酵头就会产生独特的香味，这种香味对于面包来说是最好的“原料”！",
+              "evidence": [
+                {
+                  "quote": "### 酵头的制作\n\n酵头是预发酵的产物，通过预发酵，不仅可以提升成功率，而且更长的发酵时间会让面包的风味更好。如果有条件，酵头应该发酵 4 天以达到最佳风味。但对新手来说， 30 分钟的发酵的酵头所呈现的成品就已经很可观了。接下来制作酵头。\n\n![发酵前酵头的理想状态](./4-1酵头1.jpg)\n\n1. 首先，将酵母和 ***30℃ 的温水*** 用刮刀或厨具混合均匀，静置 5 分钟。之后与面粉混合，搅拌均匀。此时的酵头应该是**特别粘稠**的面糊。\n\n![用布盖上酵头](./4-2酵头2.jpg)\n\n2. 用布盖上面糊，将面糊放置到**温暖的地方**进行发酵，时长为 45 ~ 60 分钟。\n\n![酵头的最终形态](./4-3酵头3.jpg)\n\n3. 最终的面糊应该是表面有很多气泡的且体积明显增大。\n\n**发酵失败了？看看这里：**\n\n>1. 确定酵母没有过期\n>2. 确定水温合适\n>3. 延长发酵时间，可以放在冷藏室内过夜\n>4. 可能温度不够，这时可以将烤箱预热至 60℃ ，停止加热后放到烤箱内进行发酵\n>5. 可以再加入等量的酵母搅拌均匀再次发酵并延长发酵时间\n>6. 可以尝试加入 3g 糖再次发酵\n\n**如何制作“永久的”酵头？**\n\n>有了酵头，随时开烤面包就不是梦！“永久的”酵头可以按下面的方法制作：\n>\n>1. 按上述方法制作好酵头后，放到阴凉的地方（甚至是冷藏室！）每1-3天在上面撒上薄薄的一层面粉（只要看不见面糊的厚度就可以！）再次搅拌，然后继续盖上布发酵。如果发酵过快体积过大，可以扔掉一部分。",
+                  "title": "基础牛奶面包",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "start_line": 80,
+                  "end_line": 109,
+                  "section": "操作 > 酵头的制作",
+                  "evidence_type": "markdown_original"
+                },
+                {
+                  "quote": ">2. 等到开始制作面包时，只需留下发酵前体积的酵头继续发酵，剩下的用于面包的制作。\n>3. 久而久之，酵头就会产生独特的香味，这种香味对于面包来说是最好的“原料”！",
+                  "title": "基础牛奶面包",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "start_line": 110,
+                  "end_line": 111,
+                  "section": "操作 > 酵头的制作",
+                  "evidence_type": "markdown_original"
+                }
+              ],
+              "sources": [
+                {
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 酵头的制作",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "line": 80
+                },
+                {
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 酵头的制作",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "line": 110
+                }
+              ],
+              "images": [
+                {
+                  "image_path": "data/HowToCook/dishes/staple/基础牛奶面包/4-1酵头1.jpg",
+                  "image_sha256": "16234b6b0950130a5c11748d601f5bbbc9bc4cd379038c1be7bb95a7802437b2",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf",
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 酵头的制作",
+                  "chunk_ids": [
+                    "staple/基础牛奶面包/基础牛奶面包.md::006"
+                  ],
+                  "source_line": 84,
+                  "source_quote": "![发酵前酵头的理想状态](./4-1酵头1.jpg)",
+                  "alt": "发酵前酵头的理想状态",
+                  "target": "./4-1酵头1.jpg",
+                  "evidence_type": "original_image_and_markdown_caption",
+                  "reviewed_image_text": []
+                },
+                {
+                  "image_path": "data/HowToCook/dishes/staple/基础牛奶面包/4-2酵头2.jpg",
+                  "image_sha256": "acf5a9003d6db7bd4c0d730f32917de0e00bd287d4b2ed42e00e3eba81483eba",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf",
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 酵头的制作",
+                  "chunk_ids": [
+                    "staple/基础牛奶面包/基础牛奶面包.md::006"
+                  ],
+                  "source_line": 88,
+                  "source_quote": "![用布盖上酵头](./4-2酵头2.jpg)",
+                  "alt": "用布盖上酵头",
+                  "target": "./4-2酵头2.jpg",
+                  "evidence_type": "original_image_and_markdown_caption",
+                  "reviewed_image_text": []
+                },
+                {
+                  "image_path": "data/HowToCook/dishes/staple/基础牛奶面包/4-3酵头3.jpg",
+                  "image_sha256": "34f1f2117451edea9f3379c65f1e10c89b1d2aa02fcc2787b2d09fc7be421c88",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf",
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 酵头的制作",
+                  "chunk_ids": [
+                    "staple/基础牛奶面包/基础牛奶面包.md::006"
+                  ],
+                  "source_line": 92,
+                  "source_quote": "![酵头的最终形态](./4-3酵头3.jpg)",
+                  "alt": "酵头的最终形态",
+                  "target": "./4-3酵头3.jpg",
+                  "evidence_type": "original_image_and_markdown_caption",
+                  "reviewed_image_text": []
+                }
+              ],
+              "remote_links": [],
+              "complete": true,
+              "validation": "逐字原文展示；不是模型生成的摘要或语义审核结论。"
+            }
+          }
+        ],
+        "steps": [
+          {
+            "phase": "tool",
+            "tool": "get_recipe_detail",
+            "status": "ok",
+            "elapsed_ms": 418.049
+          }
+        ],
+        "elapsed_seconds": 3.1072625829983735,
+        "degraded": false,
+        "text": "我按「基础牛奶面包的酵头的制作」理解了，不对请告诉我。\n### 酵头的制作\n\n酵头是预发酵的产物，通过预发酵，不仅可以提升成功率，而且更长的发酵时间会让面包的风味更好。如果有条件，酵头应该发酵 4 天以达到最佳风味。但对新手来说， 30 分钟的发酵的酵头所呈现的成品就已经很可观了。接下来制作酵头。\n\n![发酵前酵头的理想状态](./4-1酵头1.jpg)\n\n1. 首先，将酵母和 ***30℃ 的温水*** 用刮刀或厨具混合均匀，静置 5 分钟。之后与面粉混合，搅拌均匀。此时的酵头应该是**特别粘稠**的面糊。\n\n![用布盖上酵头](./4-2酵头2.jpg)\n\n2. 用布盖上面糊，将面糊放置到**温暖的地方**进行发酵，时长为 45 ~ 60 分钟。\n\n![酵头的最终形态](./4-3酵头3.jpg)\n\n3. 最终的面糊应该是表面有很多气泡的且体积明显增大。\n\n**发酵失败了？看看这里：**\n\n>1. 确定酵母没有过期\n>2. 确定水温合适\n>3. 延长发酵时间，可以放在冷藏室内过夜\n>4. 可能温度不够，这时可以将烤箱预热至 60℃ ，停止加热后放到烤箱内进行发酵\n>5. 可以再加入等量的酵母搅拌均匀再次发酵并延长发酵时间\n>6. 可以尝试加入 3g 糖再次发酵\n\n**如何制作“永久的”酵头？**\n\n>有了酵头，随时开烤面包就不是梦！“永久的”酵头可以按下面的方法制作：\n>\n>1. 按上述方法制作好酵头后，放到阴凉的地方（甚至是冷藏室！）每1-3天在上面撒上薄薄的一层面粉（只要看不见面糊的厚度就可以！）再次搅拌，然后继续盖上布发酵。如果发酵过快体积过大，可以扔掉一部分。\n\n>2. 等到开始制作面包时，只需留下发酵前体积的酵头继续发酵，剩下的用于面包的制作。\n>3. 久而久之，酵头就会产生独特的香味，这种香味对于面包来说是最好的“原料”！\n\n来源：\n《基础牛奶面包》· 操作 > 酵头的制作 · data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md · L80\n《基础牛奶面包》· 操作 > 酵头的制作 · data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md · L110",
+        "trace": {
+          "request_id": "2d93027fe10742358d976370b8889e33",
+          "outcome": "done",
+          "stages": [
+            {
+              "phase": "service",
+              "operation": "prepare",
+              "status": "ok",
+              "elapsed_ms": 2688.744
+            },
+            {
+              "phase": "understanding",
+              "intent": "recipe_section",
+              "confidence": 0.93,
+              "path": "model",
+              "fallback": null,
+              "matches": [
+                {
+                  "score": 1.0,
+                  "level": "L1",
+                  "ambiguous": false
+                },
+                {
+                  "score": 0.99,
+                  "level": "L1",
+                  "ambiguous": false
+                }
+              ],
+              "elapsed_ms": 2066.618,
+              "errors": []
+            },
+            {
+              "phase": "service",
+              "operation": "detail",
+              "status": "ok",
+              "elapsed_ms": 417.723
+            },
+            {
+              "phase": "tool",
+              "tool": "get_recipe_detail",
+              "status": "ok",
+              "elapsed_ms": 418.049
+            },
+            {
+              "phase": "service",
+              "operation": "persist",
+              "status": "ok",
+              "elapsed_ms": 191.003
+            },
+            {
+              "phase": "overall",
+              "elapsed_ms": 3302.243
+            }
+          ],
+          "model_calls": 1,
+          "model_call_count_scope": "http_attempts",
+          "agent_model_calls": 0,
+          "agent_http_calls": 0,
+          "service_model_calls": 1,
+          "service_api_calls": 1,
+          "unknown_usage_calls": 0,
+          "api_usage": [
+            {
+              "phase": "nlu_understanding",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 135,
+                "prompt_tokens": 809,
+                "total_tokens": 944
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            }
+          ],
+          "metering_incomplete": false,
+          "tool_calls": 1,
+          "usage": {
+            "input_tokens": 809,
+            "output_tokens": 135
+          },
+          "degraded": false,
+          "filtered_out": 0,
+          "checkpoint_bytes": 0,
+          "checkpoint_oversize": false
+        }
+      }
+    },
+    {
+      "case": "chapter_noisy",
+      "result": {
+        "question": "能不能只给我酵投制作的那一小段呀",
+        "mode": "langchain",
+        "status": "completed",
+        "outputs": [
+          {
+            "tool": "get_recipe_detail",
+            "result": {
+              "status": "verified_source",
+              "assumption_notice": "我按「基础牛奶面包的酵头的制作」理解了，不对请告诉我。",
+              "short_answer": "### 酵头的制作\n\n酵头是预发酵的产物，通过预发酵，不仅可以提升成功率，而且更长的发酵时间会让面包的风味更好。如果有条件，酵头应该发酵 4 天以达到最佳风味。但对新手来说， 30 分钟的发酵的酵头所呈现的成品就已经很可观了。接下来制作酵头。\n\n![发酵前酵头的理想状态](./4-1酵头1.jpg)\n\n1. 首先，将酵母和 ***30℃ 的温水*** 用刮刀或厨具混合均匀，静置 5 分钟。之后与面粉混合，搅拌均匀。此时的酵头应该是**特别粘稠**的面糊。\n\n![用布盖上酵头](./4-2酵头2.jpg)\n\n2. 用布盖上面糊，将面糊放置到**温暖的地方**进行发酵，时长为 45 ~ 60 分钟。\n\n![酵头的最终形态](./4-3酵头3.jpg)\n\n3. 最终的面糊应该是表面有很多气泡的且体积明显增大。\n\n**发酵失败了？看看这里：**\n\n>1. 确定酵母没有过期\n>2. 确定水温合适\n>3. 延长发酵时间，可以放在冷藏室内过夜\n>4. 可能温度不够，这时可以将烤箱预热至 60℃ ，停止加热后放到烤箱内进行发酵\n>5. 可以再加入等量的酵母搅拌均匀再次发酵并延长发酵时间\n>6. 可以尝试加入 3g 糖再次发酵\n\n**如何制作“永久的”酵头？**\n\n>有了酵头，随时开烤面包就不是梦！“永久的”酵头可以按下面的方法制作：\n>\n>1. 按上述方法制作好酵头后，放到阴凉的地方（甚至是冷藏室！）每1-3天在上面撒上薄薄的一层面粉（只要看不见面糊的厚度就可以！）再次搅拌，然后继续盖上布发酵。如果发酵过快体积过大，可以扔掉一部分。\n\n>2. 等到开始制作面包时，只需留下发酵前体积的酵头继续发酵，剩下的用于面包的制作。\n>3. 久而久之，酵头就会产生独特的香味，这种香味对于面包来说是最好的“原料”！",
+              "evidence": [
+                {
+                  "quote": "### 酵头的制作\n\n酵头是预发酵的产物，通过预发酵，不仅可以提升成功率，而且更长的发酵时间会让面包的风味更好。如果有条件，酵头应该发酵 4 天以达到最佳风味。但对新手来说， 30 分钟的发酵的酵头所呈现的成品就已经很可观了。接下来制作酵头。\n\n![发酵前酵头的理想状态](./4-1酵头1.jpg)\n\n1. 首先，将酵母和 ***30℃ 的温水*** 用刮刀或厨具混合均匀，静置 5 分钟。之后与面粉混合，搅拌均匀。此时的酵头应该是**特别粘稠**的面糊。\n\n![用布盖上酵头](./4-2酵头2.jpg)\n\n2. 用布盖上面糊，将面糊放置到**温暖的地方**进行发酵，时长为 45 ~ 60 分钟。\n\n![酵头的最终形态](./4-3酵头3.jpg)\n\n3. 最终的面糊应该是表面有很多气泡的且体积明显增大。\n\n**发酵失败了？看看这里：**\n\n>1. 确定酵母没有过期\n>2. 确定水温合适\n>3. 延长发酵时间，可以放在冷藏室内过夜\n>4. 可能温度不够，这时可以将烤箱预热至 60℃ ，停止加热后放到烤箱内进行发酵\n>5. 可以再加入等量的酵母搅拌均匀再次发酵并延长发酵时间\n>6. 可以尝试加入 3g 糖再次发酵\n\n**如何制作“永久的”酵头？**\n\n>有了酵头，随时开烤面包就不是梦！“永久的”酵头可以按下面的方法制作：\n>\n>1. 按上述方法制作好酵头后，放到阴凉的地方（甚至是冷藏室！）每1-3天在上面撒上薄薄的一层面粉（只要看不见面糊的厚度就可以！）再次搅拌，然后继续盖上布发酵。如果发酵过快体积过大，可以扔掉一部分。",
+                  "title": "基础牛奶面包",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "start_line": 80,
+                  "end_line": 109,
+                  "section": "操作 > 酵头的制作",
+                  "evidence_type": "markdown_original"
+                },
+                {
+                  "quote": ">2. 等到开始制作面包时，只需留下发酵前体积的酵头继续发酵，剩下的用于面包的制作。\n>3. 久而久之，酵头就会产生独特的香味，这种香味对于面包来说是最好的“原料”！",
+                  "title": "基础牛奶面包",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "start_line": 110,
+                  "end_line": 111,
+                  "section": "操作 > 酵头的制作",
+                  "evidence_type": "markdown_original"
+                }
+              ],
+              "sources": [
+                {
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 酵头的制作",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "line": 80
+                },
+                {
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 酵头的制作",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "line": 110
+                }
+              ],
+              "images": [
+                {
+                  "image_path": "data/HowToCook/dishes/staple/基础牛奶面包/4-1酵头1.jpg",
+                  "image_sha256": "16234b6b0950130a5c11748d601f5bbbc9bc4cd379038c1be7bb95a7802437b2",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf",
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 酵头的制作",
+                  "chunk_ids": [
+                    "staple/基础牛奶面包/基础牛奶面包.md::006"
+                  ],
+                  "source_line": 84,
+                  "source_quote": "![发酵前酵头的理想状态](./4-1酵头1.jpg)",
+                  "alt": "发酵前酵头的理想状态",
+                  "target": "./4-1酵头1.jpg",
+                  "evidence_type": "original_image_and_markdown_caption",
+                  "reviewed_image_text": []
+                },
+                {
+                  "image_path": "data/HowToCook/dishes/staple/基础牛奶面包/4-2酵头2.jpg",
+                  "image_sha256": "acf5a9003d6db7bd4c0d730f32917de0e00bd287d4b2ed42e00e3eba81483eba",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf",
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 酵头的制作",
+                  "chunk_ids": [
+                    "staple/基础牛奶面包/基础牛奶面包.md::006"
+                  ],
+                  "source_line": 88,
+                  "source_quote": "![用布盖上酵头](./4-2酵头2.jpg)",
+                  "alt": "用布盖上酵头",
+                  "target": "./4-2酵头2.jpg",
+                  "evidence_type": "original_image_and_markdown_caption",
+                  "reviewed_image_text": []
+                },
+                {
+                  "image_path": "data/HowToCook/dishes/staple/基础牛奶面包/4-3酵头3.jpg",
+                  "image_sha256": "34f1f2117451edea9f3379c65f1e10c89b1d2aa02fcc2787b2d09fc7be421c88",
+                  "source": "data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md",
+                  "source_sha256": "1cbcacca0e5bf9721652df1c91da619d46d85e88c4b404e0c9f5e5b864469ccf",
+                  "title": "基础牛奶面包",
+                  "section": "操作 > 酵头的制作",
+                  "chunk_ids": [
+                    "staple/基础牛奶面包/基础牛奶面包.md::006"
+                  ],
+                  "source_line": 92,
+                  "source_quote": "![酵头的最终形态](./4-3酵头3.jpg)",
+                  "alt": "酵头的最终形态",
+                  "target": "./4-3酵头3.jpg",
+                  "evidence_type": "original_image_and_markdown_caption",
+                  "reviewed_image_text": []
+                }
+              ],
+              "remote_links": [],
+              "complete": true,
+              "validation": "逐字原文展示；不是模型生成的摘要或语义审核结论。"
+            }
+          }
+        ],
+        "steps": [
+          {
+            "phase": "tool",
+            "tool": "get_recipe_detail",
+            "status": "ok",
+            "elapsed_ms": 463.655
+          }
+        ],
+        "elapsed_seconds": 3.351075499995204,
+        "degraded": false,
+        "text": "我按「基础牛奶面包的酵头的制作」理解了，不对请告诉我。\n### 酵头的制作\n\n酵头是预发酵的产物，通过预发酵，不仅可以提升成功率，而且更长的发酵时间会让面包的风味更好。如果有条件，酵头应该发酵 4 天以达到最佳风味。但对新手来说， 30 分钟的发酵的酵头所呈现的成品就已经很可观了。接下来制作酵头。\n\n![发酵前酵头的理想状态](./4-1酵头1.jpg)\n\n1. 首先，将酵母和 ***30℃ 的温水*** 用刮刀或厨具混合均匀，静置 5 分钟。之后与面粉混合，搅拌均匀。此时的酵头应该是**特别粘稠**的面糊。\n\n![用布盖上酵头](./4-2酵头2.jpg)\n\n2. 用布盖上面糊，将面糊放置到**温暖的地方**进行发酵，时长为 45 ~ 60 分钟。\n\n![酵头的最终形态](./4-3酵头3.jpg)\n\n3. 最终的面糊应该是表面有很多气泡的且体积明显增大。\n\n**发酵失败了？看看这里：**\n\n>1. 确定酵母没有过期\n>2. 确定水温合适\n>3. 延长发酵时间，可以放在冷藏室内过夜\n>4. 可能温度不够，这时可以将烤箱预热至 60℃ ，停止加热后放到烤箱内进行发酵\n>5. 可以再加入等量的酵母搅拌均匀再次发酵并延长发酵时间\n>6. 可以尝试加入 3g 糖再次发酵\n\n**如何制作“永久的”酵头？**\n\n>有了酵头，随时开烤面包就不是梦！“永久的”酵头可以按下面的方法制作：\n>\n>1. 按上述方法制作好酵头后，放到阴凉的地方（甚至是冷藏室！）每1-3天在上面撒上薄薄的一层面粉（只要看不见面糊的厚度就可以！）再次搅拌，然后继续盖上布发酵。如果发酵过快体积过大，可以扔掉一部分。\n\n>2. 等到开始制作面包时，只需留下发酵前体积的酵头继续发酵，剩下的用于面包的制作。\n>3. 久而久之，酵头就会产生独特的香味，这种香味对于面包来说是最好的“原料”！\n\n来源：\n《基础牛奶面包》· 操作 > 酵头的制作 · data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md · L80\n《基础牛奶面包》· 操作 > 酵头的制作 · data/HowToCook/dishes/staple/基础牛奶面包/基础牛奶面包.md · L110",
+        "trace": {
+          "request_id": "772599b3ed9f4b2cb5e25ae563e785eb",
+          "outcome": "done",
+          "stages": [
+            {
+              "phase": "service",
+              "operation": "prepare",
+              "status": "ok",
+              "elapsed_ms": 2887.305
+            },
+            {
+              "phase": "understanding",
+              "intent": "recipe_section",
+              "confidence": 0.97,
+              "path": "model",
+              "fallback": null,
+              "matches": [
+                {
+                  "score": 1.0,
+                  "level": "L1",
+                  "ambiguous": false
+                },
+                {
+                  "score": 1.0,
+                  "level": "L0",
+                  "ambiguous": false
+                }
+              ],
+              "elapsed_ms": 2259.059,
+              "errors": []
+            },
+            {
+              "phase": "service",
+              "operation": "detail",
+              "status": "ok",
+              "elapsed_ms": 463.54
+            },
+            {
+              "phase": "tool",
+              "tool": "get_recipe_detail",
+              "status": "ok",
+              "elapsed_ms": 463.655
+            },
+            {
+              "phase": "service",
+              "operation": "persist",
+              "status": "ok",
+              "elapsed_ms": 202.159
+            },
+            {
+              "phase": "overall",
+              "elapsed_ms": 3557.061
+            }
+          ],
+          "model_calls": 1,
+          "model_call_count_scope": "http_attempts",
+          "agent_model_calls": 0,
+          "agent_http_calls": 0,
+          "service_model_calls": 1,
+          "service_api_calls": 1,
+          "unknown_usage_calls": 0,
+          "api_usage": [
+            {
+              "phase": "nlu_understanding",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 127,
+                "prompt_tokens": 903,
+                "total_tokens": 1030
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            }
+          ],
+          "metering_incomplete": false,
+          "tool_calls": 1,
+          "usage": {
+            "input_tokens": 903,
+            "output_tokens": 127
+          },
+          "degraded": false,
+          "filtered_out": 0,
+          "checkpoint_bytes": 0,
+          "checkpoint_oversize": false
+        }
+      }
+    },
+    {
+      "case": "recommend",
+      "result": {
+        "question": "我有鸡肉，推荐3道菜，不要油炸，说明还缺什么",
+        "mode": "langchain",
+        "status": "completed",
+        "outputs": [
+          {
+            "tool": "task_recommend",
+            "result": {
+              "status": "verified",
+              "short_answer": "给你推荐这3道菜，下面介绍各自的特点和推荐理由。这里先按你提供的食材选菜，其他配料是否齐全还需确认。",
+              "recommendation_kind": "preference",
+              "recommendation_mode": "inventory",
+              "recommendations": [
+                {
+                  "difficulty": 2,
+                  "title": "冬瓜桑拿鸡",
+                  "source": "data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md",
+                  "description": "冬瓜桑拿鸡是一道清爽的蒸菜，冬瓜垫底吸饱鸡汁，虫草花提鲜，鸡肉嫩滑，上汽一蒸即成。",
+                  "reason": "用料包含鸡肉，符合你的食材要求；制作步骤未列油炸操作，符合你不要油炸的要求。",
+                  "main_ingredients": [
+                    "鸡肉",
+                    "姜丝",
+                    "冬瓜",
+                    "虫草花"
+                  ],
+                  "notice": "",
+                  "spice_match": "none",
+                  "evidence": [
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md",
+                      "title": "冬瓜桑拿鸡",
+                      "section": "简介",
+                      "start_line": 3,
+                      "end_line": 3,
+                      "quote": "冬瓜桑拿鸡是一道清爽的蒸菜，冬瓜垫底吸饱鸡汁，虫草花提鲜，鸡肉嫩滑，上汽一蒸即成。热量低、蛋白足，做法简单，从备菜到出锅大约需要 35 分钟，适合日常家常制作。",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md",
+                      "title": "冬瓜桑拿鸡",
+                      "section": "简介",
+                      "start_line": 5,
+                      "end_line": 5,
+                      "quote": "预估烹饪难度：★★",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md",
+                      "title": "冬瓜桑拿鸡",
+                      "section": "必备原料和工具",
+                      "start_line": 9,
+                      "end_line": 18,
+                      "quote": "## 必备原料和工具\n\n- 鸡肉\n- 姜丝\n- 生抽\n- 蚝油\n- 盐\n- 食用油\n- 冬瓜\n- 虫草花",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md",
+                      "title": "冬瓜桑拿鸡",
+                      "section": "操作",
+                      "start_line": 33,
+                      "end_line": 39,
+                      "quote": "## 操作\n\n1. 鸡切块，加姜丝、生抽、蚝油、盐、食用油，揉搓均匀后腌制 20 分钟\n2. 冬瓜切薄片铺在盘子底部\n3. 再铺一层泡好的虫草花\n4. 把腌好的鸡肉铺在虫草花上面\n5. 水烧开后放入蒸锅，上汽后蒸 15 分钟，出锅即可",
+                      "evidence_type": "markdown_original"
+                    }
+                  ],
+                  "matched": [
+                    "鸡肉"
+                  ],
+                  "missing": [
+                    "冬瓜",
+                    "姜丝",
+                    "生抽",
+                    "盐",
+                    "虫草花",
+                    "蚝油",
+                    "食用油"
+                  ],
+                  "optional": [],
+                  "tools": [],
+                  "unresolved": [],
+                  "rerank_score": 0
+                },
+                {
+                  "difficulty": 3,
+                  "title": "凉拌鸡丝",
+                  "source": "data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
+                  "description": "一道少油低卡的家常凉菜，鸡丝嫩滑入味，麻油与香醋调和出微麻微酸的清爽口感，适合夏日解腻。",
+                  "reason": "用料包含鸡肉，符合你的食材要求；制作步骤未列油炸操作，符合你不要油炸的要求。",
+                  "main_ingredients": [
+                    "鸡胸肉（常温冷冻均可）",
+                    "麻油（花椒油）",
+                    "姜",
+                    "凉白开水"
+                  ],
+                  "notice": "",
+                  "spice_match": "none",
+                  "evidence": [
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
+                      "title": "凉拌鸡丝",
+                      "section": "简介",
+                      "start_line": 4,
+                      "end_line": 4,
+                      "quote": "一道少油低卡的家常凉菜，鸡丝嫩滑入味，麻油与香醋调和出微麻微酸的清爽口感，适合夏日解腻。鸡胸肉富含优质蛋白且脂肪含量低。做法简单，新手也能轻松上手，从备料到完成大约只需 30 分钟。",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
+                      "title": "凉拌鸡丝",
+                      "section": "简介",
+                      "start_line": 6,
+                      "end_line": 6,
+                      "quote": "预估烹饪难度：★★★",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
+                      "title": "凉拌鸡丝",
+                      "section": "必备原料和工具",
+                      "start_line": 10,
+                      "end_line": 20,
+                      "quote": "## 必备原料和工具\n\n- 鸡胸肉（常温冷冻均可）\n- 麻油（花椒油）\n- 生抽\n- 香醋\n- 白糖\n- 盐\n- 料酒\n- 姜\n- 凉白开水",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
+                      "title": "凉拌鸡丝",
+                      "section": "操作",
+                      "start_line": 34,
+                      "end_line": 55,
+                      "quote": "## 操作\n\n1. 姜切片，备用\n2. 锅中倒入 4 升水\n3. 加入鸡胸肉、姜片\n4. 倒入 20 毫升料酒\n5. 开大火不盖盖将水烧开\n6. 水开后转中火，用勺子将浮沫捞出\n7. 继续煮 **5-7** 分钟，如果是非冷冻肉煮 5 分钟，冷冻肉煮 7 分钟\n8. 鸡胸肉大小会影响成熟时间，用筷子插入鸡胸肉，如果能轻松插入，代表鸡肉熟了。如果不熟需延长煮制时间\n\n![凉拌鸡丝焯水](./凉拌鸡丝_焯水.jpg)\n\n9. 用凉白开水冲泡鸡胸肉，使鸡胸肉降至室温\n10. 顺着鸡胸肉纹理将鸡胸肉撕成细丝\n\n![凉拌鸡丝_细丝](./凉拌鸡丝_撕.jpg)\n\n11. 准备一个碗\n12. 碗中加入准备好的麻油、生抽、香醋、白糖、盐\n13. 搅拌料汁，使糖和盐尽量溶化\n14. 将料汁倒入鸡丝中，搅拌均匀",
+                      "evidence_type": "markdown_original"
+                    }
+                  ],
+                  "matched": [],
+                  "missing": [
+                    "凉白开水",
+                    "姜",
+                    "料酒",
+                    "生抽",
+                    "白糖",
+                    "盐",
+                    "香醋",
+                    "鸡胸肉",
+                    "麻油"
+                  ],
+                  "optional": [],
+                  "tools": [],
+                  "unresolved": [],
+                  "rerank_score": 0
+                },
+                {
+                  "difficulty": 3,
+                  "title": "可乐鸡翅",
+                  "source": "data/HowToCook/dishes/meat_dish/可乐鸡翅.md",
+                  "description": "可乐鸡翅色泽红亮、口感嫩滑，味道咸甜适口，是一道流行于家庭餐桌的创意菜肴。",
+                  "reason": "用料包含鸡肉，符合你的食材要求；制作步骤未列油炸操作，符合你不要油炸的要求。",
+                  "main_ingredients": [
+                    "鸡翅中",
+                    "可乐",
+                    "生姜",
+                    "料酒或啤酒"
+                  ],
+                  "notice": "",
+                  "spice_match": "none",
+                  "evidence": [
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/可乐鸡翅.md",
+                      "title": "可乐鸡翅",
+                      "section": "简介",
+                      "start_line": 3,
+                      "end_line": 3,
+                      "quote": "可乐鸡翅色泽红亮、口感嫩滑，味道咸甜适口，是一道流行于家庭餐桌的创意菜肴。鸡翅富含优质蛋白质与脂肪，搭配可乐烹煮后肉质更为软烂。制作过程需要掌握煎制与收汁的火候，对新手有一定挑战，但跟随步骤仍可成功。从备料到完成大约耗时 40 分钟。",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/可乐鸡翅.md",
+                      "title": "可乐鸡翅",
+                      "section": "简介",
+                      "start_line": 5,
+                      "end_line": 5,
+                      "quote": "预估烹饪难度：★★★",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/可乐鸡翅.md",
+                      "title": "可乐鸡翅",
+                      "section": "必备原料和工具",
+                      "start_line": 9,
+                      "end_line": 18,
+                      "quote": "## 必备原料和工具\n\n* 鸡翅中\n* 可乐\n* 白糖\n* 生抽\n* 盐\n* 生姜\n* 料酒或啤酒\n* 小葱",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/可乐鸡翅.md",
+                      "title": "可乐鸡翅",
+                      "section": "操作",
+                      "start_line": 34,
+                      "end_line": 45,
+                      "quote": "## 操作\n\n1. 鸡翅入锅，倒入冷水淹没。放生姜 1 片和料酒 10 ～ 20 毫升。大火煮开（ 大约 2 分钟 ）后，撇去浮沫，沥出水分\n\n  * 这一步针对冰鲜鸡翅，刚买来的鸡翅直接改刀用生抽进行腌制即可。\n\n2. 捞出鸡翅，可用刀将两边各划上两口改刀。生抽约 10 克腌制鸡翅 10 分钟（生抽能完全包裹鸡翅表面入味就行）\n3. 锅重新小火起油，先将剩余姜片爆香，然后下入腌好的鸡翅。将鸡翅煎至金黄翻面（直到两面金黄），用炒菜勺子翻动一下鸡翅，与姜片一起翻炒 4～5 下（目的是防止鸡翅和姜片粘黏）。\n4. 鸡翅金黄，倒入可乐没过鸡翅，开大火将锅中可乐煮沸，然后撇去漂浮的黑色浮沫（包含血水）。此时加入葱结。\n5. 调味：加入食用盐 2 克，白糖 10 克，生抽 3 克调味（可以适当用老抽调底色，3 克）。\n6. 等到葱结变黄，和姜片一起捞出，转中火继续慢煮可乐鸡翅。\n7. 等到可乐呈现挂丝状态，关小火让汁牢牢挂在鸡翅上。出锅，装盘。",
+                      "evidence_type": "markdown_original"
+                    }
+                  ],
+                  "matched": [],
+                  "missing": [
+                    "可乐",
+                    "小葱",
+                    "生姜",
+                    "生抽",
+                    "白糖",
+                    "盐",
+                    "鸡翅中"
+                  ],
+                  "optional": [],
+                  "tools": [],
+                  "unresolved": [
+                    "料酒或啤酒"
+                  ],
+                  "rerank_score": 0
+                }
+              ],
+              "sources": [
+                {
+                  "reference_id": 1,
+                  "source": "data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md",
+                  "title": "冬瓜桑拿鸡",
+                  "section": "简介",
+                  "line": 3
+                },
+                {
+                  "reference_id": 2,
+                  "source": "data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md",
+                  "title": "冬瓜桑拿鸡",
+                  "section": "简介",
+                  "line": 5
+                },
+                {
+                  "reference_id": 3,
+                  "source": "data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md",
+                  "title": "冬瓜桑拿鸡",
+                  "section": "必备原料和工具",
+                  "line": 9
+                },
+                {
+                  "reference_id": 4,
+                  "source": "data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md",
+                  "title": "冬瓜桑拿鸡",
+                  "section": "操作",
+                  "line": 33
+                },
+                {
+                  "reference_id": 5,
+                  "source": "data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
+                  "title": "凉拌鸡丝",
+                  "section": "简介",
+                  "line": 4
+                },
+                {
+                  "reference_id": 6,
+                  "source": "data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
+                  "title": "凉拌鸡丝",
+                  "section": "简介",
+                  "line": 6
+                },
+                {
+                  "reference_id": 7,
+                  "source": "data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
+                  "title": "凉拌鸡丝",
+                  "section": "必备原料和工具",
+                  "line": 10
+                },
+                {
+                  "reference_id": 8,
+                  "source": "data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
+                  "title": "凉拌鸡丝",
+                  "section": "操作",
+                  "line": 34
+                },
+                {
+                  "reference_id": 9,
+                  "source": "data/HowToCook/dishes/meat_dish/可乐鸡翅.md",
+                  "title": "可乐鸡翅",
+                  "section": "简介",
+                  "line": 3
+                },
+                {
+                  "reference_id": 10,
+                  "source": "data/HowToCook/dishes/meat_dish/可乐鸡翅.md",
+                  "title": "可乐鸡翅",
+                  "section": "简介",
+                  "line": 5
+                },
+                {
+                  "reference_id": 11,
+                  "source": "data/HowToCook/dishes/meat_dish/可乐鸡翅.md",
+                  "title": "可乐鸡翅",
+                  "section": "必备原料和工具",
+                  "line": 9
+                },
+                {
+                  "reference_id": 12,
+                  "source": "data/HowToCook/dishes/meat_dish/可乐鸡翅.md",
+                  "title": "可乐鸡翅",
+                  "section": "操作",
+                  "line": 34
+                }
+              ],
+              "evidence": [
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md",
+                  "title": "冬瓜桑拿鸡",
+                  "section": "简介",
+                  "start_line": 3,
+                  "end_line": 3,
+                  "quote": "冬瓜桑拿鸡是一道清爽的蒸菜，冬瓜垫底吸饱鸡汁，虫草花提鲜，鸡肉嫩滑，上汽一蒸即成。热量低、蛋白足，做法简单，从备菜到出锅大约需要 35 分钟，适合日常家常制作。",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 1
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md",
+                  "title": "冬瓜桑拿鸡",
+                  "section": "简介",
+                  "start_line": 5,
+                  "end_line": 5,
+                  "quote": "预估烹饪难度：★★",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 2
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md",
+                  "title": "冬瓜桑拿鸡",
+                  "section": "必备原料和工具",
+                  "start_line": 9,
+                  "end_line": 18,
+                  "quote": "## 必备原料和工具\n\n- 鸡肉\n- 姜丝\n- 生抽\n- 蚝油\n- 盐\n- 食用油\n- 冬瓜\n- 虫草花",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 3
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md",
+                  "title": "冬瓜桑拿鸡",
+                  "section": "操作",
+                  "start_line": 33,
+                  "end_line": 39,
+                  "quote": "## 操作\n\n1. 鸡切块，加姜丝、生抽、蚝油、盐、食用油，揉搓均匀后腌制 20 分钟\n2. 冬瓜切薄片铺在盘子底部\n3. 再铺一层泡好的虫草花\n4. 把腌好的鸡肉铺在虫草花上面\n5. 水烧开后放入蒸锅，上汽后蒸 15 分钟，出锅即可",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 4
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
+                  "title": "凉拌鸡丝",
+                  "section": "简介",
+                  "start_line": 4,
+                  "end_line": 4,
+                  "quote": "一道少油低卡的家常凉菜，鸡丝嫩滑入味，麻油与香醋调和出微麻微酸的清爽口感，适合夏日解腻。鸡胸肉富含优质蛋白且脂肪含量低。做法简单，新手也能轻松上手，从备料到完成大约只需 30 分钟。",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 5
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
+                  "title": "凉拌鸡丝",
+                  "section": "简介",
+                  "start_line": 6,
+                  "end_line": 6,
+                  "quote": "预估烹饪难度：★★★",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 6
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
+                  "title": "凉拌鸡丝",
+                  "section": "必备原料和工具",
+                  "start_line": 10,
+                  "end_line": 20,
+                  "quote": "## 必备原料和工具\n\n- 鸡胸肉（常温冷冻均可）\n- 麻油（花椒油）\n- 生抽\n- 香醋\n- 白糖\n- 盐\n- 料酒\n- 姜\n- 凉白开水",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 7
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
+                  "title": "凉拌鸡丝",
+                  "section": "操作",
+                  "start_line": 34,
+                  "end_line": 55,
+                  "quote": "## 操作\n\n1. 姜切片，备用\n2. 锅中倒入 4 升水\n3. 加入鸡胸肉、姜片\n4. 倒入 20 毫升料酒\n5. 开大火不盖盖将水烧开\n6. 水开后转中火，用勺子将浮沫捞出\n7. 继续煮 **5-7** 分钟，如果是非冷冻肉煮 5 分钟，冷冻肉煮 7 分钟\n8. 鸡胸肉大小会影响成熟时间，用筷子插入鸡胸肉，如果能轻松插入，代表鸡肉熟了。如果不熟需延长煮制时间\n\n![凉拌鸡丝焯水](./凉拌鸡丝_焯水.jpg)\n\n9. 用凉白开水冲泡鸡胸肉，使鸡胸肉降至室温\n10. 顺着鸡胸肉纹理将鸡胸肉撕成细丝\n\n![凉拌鸡丝_细丝](./凉拌鸡丝_撕.jpg)\n\n11. 准备一个碗\n12. 碗中加入准备好的麻油、生抽、香醋、白糖、盐\n13. 搅拌料汁，使糖和盐尽量溶化\n14. 将料汁倒入鸡丝中，搅拌均匀",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 8
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/可乐鸡翅.md",
+                  "title": "可乐鸡翅",
+                  "section": "简介",
+                  "start_line": 3,
+                  "end_line": 3,
+                  "quote": "可乐鸡翅色泽红亮、口感嫩滑，味道咸甜适口，是一道流行于家庭餐桌的创意菜肴。鸡翅富含优质蛋白质与脂肪，搭配可乐烹煮后肉质更为软烂。制作过程需要掌握煎制与收汁的火候，对新手有一定挑战，但跟随步骤仍可成功。从备料到完成大约耗时 40 分钟。",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 9
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/可乐鸡翅.md",
+                  "title": "可乐鸡翅",
+                  "section": "简介",
+                  "start_line": 5,
+                  "end_line": 5,
+                  "quote": "预估烹饪难度：★★★",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 10
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/可乐鸡翅.md",
+                  "title": "可乐鸡翅",
+                  "section": "必备原料和工具",
+                  "start_line": 9,
+                  "end_line": 18,
+                  "quote": "## 必备原料和工具\n\n* 鸡翅中\n* 可乐\n* 白糖\n* 生抽\n* 盐\n* 生姜\n* 料酒或啤酒\n* 小葱",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 11
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/可乐鸡翅.md",
+                  "title": "可乐鸡翅",
+                  "section": "操作",
+                  "start_line": 34,
+                  "end_line": 45,
+                  "quote": "## 操作\n\n1. 鸡翅入锅，倒入冷水淹没。放生姜 1 片和料酒 10 ～ 20 毫升。大火煮开（ 大约 2 分钟 ）后，撇去浮沫，沥出水分\n\n  * 这一步针对冰鲜鸡翅，刚买来的鸡翅直接改刀用生抽进行腌制即可。\n\n2. 捞出鸡翅，可用刀将两边各划上两口改刀。生抽约 10 克腌制鸡翅 10 分钟（生抽能完全包裹鸡翅表面入味就行）\n3. 锅重新小火起油，先将剩余姜片爆香，然后下入腌好的鸡翅。将鸡翅煎至金黄翻面（直到两面金黄），用炒菜勺子翻动一下鸡翅，与姜片一起翻炒 4～5 下（目的是防止鸡翅和姜片粘黏）。\n4. 鸡翅金黄，倒入可乐没过鸡翅，开大火将锅中可乐煮沸，然后撇去漂浮的黑色浮沫（包含血水）。此时加入葱结。\n5. 调味：加入食用盐 2 克，白糖 10 克，生抽 3 克调味（可以适当用老抽调底色，3 克）。\n6. 等到葱结变黄，和姜片一起捞出，转中火继续慢煮可乐鸡翅。\n7. 等到可乐呈现挂丝状态，关小火让汁牢牢挂在鸡翅上。出锅，装盘。",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 12
+                }
+              ],
+              "images": [],
+              "answer_method": "source_preference_filter",
+              "validation": "菜品介绍、主要食材和匹配理由绑定当前菜谱原文。优先明确辣味及配方加辣依据，可选加辣放在后面并注明。食材声明用于选菜，未证明库存齐全。排除油炸采用保守过滤。"
+            }
+          }
+        ],
+        "steps": [
+          {
+            "phase": "tool",
+            "tool": "task_recommend",
+            "status": "ok",
+            "elapsed_ms": 278.103
+          }
+        ],
+        "elapsed_seconds": 3.325997540996468,
+        "degraded": false,
+        "text": "给你推荐这3道菜，下面介绍各自的特点和推荐理由。这里先按你提供的食材选菜，其他配料是否齐全还需确认。\n\n1. **冬瓜桑拿鸡**\n冬瓜桑拿鸡是一道清爽的蒸菜，冬瓜垫底吸饱鸡汁，虫草花提鲜，鸡肉嫩滑，上汽一蒸即成。\n推荐理由：用料包含鸡肉，符合你的食材要求；制作步骤未列油炸操作，符合你不要油炸的要求。\n已有：鸡肉。\n还需确认或准备：冬瓜、姜丝、生抽、盐、虫草花、蚝油、食用油。\n\n2. **凉拌鸡丝**\n一道少油低卡的家常凉菜，鸡丝嫩滑入味，麻油与香醋调和出微麻微酸的清爽口感，适合夏日解腻。\n推荐理由：用料包含鸡肉，符合你的食材要求；制作步骤未列油炸操作，符合你不要油炸的要求。\n已有：尚未确认。\n还需确认或准备：凉白开水、姜、料酒、生抽、白糖、盐、香醋、鸡胸肉、麻油。\n\n3. **可乐鸡翅**\n可乐鸡翅色泽红亮、口感嫩滑，味道咸甜适口，是一道流行于家庭餐桌的创意菜肴。\n推荐理由：用料包含鸡肉，符合你的食材要求；制作步骤未列油炸操作，符合你不要油炸的要求。\n已有：尚未确认。\n还需确认或准备：可乐、小葱、生姜、生抽、白糖、盐、鸡翅中。\n待核对：料酒或啤酒。\n\n来源：\n《冬瓜桑拿鸡》· 简介 · data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md · L3\n《冬瓜桑拿鸡》· 简介 · data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md · L5\n《冬瓜桑拿鸡》· 必备原料和工具 · data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md · L9\n《冬瓜桑拿鸡》· 操作 · data/HowToCook/dishes/meat_dish/冬瓜桑拿鸡.md · L33\n《凉拌鸡丝》· 简介 · data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md · L4\n《凉拌鸡丝》· 简介 · data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md · L6\n《凉拌鸡丝》· 必备原料和工具 · data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md · L10\n《凉拌鸡丝》· 操作 · data/HowToCook/dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md · L34\n《可乐鸡翅》· 简介 · data/HowToCook/dishes/meat_dish/可乐鸡翅.md · L3\n《可乐鸡翅》· 简介 · data/HowToCook/dishes/meat_dish/可乐鸡翅.md · L5\n《可乐鸡翅》· 必备原料和工具 · data/HowToCook/dishes/meat_dish/可乐鸡翅.md · L9\n《可乐鸡翅》· 操作 · data/HowToCook/dishes/meat_dish/可乐鸡翅.md · L34",
+        "trace": {
+          "request_id": "f091b837ca5a4328a3565a00e3847583",
+          "outcome": "done",
+          "stages": [
+            {
+              "phase": "service",
+              "operation": "prepare",
+              "status": "ok",
+              "elapsed_ms": 3047.794
+            },
+            {
+              "phase": "understanding",
+              "intent": "ingredient_recommend",
+              "confidence": 0.95,
+              "path": "model",
+              "fallback": null,
+              "matches": [
+                {
+                  "score": 1.0,
+                  "level": "L0",
+                  "ambiguous": false
+                }
+              ],
+              "elapsed_ms": 2441.596,
+              "errors": []
+            },
+            {
+              "phase": "service",
+              "operation": "task_recommend",
+              "status": "ok",
+              "elapsed_ms": 276.578
+            },
+            {
+              "phase": "tool",
+              "tool": "task_recommend",
+              "status": "ok",
+              "elapsed_ms": 278.103
+            },
+            {
+              "phase": "service",
+              "operation": "persist",
+              "status": "ok",
+              "elapsed_ms": 196.048
+            },
+            {
+              "phase": "overall",
+              "elapsed_ms": 3526.079
+            }
+          ],
+          "model_calls": 1,
+          "model_call_count_scope": "http_attempts",
+          "agent_model_calls": 0,
+          "agent_http_calls": 0,
+          "service_model_calls": 1,
+          "service_api_calls": 1,
+          "unknown_usage_calls": 0,
+          "api_usage": [
+            {
+              "phase": "nlu_understanding",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 157,
+                "prompt_tokens": 946,
+                "total_tokens": 1103
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            }
+          ],
+          "metering_incomplete": false,
+          "tool_calls": 1,
+          "usage": {
+            "input_tokens": 946,
+            "output_tokens": 157
+          },
+          "degraded": false,
+          "filtered_out": 0,
+          "checkpoint_bytes": 0,
+          "checkpoint_oversize": false
+        }
+      }
+    },
+    {
+      "case": "exclude_noisy",
+      "result": {
+        "question": "不要刚才第二道1",
+        "mode": "langchain",
+        "status": "completed",
+        "outputs": [
+          {
+            "tool": "task_recommend",
+            "result": {
+              "status": "verified",
+              "short_answer": "给你推荐这1道菜，下面介绍各自的特点和推荐理由。这里先按你提供的食材选菜，其他配料是否齐全还需确认。",
+              "recommendation_kind": "preference",
+              "recommendation_mode": "inventory",
+              "recommendations": [
+                {
+                  "difficulty": 4,
+                  "title": "宫保鸡丁",
+                  "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                  "description": "这道川味名菜以糊辣荔枝味见长，小酸甜中透着干辣椒与花椒的香气，鸡丁嫩滑、花生酥脆，口感层次丰富。",
+                  "reason": "用料包含鸡肉，符合你的食材要求；制作步骤未列油炸操作，符合你不要油炸的要求。",
+                  "main_ingredients": [
+                    "手枪腿（或者鸡胸脯肉）",
+                    "大葱",
+                    "干辣椒（或者二荆条）",
+                    "熟花生"
+                  ],
+                  "notice": "",
+                  "spice_match": "none",
+                  "evidence": [
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                      "title": "宫保鸡丁",
+                      "section": "简介",
+                      "start_line": 3,
+                      "end_line": 3,
+                      "quote": "这道川味名菜以糊辣荔枝味见长，小酸甜中透着干辣椒与花椒的香气，鸡丁嫩滑、花生酥脆，口感层次丰富。富含优质蛋白和不饱和脂肪酸，开胃下饭。做法分成简易和进阶两版，对新手比较友好，提前规划好腌制时间即可。从备料到出锅大约需要 1.5 小时。",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                      "title": "宫保鸡丁",
+                      "section": "简介",
+                      "start_line": 5,
+                      "end_line": 5,
+                      "quote": "预估烹饪难度：★★★★",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                      "title": "宫保鸡丁",
+                      "section": "必备原料和工具",
+                      "start_line": 9,
+                      "end_line": 23,
+                      "quote": "## 必备原料和工具\n\n- 手枪腿（或者鸡胸脯肉）\n- 大葱\n- 干辣椒（或者二荆条）\n- 熟花生\n- 生抽酱油\n- 香醋\n- 白糖\n- 料酒\n- 盐\n- 鸡精\n- 淀粉\n- 植物油\n- 芝麻油",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                      "title": "宫保鸡丁",
+                      "section": "必备原料和工具 > 可选原料",
+                      "start_line": 25,
+                      "end_line": 30,
+                      "quote": "### 可选原料\n\n- 油泼辣子\n- 莴笋\n- 生花生\n- 豆瓣酱",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                      "title": "宫保鸡丁",
+                      "section": "操作 > 简易版本",
+                      "start_line": 64,
+                      "end_line": 74,
+                      "quote": "### 简易版本\n\n1. 手枪腿用剪刀去骨，鸡肉面用刀背拍打一遍，切条后切至 1.5cm 见方肉丁；泡于清水 10 分钟，捞出控干备用（若是鸡胸脯肉，则可以直接进行切丁以及之后的动作）\n2. 取大葱葱绿与姜片 5g 于碗中，倒入 50g 开水备用；葱白切 1.5cm 圆粒备用；取花生放入微波炉高火 5 分钟焙干备用\n3. 鸡丁中加入盐 2g，老抽酱油 5g，料酒 15g，淀粉 15g 搅拌均匀，至微微发干；缓慢加入部分葱姜水，搅拌鸡丁至粘手；保鲜膜密封，放入冰箱腌制 1 小时\n4. 干辣椒切段；起锅，大火烧热转小火；放入干辣椒焙干至微微发糊，捞起备用；花椒焙干至有香味，捞起备用\n5. 转大火，倒入 20g 植物油，7 成热（竹筷子起泡）下入鸡丁，煎至上面开始发白，用锅铲翻面，煎 30s 后翻炒均匀\n6. 下入葱粒翻炒，加入余下葱姜水不够 100g 再加一点清水（务必是热水）；盖上锅盖，转中小火焖 2 分钟；\n7. 转大火，下入熟花生，干辣椒和花椒；加入鸡精 2g，香醋 5g，白糖 2g，翻炒均匀；\n8. 淀粉 10g 加 50g 清水调成水淀粉，加入锅中，翻炒均匀，收汁到自己想要的浓度\n9. 关火，淋入芝麻油 10g，即可出锅",
+                      "evidence_type": "markdown_original"
+                    },
+                    {
+                      "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                      "title": "宫保鸡丁",
+                      "section": "操作 > 稍加复杂但是更加令人垂涎欲滴的版本",
+                      "start_line": 76,
+                      "end_line": 93,
+                      "quote": "### 稍加复杂但是更加令人垂涎欲滴的版本\n\n相较于简单版本，这里更加推荐使用二荆条与生花生。并且加入了莴笋陪衬花生的香脆与鸡肉的松软\n\n1. 莴笋去皮切至 1cm 见方的小块，备用；\n2. 二荆条切成 1cm 长段；\n3. 手枪腿用剪刀去骨，鸡肉面用刀背拍打一遍，切条后切至 1.5cm 见方肉丁；泡于清水 10 分钟，捞出控干备用（若是鸡胸脯肉，则可以直接进行切丁以及之后的动作）；\n4. 取大葱葱绿与姜片 5g 于碗中，倒入 50g 开水备用；葱白切 1.5cm 圆粒备用\n5. 鸡丁中加入盐 2g，老抽酱油 5g，料酒 15g，淀粉 15g 搅拌均匀，至微微发干；缓慢加入部分葱姜水，搅拌鸡丁至粘手；保鲜膜密封，放入冰箱腌制 1 小时\n6. 转中火，倒入 20g 植物油，放入生花生翻炒至其表面微微焦糊，捞起花生但是油留在锅内；\n7. 继续加热，7 成热（竹筷子起泡）下入鸡丁，放入豆瓣酱，翻炒大概 1 分钟；\n8. 加入备好的莴笋丁，继续翻炒 1 分钟；\n9. 下入葱粒翻炒，加入余下葱姜水不够 100g 再加一点清水（务必是热水）；加入二荆条段；盖上锅盖，转中小火焖 2 分钟；\n10. 转大火，下入先前捞起来备用的花生，花椒；加入鸡精 2g，香醋 5g，白糖 2g，翻炒均匀；\n11. 淀粉 10g 加 50g 清水调成水淀粉，加入锅中，翻炒均匀，收汁到自己想要的浓度\n12. 关火，淋入芝麻油 10g 与油泼辣子 5g 再翻炒 10s，即可出锅\n\n![宫保鸡丁](./宫保鸡丁.jpg)",
+                      "evidence_type": "markdown_original"
+                    }
+                  ],
+                  "matched": [],
+                  "missing": [
+                    "大葱",
+                    "料酒",
+                    "植物油",
+                    "油泼辣子",
+                    "淀粉",
+                    "熟花生",
+                    "生抽酱油",
+                    "生花生",
+                    "白糖",
+                    "盐",
+                    "芝麻油",
+                    "莴笋",
+                    "豆瓣酱",
+                    "香醋",
+                    "鸡精"
+                  ],
+                  "optional": [],
+                  "tools": [],
+                  "unresolved": [
+                    "手枪腿（或者鸡胸脯肉）",
+                    "干辣椒（或者二荆条）"
+                  ],
+                  "rerank_score": 0
+                }
+              ],
+              "sources": [
+                {
+                  "reference_id": 1,
+                  "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                  "title": "宫保鸡丁",
+                  "section": "简介",
+                  "line": 3
+                },
+                {
+                  "reference_id": 2,
+                  "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                  "title": "宫保鸡丁",
+                  "section": "简介",
+                  "line": 5
+                },
+                {
+                  "reference_id": 3,
+                  "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                  "title": "宫保鸡丁",
+                  "section": "必备原料和工具",
+                  "line": 9
+                },
+                {
+                  "reference_id": 4,
+                  "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                  "title": "宫保鸡丁",
+                  "section": "必备原料和工具 > 可选原料",
+                  "line": 25
+                },
+                {
+                  "reference_id": 5,
+                  "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                  "title": "宫保鸡丁",
+                  "section": "操作 > 简易版本",
+                  "line": 64
+                },
+                {
+                  "reference_id": 6,
+                  "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                  "title": "宫保鸡丁",
+                  "section": "操作 > 稍加复杂但是更加令人垂涎欲滴的版本",
+                  "line": 76
+                }
+              ],
+              "evidence": [
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                  "title": "宫保鸡丁",
+                  "section": "简介",
+                  "start_line": 3,
+                  "end_line": 3,
+                  "quote": "这道川味名菜以糊辣荔枝味见长，小酸甜中透着干辣椒与花椒的香气，鸡丁嫩滑、花生酥脆，口感层次丰富。富含优质蛋白和不饱和脂肪酸，开胃下饭。做法分成简易和进阶两版，对新手比较友好，提前规划好腌制时间即可。从备料到出锅大约需要 1.5 小时。",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 1
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                  "title": "宫保鸡丁",
+                  "section": "简介",
+                  "start_line": 5,
+                  "end_line": 5,
+                  "quote": "预估烹饪难度：★★★★",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 2
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                  "title": "宫保鸡丁",
+                  "section": "必备原料和工具",
+                  "start_line": 9,
+                  "end_line": 23,
+                  "quote": "## 必备原料和工具\n\n- 手枪腿（或者鸡胸脯肉）\n- 大葱\n- 干辣椒（或者二荆条）\n- 熟花生\n- 生抽酱油\n- 香醋\n- 白糖\n- 料酒\n- 盐\n- 鸡精\n- 淀粉\n- 植物油\n- 芝麻油",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 3
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                  "title": "宫保鸡丁",
+                  "section": "必备原料和工具 > 可选原料",
+                  "start_line": 25,
+                  "end_line": 30,
+                  "quote": "### 可选原料\n\n- 油泼辣子\n- 莴笋\n- 生花生\n- 豆瓣酱",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 4
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                  "title": "宫保鸡丁",
+                  "section": "操作 > 简易版本",
+                  "start_line": 64,
+                  "end_line": 74,
+                  "quote": "### 简易版本\n\n1. 手枪腿用剪刀去骨，鸡肉面用刀背拍打一遍，切条后切至 1.5cm 见方肉丁；泡于清水 10 分钟，捞出控干备用（若是鸡胸脯肉，则可以直接进行切丁以及之后的动作）\n2. 取大葱葱绿与姜片 5g 于碗中，倒入 50g 开水备用；葱白切 1.5cm 圆粒备用；取花生放入微波炉高火 5 分钟焙干备用\n3. 鸡丁中加入盐 2g，老抽酱油 5g，料酒 15g，淀粉 15g 搅拌均匀，至微微发干；缓慢加入部分葱姜水，搅拌鸡丁至粘手；保鲜膜密封，放入冰箱腌制 1 小时\n4. 干辣椒切段；起锅，大火烧热转小火；放入干辣椒焙干至微微发糊，捞起备用；花椒焙干至有香味，捞起备用\n5. 转大火，倒入 20g 植物油，7 成热（竹筷子起泡）下入鸡丁，煎至上面开始发白，用锅铲翻面，煎 30s 后翻炒均匀\n6. 下入葱粒翻炒，加入余下葱姜水不够 100g 再加一点清水（务必是热水）；盖上锅盖，转中小火焖 2 分钟；\n7. 转大火，下入熟花生，干辣椒和花椒；加入鸡精 2g，香醋 5g，白糖 2g，翻炒均匀；\n8. 淀粉 10g 加 50g 清水调成水淀粉，加入锅中，翻炒均匀，收汁到自己想要的浓度\n9. 关火，淋入芝麻油 10g，即可出锅",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 5
+                },
+                {
+                  "source": "data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md",
+                  "title": "宫保鸡丁",
+                  "section": "操作 > 稍加复杂但是更加令人垂涎欲滴的版本",
+                  "start_line": 76,
+                  "end_line": 93,
+                  "quote": "### 稍加复杂但是更加令人垂涎欲滴的版本\n\n相较于简单版本，这里更加推荐使用二荆条与生花生。并且加入了莴笋陪衬花生的香脆与鸡肉的松软\n\n1. 莴笋去皮切至 1cm 见方的小块，备用；\n2. 二荆条切成 1cm 长段；\n3. 手枪腿用剪刀去骨，鸡肉面用刀背拍打一遍，切条后切至 1.5cm 见方肉丁；泡于清水 10 分钟，捞出控干备用（若是鸡胸脯肉，则可以直接进行切丁以及之后的动作）；\n4. 取大葱葱绿与姜片 5g 于碗中，倒入 50g 开水备用；葱白切 1.5cm 圆粒备用\n5. 鸡丁中加入盐 2g，老抽酱油 5g，料酒 15g，淀粉 15g 搅拌均匀，至微微发干；缓慢加入部分葱姜水，搅拌鸡丁至粘手；保鲜膜密封，放入冰箱腌制 1 小时\n6. 转中火，倒入 20g 植物油，放入生花生翻炒至其表面微微焦糊，捞起花生但是油留在锅内；\n7. 继续加热，7 成热（竹筷子起泡）下入鸡丁，放入豆瓣酱，翻炒大概 1 分钟；\n8. 加入备好的莴笋丁，继续翻炒 1 分钟；\n9. 下入葱粒翻炒，加入余下葱姜水不够 100g 再加一点清水（务必是热水）；加入二荆条段；盖上锅盖，转中小火焖 2 分钟；\n10. 转大火，下入先前捞起来备用的花生，花椒；加入鸡精 2g，香醋 5g，白糖 2g，翻炒均匀；\n11. 淀粉 10g 加 50g 清水调成水淀粉，加入锅中，翻炒均匀，收汁到自己想要的浓度\n12. 关火，淋入芝麻油 10g 与油泼辣子 5g 再翻炒 10s，即可出锅\n\n![宫保鸡丁](./宫保鸡丁.jpg)",
+                  "evidence_type": "markdown_original",
+                  "reference_id": 6
+                }
+              ],
+              "images": [],
+              "answer_method": "source_preference_filter",
+              "validation": "菜品介绍、主要食材和匹配理由绑定当前菜谱原文。优先明确辣味及配方加辣依据，可选加辣放在后面并注明。食材声明用于选菜，未证明库存齐全。排除油炸采用保守过滤。",
+              "assumption_notice": "我按「不要刚才第二道」理解了，末尾多余内容未作为新条件，不对请告诉我。"
+            }
+          }
+        ],
+        "steps": [
+          {
+            "phase": "tool",
+            "tool": "task_recommend",
+            "status": "ok",
+            "elapsed_ms": 468.87
+          }
+        ],
+        "elapsed_seconds": 4.227686291000282,
+        "degraded": false,
+        "text": "我按「不要刚才第二道」理解了，末尾多余内容未作为新条件，不对请告诉我。\n给你推荐这1道菜，下面介绍各自的特点和推荐理由。这里先按你提供的食材选菜，其他配料是否齐全还需确认。\n\n1. **宫保鸡丁**\n这道川味名菜以糊辣荔枝味见长，小酸甜中透着干辣椒与花椒的香气，鸡丁嫩滑、花生酥脆，口感层次丰富。\n推荐理由：用料包含鸡肉，符合你的食材要求；制作步骤未列油炸操作，符合你不要油炸的要求。\n已有：尚未确认。\n还需确认或准备：大葱、料酒、植物油、油泼辣子、淀粉、熟花生、生抽酱油、生花生、白糖、盐、芝麻油、莴笋、豆瓣酱、香醋、鸡精。\n待核对：手枪腿（或者鸡胸脯肉）；干辣椒（或者二荆条）。\n\n来源：\n《宫保鸡丁》· 简介 · data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md · L3\n《宫保鸡丁》· 简介 · data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md · L5\n《宫保鸡丁》· 必备原料和工具 · data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md · L9\n《宫保鸡丁》· 必备原料和工具 > 可选原料 · data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md · L25\n《宫保鸡丁》· 操作 > 简易版本 · data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md · L64\n《宫保鸡丁》· 操作 > 稍加复杂但是更加令人垂涎欲滴的版本 · data/HowToCook/dishes/meat_dish/宫保鸡丁/宫保鸡丁.md · L76",
+        "trace": {
+          "request_id": "851bb97894574679b8532218a430439f",
+          "outcome": "done",
+          "stages": [
+            {
+              "phase": "service",
+              "operation": "prepare",
+              "status": "ok",
+              "elapsed_ms": 3758.699
+            },
+            {
+              "phase": "understanding",
+              "intent": "constraint_refine",
+              "confidence": 0.92,
+              "path": "model",
+              "fallback": null,
+              "matches": [],
+              "elapsed_ms": 2731.746,
+              "errors": []
+            },
+            {
+              "phase": "service",
+              "operation": "task_recommend",
+              "status": "ok",
+              "elapsed_ms": 372.462
+            },
+            {
+              "phase": "service",
+              "operation": "guard",
+              "status": "ok",
+              "elapsed_ms": 96.287
+            },
+            {
+              "phase": "tool",
+              "tool": "task_recommend",
+              "status": "ok",
+              "elapsed_ms": 468.87
+            },
+            {
+              "phase": "service",
+              "operation": "persist",
+              "status": "ok",
+              "elapsed_ms": 262.324
+            },
+            {
+              "phase": "overall",
+              "elapsed_ms": 4494.298
+            }
+          ],
+          "model_calls": 1,
+          "model_call_count_scope": "http_attempts",
+          "agent_model_calls": 0,
+          "agent_http_calls": 0,
+          "service_model_calls": 1,
+          "service_api_calls": 1,
+          "unknown_usage_calls": 0,
+          "api_usage": [
+            {
+              "phase": "nlu_understanding",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 157,
+                "prompt_tokens": 1123,
+                "total_tokens": 1280
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            }
+          ],
+          "metering_incomplete": false,
+          "tool_calls": 1,
+          "usage": {
+            "input_tokens": 1123,
+            "output_tokens": 157
+          },
+          "degraded": false,
+          "filtered_out": 0,
+          "checkpoint_bytes": 0,
+          "checkpoint_oversize": false
+        }
+      }
+    },
+    {
+      "case": "outside_scope",
+      "result": {
+        "question": "今天天气怎么样",
+        "mode": "langchain",
+        "status": "completed",
+        "outputs": [
+          {
+            "tool": "out_of_scope",
+            "result": {
+              "status": "verified_source",
+              "short_answer": "我主要帮助你查菜谱和安排做饭，这个问题超出了我的范围。你可以告诉我想吃什么，或手边有哪些食材。",
+              "sources": [],
+              "evidence": [],
+              "clarification_options": []
+            }
+          }
+        ],
+        "steps": [],
+        "elapsed_seconds": 6.589454791996104,
+        "degraded": false,
+        "text": "我主要帮助你查菜谱和安排做饭，这个问题超出了我的范围。你可以告诉我想吃什么，或手边有哪些食材。",
+        "trace": {
+          "request_id": "4d8815120bca43b6b8b6800f100f7a0e",
+          "outcome": "done",
+          "stages": [
+            {
+              "phase": "service",
+              "operation": "prepare",
+              "status": "ok",
+              "elapsed_ms": 6589.381
+            },
+            {
+              "phase": "understanding",
+              "intent": "out_of_scope",
+              "confidence": 0.99,
+              "path": "model",
+              "fallback": null,
+              "matches": [],
+              "elapsed_ms": 5904.452,
+              "errors": [
+                "timeout"
+              ]
+            },
+            {
+              "phase": "service",
+              "operation": "persist",
+              "status": "ok",
+              "elapsed_ms": 189.393
+            },
+            {
+              "phase": "overall",
+              "elapsed_ms": 6781.908
+            }
+          ],
+          "model_calls": 2,
+          "model_call_count_scope": "http_attempts",
+          "agent_model_calls": 0,
+          "agent_http_calls": 0,
+          "service_model_calls": 2,
+          "service_api_calls": 2,
+          "unknown_usage_calls": 1,
+          "api_usage": [
+            {
+              "phase": "nlu_understanding",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {},
+              "billed_units": {},
+              "outcome": "TimeoutError"
+            },
+            {
+              "phase": "nlu_understanding",
+              "model": "workbuddy-ai/deepseek-v4.1-flash",
+              "usage": {
+                "completion_tokens": 102,
+                "prompt_tokens": 1129,
+                "total_tokens": 1231
+              },
+              "billed_units": {},
+              "outcome": "http_success"
+            }
+          ],
+          "metering_incomplete": false,
+          "tool_calls": 0,
+          "usage": {
+            "input_tokens": 1129,
+            "output_tokens": 102
+          },
+          "degraded": false,
+          "filtered_out": 0,
+          "checkpoint_bytes": 0,
+          "checkpoint_oversize": false
+        }
+      }
+    }
+  ]
+}

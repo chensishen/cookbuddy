@@ -1,0 +1,50 @@
+breakfast:
+  max_total_minutes: 25
+  max_difficulty: 2
+  staple_pattern: 粥|饭|面|粉|饼|包(?!蛋)|吐司|麦|薯|玉米
+  exclude_pattern: 酒|威士忌|伏特加|白兰地|龙舌兰|朗姆|波旁
+  slots:
+    - {role: main_staple, label: 主食, categories: [breakfast, staple], count: 1}
+    - {role: protein_side, label: 配菜, categories: [breakfast, vegetable_dish], count: 1, optional: true}
+    - {role: drink_or_soup, label: 饮品或汤, categories: [drink, soup], count: 1, optional: true}
+lunch:
+  max_difficulty: 3
+  preferred_methods: [炒, 拌]
+  slots:
+    - {role: main, label: 主菜, categories: [meat_dish, aquatic], count: 1}
+    - {role: veg, label: 配菜, categories: [vegetable_dish], count: 1}
+    - {role: soup, label: 汤, categories: [soup], count: 1}
+    - {role: staple, label: 主食, categories: [staple], count: 1, optional: true, on_request: true}
+dinner:
+  max_difficulty: 3
+  preferred_methods: [蒸, 炖, 烤]
+  slots:
+    - {role: main, label: 主菜, categories: [meat_dish, aquatic], count: 1}
+    - {role: veg, label: 配菜, categories: [vegetable_dish], count: 1}
+    - {role: soup, label: 汤, categories: [soup], count: 1}
+    - {role: staple, label: 主食, categories: [staple], count: 1, optional: true, on_request: true}
+snack_late:
+  max_total_minutes: 20
+  max_difficulty: 2
+  exclude_pattern: 酒|威士忌|伏特加|白兰地|龙舌兰|朗姆|波旁
+  slots:
+    - {role: main_staple, label: 简餐, categories: [breakfast, staple], count: 1}
+    - {role: drink_or_soup, label: 饮品或汤, categories: [drink, soup], count: 1, optional: true}
+people_scaling:
+  - {min_people: 4, add_slot: {role: extra_dish, label: 加菜, categories: [meat_dish, vegetable_dish], count: 1}, meal_types: [lunch, dinner]}
+  - {max_people: 1, drop_roles: [soup]}
+explicit_composition:
+  dish: {role: dish, label: 菜, categories: [meat_dish, aquatic, vegetable_dish]}
+  meat: {role: main, label: 主菜, categories: [meat_dish, aquatic]}
+  vegetables: {role: veg, label: 素菜, categories: [vegetable_dish]}
+  soup: {role: soup, label: 汤, categories: [soup]}
+inference:
+  timezone: Asia/Shanghai
+  periods:
+    - {start: 5, end: 10, meal_type: breakfast}
+    - {start: 10, end: 15, meal_type: lunch}
+    - {start: 15, end: 22, meal_type: dinner}
+    - {start: 22, end: 24, meal_type: snack_late}
+    - {start: 0, end: 5, meal_type: snack_late}
+selection:
+  target_budget_fraction: 0.75

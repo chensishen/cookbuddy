@@ -1,0 +1,2609 @@
+[
+  {
+    "capability": "meal_plan",
+    "state": "ok",
+    "correct": true,
+    "meta": {
+      "capability": "meal_plan",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "meal_plan",
+    "state": "timeout",
+    "correct": true,
+    "meta": {
+      "capability": "meal_plan",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "meal_plan",
+    "state": "5xx",
+    "correct": true,
+    "meta": {
+      "capability": "meal_plan",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "meal_plan",
+    "state": "429",
+    "correct": true,
+    "meta": {
+      "capability": "meal_plan",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "meal_plan",
+    "state": "invalid_json",
+    "correct": true,
+    "meta": {
+      "capability": "meal_plan",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "meal_plan",
+    "state": "breaker_open",
+    "correct": true,
+    "meta": {
+      "capability": "meal_plan",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "meal_plan",
+    "state": "slow",
+    "correct": true,
+    "meta": {
+      "capability": "meal_plan",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "meal_plan",
+    "state": "partial",
+    "correct": true,
+    "meta": {
+      "capability": "meal_plan",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "meal_plan",
+    "state": "embedding_down",
+    "correct": true,
+    "meta": {
+      "capability": "meal_plan",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "meal_plan",
+    "state": "rerank_down",
+    "correct": true,
+    "meta": {
+      "capability": "meal_plan",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "meal_plan",
+    "state": "milvus_down",
+    "correct": true,
+    "meta": {
+      "capability": "meal_plan",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "ingredient_recommend",
+    "state": "ok",
+    "correct": true,
+    "meta": {
+      "capability": "ingredient_recommend",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "ingredient_recommend",
+    "state": "timeout",
+    "correct": true,
+    "meta": {
+      "capability": "ingredient_recommend",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "ingredient_recommend",
+    "state": "5xx",
+    "correct": true,
+    "meta": {
+      "capability": "ingredient_recommend",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "ingredient_recommend",
+    "state": "429",
+    "correct": true,
+    "meta": {
+      "capability": "ingredient_recommend",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "ingredient_recommend",
+    "state": "invalid_json",
+    "correct": true,
+    "meta": {
+      "capability": "ingredient_recommend",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "ingredient_recommend",
+    "state": "breaker_open",
+    "correct": true,
+    "meta": {
+      "capability": "ingredient_recommend",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "ingredient_recommend",
+    "state": "slow",
+    "correct": true,
+    "meta": {
+      "capability": "ingredient_recommend",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "ingredient_recommend",
+    "state": "partial",
+    "correct": true,
+    "meta": {
+      "capability": "ingredient_recommend",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "ingredient_recommend",
+    "state": "embedding_down",
+    "correct": true,
+    "meta": {
+      "capability": "ingredient_recommend",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "ingredient_recommend",
+    "state": "rerank_down",
+    "correct": true,
+    "meta": {
+      "capability": "ingredient_recommend",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "ingredient_recommend",
+    "state": "milvus_down",
+    "correct": true,
+    "meta": {
+      "capability": "ingredient_recommend",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "constraint_refine",
+    "state": "ok",
+    "correct": true,
+    "meta": {
+      "capability": "constraint_refine",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "constraint_refine",
+    "state": "timeout",
+    "correct": true,
+    "meta": {
+      "capability": "constraint_refine",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "constraint_refine",
+    "state": "5xx",
+    "correct": true,
+    "meta": {
+      "capability": "constraint_refine",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "constraint_refine",
+    "state": "429",
+    "correct": true,
+    "meta": {
+      "capability": "constraint_refine",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "constraint_refine",
+    "state": "invalid_json",
+    "correct": true,
+    "meta": {
+      "capability": "constraint_refine",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "constraint_refine",
+    "state": "breaker_open",
+    "correct": true,
+    "meta": {
+      "capability": "constraint_refine",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "constraint_refine",
+    "state": "slow",
+    "correct": true,
+    "meta": {
+      "capability": "constraint_refine",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "constraint_refine",
+    "state": "partial",
+    "correct": true,
+    "meta": {
+      "capability": "constraint_refine",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "constraint_refine",
+    "state": "embedding_down",
+    "correct": true,
+    "meta": {
+      "capability": "constraint_refine",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "constraint_refine",
+    "state": "rerank_down",
+    "correct": true,
+    "meta": {
+      "capability": "constraint_refine",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "constraint_refine",
+    "state": "milvus_down",
+    "correct": true,
+    "meta": {
+      "capability": "constraint_refine",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_lookup",
+    "state": "ok",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_lookup",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_lookup",
+    "state": "timeout",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_lookup",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_lookup",
+    "state": "5xx",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_lookup",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_lookup",
+    "state": "429",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_lookup",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_lookup",
+    "state": "invalid_json",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_lookup",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_lookup",
+    "state": "breaker_open",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_lookup",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_lookup",
+    "state": "slow",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_lookup",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_lookup",
+    "state": "partial",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_lookup",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_lookup",
+    "state": "embedding_down",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_lookup",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_lookup",
+    "state": "rerank_down",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_lookup",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_lookup",
+    "state": "milvus_down",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_lookup",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_section",
+    "state": "ok",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_section",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_section",
+    "state": "timeout",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_section",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_section",
+    "state": "5xx",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_section",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_section",
+    "state": "429",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_section",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_section",
+    "state": "invalid_json",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_section",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_section",
+    "state": "breaker_open",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_section",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_section",
+    "state": "slow",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_section",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_section",
+    "state": "partial",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_section",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_section",
+    "state": "embedding_down",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_section",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_section",
+    "state": "rerank_down",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_section",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_section",
+    "state": "milvus_down",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_section",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_images",
+    "state": "ok",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_images",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_images",
+    "state": "timeout",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_images",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_images",
+    "state": "5xx",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_images",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_images",
+    "state": "429",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_images",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_images",
+    "state": "invalid_json",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_images",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_images",
+    "state": "breaker_open",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_images",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_images",
+    "state": "slow",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_images",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_images",
+    "state": "partial",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_images",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_images",
+    "state": "embedding_down",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_images",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_images",
+    "state": "rerank_down",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_images",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_images",
+    "state": "milvus_down",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_images",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_ingredients",
+    "state": "ok",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_ingredients",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_ingredients",
+    "state": "timeout",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_ingredients",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_ingredients",
+    "state": "5xx",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_ingredients",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_ingredients",
+    "state": "429",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_ingredients",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_ingredients",
+    "state": "invalid_json",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_ingredients",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_ingredients",
+    "state": "breaker_open",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_ingredients",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_ingredients",
+    "state": "slow",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_ingredients",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "recipe_ingredients",
+    "state": "partial",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_ingredients",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_ingredients",
+    "state": "embedding_down",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_ingredients",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_ingredients",
+    "state": "rerank_down",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_ingredients",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "recipe_ingredients",
+    "state": "milvus_down",
+    "correct": true,
+    "meta": {
+      "capability": "recipe_ingredients",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "follow_up",
+    "state": "ok",
+    "correct": true,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "follow_up",
+    "state": "timeout",
+    "correct": true,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "follow_up",
+    "state": "5xx",
+    "correct": true,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "follow_up",
+    "state": "429",
+    "correct": true,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "follow_up",
+    "state": "invalid_json",
+    "correct": true,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "follow_up",
+    "state": "breaker_open",
+    "correct": true,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "follow_up",
+    "state": "slow",
+    "correct": true,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "follow_up",
+    "state": "partial",
+    "correct": true,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "follow_up",
+    "state": "embedding_down",
+    "correct": true,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "follow_up",
+    "state": "rerank_down",
+    "correct": true,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "follow_up",
+    "state": "milvus_down",
+    "correct": true,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "identity_capability",
+    "state": "ok",
+    "correct": true,
+    "meta": {
+      "capability": "identity_capability",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "identity_capability",
+    "state": "timeout",
+    "correct": true,
+    "meta": {
+      "capability": "identity_capability",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "identity_capability",
+    "state": "5xx",
+    "correct": true,
+    "meta": {
+      "capability": "identity_capability",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "identity_capability",
+    "state": "429",
+    "correct": true,
+    "meta": {
+      "capability": "identity_capability",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "identity_capability",
+    "state": "invalid_json",
+    "correct": true,
+    "meta": {
+      "capability": "identity_capability",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "identity_capability",
+    "state": "breaker_open",
+    "correct": true,
+    "meta": {
+      "capability": "identity_capability",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "identity_capability",
+    "state": "slow",
+    "correct": true,
+    "meta": {
+      "capability": "identity_capability",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "identity_capability",
+    "state": "partial",
+    "correct": true,
+    "meta": {
+      "capability": "identity_capability",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "identity_capability",
+    "state": "embedding_down",
+    "correct": true,
+    "meta": {
+      "capability": "identity_capability",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "identity_capability",
+    "state": "rerank_down",
+    "correct": true,
+    "meta": {
+      "capability": "identity_capability",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "identity_capability",
+    "state": "milvus_down",
+    "correct": true,
+    "meta": {
+      "capability": "identity_capability",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "chitchat",
+    "state": "ok",
+    "correct": true,
+    "meta": {
+      "capability": "chitchat",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "fast",
+    "fault_calls": 0,
+    "parity": true
+  },
+  {
+    "capability": "chitchat",
+    "state": "timeout",
+    "correct": true,
+    "meta": {
+      "capability": "chitchat",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "fast",
+    "fault_calls": 0,
+    "parity": true
+  },
+  {
+    "capability": "chitchat",
+    "state": "5xx",
+    "correct": true,
+    "meta": {
+      "capability": "chitchat",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "fast",
+    "fault_calls": 0,
+    "parity": true
+  },
+  {
+    "capability": "chitchat",
+    "state": "429",
+    "correct": true,
+    "meta": {
+      "capability": "chitchat",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "fast",
+    "fault_calls": 0,
+    "parity": true
+  },
+  {
+    "capability": "chitchat",
+    "state": "invalid_json",
+    "correct": true,
+    "meta": {
+      "capability": "chitchat",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "fast",
+    "fault_calls": 0,
+    "parity": true
+  },
+  {
+    "capability": "chitchat",
+    "state": "breaker_open",
+    "correct": true,
+    "meta": {
+      "capability": "chitchat",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "fast",
+    "fault_calls": 0,
+    "parity": true
+  },
+  {
+    "capability": "chitchat",
+    "state": "slow",
+    "correct": true,
+    "meta": {
+      "capability": "chitchat",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "fast",
+    "fault_calls": 0,
+    "parity": true
+  },
+  {
+    "capability": "chitchat",
+    "state": "partial",
+    "correct": true,
+    "meta": {
+      "capability": "chitchat",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "fast",
+    "fault_calls": 0,
+    "parity": true
+  },
+  {
+    "capability": "chitchat",
+    "state": "embedding_down",
+    "correct": true,
+    "meta": {
+      "capability": "chitchat",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "fast",
+    "fault_calls": 0,
+    "parity": true
+  },
+  {
+    "capability": "chitchat",
+    "state": "rerank_down",
+    "correct": true,
+    "meta": {
+      "capability": "chitchat",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "fast",
+    "fault_calls": 0,
+    "parity": true
+  },
+  {
+    "capability": "chitchat",
+    "state": "milvus_down",
+    "correct": true,
+    "meta": {
+      "capability": "chitchat",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "fast",
+    "fault_calls": 0,
+    "parity": true
+  },
+  {
+    "capability": "preference_update",
+    "state": "ok",
+    "correct": true,
+    "meta": {
+      "capability": "preference_update",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "preference_update",
+    "state": "timeout",
+    "correct": true,
+    "meta": {
+      "capability": "preference_update",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "preference_update",
+    "state": "5xx",
+    "correct": true,
+    "meta": {
+      "capability": "preference_update",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "preference_update",
+    "state": "429",
+    "correct": true,
+    "meta": {
+      "capability": "preference_update",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "preference_update",
+    "state": "invalid_json",
+    "correct": true,
+    "meta": {
+      "capability": "preference_update",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "preference_update",
+    "state": "breaker_open",
+    "correct": true,
+    "meta": {
+      "capability": "preference_update",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "preference_update",
+    "state": "slow",
+    "correct": true,
+    "meta": {
+      "capability": "preference_update",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "preference_update",
+    "state": "partial",
+    "correct": true,
+    "meta": {
+      "capability": "preference_update",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "preference_update",
+    "state": "embedding_down",
+    "correct": true,
+    "meta": {
+      "capability": "preference_update",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "preference_update",
+    "state": "rerank_down",
+    "correct": true,
+    "meta": {
+      "capability": "preference_update",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "preference_update",
+    "state": "milvus_down",
+    "correct": true,
+    "meta": {
+      "capability": "preference_update",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "out_of_scope",
+    "state": "ok",
+    "correct": true,
+    "meta": {
+      "capability": "out_of_scope",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "out_of_scope",
+    "state": "timeout",
+    "correct": true,
+    "meta": {
+      "capability": "out_of_scope",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "out_of_scope",
+    "state": "5xx",
+    "correct": true,
+    "meta": {
+      "capability": "out_of_scope",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "out_of_scope",
+    "state": "429",
+    "correct": true,
+    "meta": {
+      "capability": "out_of_scope",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "out_of_scope",
+    "state": "invalid_json",
+    "correct": true,
+    "meta": {
+      "capability": "out_of_scope",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "out_of_scope",
+    "state": "breaker_open",
+    "correct": true,
+    "meta": {
+      "capability": "out_of_scope",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "out_of_scope",
+    "state": "slow",
+    "correct": true,
+    "meta": {
+      "capability": "out_of_scope",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "rule",
+    "fault_calls": 2,
+    "parity": true
+  },
+  {
+    "capability": "out_of_scope",
+    "state": "partial",
+    "correct": true,
+    "meta": {
+      "capability": "out_of_scope",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "out_of_scope",
+    "state": "embedding_down",
+    "correct": true,
+    "meta": {
+      "capability": "out_of_scope",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "out_of_scope",
+    "state": "rerank_down",
+    "correct": true,
+    "meta": {
+      "capability": "out_of_scope",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "out_of_scope",
+    "state": "milvus_down",
+    "correct": true,
+    "meta": {
+      "capability": "out_of_scope",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "model",
+    "fault_calls": 1,
+    "parity": true
+  },
+  {
+    "capability": "unclear",
+    "state": "ok",
+    "correct": true,
+    "meta": {
+      "capability": "unclear",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": true,
+      "unsupported_in_fallback": true,
+      "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：matrix-request）",
+      "request_id": "matrix-request"
+    },
+    "path": "general_chat",
+    "fault_calls": 2,
+    "parity": null
+  },
+  {
+    "capability": "unclear",
+    "state": "timeout",
+    "correct": true,
+    "meta": {
+      "capability": "unclear",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": true,
+      "unsupported_in_fallback": true,
+      "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：matrix-request）",
+      "request_id": "matrix-request"
+    },
+    "path": "general_chat",
+    "fault_calls": 2,
+    "parity": null
+  },
+  {
+    "capability": "unclear",
+    "state": "5xx",
+    "correct": true,
+    "meta": {
+      "capability": "unclear",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": true,
+      "unsupported_in_fallback": true,
+      "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：matrix-request）",
+      "request_id": "matrix-request"
+    },
+    "path": "general_chat",
+    "fault_calls": 2,
+    "parity": null
+  },
+  {
+    "capability": "unclear",
+    "state": "429",
+    "correct": true,
+    "meta": {
+      "capability": "unclear",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": true,
+      "unsupported_in_fallback": true,
+      "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：matrix-request）",
+      "request_id": "matrix-request"
+    },
+    "path": "general_chat",
+    "fault_calls": 1,
+    "parity": null
+  },
+  {
+    "capability": "unclear",
+    "state": "invalid_json",
+    "correct": true,
+    "meta": {
+      "capability": "unclear",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": true,
+      "unsupported_in_fallback": true,
+      "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：matrix-request）",
+      "request_id": "matrix-request"
+    },
+    "path": "general_chat",
+    "fault_calls": 2,
+    "parity": null
+  },
+  {
+    "capability": "unclear",
+    "state": "breaker_open",
+    "correct": true,
+    "meta": {
+      "capability": "unclear",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": true,
+      "unsupported_in_fallback": true,
+      "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：matrix-request）",
+      "request_id": "matrix-request"
+    },
+    "path": "general_chat",
+    "fault_calls": 1,
+    "parity": null
+  },
+  {
+    "capability": "unclear",
+    "state": "slow",
+    "correct": true,
+    "meta": {
+      "capability": "unclear",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": true,
+      "unsupported_in_fallback": true,
+      "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：matrix-request）",
+      "request_id": "matrix-request"
+    },
+    "path": "general_chat",
+    "fault_calls": 2,
+    "parity": null
+  },
+  {
+    "capability": "unclear",
+    "state": "partial",
+    "correct": true,
+    "meta": {
+      "capability": "unclear",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": true,
+      "unsupported_in_fallback": true,
+      "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：matrix-request）",
+      "request_id": "matrix-request"
+    },
+    "path": "general_chat",
+    "fault_calls": 2,
+    "parity": null
+  },
+  {
+    "capability": "unclear",
+    "state": "embedding_down",
+    "correct": true,
+    "meta": {
+      "capability": "unclear",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": true,
+      "unsupported_in_fallback": true,
+      "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：matrix-request）",
+      "request_id": "matrix-request"
+    },
+    "path": "general_chat",
+    "fault_calls": 2,
+    "parity": null
+  },
+  {
+    "capability": "unclear",
+    "state": "rerank_down",
+    "correct": true,
+    "meta": {
+      "capability": "unclear",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": true,
+      "unsupported_in_fallback": true,
+      "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：matrix-request）",
+      "request_id": "matrix-request"
+    },
+    "path": "general_chat",
+    "fault_calls": 2,
+    "parity": null
+  },
+  {
+    "capability": "unclear",
+    "state": "milvus_down",
+    "correct": true,
+    "meta": {
+      "capability": "unclear",
+      "degraded": true,
+      "reason": "router_unavailable",
+      "quality_limited": true,
+      "unsupported_in_fallback": true,
+      "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：matrix-request）",
+      "request_id": "matrix-request"
+    },
+    "path": "general_chat",
+    "fault_calls": 2,
+    "parity": null
+  },
+  {
+    "capability": "recall_history",
+    "state": "ok",
+    "correct": true,
+    "parity": null,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "isolated_history_store"
+  },
+  {
+    "capability": "recall_history",
+    "state": "timeout",
+    "correct": true,
+    "parity": null,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "isolated_history_store"
+  },
+  {
+    "capability": "recall_history",
+    "state": "5xx",
+    "correct": true,
+    "parity": null,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "isolated_history_store"
+  },
+  {
+    "capability": "recall_history",
+    "state": "429",
+    "correct": true,
+    "parity": null,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "isolated_history_store"
+  },
+  {
+    "capability": "recall_history",
+    "state": "invalid_json",
+    "correct": true,
+    "parity": null,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "isolated_history_store"
+  },
+  {
+    "capability": "recall_history",
+    "state": "breaker_open",
+    "correct": true,
+    "parity": null,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "isolated_history_store"
+  },
+  {
+    "capability": "recall_history",
+    "state": "slow",
+    "correct": true,
+    "parity": null,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "isolated_history_store"
+  },
+  {
+    "capability": "recall_history",
+    "state": "partial",
+    "correct": true,
+    "parity": null,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "isolated_history_store"
+  },
+  {
+    "capability": "recall_history",
+    "state": "embedding_down",
+    "correct": true,
+    "parity": null,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": true,
+      "reason": "dependency_unavailable",
+      "quality_limited": true,
+      "unsupported_in_fallback": false,
+      "service_notice": "现在暂时无法完成这个请求，你可以告诉我具体想吃的菜名或手边的食材，我先帮你查。（请求编号：matrix-request）",
+      "request_id": "matrix-request"
+    },
+    "path": "isolated_history_store"
+  },
+  {
+    "capability": "recall_history",
+    "state": "rerank_down",
+    "correct": true,
+    "parity": null,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "isolated_history_store"
+  },
+  {
+    "capability": "recall_history",
+    "state": "milvus_down",
+    "correct": true,
+    "parity": null,
+    "meta": {
+      "capability": "follow_up",
+      "degraded": false,
+      "reason": null,
+      "quality_limited": false,
+      "unsupported_in_fallback": false,
+      "service_notice": "",
+      "request_id": "matrix-request"
+    },
+    "path": "isolated_history_store"
+  }
+]

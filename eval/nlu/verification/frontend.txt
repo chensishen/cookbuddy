@@ -1,0 +1,40 @@
+✔ inventory recommendations display a specific reason on every card (2.316333ms)
+✔ ingredient followups show the inventory comparison instead of dumping the source (0.579375ms)
+✔ image-only followups keep source paragraphs inside the audit, not the answer (0.450042ms)
+✔ emphasis, nested emphasis, inline code and links display without delimiters (1.496416ms)
+✔ steps retain order, quotes and tables have semantic containers (1.388833ms)
+✔ markdown wrapper is removed and prose comparisons are retained (0.111125ms)
+✔ HTML is literal and active links cannot be created (0.162708ms)
+✔ ingredient sublists keep their parent and quoted steps are rendered (0.127042ms)
+✔ historical chunk headings only appear at the start of a section (0.836833ms)
+✔ removing a historical heading leaves one continuous quote container (0.165084ms)
+✔ adjacent source chunks are joined without losing image line positions (0.287583ms)
+✔ source cards sort chunks and avoid reinserting headings between steps (0.5425ms)
+✔ image failure retries once then offers manual recovery without a broken icon (0.169667ms)
+✔ opening the HTML directly goes to the running local app (0.584667ms)
+✔ returning to a conversation keeps the reading paragraph after preceding content changes height (0.450042ms)
+✔ answer completion follows only when the user is still at the current turn (0.3455ms)
+✔ typed recipe steps keep the reviewed conditions and images inside the matching numbered item (0.644375ms)
+✔ source fallback keeps ordered steps and places every photo at its source line (0.155291ms)
+✔ historical duplicate source-step blocks merge and retain images belonging to either part (0.08575ms)
+✔ combining image and answer tools preserves reviewed text and image bindings in either order (0.197416ms)
+✔ failed historical answers never append unrelated recipe images (0.094541ms)
+✔ preference recommendations show matching reasons without fabricated inventory (0.057625ms)
+✔ rich recommendation cards contain an introduction, reason and ingredients without evidence clutter (0.061125ms)
+✔ inventory checks show direct titled sections without audit prose or decorative photos (0.118125ms)
+✔ material feasibility and absence questions hide execution while recommendations keep their trace (0.162709ms)
+✔ closed timeline avoids list rendering and ticks preserve existing DOM nodes (0.743959ms)
+✔ evidence is built only on first expansion and survives repeated toggles (0.332417ms)
+✔ history rendering yields to interaction and stops stale conversation work (0.731459ms)
+✔ LangChain original and images render as one source card with one image (0.224ms)
+✔ LangChain verified answer takes precedence over same-source original (0.083208ms)
+✔ source image markup cannot produce broken root links (0.0445ms)
+✔ SSE renders readable markdown and retains verified media across later tokens (4.348209ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 79.057

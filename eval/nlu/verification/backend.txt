@@ -1,0 +1,47 @@
+....Executing <Task pending name='Task-144' coro=<create_app.<locals>.chat.<locals>.execute() running at /Users/admin/Documents/ChatGPT/agent项目/src/api/chat_routes.py:113> wait_for=<Task pending name='Task-149' coro=<RunnableCallable.ainvoke() running at /opt/anaconda3/envs/py3.12.11/lib/python3.12/site-packages/langgraph/_internal/_runnable.py:452> cb=[Task.task_wakeup()] created at /opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/tasks.py:422> created at /opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/tasks.py:420> took 0.110 seconds
+.................{"request_id": "20bdd8ec6cdb46abb6b44bb2b2272bf9", "phase": "memory_enqueue", "outcome": "error"}
+.....Executing <Task finished name='Task-901' coro=<OnlineTests.test_TL24_all_seven_memory_modes_select_expected_tools() done, defined at /Users/admin/Documents/ChatGPT/agent项目/tests/agent/test_online.py:255> result=None created at /opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/runners.py:100> took 0.151 seconds
+....................................................................................................分类检索验收：breakfast / False
+....test: provider_or_planning_failure
+.test: scored
+..................................................................................bounded_plain: 1/1
+........................................................./opt/anaconda3/envs/py3.12.11/lib/python3.12/json/decoder.py:354: ResourceWarning: unclosed <socket.socket [closed] fd=16, family=2, type=1, proto=6>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/opt/anaconda3/envs/py3.12.11/lib/python3.12/json/decoder.py:354: ResourceWarning: unclosed <socket.socket [closed] fd=17, family=2, type=1, proto=6>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/opt/anaconda3/envs/py3.12.11/lib/python3.12/json/decoder.py:354: ResourceWarning: unclosed <socket.socket [closed] fd=18, family=2, type=1, proto=6>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/opt/anaconda3/envs/py3.12.11/lib/python3.12/json/decoder.py:354: ResourceWarning: unclosed <socket.socket [closed] fd=19, family=2, type=1, proto=6>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.....................独立调用评审：q / closed_book
+.............................................................................................................................................................Executing <Task finished name='Task-1868' coro=<ReportedRegressions.test_rejected_ordinal_with_noise() done, defined at /Users/admin/Documents/ChatGPT/agent项目/tests/test_nlu_regressions.py:60> result=None created at /opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/runners.py:100> took 0.151 seconds
+.Executing <Task finished name='Task-1873' coro=<ReportedRegressions.test_section_filler_keeps_same_evidence() done, defined at /Users/admin/Documents/ChatGPT/agent项目/tests/test_nlu_regressions.py:50> result=None created at /opt/anaconda3/envs/py3.12.11/lib/python3.12/asyncio/runners.py:100> took 0.213 seconds
+......................Judge未完成：ValueError
+PRD门槛：partial；明细：/Users/admin/Documents/ChatGPT/agent项目/run/acceptance.md
+............检索评测：failed
+验收报告：/private/var/folders/71/13txvqn51x38p9qbcjvs2h940000gn/T/tmpf6hnba8s/run/report.md
+...............................................................................................................................................................空气炸锅面包片：needs_review
+.......................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 825 tests in 179.973s
+
+OK
+问题：素菜甲和荤菜乙，我有鸡蛋。
+匹配菜名：['素菜甲']；合并候选：2
+1. 素菜甲 / 简介：0.500000
+2. 素菜甲 / 必备原料和工具：0.500000
+完整结果：/var/folders/71/13txvqn51x38p9qbcjvs2h940000gn/T/tmpv29n3c3v/search-results/20261026T115055279365Z-aa2c5409386146baaea63555667adb00.md
+问题：鸡蛋
+匹配菜名：[]；合并候选：2
+1. 素菜甲 / 必备原料和工具：0.500000
+2. 素菜甲 / 简介：0.500000
+完整结果：/var/folders/71/13txvqn51x38p9qbcjvs2h940000gn/T/tmpccqw91t4/search-results/20261026T115055281567Z-74c54cecc1b046959ae12d678303e422.md
+问题：鸡蛋
+匹配菜名：[]；合并候选：2
+1. 素菜甲 / 必备原料和工具：0.500000
+2. 素菜甲 / 简介：0.500000
+完整结果：/var/folders/71/13txvqn51x38p9qbcjvs2h940000gn/T/tmprendkiyo/search-results/20261026T115055285349Z-65346e495fca4d8d9fc7e80e971dbcc3.md

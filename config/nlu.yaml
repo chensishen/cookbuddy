@@ -1,0 +1,20 @@
+router:
+  model: ''  # Empty uses the configured provider model; no new credentials.
+  timeout_s: 30
+  retries: 0
+  confidence_threshold: 0.6
+  cache_ttl_s: 300
+fast_path: {enabled: true}
+fuzzy:
+  t_high: 0.88
+  t_mid: 0.65
+  # Dish titles need a stricter floor than sections or ingredients: a phonetic
+  # near-miss must not turn an unknown dish into a different recipe.
+  t_dish: 0.70
+  margin: 0.08
+  filler_words: [部分, 章节, 那一段, 那段, 一下, 一点, 看看, 只看, 的, 之, 吧, 呢, 啊, 哦, 请, 帮我, 我想, 我要]
+normalize: {nfkc: true, strip_trailing_noise: true, t2s: true}
+clarify: {max_questions_per_turn: 1, low_conf_threshold: 0.45}
+fallback:
+  rule_router: true
+  friendly_unknown_message: 没太理解你的意思，可以告诉我想做什么菜，或者手边有哪些食材吗？

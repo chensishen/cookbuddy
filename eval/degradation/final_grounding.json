@@ -1,0 +1,156 @@
+{
+  "scope": "verbatim evidence and citation metadata on dev RAG source documents; not generated semantic accuracy",
+  "records": [
+    {
+      "source": "data/HowToCook/dishes/breakfast/空气炸锅面包片.md",
+      "same_evidence": true,
+      "before_exact": {
+        "count": 5,
+        "all_exact": true
+      },
+      "after_exact": {
+        "count": 5,
+        "all_exact": true
+      },
+      "before_citations": {
+        "count": 5,
+        "correct": 5,
+        "rate": 1.0,
+        "scope": "仅核对菜名、章节、路径、范围及逐字摘录；语义支持另由独立评审检查"
+      },
+      "after_citations": {
+        "count": 5,
+        "correct": 5,
+        "rate": 1.0,
+        "scope": "仅核对菜名、章节、路径、范围及逐字摘录；语义支持另由独立评审检查"
+      }
+    },
+    {
+      "source": "data/HowToCook/dishes/breakfast/美式炒蛋.md",
+      "same_evidence": true,
+      "before_exact": {
+        "count": 5,
+        "all_exact": true
+      },
+      "after_exact": {
+        "count": 5,
+        "all_exact": true
+      },
+      "before_citations": {
+        "count": 5,
+        "correct": 5,
+        "rate": 1.0,
+        "scope": "仅核对菜名、章节、路径、范围及逐字摘录；语义支持另由独立评审检查"
+      },
+      "after_citations": {
+        "count": 5,
+        "correct": 5,
+        "rate": 1.0,
+        "scope": "仅核对菜名、章节、路径、范围及逐字摘录；语义支持另由独立评审检查"
+      }
+    },
+    {
+      "source": "data/HowToCook/dishes/breakfast/蒸水蛋.md",
+      "same_evidence": true,
+      "before_exact": {
+        "count": 5,
+        "all_exact": true
+      },
+      "after_exact": {
+        "count": 5,
+        "all_exact": true
+      },
+      "before_citations": {
+        "count": 5,
+        "correct": 5,
+        "rate": 1.0,
+        "scope": "仅核对菜名、章节、路径、范围及逐字摘录；语义支持另由独立评审检查"
+      },
+      "after_citations": {
+        "count": 5,
+        "correct": 5,
+        "rate": 1.0,
+        "scope": "仅核对菜名、章节、路径、范围及逐字摘录；语义支持另由独立评审检查"
+      }
+    },
+    {
+      "source": "data/HowToCook/dishes/condiment/糖醋汁.md",
+      "same_evidence": true,
+      "before_exact": {
+        "count": 5,
+        "all_exact": true
+      },
+      "after_exact": {
+        "count": 5,
+        "all_exact": true
+      },
+      "before_citations": {
+        "count": 5,
+        "correct": 5,
+        "rate": 1.0,
+        "scope": "仅核对菜名、章节、路径、范围及逐字摘录；语义支持另由独立评审检查"
+      },
+      "after_citations": {
+        "count": 5,
+        "correct": 5,
+        "rate": 1.0,
+        "scope": "仅核对菜名、章节、路径、范围及逐字摘录；语义支持另由独立评审检查"
+      }
+    },
+    {
+      "source": "data/HowToCook/dishes/vegetable_dish/西红柿炒鸡蛋.md",
+      "same_evidence": true,
+      "before_exact": {
+        "count": 5,
+        "all_exact": true
+      },
+      "after_exact": {
+        "count": 5,
+        "all_exact": true
+      },
+      "before_citations": {
+        "count": 5,
+        "correct": 5,
+        "rate": 1.0,
+        "scope": "仅核对菜名、章节、路径、范围及逐字摘录；语义支持另由独立评审检查"
+      },
+      "after_citations": {
+        "count": 5,
+        "correct": 5,
+        "rate": 1.0,
+        "scope": "仅核对菜名、章节、路径、范围及逐字摘录；语义支持另由独立评审检查"
+      }
+    },
+    {
+      "source": "data/HowToCook/dishes/vegetable_dish/酸辣土豆丝.md",
+      "same_evidence": true,
+      "before_exact": {
+        "count": 5,
+        "all_exact": true
+      },
+      "after_exact": {
+        "count": 5,
+        "all_exact": true
+      },
+      "before_citations": {
+        "count": 5,
+        "correct": 5,
+        "rate": 1.0,
+        "scope": "仅核对菜名、章节、路径、范围及逐字摘录；语义支持另由独立评审检查"
+      },
+      "after_citations": {
+        "count": 5,
+        "correct": 5,
+        "rate": 1.0,
+        "scope": "仅核对菜名、章节、路径、范围及逐字摘录；语义支持另由独立评审检查"
+      }
+    }
+  ],
+  "sources": 6,
+  "same_evidence": true,
+  "before_citation_accuracy": 1.0,
+  "before_exact_accuracy": 1.0,
+  "after_citation_accuracy": 1.0,
+  "after_exact_accuracy": 1.0,
+  "passed": true
+}

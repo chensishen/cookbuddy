@@ -1,0 +1,15 @@
+{"id":"R1-hard","turns":[{"user":"我不吃香菜","expected":[["avoid_ingredient","香菜","global","set"]],"decisions":["ADD"]}],"profile":[["avoid_ingredient","香菜","active"]]}
+{"id":"R2-session","turns":[{"user":"今天想吃辣的","expected":[["spice_level","3","session","set"]],"decisions":["SESSION_ONLY"]}],"profile":[]}
+{"id":"R3-update","turns":[{"user":"我不太能吃辣","expected":[["spice_level","1","global","set"]],"decisions":["ADD"]},{"user":"我现在能吃辣了，中辣可以","expected":[["spice_level","2","global","set"]],"decisions":["UPDATE"]}],"profile":[["spice_level","2","active"]]}
+{"id":"R4-revoke","turns":[{"user":"我不吃香菜","expected":[["avoid_ingredient","香菜","global","set"]],"decisions":["ADD"]},{"user":"香菜的事不用管了","expected":[["avoid_ingredient","香菜","global","revoke"]],"decisions":["ASK"]},{"user":"确认","confirmation":"yes","expected":[],"decisions":["UPDATE"]}],"profile":[]}
+{"id":"R5-retain","turns":[{"user":"我对花生过敏","expected":[["allergy","花生","global","set"]],"decisions":["ADD"]},{"user":"花生过敏不用提醒了","expected":[["allergy","花生","global","revoke"]],"decisions":["ASK"]},{"user":"保留","confirmation":"no","expected":[],"decisions":["NOOP"]}],"profile":[["allergy","花生","active"]]}
+{"id":"R6-duplicate","turns":[{"user":"我不吃香菜","expected":[["avoid_ingredient","香菜","global","set"]],"decisions":["ADD"]},{"user":"我不吃香菜","expected":[["avoid_ingredient","香菜","global","set"]],"decisions":["NOOP"]}],"profile":[["avoid_ingredient","香菜","active"]]}
+{"id":"R7-implicit","turns":[{"user":"推荐麻辣菜","expected":[["spice_level","3","global","set"]],"decisions":["ADD"],"session":"a"},{"user":"推荐麻辣菜","expected":[["spice_level","3","global","set"]],"decisions":["NOOP"],"session":"a"},{"user":"推荐麻辣菜","expected":[["spice_level","3","global","set"]],"decisions":["UPDATE"],"session":"b"}],"profile":[["spice_level","3","active"]]}
+{"id":"R8-temporary","turns":[{"user":"最近想少吃油","expected":[["flavor","少油","temporary","set"]],"decisions":["ADD"]}],"profile":[["flavor","少油","active"]]}
+{"id":"R9-multi","turns":[{"user":"我不吃香菜和葱","expected":[["avoid_ingredient","香菜","global","set"],["avoid_ingredient","葱","global","set"]],"decisions":["ADD","ADD"]}],"profile":[["avoid_ingredient","香菜","active"],["avoid_ingredient","葱","active"]]}
+{"id":"R12-assistant","turns":[{"role":"assistant","user":"我不吃辣","expected":[],"decisions":[]}],"profile":[]}
+{"id":"R12-document","turns":[{"role":"tool","user":"我对花生过敏","expected":[],"decisions":[]}],"profile":[]}
+{"id":"R12-quote","turns":[{"user":"助手说“我不吃辣”","expected":[],"decisions":[]}],"profile":[]}
+{"id":"inventory-ttl","turns":[{"user":"我有鸡肉和土豆","expected":[["inventory","鸡肉","temporary","set"],["inventory","土豆","temporary","set"]],"decisions":["ADD","ADD"]}],"profile":[["inventory","鸡肉","active"],["inventory","土豆","active"]]}
+{"id":"equipment","turns":[{"user":"我家没有烤箱","expected":[["equipment","无烤箱","global","set"]],"decisions":["ADD"]}],"profile":[["equipment","无烤箱","active"]]}
+{"id":"scope-explicit","turns":[{"user":"我一直喜欢清淡","expected":[["flavor","清淡","global","set"]],"decisions":["ADD"]},{"user":"这次想吃酸甜的","expected":[["flavor","酸甜","session","set"]],"decisions":["SESSION_ONLY"]}],"profile":[["flavor","清淡","active"]]}

@@ -1,0 +1,99 @@
+{
+  "window": "2026-10-28 00:40–00:52 Asia/Shanghai",
+  "counts_unique_api_events": {
+    "timeout": 6,
+    "ok": 6
+  },
+  "events": [
+    {
+      "time": "2026-10-28T00:48:24.748050+08:00",
+      "phase": "nlu_understanding_api",
+      "seconds": 5.114771417000156,
+      "outcome": "timeout",
+      "http_code": null
+    },
+    {
+      "time": "2026-10-28T00:48:29.771465+08:00",
+      "phase": "nlu_understanding_api",
+      "seconds": 5.010753083006421,
+      "outcome": "timeout",
+      "http_code": null
+    },
+    {
+      "time": "2026-10-28T00:49:02.340923+08:00",
+      "phase": "nlu_understanding_api",
+      "seconds": 5.08547274999728,
+      "outcome": "timeout",
+      "http_code": null
+    },
+    {
+      "time": "2026-10-28T00:49:07.369172+08:00",
+      "phase": "nlu_understanding_api",
+      "seconds": 5.011318917000608,
+      "outcome": "timeout",
+      "http_code": null
+    },
+    {
+      "time": "2026-10-28T00:49:12.142161+08:00",
+      "phase": "memory_extract_v2_api",
+      "seconds": 39.926102416000504,
+      "outcome": "timeout",
+      "http_code": null
+    },
+    {
+      "time": "2026-10-28T00:49:48.725591+08:00",
+      "phase": "memory_extract_v2_api",
+      "seconds": 5.074784165997698,
+      "outcome": "ok",
+      "http_code": null
+    },
+    {
+      "time": "2026-10-28T00:49:50.767541+08:00",
+      "phase": "nlu_understanding_api",
+      "seconds": 2.028456500003813,
+      "outcome": "timeout",
+      "http_code": null
+    },
+    {
+      "time": "2026-10-28T00:49:51.895746+08:00",
+      "phase": "memory_extract_v2_api",
+      "seconds": 1.0642099579999922,
+      "outcome": "ok",
+      "http_code": null
+    },
+    {
+      "time": "2026-10-28T00:49:52.828727+08:00",
+      "phase": "nlu_understanding_api",
+      "seconds": 2.0486069999969914,
+      "outcome": "ok",
+      "http_code": null
+    },
+    {
+      "time": "2026-10-28T00:49:54.876760+08:00",
+      "phase": "memory_extract_v2_api",
+      "seconds": 0.8719201249987236,
+      "outcome": "ok",
+      "http_code": null
+    },
+    {
+      "time": "2026-10-28T00:49:58.256971+08:00",
+      "phase": "memory_extract_v2_api",
+      "seconds": 1.2541612909990363,
+      "outcome": "ok",
+      "http_code": null
+    },
+    {
+      "time": "2026-10-28T00:50:01.989324+08:00",
+      "phase": "memory_extract_v2_api",
+      "seconds": 1.582644000001892,
+      "outcome": "ok",
+      "http_code": null
+    }
+  ],
+  "router_success_latency": {
+    "n": 889,
+    "p50": 1.9455933749995893,
+    "p95": 2.777900542001589,
+    "p99": 3.3886716249999154
+  }
+}

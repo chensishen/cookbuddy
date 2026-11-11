@@ -1,0 +1,3672 @@
+{
+  "method": "offline scripted primary oracle; real fallback and local corpus planner; slow is injected timeout, not measured provider latency",
+  "routes": [
+    {
+      "id": "meal-1",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 2652.868
+    },
+    {
+      "id": "meal-1",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 226.383
+    },
+    {
+      "id": "meal-1",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 374.428
+    },
+    {
+      "id": "meal-1",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 217.682
+    },
+    {
+      "id": "meal-1",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 182.634
+    },
+    {
+      "id": "meal-1",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 295.035
+    },
+    {
+      "id": "meal-1",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 373.149
+    },
+    {
+      "id": "meal-1",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 25.811
+    },
+    {
+      "id": "meal-2",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 20.42
+    },
+    {
+      "id": "meal-2",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 322.802
+    },
+    {
+      "id": "meal-2",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 190.239
+    },
+    {
+      "id": "meal-2",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 186.443
+    },
+    {
+      "id": "meal-2",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 155.125
+    },
+    {
+      "id": "meal-2",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 197.434
+    },
+    {
+      "id": "meal-2",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 280.426
+    },
+    {
+      "id": "meal-2",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 35.855
+    },
+    {
+      "id": "meal-3",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 19.925
+    },
+    {
+      "id": "meal-3",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 234.479
+    },
+    {
+      "id": "meal-3",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 192.011
+    },
+    {
+      "id": "meal-3",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 187.134
+    },
+    {
+      "id": "meal-3",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 196.899
+    },
+    {
+      "id": "meal-3",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 222.327
+    },
+    {
+      "id": "meal-3",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 214.832
+    },
+    {
+      "id": "meal-3",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 28.104
+    },
+    {
+      "id": "meal-4",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 23.764
+    },
+    {
+      "id": "meal-4",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 242.456
+    },
+    {
+      "id": "meal-4",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 250.886
+    },
+    {
+      "id": "meal-4",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 322.193
+    },
+    {
+      "id": "meal-4",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 227.362
+    },
+    {
+      "id": "meal-4",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 381.682
+    },
+    {
+      "id": "meal-4",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 204.953
+    },
+    {
+      "id": "meal-4",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 32.37
+    },
+    {
+      "id": "meal-5",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 22.338
+    },
+    {
+      "id": "meal-5",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 213.096
+    },
+    {
+      "id": "meal-5",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 217.967
+    },
+    {
+      "id": "meal-5",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 581.979
+    },
+    {
+      "id": "meal-5",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 418.304
+    },
+    {
+      "id": "meal-5",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 448.217
+    },
+    {
+      "id": "meal-5",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 342.763
+    },
+    {
+      "id": "meal-5",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 42.105
+    },
+    {
+      "id": "meal-6",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 65.431
+    },
+    {
+      "id": "meal-6",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 211.053
+    },
+    {
+      "id": "meal-6",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 166.546
+    },
+    {
+      "id": "meal-6",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 165.13
+    },
+    {
+      "id": "meal-6",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 204.134
+    },
+    {
+      "id": "meal-6",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 201.561
+    },
+    {
+      "id": "meal-6",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 248.332
+    },
+    {
+      "id": "meal-6",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 19.433
+    },
+    {
+      "id": "meal-7",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 19.048
+    },
+    {
+      "id": "meal-7",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 183.285
+    },
+    {
+      "id": "meal-7",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 275.865
+    },
+    {
+      "id": "meal-7",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 196.705
+    },
+    {
+      "id": "meal-7",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 390.423
+    },
+    {
+      "id": "meal-7",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 502.322
+    },
+    {
+      "id": "meal-7",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 684.858
+    },
+    {
+      "id": "meal-7",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 26.174
+    },
+    {
+      "id": "meal-8",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 23.236
+    },
+    {
+      "id": "meal-8",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 256.143
+    },
+    {
+      "id": "meal-8",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 256.801
+    },
+    {
+      "id": "meal-8",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 218.082
+    },
+    {
+      "id": "meal-8",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 217.226
+    },
+    {
+      "id": "meal-8",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 177.622
+    },
+    {
+      "id": "meal-8",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 186.641
+    },
+    {
+      "id": "meal-8",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 22.443
+    },
+    {
+      "id": "meal-9",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 26.658
+    },
+    {
+      "id": "meal-9",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 198.392
+    },
+    {
+      "id": "meal-9",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 399.907
+    },
+    {
+      "id": "meal-9",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 257.897
+    },
+    {
+      "id": "meal-9",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 414.153
+    },
+    {
+      "id": "meal-9",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 199.118
+    },
+    {
+      "id": "meal-9",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 283.908
+    },
+    {
+      "id": "meal-9",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 26.53
+    },
+    {
+      "id": "meal-10",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 159.188
+    },
+    {
+      "id": "meal-10",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 365.716
+    },
+    {
+      "id": "meal-10",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 276.557
+    },
+    {
+      "id": "meal-10",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 406.492
+    },
+    {
+      "id": "meal-10",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 445.923
+    },
+    {
+      "id": "meal-10",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 365.906
+    },
+    {
+      "id": "meal-10",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 222.655
+    },
+    {
+      "id": "meal-10",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 28.099
+    },
+    {
+      "id": "meal-11",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 22.574
+    },
+    {
+      "id": "meal-11",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 360.942
+    },
+    {
+      "id": "meal-11",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 687.909
+    },
+    {
+      "id": "meal-11",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 527.143
+    },
+    {
+      "id": "meal-11",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 471.431
+    },
+    {
+      "id": "meal-11",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 181.732
+    },
+    {
+      "id": "meal-11",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 537.009
+    },
+    {
+      "id": "meal-11",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 67.66
+    },
+    {
+      "id": "meal-12",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 45.002
+    },
+    {
+      "id": "meal-12",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 268.049
+    },
+    {
+      "id": "meal-12",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 213.534
+    },
+    {
+      "id": "meal-12",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 381.167
+    },
+    {
+      "id": "meal-12",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 370.667
+    },
+    {
+      "id": "meal-12",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 265.608
+    },
+    {
+      "id": "meal-12",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 299.793
+    },
+    {
+      "id": "meal-12",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "lunch",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 22.951
+    },
+    {
+      "id": "meal-13",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 23.915
+    },
+    {
+      "id": "meal-13",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 255.843
+    },
+    {
+      "id": "meal-13",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 628.653
+    },
+    {
+      "id": "meal-13",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 282.919
+    },
+    {
+      "id": "meal-13",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 364.034
+    },
+    {
+      "id": "meal-13",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 236.19
+    },
+    {
+      "id": "meal-13",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 387.669
+    },
+    {
+      "id": "meal-13",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 44.745
+    },
+    {
+      "id": "meal-14",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 24.919
+    },
+    {
+      "id": "meal-14",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 314.312
+    },
+    {
+      "id": "meal-14",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 353.936
+    },
+    {
+      "id": "meal-14",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 527.394
+    },
+    {
+      "id": "meal-14",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 829.442
+    },
+    {
+      "id": "meal-14",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 406.613
+    },
+    {
+      "id": "meal-14",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 296.059
+    },
+    {
+      "id": "meal-14",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 61.941
+    },
+    {
+      "id": "meal-15",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 23.432
+    },
+    {
+      "id": "meal-15",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 303.626
+    },
+    {
+      "id": "meal-15",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 262.079
+    },
+    {
+      "id": "meal-15",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 529.622
+    },
+    {
+      "id": "meal-15",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 371.665
+    },
+    {
+      "id": "meal-15",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 357.76
+    },
+    {
+      "id": "meal-15",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 241.491
+    },
+    {
+      "id": "meal-15",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 30.49
+    },
+    {
+      "id": "meal-16",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 32.519
+    },
+    {
+      "id": "meal-16",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 302.931
+    },
+    {
+      "id": "meal-16",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 168.241
+    },
+    {
+      "id": "meal-16",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 199.404
+    },
+    {
+      "id": "meal-16",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 216.52
+    },
+    {
+      "id": "meal-16",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 225.048
+    },
+    {
+      "id": "meal-16",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 200.62
+    },
+    {
+      "id": "meal-16",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 19.905
+    },
+    {
+      "id": "meal-17",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 32.895
+    },
+    {
+      "id": "meal-17",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 203.621
+    },
+    {
+      "id": "meal-17",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 176.487
+    },
+    {
+      "id": "meal-17",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 216.693
+    },
+    {
+      "id": "meal-17",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 186.131
+    },
+    {
+      "id": "meal-17",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 170.65
+    },
+    {
+      "id": "meal-17",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 294.071
+    },
+    {
+      "id": "meal-17",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "dinner",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 18.236
+    },
+    {
+      "id": "meal-18",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 17.475
+    },
+    {
+      "id": "meal-18",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 166.625
+    },
+    {
+      "id": "meal-18",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 200.762
+    },
+    {
+      "id": "meal-18",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 182.456
+    },
+    {
+      "id": "meal-18",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 178.44
+    },
+    {
+      "id": "meal-18",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 183.176
+    },
+    {
+      "id": "meal-18",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 225.668
+    },
+    {
+      "id": "meal-18",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 26.996
+    },
+    {
+      "id": "meal-19",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 18.248
+    },
+    {
+      "id": "meal-19",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 320.685
+    },
+    {
+      "id": "meal-19",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 229.744
+    },
+    {
+      "id": "meal-19",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 284.292
+    },
+    {
+      "id": "meal-19",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 266.932
+    },
+    {
+      "id": "meal-19",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 245.649
+    },
+    {
+      "id": "meal-19",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 238.517
+    },
+    {
+      "id": "meal-19",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "snack_late",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 45.755
+    },
+    {
+      "id": "noise-19",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 299.956
+    },
+    {
+      "id": "noise-19",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 649.722
+    },
+    {
+      "id": "noise-19",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 484.41
+    },
+    {
+      "id": "noise-19",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 322.26
+    },
+    {
+      "id": "noise-19",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 412.099
+    },
+    {
+      "id": "noise-19",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 423.431
+    },
+    {
+      "id": "noise-19",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 332.53
+    },
+    {
+      "id": "noise-19",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 452.083
+    },
+    {
+      "id": "noise-20",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 241.174
+    },
+    {
+      "id": "noise-20",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 527.281
+    },
+    {
+      "id": "noise-20",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 427.348
+    },
+    {
+      "id": "noise-20",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 382.76
+    },
+    {
+      "id": "noise-20",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 580.573
+    },
+    {
+      "id": "noise-20",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 636.509
+    },
+    {
+      "id": "noise-20",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 436.576
+    },
+    {
+      "id": "noise-20",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 246.182
+    },
+    {
+      "id": "noise-21",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 270.452
+    },
+    {
+      "id": "noise-21",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 571.934
+    },
+    {
+      "id": "noise-21",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 569.755
+    },
+    {
+      "id": "noise-21",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 589.654
+    },
+    {
+      "id": "noise-21",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 643.166
+    },
+    {
+      "id": "noise-21",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 703.651
+    },
+    {
+      "id": "noise-21",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 618.859
+    },
+    {
+      "id": "noise-21",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 249.898
+    },
+    {
+      "id": "noise-22",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 218.322
+    },
+    {
+      "id": "noise-22",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 301.383
+    },
+    {
+      "id": "noise-22",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 318.345
+    },
+    {
+      "id": "noise-22",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 447.935
+    },
+    {
+      "id": "noise-22",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 329.968
+    },
+    {
+      "id": "noise-22",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 436.025
+    },
+    {
+      "id": "noise-22",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 363.564
+    },
+    {
+      "id": "noise-22",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "breakfast",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 214.062
+    },
+    {
+      "id": "unspecified",
+      "fault": "ok",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "unspecified",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 167.186
+    },
+    {
+      "id": "unspecified",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "unspecified",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 301.648
+    },
+    {
+      "id": "unspecified",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "unspecified",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 450.656
+    },
+    {
+      "id": "unspecified",
+      "fault": "429",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "unspecified",
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 633.676
+    },
+    {
+      "id": "unspecified",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "unspecified",
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 838.934
+    },
+    {
+      "id": "unspecified",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "unspecified",
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 727.257
+    },
+    {
+      "id": "unspecified",
+      "fault": "slow",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "unspecified",
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 415.319
+    },
+    {
+      "id": "unspecified",
+      "fault": "partial",
+      "correct": true,
+      "intent": "meal_plan",
+      "meal_type": "unspecified",
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 230.669
+    },
+    {
+      "id": "inventory",
+      "fault": "ok",
+      "correct": true,
+      "intent": "ingredient_recommend",
+      "meal_type": null,
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 637.891
+    },
+    {
+      "id": "inventory",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "ingredient_recommend",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 600.72
+    },
+    {
+      "id": "inventory",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "ingredient_recommend",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 529.77
+    },
+    {
+      "id": "inventory",
+      "fault": "429",
+      "correct": true,
+      "intent": "ingredient_recommend",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 413.211
+    },
+    {
+      "id": "inventory",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "ingredient_recommend",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 479.171
+    },
+    {
+      "id": "inventory",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "ingredient_recommend",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 428.653
+    },
+    {
+      "id": "inventory",
+      "fault": "slow",
+      "correct": true,
+      "intent": "ingredient_recommend",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 447.441
+    },
+    {
+      "id": "inventory",
+      "fault": "partial",
+      "correct": true,
+      "intent": "ingredient_recommend",
+      "meal_type": null,
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 478.737
+    },
+    {
+      "id": "recipe",
+      "fault": "ok",
+      "correct": true,
+      "intent": "recipe_lookup",
+      "meal_type": null,
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 88.634
+    },
+    {
+      "id": "recipe",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "recipe_lookup",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 45.094
+    },
+    {
+      "id": "recipe",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "recipe_lookup",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 34.029
+    },
+    {
+      "id": "recipe",
+      "fault": "429",
+      "correct": true,
+      "intent": "recipe_lookup",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 38.897
+    },
+    {
+      "id": "recipe",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "recipe_lookup",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 60.569
+    },
+    {
+      "id": "recipe",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "recipe_lookup",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 53.508
+    },
+    {
+      "id": "recipe",
+      "fault": "slow",
+      "correct": true,
+      "intent": "recipe_lookup",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 52.522
+    },
+    {
+      "id": "recipe",
+      "fault": "partial",
+      "correct": true,
+      "intent": "recipe_lookup",
+      "meal_type": null,
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 60.553
+    },
+    {
+      "id": "section",
+      "fault": "ok",
+      "correct": true,
+      "intent": "recipe_section",
+      "meal_type": null,
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 58.074
+    },
+    {
+      "id": "section",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "recipe_section",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 49.169
+    },
+    {
+      "id": "section",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "recipe_section",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 61.9
+    },
+    {
+      "id": "section",
+      "fault": "429",
+      "correct": true,
+      "intent": "recipe_section",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 36.536
+    },
+    {
+      "id": "section",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "recipe_section",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 49.717
+    },
+    {
+      "id": "section",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "recipe_section",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 77.687
+    },
+    {
+      "id": "section",
+      "fault": "slow",
+      "correct": true,
+      "intent": "recipe_section",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 53.487
+    },
+    {
+      "id": "section",
+      "fault": "partial",
+      "correct": true,
+      "intent": "recipe_section",
+      "meal_type": null,
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 33.654
+    },
+    {
+      "id": "identity",
+      "fault": "ok",
+      "correct": true,
+      "intent": "identity_capability",
+      "meal_type": null,
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 195.118
+    },
+    {
+      "id": "identity",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "identity_capability",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 319.631
+    },
+    {
+      "id": "identity",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "identity_capability",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 317.936
+    },
+    {
+      "id": "identity",
+      "fault": "429",
+      "correct": true,
+      "intent": "identity_capability",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 334.074
+    },
+    {
+      "id": "identity",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "identity_capability",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 470.819
+    },
+    {
+      "id": "identity",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "identity_capability",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 432.458
+    },
+    {
+      "id": "identity",
+      "fault": "slow",
+      "correct": true,
+      "intent": "identity_capability",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 392.989
+    },
+    {
+      "id": "identity",
+      "fault": "partial",
+      "correct": true,
+      "intent": "identity_capability",
+      "meal_type": null,
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 239.963
+    },
+    {
+      "id": "greeting",
+      "fault": "ok",
+      "correct": true,
+      "intent": "chitchat",
+      "meal_type": null,
+      "path": "fast",
+      "errors": [],
+      "elapsed_ms": 960.67
+    },
+    {
+      "id": "greeting",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "chitchat",
+      "meal_type": null,
+      "path": "fast",
+      "errors": [],
+      "elapsed_ms": 1236.775
+    },
+    {
+      "id": "greeting",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "chitchat",
+      "meal_type": null,
+      "path": "fast",
+      "errors": [],
+      "elapsed_ms": 953.93
+    },
+    {
+      "id": "greeting",
+      "fault": "429",
+      "correct": true,
+      "intent": "chitchat",
+      "meal_type": null,
+      "path": "fast",
+      "errors": [],
+      "elapsed_ms": 1293.016
+    },
+    {
+      "id": "greeting",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "chitchat",
+      "meal_type": null,
+      "path": "fast",
+      "errors": [],
+      "elapsed_ms": 840.22
+    },
+    {
+      "id": "greeting",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "chitchat",
+      "meal_type": null,
+      "path": "fast",
+      "errors": [],
+      "elapsed_ms": 881.239
+    },
+    {
+      "id": "greeting",
+      "fault": "slow",
+      "correct": true,
+      "intent": "chitchat",
+      "meal_type": null,
+      "path": "fast",
+      "errors": [],
+      "elapsed_ms": 2610.07
+    },
+    {
+      "id": "greeting",
+      "fault": "partial",
+      "correct": true,
+      "intent": "chitchat",
+      "meal_type": null,
+      "path": "fast",
+      "errors": [],
+      "elapsed_ms": 5126.412
+    },
+    {
+      "id": "remember",
+      "fault": "ok",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 956.873
+    },
+    {
+      "id": "remember",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 1392.439
+    },
+    {
+      "id": "remember",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 1241.056
+    },
+    {
+      "id": "remember",
+      "fault": "429",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 1003.213
+    },
+    {
+      "id": "remember",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 1815.754
+    },
+    {
+      "id": "remember",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 701.364
+    },
+    {
+      "id": "remember",
+      "fault": "slow",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 530.893
+    },
+    {
+      "id": "remember",
+      "fault": "partial",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 197.845
+    },
+    {
+      "id": "forget",
+      "fault": "ok",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 209.696
+    },
+    {
+      "id": "forget",
+      "fault": "timeout",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 633.779
+    },
+    {
+      "id": "forget",
+      "fault": "5xx",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 491.565
+    },
+    {
+      "id": "forget",
+      "fault": "429",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "provider_rate_limited"
+      ],
+      "elapsed_ms": 490.576
+    },
+    {
+      "id": "forget",
+      "fault": "invalid_json",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "model_unavailable",
+        "model_unavailable"
+      ],
+      "elapsed_ms": 594.146
+    },
+    {
+      "id": "forget",
+      "fault": "breaker_open",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "circuit_open"
+      ],
+      "elapsed_ms": 652.756
+    },
+    {
+      "id": "forget",
+      "fault": "slow",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "rule",
+      "errors": [
+        "timeout",
+        "timeout"
+      ],
+      "elapsed_ms": 452.141
+    },
+    {
+      "id": "forget",
+      "fault": "partial",
+      "correct": true,
+      "intent": "preference_update",
+      "meal_type": null,
+      "path": "model",
+      "errors": [],
+      "elapsed_ms": 264.842
+    }
+  ],
+  "menus": [
+    {
+      "id": "breakfast-1-15",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/breakfast/微波炉荷包蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/皮蛋豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-1-25",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-1-45",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-1-60",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-1-90",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-2-15",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/breakfast/微波炉荷包蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/皮蛋豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-2-25",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-2-45",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-2-60",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-2-90",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-4-15",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/breakfast/微波炉荷包蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/皮蛋豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-4-25",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-4-45",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-4-60",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "breakfast-4-90",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "breakfast",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "lunch-1-15",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "lunch-1-25",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "lunch-1-45",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "lunch-1-60",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "lunch-1-90",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "lunch-2-15",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "lunch-2-25",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/皮蛋豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md"
+      ]
+    },
+    {
+      "id": "lunch-2-45",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md"
+      ]
+    },
+    {
+      "id": "lunch-2-60",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md"
+      ]
+    },
+    {
+      "id": "lunch-2-90",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md"
+      ]
+    },
+    {
+      "id": "lunch-4-15",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md",
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md"
+      ]
+    },
+    {
+      "id": "lunch-4-25",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "lunch-4-45",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 4,
+      "sources": [
+        "data/HowToCook/dishes/aquatic/干煎阿根廷红虾/干煎阿根廷红虾.md",
+        "data/HowToCook/dishes/vegetable_dish/皮蛋豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md",
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md"
+      ]
+    },
+    {
+      "id": "lunch-4-60",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 4,
+      "sources": [
+        "data/HowToCook/dishes/aquatic/干煎阿根廷红虾/干煎阿根廷红虾.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md",
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md"
+      ]
+    },
+    {
+      "id": "lunch-4-90",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "lunch",
+      "count": 4,
+      "sources": [
+        "data/HowToCook/dishes/aquatic/干煎阿根廷红虾/干煎阿根廷红虾.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md",
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md"
+      ]
+    },
+    {
+      "id": "dinner-1-15",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "dinner-1-25",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "dinner-1-45",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "dinner-1-60",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "dinner-1-90",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "dinner-2-15",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "dinner-2-25",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/皮蛋豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md"
+      ]
+    },
+    {
+      "id": "dinner-2-45",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md"
+      ]
+    },
+    {
+      "id": "dinner-2-60",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md"
+      ]
+    },
+    {
+      "id": "dinner-2-90",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md"
+      ]
+    },
+    {
+      "id": "dinner-4-15",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md",
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md"
+      ]
+    },
+    {
+      "id": "dinner-4-25",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 3,
+      "sources": [
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/vegetable_dish/鸡蛋花/鸡蛋花.md"
+      ]
+    },
+    {
+      "id": "dinner-4-45",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 4,
+      "sources": [
+        "data/HowToCook/dishes/aquatic/干煎阿根廷红虾/干煎阿根廷红虾.md",
+        "data/HowToCook/dishes/vegetable_dish/皮蛋豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md",
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md"
+      ]
+    },
+    {
+      "id": "dinner-4-60",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 4,
+      "sources": [
+        "data/HowToCook/dishes/aquatic/干煎阿根廷红虾/干煎阿根廷红虾.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md",
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md"
+      ]
+    },
+    {
+      "id": "dinner-4-90",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "dinner",
+      "count": 4,
+      "sources": [
+        "data/HowToCook/dishes/aquatic/干煎阿根廷红虾/干煎阿根廷红虾.md",
+        "data/HowToCook/dishes/vegetable_dish/凉拌豆腐.md",
+        "data/HowToCook/dishes/soup/金针菇汤.md",
+        "data/HowToCook/dishes/meat_dish/蒜苔炒肉末.md"
+      ]
+    },
+    {
+      "id": "snack_late-1-15",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-1-25",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-1-45",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-1-60",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-1-90",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-2-15",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-2-25",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-2-45",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-2-60",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-2-90",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-4-15",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-4-25",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-4-45",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-4-60",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    },
+    {
+      "id": "snack_late-4-90",
+      "correct": true,
+      "status": "verified",
+      "meal_type": "snack_late",
+      "count": 2,
+      "sources": [
+        "data/HowToCook/dishes/staple/煮泡面加蛋.md",
+        "data/HowToCook/dishes/drink/牛油果拉西.md"
+      ]
+    }
+  ],
+  "metrics": {
+    "route_correct": 248,
+    "route_total": 248,
+    "fallback_correct": 186,
+    "fallback_total": 186,
+    "meal_type_correct": 60,
+    "meal_total": 60
+  }
+}

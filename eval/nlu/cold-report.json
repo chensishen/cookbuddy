@@ -1,0 +1,6992 @@
+{
+  "scope": "live model routing",
+  "cases": 168,
+  "intent_accuracy": 1.0,
+  "slot_f1": 0.9545454545454546,
+  "false_block_rate": 0.0,
+  "unnecessary_clarification_rate": 0.0,
+  "clarification_recall": 1.0,
+  "retrieval_accuracy": 1.0,
+  "perturbation_stability": 1.0,
+  "by_category": {
+    "chitchat": 1.0,
+    "constraint_refine": 1.0,
+    "identity_capability": 1.0,
+    "ingredient_recommend": 1.0,
+    "out_of_scope": 1.0,
+    "recipe_lookup": 1.0,
+    "recipe_section": 1.0
+  },
+  "paths": {
+    "cache": 105,
+    "fast": 4,
+    "model": 59
+  },
+  "usage": {
+    "model_calls": 61,
+    "prompt_tokens": 41612,
+    "completion_tokens": 7045
+  },
+  "p50_ms": 3.911937001248589,
+  "p95_ms": 2099.9356669999543,
+  "records": [
+    {
+      "id": "nlu-000-0",
+      "base_id": "nlu-000",
+      "category": "identity_capability",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3162.918250003713,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 642,
+        "completion_tokens": 102
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-036-0",
+      "base_id": "nlu-036",
+      "category": "out_of_scope",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1709.1629999995348,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 646,
+        "completion_tokens": 102
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-039-3",
+      "base_id": "nlu-039",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 5
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 5
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 1810.462124994956,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 736,
+        "completion_tokens": 124
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-009-0",
+      "base_id": "nlu-009",
+      "category": "chitchat",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1575.9159169974737,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 642,
+        "completion_tokens": 101
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-029-3",
+      "base_id": "nlu-029",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "1。1"
+        ]
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1760.1870420039631,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 742,
+        "completion_tokens": 146
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-012-3",
+      "base_id": "nlu-012",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1824.6727500009001,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 644,
+        "completion_tokens": 101
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-032-1",
+      "base_id": "nlu-032",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2230.993832999957,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 739,
+        "completion_tokens": 147
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-034-1",
+      "base_id": "nlu-034",
+      "category": "out_of_scope",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1906.0427080039517,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 649,
+        "completion_tokens": 105
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-011-0",
+      "base_id": "nlu-011",
+      "category": "chitchat",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1934.385917003965,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 644,
+        "completion_tokens": 101
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-037-3",
+      "base_id": "nlu-037",
+      "category": "out_of_scope",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1887.4355419975473,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 670,
+        "completion_tokens": 102
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-011-2",
+      "base_id": "nlu-011",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 4.1773749981075525,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-026-2",
+      "base_id": "nlu-026",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "西红柿炒鸡蛋",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "西红柿炒鸡蛋"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2188.931499993487,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 654,
+        "completion_tokens": 121
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-015-2",
+      "base_id": "nlu-015",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1614.559958994505,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 646,
+        "completion_tokens": 101
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-019-3",
+      "base_id": "nlu-019",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1714.5341249997728,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 735,
+        "completion_tokens": 113
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-017-3",
+      "base_id": "nlu-017",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2047.0434169983491,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 737,
+        "completion_tokens": 114
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-041-0",
+      "base_id": "nlu-041",
+      "category": "recipe_lookup",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "宇宙能量饼",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "宇宙能量饼"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 4037.7022909960942,
+      "path": "model",
+      "usage": {
+        "model_calls": 2,
+        "prompt_tokens": 1300,
+        "completion_tokens": 252
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-033-1",
+      "base_id": "nlu-033",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "1！😊"
+        ]
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1812.1181669994257,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 749,
+        "completion_tokens": 144
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-002-1",
+      "base_id": "nlu-002",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1795.5616660037776,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 647,
+        "completion_tokens": 106
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-023-1",
+      "base_id": "nlu-023",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1927.7857090055477,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 740,
+        "completion_tokens": 118
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-010-2",
+      "base_id": "nlu-010",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1652.2860409968416,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 646,
+        "completion_tokens": 101
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-038-1",
+      "base_id": "nlu-038",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "",
+        "section": "酵头制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头制作"
+      },
+      "slot_tp": 0,
+      "slot_fp": 1,
+      "slot_fn": 1,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 1935.6235419982113,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 651,
+        "completion_tokens": 131
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-003-3",
+      "base_id": "nlu-003",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1621.4364999977988,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 645,
+        "completion_tokens": 103
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-015-3",
+      "base_id": "nlu-015",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.9149160002125427,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-022-1",
+      "base_id": "nlu-022",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1892.7867079983116,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 736,
+        "completion_tokens": 129
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-041-3",
+      "base_id": "nlu-041",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "宇宙能量饼",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "呀"
+        ]
+      },
+      "effective_slots": {
+        "dish": "宇宙能量饼"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3854.236375002074,
+      "path": "model",
+      "usage": {
+        "model_calls": 2,
+        "prompt_tokens": 1304,
+        "completion_tokens": 252
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-028-0",
+      "base_id": "nlu-028",
+      "category": "constraint_refine",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2099.9356669999543,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 738,
+        "completion_tokens": 138
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-016-2",
+      "base_id": "nlu-016",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1642.0690000013565,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 737,
+        "completion_tokens": 113
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-001-0",
+      "base_id": "nlu-001",
+      "category": "identity_capability",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1722.5111250008922,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 646,
+        "completion_tokens": 104
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-034-3",
+      "base_id": "nlu-034",
+      "category": "out_of_scope",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1845.7670409989078,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 648,
+        "completion_tokens": 102
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-012-0",
+      "base_id": "nlu-012",
+      "category": "chitchat",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1834.8491669967188,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 642,
+        "completion_tokens": 101
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-030-2",
+      "base_id": "nlu-030",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1840.5137910012854,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 738,
+        "completion_tokens": 115
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-016-1",
+      "base_id": "nlu-016",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 6.527917001221795,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-035-3",
+      "base_id": "nlu-035",
+      "category": "out_of_scope",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1589.9530419992516,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 648,
+        "completion_tokens": 102
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-024-2",
+      "base_id": "nlu-024",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "红烧肉",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "红烧肉"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 1911.0303749985178,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 648,
+        "completion_tokens": 105
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-024-1",
+      "base_id": "nlu-024",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "红烧肉",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "红烧肉"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 40.31470799964154,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-006-0",
+      "base_id": "nlu-006",
+      "category": "identity_capability",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1766.3165830017533,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 646,
+        "completion_tokens": 104
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-034-0",
+      "base_id": "nlu-034",
+      "category": "out_of_scope",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 4.0016659986577,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-005-3",
+      "base_id": "nlu-005",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1704.8220420037978,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 652,
+        "completion_tokens": 106
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-030-0",
+      "base_id": "nlu-030",
+      "category": "constraint_refine",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 4.502249998040497,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-006-3",
+      "base_id": "nlu-006",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1770.090167003218,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 648,
+        "completion_tokens": 104
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-041-2",
+      "base_id": "nlu-041",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "宇宙能量饼",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "宇宙能量饼"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 64.88112499937415,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-026-1",
+      "base_id": "nlu-026",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "西红柿炒鸡蛋",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "西红柿炒鸡蛋"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 45.838209000066854,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-005-0",
+      "base_id": "nlu-005",
+      "category": "identity_capability",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1613.6356670031091,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 652,
+        "completion_tokens": 107
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-020-3",
+      "base_id": "nlu-020",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2015.7529999996768,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 739,
+        "completion_tokens": 125
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-004-2",
+      "base_id": "nlu-004",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1702.429833007045,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 646,
+        "completion_tokens": 103
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-018-1",
+      "base_id": "nlu-018",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "！😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1749.746541994682,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 740,
+        "completion_tokens": 119
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-001-1",
+      "base_id": "nlu-001",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.908958002284635,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-037-1",
+      "base_id": "nlu-037",
+      "category": "out_of_scope",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2059.6879160002572,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 651,
+        "completion_tokens": 108
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-040-0",
+      "base_id": "nlu-040",
+      "category": "ingredient_recommend",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "ingredient_recommend",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [
+          "鸡蛋",
+          "番茄"
+        ],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "ingredients": [
+          "鸡蛋",
+          "番茄"
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1716.4475419995142,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 654,
+        "completion_tokens": 116
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-007-3",
+      "base_id": "nlu-007",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1693.8450829984504,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 648,
+        "completion_tokens": 105
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-029-0",
+      "base_id": "nlu-029",
+      "category": "constraint_refine",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.3679999978630804,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-039-1",
+      "base_id": "nlu-039",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 5
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 5
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.6067920009372756,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-023-0",
+      "base_id": "nlu-023",
+      "category": "recipe_section",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 5.2104999995208345,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-002-3",
+      "base_id": "nlu-002",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1731.767208999372,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 666,
+        "completion_tokens": 103
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-040-3",
+      "base_id": "nlu-040",
+      "category": "ingredient_recommend",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "ingredient_recommend",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [
+          "鸡蛋",
+          "番茄"
+        ],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "ingredients": [
+          "鸡蛋",
+          "番茄"
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1685.2490840028622,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 654,
+        "completion_tokens": 126
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-010-1",
+      "base_id": "nlu-010",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.841207999153994,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-038-2",
+      "base_id": "nlu-038",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "",
+        "section": "酵头制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头制作"
+      },
+      "slot_tp": 0,
+      "slot_fp": 1,
+      "slot_fn": 1,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 51.709250001295004,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-040-1",
+      "base_id": "nlu-040",
+      "category": "ingredient_recommend",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "ingredient_recommend",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [
+          "鸡蛋",
+          "番茄"
+        ],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "ingredients": [
+          "鸡蛋",
+          "番茄"
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 63.37787499796832,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-014-0",
+      "base_id": "nlu-014",
+      "category": "chitchat",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1367.613499998697,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 642,
+        "completion_tokens": 101
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-023-2",
+      "base_id": "nlu-023",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.3798330041463487,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-000-3",
+      "base_id": "nlu-000",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.8723750035860576,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-013-1",
+      "base_id": "nlu-013",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1579.8756659933133,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 647,
+        "completion_tokens": 105
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-032-0",
+      "base_id": "nlu-032",
+      "category": "constraint_refine",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.986667004530318,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-028-1",
+      "base_id": "nlu-028",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.96433300152421,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-001-2",
+      "base_id": "nlu-001",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.0297079972806387,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-041-1",
+      "base_id": "nlu-041",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "宇宙能量饼",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "宇宙能量饼"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 46.800042000541,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-027-3",
+      "base_id": "nlu-027",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "蒸水蛋",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "蒸水蛋"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1650.8651250042021,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 650,
+        "completion_tokens": 107
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-010-0",
+      "base_id": "nlu-010",
+      "category": "chitchat",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 4.149874999711756,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-016-3",
+      "base_id": "nlu-016",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1928.4508750060922,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 749,
+        "completion_tokens": 127
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-009-2",
+      "base_id": "nlu-009",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.384416999120731,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-032-3",
+      "base_id": "nlu-032",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.1932919989922084,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-019-0",
+      "base_id": "nlu-019",
+      "category": "recipe_section",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1674.6905420004623,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 735,
+        "completion_tokens": 113
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-031-2",
+      "base_id": "nlu-031",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1865.8435420002206,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 746,
+        "completion_tokens": 139
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-036-1",
+      "base_id": "nlu-036",
+      "category": "out_of_scope",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.0376660031615756,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-002-2",
+      "base_id": "nlu-002",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.76687500445405,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-030-1",
+      "base_id": "nlu-030",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.664541003468912,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-032-2",
+      "base_id": "nlu-032",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.8172500024084,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-008-0",
+      "base_id": "nlu-008",
+      "category": "chitchat",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.0603339978842996,
+      "path": "fast",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-018-3",
+      "base_id": "nlu-018",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1792.730000001029,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 737,
+        "completion_tokens": 127
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-020-1",
+      "base_id": "nlu-020",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1774.4992499938235,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 740,
+        "completion_tokens": 117
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-011-1",
+      "base_id": "nlu-011",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.1254999955999665,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-003-0",
+      "base_id": "nlu-003",
+      "category": "identity_capability",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.835999995819293,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-019-1",
+      "base_id": "nlu-019",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.2664160025888123,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-039-0",
+      "base_id": "nlu-039",
+      "category": "constraint_refine",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 5
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 5
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.110417000949383,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-008-3",
+      "base_id": "nlu-008",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 0.8746250023250468,
+      "path": "fast",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-035-1",
+      "base_id": "nlu-035",
+      "category": "out_of_scope",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.5065839979797602,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-005-1",
+      "base_id": "nlu-005",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.9157080023433082,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-035-2",
+      "base_id": "nlu-035",
+      "category": "out_of_scope",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.2348750024102628,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-004-0",
+      "base_id": "nlu-004",
+      "category": "identity_capability",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.7619579957681708,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-033-0",
+      "base_id": "nlu-033",
+      "category": "constraint_refine",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "1！😊"
+        ]
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.503333002096042,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-014-1",
+      "base_id": "nlu-014",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.79191699862713,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-002-0",
+      "base_id": "nlu-002",
+      "category": "identity_capability",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.9884159992216155,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-031-1",
+      "base_id": "nlu-031",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.8024589953711256,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-016-0",
+      "base_id": "nlu-016",
+      "category": "recipe_section",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.814084004261531,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-021-1",
+      "base_id": "nlu-021",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "！😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1956.8912080067093,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 738,
+        "completion_tokens": 135
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-000-1",
+      "base_id": "nlu-000",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.2189169976627454,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-017-0",
+      "base_id": "nlu-017",
+      "category": "recipe_section",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.398917004233226,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-020-0",
+      "base_id": "nlu-020",
+      "category": "recipe_section",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 5.2936249994672835,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-009-3",
+      "base_id": "nlu-009",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 4.903000000922475,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-025-1",
+      "base_id": "nlu-025",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "红烧肉",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "红烧肉"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 2768.379624998488,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 649,
+        "completion_tokens": 117
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-003-2",
+      "base_id": "nlu-003",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.514542000426445,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-012-2",
+      "base_id": "nlu-012",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.960250003321562,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-026-3",
+      "base_id": "nlu-026",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "西红柿炒鸡蛋",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "西红柿炒鸡蛋"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2125.4829999961657,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 650,
+        "completion_tokens": 119
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-013-2",
+      "base_id": "nlu-013",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.361457998631522,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-030-3",
+      "base_id": "nlu-030",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2137.935958999151,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 748,
+        "completion_tokens": 134
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-024-0",
+      "base_id": "nlu-024",
+      "category": "recipe_lookup",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "红烧肉",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "红烧肉"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 40.40812500170432,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-007-2",
+      "base_id": "nlu-007",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.1440410055220127,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-022-0",
+      "base_id": "nlu-022",
+      "category": "recipe_section",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.2694999972591177,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-015-0",
+      "base_id": "nlu-015",
+      "category": "chitchat",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.7183749951072969,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-007-0",
+      "base_id": "nlu-007",
+      "category": "identity_capability",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.7283749984926544,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-028-2",
+      "base_id": "nlu-028",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.7579160048626363,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-040-2",
+      "base_id": "nlu-040",
+      "category": "ingredient_recommend",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "ingredient_recommend",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [
+          "鸡蛋",
+          "番茄"
+        ],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "ingredients": [
+          "鸡蛋",
+          "番茄"
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 63.344417001644615,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-006-2",
+      "base_id": "nlu-006",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.6618749980116263,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-017-2",
+      "base_id": "nlu-017",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 4.103999999642838,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-004-3",
+      "base_id": "nlu-004",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.2059159964555874,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-001-3",
+      "base_id": "nlu-001",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.8513749964768067,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-006-1",
+      "base_id": "nlu-006",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.7234580009244382,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-010-3",
+      "base_id": "nlu-010",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.7046669963747263,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-014-3",
+      "base_id": "nlu-014",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.6641250040265732,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-011-3",
+      "base_id": "nlu-011",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.8632079954841174,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-015-1",
+      "base_id": "nlu-015",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.9537919943104498,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-029-2",
+      "base_id": "nlu-029",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.0777079989784397,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-029-1",
+      "base_id": "nlu-029",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.0899579976685345,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-028-3",
+      "base_id": "nlu-028",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.8952500031446107,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-022-3",
+      "base_id": "nlu-022",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.2745409989729524,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-027-1",
+      "base_id": "nlu-027",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "蒸水蛋",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "dish": "蒸水蛋"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1782.4544169998262,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 651,
+        "completion_tokens": 110
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-018-2",
+      "base_id": "nlu-018",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "！😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.691083002195228,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-035-0",
+      "base_id": "nlu-035",
+      "category": "out_of_scope",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.2786660008714534,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-033-3",
+      "base_id": "nlu-033",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "1"
+        ]
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2084.1332909985795,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 746,
+        "completion_tokens": 142
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-027-0",
+      "base_id": "nlu-027",
+      "category": "recipe_lookup",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "蒸水蛋",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "dish": "蒸水蛋"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.357499994104728,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-009-1",
+      "base_id": "nlu-009",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.807166998332832,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-036-3",
+      "base_id": "nlu-036",
+      "category": "out_of_scope",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.3112910019117408,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-021-2",
+      "base_id": "nlu-021",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "！😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.540332996635698,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-004-1",
+      "base_id": "nlu-004",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.8866659956984222,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-018-0",
+      "base_id": "nlu-018",
+      "category": "recipe_section",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "！😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.949124995211605,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-020-2",
+      "base_id": "nlu-020",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.0439170004683547,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-027-2",
+      "base_id": "nlu-027",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "蒸水蛋",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "dish": "蒸水蛋"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.164583005651366,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-025-0",
+      "base_id": "nlu-025",
+      "category": "recipe_lookup",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "红烧肉",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "红烧肉"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 39.75933400215581,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-033-2",
+      "base_id": "nlu-033",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "1！😊"
+        ]
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.8309580011409707,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-039-2",
+      "base_id": "nlu-039",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 5
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 5
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.9513750012265518,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-019-2",
+      "base_id": "nlu-019",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.18745899858186,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-026-0",
+      "base_id": "nlu-026",
+      "category": "recipe_lookup",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "西红柿炒鸡蛋",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "西红柿炒鸡蛋"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 45.6296670017764,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-024-3",
+      "base_id": "nlu-024",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "红烧肉",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "红烧肉"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 39.44154200144112,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-008-1",
+      "base_id": "nlu-008",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 0.8820840012049302,
+      "path": "fast",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-036-2",
+      "base_id": "nlu-036",
+      "category": "out_of_scope",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.3815000056638382,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-013-0",
+      "base_id": "nlu-013",
+      "category": "chitchat",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.8710829972405918,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-038-0",
+      "base_id": "nlu-038",
+      "category": "recipe_section",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "",
+        "section": "酵头制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头制作"
+      },
+      "slot_tp": 0,
+      "slot_fp": 1,
+      "slot_fn": 1,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 51.13358300150139,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-037-2",
+      "base_id": "nlu-037",
+      "category": "out_of_scope",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.084832995024044,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-013-3",
+      "base_id": "nlu-013",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1698.549250002543,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 646,
+        "completion_tokens": 101
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-003-1",
+      "base_id": "nlu-003",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.361540995480027,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-023-3",
+      "base_id": "nlu-023",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2044.9987500032876,
+      "path": "model",
+      "usage": {
+        "model_calls": 1,
+        "prompt_tokens": 753,
+        "completion_tokens": 129
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-038-3",
+      "base_id": "nlu-038",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "",
+        "section": "酵头制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头制作"
+      },
+      "slot_tp": 0,
+      "slot_fp": 1,
+      "slot_fn": 1,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 52.56391700095264,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-031-3",
+      "base_id": "nlu-031",
+      "category": "constraint_refine",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.2903749995748512,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-017-1",
+      "base_id": "nlu-017",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.5762080005952157,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-012-1",
+      "base_id": "nlu-012",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.884792000055313,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-021-3",
+      "base_id": "nlu-021",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "！😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.995125003508292,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-021-0",
+      "base_id": "nlu-021",
+      "category": "recipe_section",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "！😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.243291001126636,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-022-2",
+      "base_id": "nlu-022",
+      "category": "recipe_section",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_section",
+      "slots": {
+        "dish": "基础牛奶面包",
+        "section": "酵头的制作",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {
+        "section": "酵头的制作"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 3.023083001608029,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-037-0",
+      "base_id": "nlu-037",
+      "category": "out_of_scope",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.800457997887861,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-025-2",
+      "base_id": "nlu-025",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "红烧肉",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "红烧肉"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 39.99370800011093,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-000-2",
+      "base_id": "nlu-000",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.070875001663808,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-005-2",
+      "base_id": "nlu-005",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.9489999976940453,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-034-2",
+      "base_id": "nlu-034",
+      "category": "out_of_scope",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "out_of_scope",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": [
+          "😊"
+        ]
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.8405000009806827,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "out_of_scope"
+    },
+    {
+      "id": "nlu-025-3",
+      "base_id": "nlu-025",
+      "category": "recipe_lookup",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "recipe_lookup",
+      "slots": {
+        "dish": "红烧肉",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "dish": "红烧肉"
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": true,
+      "should_clarify": true,
+      "retrieval_correct": true,
+      "elapsed_ms": 39.88287499669241,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "clarify"
+    },
+    {
+      "id": "nlu-031-0",
+      "base_id": "nlu-031",
+      "category": "constraint_refine",
+      "perturbed": false,
+      "intent_correct": true,
+      "intent": "constraint_refine",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {
+        "exclude_refs": [
+          {
+            "type": "ordinal",
+            "value": 2
+          }
+        ]
+      },
+      "slot_tp": 1,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 2.110417000949383,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "grounded_recipe"
+    },
+    {
+      "id": "nlu-008-2",
+      "base_id": "nlu-008",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 0.7919580020825379,
+      "path": "fast",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-014-2",
+      "base_id": "nlu-014",
+      "category": "chitchat",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "chitchat",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.6564160032430664,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    },
+    {
+      "id": "nlu-007-1",
+      "base_id": "nlu-007",
+      "category": "identity_capability",
+      "perturbed": true,
+      "intent_correct": true,
+      "intent": "identity_capability",
+      "slots": {
+        "dish": "",
+        "section": "",
+        "ingredients": [],
+        "exclude_refs": [],
+        "selected_ref": null,
+        "replace_ref": null,
+        "limit": null,
+        "mode": null,
+        "request_kind": "facts",
+        "constraints": {},
+        "raw_noise": []
+      },
+      "effective_slots": {},
+      "slot_tp": 0,
+      "slot_fp": 0,
+      "slot_fn": 0,
+      "blocked": false,
+      "unnecessary_clarification": false,
+      "clarification_hit": false,
+      "should_clarify": false,
+      "retrieval_correct": true,
+      "elapsed_ms": 1.67012499878183,
+      "path": "cache",
+      "usage": {
+        "model_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "answer_mode": "general_chat"
+    }
+  ],
+  "cache_salt": "final-20261026-v4",
+  "fixture_sha256": "cfa316e9c36d4a5666a0de79808e4520192f366361b55dacd9f075274520632c",
+  "baseline_deltas": {
+    "intent_accuracy": 0.7916666666666666,
+    "slot_f1": 0.914941494149415,
+    "false_block_rate": -0.041666666666666664,
+    "unnecessary_clarification_rate": 0.0,
+    "perturbation_stability": 0.11904761904761907,
+    "p95_ms": 2097.427125001559
+  }
+}

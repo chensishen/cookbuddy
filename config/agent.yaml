@@ -1,0 +1,23 @@
+agent:
+  enabled: true
+  direct: true
+  max_model_calls: 8
+  max_tool_calls: 5
+  request_timeout_s: 60
+  stream: true
+retrieval:
+  mode: hybrid
+  recall_top_n: 30
+  top_k: 5
+  augment: true
+  tool_timeout_s: 8
+  rerank: {enabled: true, timeout_s: 8}
+memory:
+  mode: M6
+  window_turns: 6
+  window_max_tokens: 4000
+  queue_capacity: 64
+llm: {timeout_s: 20, max_retries: 2, fallback_env: RECIPE_GENERATION_FALLBACK}
+resilience: {concurrency: 2, queue_timeout_s: 5}  # Breaker policy: resilience.yaml
+trace: {structured_log: true, checkpoint_warn_bytes: 64000, langsmith: false}
+checkpoint: {backend: postgres, pool_size: 4}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>cookbuddy · 菜谱对话</title>
+<style>body{font:16px/1.7 system-ui;max-width:880px;margin:40px auto;padding:0 20px;color:#24352c;background:#fafbf7}h1{font-size:26px}textarea{box-sizing:border-box;width:100%;padding:12px;font:inherit}button{padding:9px 18px;margin:10px 8px 10px 0;cursor:pointer}article{overflow-wrap:anywhere;padding:20px;background:white;border:1px solid #dbe2d4;border-radius:12px;margin:16px 0}#status{color:#536851}label{display:block}input{font:inherit;padding:6px;max-width:100%}body.images-off figure{display:none!important}body.images-off .recommendation-card.with-photo{grid-template-columns:minmax(0,1fr)}#imageToggle{font-size:12px;border:1px solid #dbe2d4;border-radius:8px;padding:6px 10px;color:#327358;background:#edf3e8}#imageToggle[aria-pressed="false"]{background:white;color:#687260}</style>
+<h1>cookbuddy 菜谱对话</h1><p>问做法、按食材选菜，或接着问“第二个怎么做”。回答附可核对的来源。</p>
+<details><summary>访问设置</summary><label>访问口令（仅服务器启用口令时填写）<input id="access" type="password" autocomplete="off"></label></details>
+<button id="new">新对话</button><div id="messages" aria-live="polite"></div>
+<form id="form"><label for="question">你的问题</label><textarea id="question" rows="3" maxlength="2000" required></textarea><button id="imageToggle" type="button" aria-label="显示菜谱图片" aria-pressed="true" title="切换菜谱图片显示" onclick="toggleImages(this)">图片：开</button><button id="send">发送</button><button id="stop" type="button" disabled>停止</button></form><p id="status" role="status"></p>
+<script src="/recipe_markdown.js"></script>
+<script>
+function toggleImages(button){const enabled=button.getAttribute("aria-pressed")!=="true";button.setAttribute("aria-pressed",String(enabled));button.textContent=enabled?"图片：开":"图片：关";document.body.classList.toggle("images-off",!enabled);}
+function element(tag,text,cls){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;}
+let session=null,controller=null;
+const byId=id=>document.getElementById(id);
+function headers(){const h={'Content-Type':'application/json'};if(byId('access').value)h.Authorization='Bearer '+byId('access').value;return h;}
+async function start(){const r=await fetch('/sessions',{method:'POST',headers:headers()});if(!r.ok)throw Error('无法创建对话，请检查服务或访问口令');session=(await r.json()).session_id;byId('messages').replaceChildren();byId('status').textContent='新对话已创建';}
+byId('new').onclick=async()=>{if(controller)return;byId('send').disabled=true;byId('new').disabled=true;try{await start();}catch(e){byId('status').textContent=e.message;}finally{byId('send').disabled=false;byId('new').disabled=false;}};
+byId('stop').onclick=()=>controller?.abort();
+byId('form').onsubmit=async e=>{e.preventDefault();if(controller)return;controller=new AbortController();byId('send').disabled=true;byId('new').disabled=true;byId('stop').disabled=false;let answer,textBody,text="";try{
+if(!session)await start();const question=byId('question').value.trim();if(!question)return;
+const user=document.createElement('article');user.textContent=question;user.style.whiteSpace='pre-wrap';answer=document.createElement('article');textBody=element('div');answer.append(textBody);byId('messages').append(user,answer);
+byId('status').textContent='正在查询…';
+const r=await fetch('/chat',{method:'POST',headers:headers(),body:JSON.stringify({session_id:session,message:question}),signal:controller.signal});
+if(!r.ok)throw Error(r.status===429?'当前请求较多，请稍后重试':'请求未完成，请检查服务或重新创建对话');
+const reader=r.body.getReader(),decoder=new TextDecoder();let buffer='';
+while(true){const {value,done}=await reader.read();if(done)break;buffer+=decoder.decode(value,{stream:true});let boundary;
+while((boundary=buffer.indexOf('\n\n'))>=0){const frame=buffer.slice(0,boundary);buffer=buffer.slice(boundary+2);const kind=frame.split('\n').find(x=>x.startsWith('event: '))?.slice(7),data=frame.split('\n').find(x=>x.startsWith('data: '));if(!data)continue;const item=JSON.parse(data.slice(6));
+if(kind==='token'){text+=item.text;textBody.replaceChildren(readableText(text));}
+if(kind==='tool')byId('status').textContent=item.status==='running'?'正在核对菜谱…':'来源核对已返回';
+if(kind==='notice'||kind==='error')byId('status').textContent=item.message;
+if(kind==='choices'){const choices=element('div');for(const option of item.items||[]){const button=element('button',option);button.type='button';button.onclick=()=>{if(controller)return;byId('question').value=option;byId('form').requestSubmit();};choices.append(button);}answer.append(choices);}
+if(kind==='citations')for(const media of item.images||[]){if(!media.image_path)continue;const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');image.src='/media?path='+encodeURIComponent(media.image_path);image.alt=media.alt||'菜谱原图';image.loading='lazy';image.style.maxWidth='100%';caption.textContent=media.alt||'原作者配图';figure.append(image,caption);answer.append(figure);}
+if(kind==='done'){byId('status').textContent=item.service_notice||'回答完成';byId('question').value='';}
+}}}catch(error){byId('status').textContent=error.name==='AbortError'?'已停止':error.message;}finally{controller=null;byId('send').disabled=false;byId('new').disabled=false;byId('stop').disabled=true;}};
+</script></html>

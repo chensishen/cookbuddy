@@ -1,0 +1,15 @@
+name: LangChain boundaries and acceptance
+on: [push, pull_request]
+jobs:
+  agent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install -r requirements-langchain.lock
+      - run: python -m unittest discover -s tests/agent -t .
+      - name: Capability fallback contract matrix
+        run: PYTHONPATH=scripts:.:tests python -m unittest discover -s tests -p 'test_capability_matrix.py'
+      - name: Meal vocabulary and templates
+        run: PYTHONPATH=scripts:.:tests python -m unittest discover -s tests -p 'test_meal_lexicon.py' && PYTHONPATH=scripts:.:tests python -m unittest discover -s tests -p 'test_menu_templates.py'
