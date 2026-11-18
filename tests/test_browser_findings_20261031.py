@@ -5,6 +5,28 @@ from dialogue_harness import DialogueHarness
 
 
 class BrowserFindingsTests(unittest.IsolatedAsyncioTestCase):
+    async def test_compound_stock_followup_and_targeted_swap(self):
+        chat=DialogueHarness()
+        await chat.turn('我有番茄和马铃薯，推荐两道菜，分别说说还缺什么。')
+        plan,result,_=await chat.turn('马铃薯用完了，加上鸡蛋。还是两道，推荐理由一句话就好。')
+        state=plan['task']['state']
+        self.assertEqual(state['ingredients'],['番茄','鸡蛋'])
+        self.assertEqual(state['extra_constraints'],[])
+        self.assertEqual(state['limit'],2)
+        self.assertEqual(set(state['response_fields']),{'missing_ingredients','reason'})
+        rows=result['outputs'][0]['result']['recommendations']
+        self.assertEqual(len(rows),2)
+        self.assertEqual({v for row in rows for v in row['matched']},{'番茄','鸡蛋'})
+        self.assertTrue(all(row['reason'].count('。')==1 for row in rows))
+        previous=chat.session.slots['last_recommendations'].copy()
+        plan,result,_=await chat.turn('换一道，不要刚才第二道。1')
+        self.assertEqual(plan['task']['replacement_index'],2)
+        self.assertEqual(plan['task']['state']['ingredients'],['番茄','鸡蛋'])
+        self.assertEqual(len(result['outputs'][0]['result']['recommendations']),1)
+        current=chat.session.slots['last_recommendations']
+        self.assertEqual(current[0]['source_path'],previous[0]['source_path'])
+        self.assertNotEqual(current[1]['source_path'],previous[1]['source_path'])
+
     async def test_temporary_today_exclusion(self):
         plan,result,_=await DialogueHarness().turn('今天临时不要香菜，按我的口味推荐两道菜。')
         self.assertIn('香菜',plan['task']['state']['excluded_ingredients'])
@@ -25,7 +47,8 @@ class BrowserFindingsTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_inventory_typo_and_colloquial_request_work_without_model(self):
         for question in ('我有西红市和马铃薯，推荐两道菜，说明还缺什么。',
-                         '冰箱剩西红市和马铃薯，给我整俩菜，缺啥也说下。'):
+                         '冰箱剩西红市和马铃薯，给我整俩菜，缺啥也说下。',
+                         '冰箱就剩西红市和马铃薯啦，给我挑俩菜，顺便说说还缺啥。'):
             with self.subTest(question=question):
                 plan,result,_=await DialogueHarness().turn(question)
                 self.assertEqual(plan['task']['action'],'recommend')

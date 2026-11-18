@@ -44,6 +44,62 @@ class MenuPlanningRegressionTests(unittest.TestCase):
         self.assertNotEqual({r['source'] for r in lunch['recommendations']},
                             {r['source'] for r in dinner['recommendations']})
 
+    def test_exact_meal_prompts_keep_constraints_while_varying_menus(self):
+        for kind,label,suffix in (
+            ('breakfast','早餐','尽量简单'),
+            ('lunch','午餐','想做两菜一汤'),
+            ('dinner','晚餐','想做两菜一汤'),
+        ):
+            menus=set()
+            for seed in range(1,7):
+                result=self.menu(f'帮我安排两个人的{label}，30分钟，{suffix}。',kind,selection_seed=seed)
+                plan=result['meal_plan']
+                self.assertTrue(plan['complete'])
+                self.assertLessEqual(plan['estimated_minutes'],30)
+                self.assertEqual((plan['dishes'],plan['soups']),(1,0) if kind=='breakfast' else (2,1))
+                menus.add(frozenset(r['source'] for r in result['recommendations']))
+            self.assertGreater(len(menus),1,kind)
+
+    def test_saved_mild_spice_and_cilantro_exclusion(self):
+        from cookbuddy.ltm.guard import policy,source_allowed
+        from cookbuddy.ltm.retriever import preference_source_text,taste_preference_match
+        mild={'dimension':'spice_level','value':'1','polarity':'like'}
+        hard=[{'dimension':'avoid_ingredient','value':'香菜','polarity':'avoid','strength':'hard'}]
+        row={'description':'这是道家常菜。','evidence':[{'section':'简介','quote':'这道菜带着微微辣意。'}]}
+        self.assertEqual(taste_preference_match(preference_source_text(row),mild),('微辣','微微辣意'))
+        with policy(hard):
+            result=plan_meal(meal_request('今晚两个人，推荐两道菜。'),self.chunks,seed=2,taste_preferences=[mild])
+            limited=plan_meal(meal_request('今晚两个人，30分钟，难度最多1，推荐两道菜。'),
+                              self.chunks,seed=2,taste_preferences=[mild])
+        self.assertTrue(any(r['taste_matches'] for r in result['recommendations']))
+        for menu in (result,limited):
+            self.assertTrue(all(source_allowed(r['source'],hard) for r in menu['recommendations']))
+            self.assertIn('避开香菜',menu['short_answer'])
+        self.assertLessEqual(limited['meal_plan']['estimated_minutes'],30)
+        self.assertTrue(all(r['difficulty']==1 for r in limited['recommendations']))
+        self.assertIn('未核实到符合你偏好的微辣菜谱',limited['short_answer'])
+
+    def test_strong_spice_prefers_verified_spicy_alternatives(self):
+        from cookbuddy.ltm.guard import policy
+        hard=[{'dimension':'avoid_ingredient','value':'香菜','polarity':'avoid','strength':'hard'}]
+        with policy(hard):
+            result=plan_meal(meal_request('今晚两个人，推荐两道菜。'),self.chunks,seed=2,
+                             taste_preferences=[{'dimension':'spice_level','value':'3','polarity':'like'}])
+        self.assertTrue(any(r.get('spicy_alternative') for r in result['recommendations']))
+        self.assertIn('具体辣度未标明',result['short_answer'])
+        self.assertIn('较辣',result['short_answer'])
+        self.assertNotIn('中辣',result['short_answer'])
+
+    def test_current_mild_request_overrides_saved_strong_spice(self):
+        request=meal_request('今晚想吃微辣，两个人，推荐两道菜。')
+        request['constraints']={'taste':'微辣'}
+        result=plan_meal(request,self.chunks,seed=2,taste_preferences=[
+            {'dimension':'spice_level','value':'3','polarity':'like'}])
+        self.assertEqual(len(result['recommendations']),2)
+        self.assertTrue(all(r['spice_match']=='explicit' for r in result['recommendations']))
+        self.assertIn('按本次的微辣要求',result['short_answer'])
+        self.assertNotIn('长期饮食偏好',result['short_answer'])
+
     def test_tofu_variants_are_the_same_primary_ingredient(self):
         from cookbuddy.menu_planner import primary_ingredients
         plain=primary_ingredients({'title':'凉拌豆腐','main_ingredients':['豆腐']})
@@ -114,3 +170,13 @@ class MenuDialogueRegressionTests(unittest.IsolatedAsyncioTestCase):
             harness.session=SessionState(**harness.session.record())
         self.assertEqual(set(harness.session.slots['recent_meal_sources']),set().union(*menus))
         self.assertLessEqual(len(harness.session.slots['recent_meal_sources']),24)
+
+    async def test_more_after_menu_reuses_meal_conditions(self):
+        from dialogue_harness import DialogueHarness
+        chat=DialogueHarness()
+        await chat.turn('两个人，30分钟，午餐想做两菜一汤。')
+        prepared,result,_=await chat.turn('再推荐几个菜')
+        self.assertEqual(prepared['task']['action'],'meal_plan')
+        plan=result['outputs'][0]['result']['meal_plan']
+        self.assertEqual((plan['meal_type'],plan['dishes'],plan['soups']),('lunch',2,1))
+        self.assertLessEqual(plan['estimated_minutes'],30)

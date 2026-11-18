@@ -204,12 +204,19 @@ class ChatEngine:
             await invoke_tool(run,'recipe_ingredients',{'source_path':task['selected_source'],
                 'ingredients':run.prepared.get('slots',{}).get('ingredients_on_hand',[])})
             return True
+        if action=='recipe_title':
+            title=run.prepared['named_recipe']['dish_name']
+            run.evidence['recipe_title']={'name':'recipe_title','full':{
+                'status':'verified_source','short_answer':f"第{task['selected_index']}道是《{title}》。",
+                'sources':[],'evidence':[]}}
+            return True
         if action=='followup' and task.get('selected_source'):
             await invoke_tool(run,'get_recipe_detail',{'source_path':task['selected_source']});return True
         if action=='recommend' and task.get('state'):
             state=task['state']
             if (state.get('mode')=='inventory' and state.get('ingredients') and not
-                    any(state.get(k) for k in ('tastes','excluded_methods','excluded_ingredients','extra_constraints'))):
+                    any(state.get(k) for k in ('tastes','excluded_methods','excluded_ingredients','extra_constraints'))
+                    and 'description' not in state.get('response_fields',[])):
                 await invoke_tool(run,'recommend_by_ingredients',{'ingredients':state['ingredients'],'top_k':min(8,state.get('limit',5))})
             else:
                 await invoke_tool(run,'task_recommend',{'state':state,

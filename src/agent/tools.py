@@ -55,7 +55,7 @@ def compact_result(full):
             'line_range':f'L{start}-L{end}' if start else '',
             'score':row.get('rerank_score',row.get('distance',0)),
             'snippet':snippet[:200],'difficulty':row.get('difficulty'),
-            'coverage':row.get('coverage'),'missing_ingredients':row.get('missing',[])})
+            'missing_ingredients':row.get('missing',[])})
     status=full.get('status','ok')
     status='degraded' if full.get('degraded') or status=='degraded' else 'error' if status in ('error','tool_failed','validation_failed') else 'empty' if not items and status not in ('verified','verified_source') else 'ok'
     return {'status':status,'items':items,'filtered_out':0,
@@ -88,6 +88,8 @@ async def invoke_tool(run, name, args):
         if name=='recommend_by_ingredients':args=RecommendInput.model_validate(args).model_dump(exclude_none=True)
         if name in ('recommend_by_ingredients','task_recommend'):
             args['exclude_dishes']=run.prepared.get('task',{}).get('exclude_dishes',args.get('exclude_dishes',[]))
+        if name=='task_recommend' and run.prepared.get('task',{}).get('varied_recommendations'):
+            args['varied_recommendations']=True
         if name=='plan_meal' and run.prepared.get('task',{}).get('meal_request'):
             args={'request':run.prepared['task']['meal_request']}
         if name=='get_recipe_detail':args=DetailInput.model_validate(args).model_dump(exclude_none=True)
@@ -106,7 +108,7 @@ async def invoke_tool(run, name, args):
             if name=='search_recipes':args['query']=run.prepared.get('task',{}).get('question') or run.question
             if name=='search_recipes' and named:args['source_path']=named['source_path']
             if name=='search_recipes':args['exclude_dishes']=run.prepared.get('task',{}).get('exclude_dishes',[])
-        timeout=run.cfg.retrieval.tool_timeout_s if operation in ('search','recommend','task_recommend') else 5
+        timeout=run.cfg.retrieval.tool_timeout_s if operation in ('search','recommend','task_recommend','detail','images') else 5
         full=await asyncio.wait_for(run.service(operation,args,timeout),run.context.remaining(timeout))
         if operation in ('remember_preference','forget_preference','recall_history'):
             if '_hard' in full:
@@ -166,7 +168,7 @@ def make_tools(run):
     @tool(args_schema=RecommendInput)
     async def recommend_by_ingredients(ingredients: list[str], runtime: ToolRuntime[AppContext],
                                        category: str | None=None,max_difficulty: int | None=None,top_k: int=5) -> str:
-        """用户明确给出现有食材并要求选菜时使用，返回原料表覆盖率和缺料。不要用来回答单道菜做法或把想吃食材当成库存；食材1到10项，top_k为1到8。"""
+        """用户明确给出现有食材并要求选菜时使用，返回已有食材和待备配料。不要用来回答单道菜做法或把想吃食材当成库存；食材1到10项，top_k为1到8。"""
         return await invoke_tool(run,'recommend_by_ingredients',{'ingredients':ingredients,'category':category,'max_difficulty':max_difficulty,'top_k':top_k})
 
     @tool(args_schema=DetailInput)

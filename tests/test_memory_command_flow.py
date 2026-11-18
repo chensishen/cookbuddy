@@ -26,6 +26,25 @@ class MemoryCommandFlowTests(unittest.TestCase):
                 self.assertEqual(prepared['management'],management)
         self.assertEqual(parse_command(read),('read',''))
 
+    def test_standalone_spice_changes_bypass_recipe_routing(self):
+        from cookbuddy.ltm.extractor import rule_extract
+        from cookbuddy.ltm.management import memory_only_write
+        for question,value in (
+            ('我喜欢辣的菜','3'),('我喜欢微辣的菜','1'),
+            ('我的口味改成中辣','2'),('我现在不喜欢辣的菜了','0'),
+        ):
+            with self.subTest(question=question):
+                self.assertEqual([(c.dimension,c.value) for c in rule_extract(question)],[('spice_level',value)])
+                management={'decision':'UPDATE','message':'口味已更新','needs_confirmation':False}
+                runtime=SimpleNamespace(enabled=True,level=6,session=SessionState('u','s'),previous_task={'action':'meal_plan'},
+                    hard=[],events=[],confirmation=None,management=management,notice='',candidates=[])
+                with patch('cookbuddy.store.Store'), patch('cookbuddy.ltm.runtime.MemoryRuntime',return_value=runtime), \
+                        patch('src.nlu.router.understand',side_effect=AssertionError('recipe routing called')):
+                    prepared=worker.prepare({'user_id':'u','session_id':'s','request_id':'job','question':question})
+                self.assertEqual(prepared['task']['action'],'none')
+        self.assertFalse(memory_only_write('我喜欢辣的菜，推荐两道菜'))
+        self.assertFalse(memory_only_write('我喜欢辣的菜吗？'))
+
     def test_management_command_skips_recipe_reduction_and_preserves_slots(self):
         session=SessionState('u','s')
         session.slots['temp_constraints']={'tastes':['辣味']}

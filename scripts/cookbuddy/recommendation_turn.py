@@ -59,9 +59,10 @@ OUTPUT_TERMS={'特点':'description','特色':'description','介绍':'descriptio
               '推荐原因':'reason','推荐理由':'reason','为什么推荐':'reason','理由':'reason','原因':'reason',
               '主要食材':'main_ingredients','主要用料':'main_ingredients',
               '还缺什么':'missing_ingredients','缺少什么':'missing_ingredients','缺少哪些食材':'missing_ingredients',
-              '缺啥':'missing_ingredients','缺料':'missing_ingredients'}
+              '还缺啥':'missing_ingredients','缺啥':'missing_ingredients','缺料':'missing_ingredients'}
 OUTPUT_TERM=r'(?:各自的?|每道菜的?|这几道菜的?|它们的?)?(?:'+'|'.join(sorted(OUTPUT_TERMS,key=len,reverse=True))+')'
-OUTPUT_SUFFIX=re.compile(r'(?:并且|并|也|再)?(?:请)?(?:分别)?(?:介绍|说明|解释|列出|给出|说说|说)'
+OUTPUT_VERB=r'介绍|说明|解释|列出|给出|告诉我|说说|说'
+OUTPUT_SUFFIX=re.compile(r'(?:并且|并|也|再|顺便)?(?:请)?(?:分别)?(?:'+OUTPUT_VERB+r')'
                          r'(?:一下)?(?:'+OUTPUT_TERM+r')(?:\s*(?:和|及|与|、|以及)\s*'+OUTPUT_TERM+r')*(?:即可)?$')
 DESCRIPTION_SUFFIX=re.compile(r'(?:并且|并|也|再)?(?:请)?(?:简单|简要)?介绍(?:一下)?(?:每道菜|各道菜|这些菜|这几道菜|菜品)(?:即可)?$')
 SIMPLE_PREFIX=re.compile(r'^(?:(?:非常|特别|比较|很)?(?:简单|容易|易做|好做)(?:做|制作)?|(?:适合)?新手(?:也)?(?:能|可以)?(?:做|制作)?)(?:的)?')
@@ -76,7 +77,7 @@ def split_output_request(clause):
     text=match[0]
     # The verb "介绍" itself does not request a second field when its object is
     # solely "推荐理由"; extract fields from the grammatical object only.
-    obj=re.sub(r'^(?:并且|并|也|再)?(?:请)?(?:分别)?(?:介绍|说明|解释|列出|给出|说说|说)(?:一下)?','',text)
+    obj=re.sub(r'^(?:并且|并|也|再|顺便)?(?:请)?(?:分别)?(?:'+OUTPUT_VERB+r')(?:一下)?','',text)
     fields=tuple(dict.fromkeys(OUTPUT_TERMS[m[0]] for m in re.finditer('|'.join(sorted(OUTPUT_TERMS,key=len,reverse=True)),obj)))
     return clause[:match.start()].strip(),fields
 
@@ -91,10 +92,15 @@ def interpret(question):
         turn.ordinal=number(ordinal[1]);return turn
     if re.search(r'软件|网站|餐厅|电影|教程|应用|图片|照片|原文',q):
         turn.boundary=True;return turn
-    clauses=re.split(r'[，,。；;！!？?\n]+|但是|不过|而且|并且|另外|同时|然后',q)
-    for raw in clauses:
-        raw=raw.strip()
+    parts=re.split(r'([，,。；;！!？?\n]+|(?<!\d)\.|\.(?!\d)|但是|不过|而且|并且|另外|同时|然后)',q)
+    stock_index=None
+    for index in range(0,len(parts),2):
+        raw=parts[index].strip()
+        previous_stock_index=stock_index if index and parts[index-1] in ('，',',') else None
+        stock_index=None
         if not raw:continue
+        if re.fullmatch(r'(?:推荐)?(?:理由|原因)(?:用)?一句话(?:就好|就行|即可)?',raw):
+            turn.edits.append(Edit('add','response_fields',('reason',),raw));continue
         if re.fullmatch(r'(?:还)?缺啥(?:也)?(?:说|说下|说一下|说明)(?:下)?',raw):
             turn.edits.append(Edit('add','response_fields',('missing_ingredients',),raw));continue
         clause,fields=split_output_request(raw)
@@ -192,15 +198,17 @@ def interpret(question):
         if taste:
             value=taste[1];value='辣味' if value in ('辣','麻辣') else value
             turn.edits.append(Edit('set','tastes',(value,),raw));continue
-        stock=re.fullmatch(r'(?:我|我家|我们)?(?:家里|冰箱(?:里)?|手边|手头)?(?:还|也)?(?:只)?(?:有|剩|剩下)\s*(.+)',clause)
-        if stock and re.match(r'^(?:盐|食盐|糖|白糖|生抽|老抽|酱油|醋|香醋|蚝油|料酒|食用油|植物油|菜籽油|淀粉|胡椒|鸡精|味精)(?:[、，,和及与].*)?$',stock[1]):
+        stock=re.fullmatch(r'(?:(?:家里|冰箱(?:里)?|手边|手头)?(?P<more>还|也)?(?P<only>只|仅|就(?=剩))?(?:有|剩下|剩)|现有食材[：:]?)\s*(?P<foods>.+?)(?:啦|了)?',clause)
+        if stock and re.match(r'^(?:盐|食盐|糖|白糖|生抽|老抽|酱油|醋|香醋|蚝油|料酒|食用油|植物油|菜籽油|淀粉|胡椒|鸡精|味精)(?:[、，,和及与].*)?$',stock['foods']):
             # A pantry list is stock, not an unverified selection condition.
-            values=names(stock[1],ingredient_names())
+            values=names(stock['foods'],ingredient_names())
             if values:
                 from ingredient_recommendation import normalize_ingredient
-                turn.edits.append(Edit('add','ingredients',tuple(dict.fromkeys(normalize_ingredient(v) for v in values)),raw))
+                stock_index=len(turn.edits)
+                turn.edits.append(Edit('set' if stock['only'] else 'add',
+                                       'ingredients',tuple(dict.fromkeys(normalize_ingredient(v) for v in values)),raw))
+                turn.edits.append(Edit('set','mode',('inventory',),raw))
                 continue
-        stock=re.fullmatch(r'(有|只有|冰箱(?:里)?(?:有|剩|剩下)|手边有|现有食材[：:]?)\s*(.+)',clause)
         added=re.fullmatch(r'(?:这次|现在|再|另外)?(?:加上|加入|加进|补充|还有)(.+)',clause)
         style=re.fullmatch(r'(?:换成|改成|来一道|来个|想吃|想要|要|推荐)?(?:别的|其它|其他)?(?:一|1)?(?:道|个)?(?:的)?('+'|'.join(STYLES)+r')(?:的)?(?:菜|菜谱)?',clause)
         if style:
@@ -209,7 +217,7 @@ def interpret(question):
             turn.edits.append(Edit('add','extra_constraints',(style[1],),raw))
             continue
         replacement=re.fullmatch(r'(?:改成|换成|改用|换用)(.+)',clause)
-        target=stock[2] if stock else added[1] if added else replacement[1] if replacement else clause
+        target=stock['foods'] if stock else added[1] if added else replacement[1] if replacement else clause
         values=names(target,ingredient_names(),correct_stock=bool(stock or added))
         if replacement and not values and re.search(r'菜',target):
             # "换成别的菜/换成清淡一点的菜" changes the dish, not an ingredient.
@@ -222,9 +230,16 @@ def interpret(question):
         if values:
             from ingredient_recommendation import normalize_ingredient
             values=list(dict.fromkeys(normalize_ingredient(v) for v in values))
-            turn.edits.append(Edit('add' if added else 'set','ingredients',tuple(values),raw))
+            if previous_stock_index is not None and not (stock or added or replacement):
+                previous=turn.edits[previous_stock_index]
+                turn.edits[previous_stock_index]=Edit(previous.operation,'ingredients',
+                    tuple(dict.fromkeys((*previous.values,*values))),previous.evidence+'，'+raw)
+                stock_index=previous_stock_index
+                continue
+            if stock:stock_index=len(turn.edits)
+            turn.edits.append(Edit('add' if added or (stock and stock['more'] and not stock['only']) else 'set',
+                                   'ingredients',tuple(values),raw))
             turn.edits.append(Edit('set','mode',('inventory' if stock or added else 'preference',),raw))
-            if stock and stock[1]=='只有':turn.edits.append(Edit('add','extra_constraints',(raw,),raw))
             continue
         made=re.fullmatch(r'(?:今天|这次|现在)?(?:我)?(?:想|想要|要)?(?:用|拿)?(.+?)(?:做|来做|炒|蒸|煮|烤)(?P<count>一|1|[二两三四五六七八九十\d]+)?(?:道|个)?(?:的)?(?:简单|容易|快手|快速|省时)?(?:的)?(?:菜|菜谱)?',clause)
         if made:

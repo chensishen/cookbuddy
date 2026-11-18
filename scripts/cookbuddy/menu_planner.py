@@ -48,7 +48,10 @@ def resolve_template(request):
                 'meal_types' in rule and kind not in rule['meal_types']):continue
             template['slots']=[s for s in template['slots'] if s['role'] not in rule.get('drop_roles',[])]
             if rule.get('add_slot'):template['slots'].append(copy.deepcopy(rule['add_slot']))
+    from .meal_planning import SIMPLE_PREFERENCE
+    simple_breakfast=kind=='breakfast' and not explicit and re.search(SIMPLE_PREFERENCE,request.get('question',''))
     for slot in template['slots']:
+        if simple_breakfast and slot.get('optional'):continue
         if slot.get('on_request') and not request.get('include_staple'):continue
         slots.extend({**slot,'slot_id':slot['role']+'_'+str(i+1)} for i in range(slot['count']))
     template['slots']=slots
@@ -122,7 +125,7 @@ def validate_menu(rows,template,grouped,state):
 class MenuPlanner:
     def plan(self,request,chunks,state,template,*,seed=0,fastest=False,taste_preferences=()):
         from .meal_planning import SIMPLE_PREFERENCE,duration_estimate
-        from .ltm.retriever import taste_preference_match
+        from .ltm.retriever import flavor_feature,preference_source_text,taste_preference_match
         from search_filters import filter_chunks
         grouped={}
         for row in chunks:grouped.setdefault(row['source'],[]).append(row)
@@ -145,13 +148,25 @@ class MenuPlanner:
                 if not estimate:continue
                 required,optional,tools,uncertain,refs=inventory(row,grouped[row['source']])
                 matched=matched_inventory(required,optional,uncertain,stock)
-                coverage=len(required & stock)/len(required) if required else 0
                 tie=hashlib.sha256((str(seed or 0)+template['meal_type']+row['source']).encode()).hexdigest()
-                taste_matches=[match for pref in taste_preferences
-                               if (match:=taste_preference_match(row.get('description',''),pref))]
+                description=preference_source_text(row)
+                taste_matches=[match for pref in taste_preferences if (match:=taste_preference_match(description,pref))]
+                cuisine_matches=[str(pref['value']) for pref in taste_preferences if pref['dimension']=='cuisine'
+                                 and pref['polarity']=='like' and str(pref['value']) in description]
+                spicy_alternative=None
+                if (not taste_matches and any(p['dimension']=='spice_level' and str(p['value']) in ('2','3')
+                                              and p['polarity']=='like' for p in taste_preferences)
+                        and not flavor_feature(description,'微辣')):
+                    spicy_alternative=flavor_feature(description,'辣味备选')
+                preference_score=len(taste_matches)+len(cuisine_matches)+0.25*bool(spicy_alternative)
+                preference_score-=sum(bool(flavor_feature(description,str(pref['value'])))
+                                      for pref in taste_preferences if pref['dimension']=='flavor'
+                                      and pref['polarity']=='dislike')
+                preference_score-=sum(metadata[row['source']]['difficulty']>int(pref['value'])
+                                      for pref in taste_preferences if pref['dimension']=='max_difficulty')
                 pool.append({**row,'category':category,'difficulty':metadata[row['source']]['difficulty'],
-                    'taste_matches':taste_matches,
-                    'duration':estimate,'coverage':coverage,'primary_ingredients':sorted(primary_ingredients(row)),
+                    'taste_matches':taste_matches,'spicy_alternative':spicy_alternative,'cuisine_matches':cuisine_matches,'preference_score':preference_score,
+                    'duration':estimate,'primary_ingredients':sorted(primary_ingredients(row)),
                     'matched':sorted(matched),'missing':sorted(required-stock),'optional':sorted(optional),
                     'tools':sorted(tools),'unresolved':uncertain,'evidence':row['evidence']+refs,'tie':tie})
             # Keep the bounded recall pool: trimming to the fastest 25 excluded
@@ -162,38 +177,62 @@ class MenuPlanner:
         def rank(rows):
             methods=[next((m for m in ('炒','蒸','煮','烤','拌','煎','炖') if m in row['title']),'其他') for row in rows]
             elapsed=sum(r['duration']['minutes'] for r in rows)
-            coverage=(-len({r['role'] for r in rows if r['slot_id'] in required_ids}),
+            slot_fit=(-len({r['role'] for r in rows if r['slot_id'] in required_ids}),
                       -sum(r['slot_id'] in required_ids for r in rows),-len(rows))
-            taste_matches=sum(len(r['taste_matches']) for r in rows)
-            if fastest:return (*coverage,elapsed,-taste_matches,tuple(r['tie'] for r in rows))
+            preference_score=sum(r['preference_score'] for r in rows)
+            if fastest:return (*slot_fit,elapsed,-preference_score,tuple(r['tie'] for r in rows))
             target=(template['budget']*templates()['selection']['target_budget_fraction']*len(rows)/len(template['slots'])
                     if template['budget'] is not None else None)
             suitability=sum(any(m in r['title'] for m in template.get('preferred_methods',[]))
                             for r in rows if r['category'] not in ('soup','drink'))
-            return (*coverage,-sum(r['source'] in accepted for r in rows),-taste_matches,sum(r['source'] in previous for r in rows),-sum(r['coverage'] for r in rows),
+            time_fit=abs(elapsed-target) if target is not None else 0
+            breakfast_fit=-sum(r['category']=='breakfast' for r in rows) if prefer_simple and template['meal_type']=='breakfast' else 0
+            # Give comparable menus room to vary without crossing the time budget.
+            variation=sum(int(r['tie'][:8],16)/2**32 for r in rows) if seed else 0
+            practical_fit=time_fit/10-suitability+breakfast_fit*0.5-variation*1.5
+            return (*slot_fit,-sum(r['source'] in accepted for r in rows),-preference_score,sum(r['source'] in previous for r in rows),-sum(len(r['matched']) for r in rows),
+                sum(len(r['missing']) for r in rows) if stock else 0,
                 sum(r['difficulty'] for r in rows) if prefer_simple else 0,
-                abs(elapsed-target) if target is not None else 0,-suitability,
+                practical_fit,
                 len(methods)-len(set(methods)),-len({r['category'] for r in rows}),
                 -sum(r.get('rerank_score',0) for r in rows),tuple(r['tie'] for r in rows))
+        revision=request.get('revise_menu')
+        original={row['slot_id']:row for row in (revision or [])}
+        original_sources={row['source'] for row in original.values()}
+        if revision is not None and (not original or not any(r['role']=='soup' for r in original.values())
+                or not original.keys() <= {s['slot_id'] for s in template['slots']}):
+            return [],template['slots']
         beam=[[]]
         # Plan scarce required courses first, so early dish choices cannot
         # consume the soup's time before that course is considered.
         ordered=sorted(template['slots'],key=lambda s:(bool(s.get('optional')),len(pools[frozenset(s['categories'])])))
         for slot in ordered:
+            if revision is not None and slot['slot_id'] not in original:
+                continue
+            prior=original.get(slot['slot_id'])
             choices=[]
             for rows in beam:
-                choices.append(rows)  # A missing role is explicit in the result, never substituted.
+                if revision is None:choices.append(rows)
+                changed=prior and any(r['source'] not in original_sources for r in rows)
                 used={r['source'] for r in rows};primary={n for r in rows for n in r['primary_ingredients']}
                 elapsed=sum(r['duration']['minutes'] for r in rows)
                 for row in pools[frozenset(slot['categories'])]:
                     if (slot['role']=='main_staple' and template.get('staple_pattern') and row['category']=='breakfast'
                             and not re.search(template['staple_pattern'],row['title'])):continue
+                    if prior and row['source']!=prior['source'] and (
+                            prior['role']=='soup' or changed or row['source'] in original_sources):continue
                     if row['source'] in used or primary & set(row['primary_ingredients']):continue
                     if template['budget'] is not None and elapsed+row['duration']['minutes']>template['budget']:continue
                     choices.append(rows+[{**row,'role':slot['role'],'role_label':slot['label'],'slot_id':slot['slot_id']}])
             beam=sorted(choices,key=rank)[:128]
+        if revision is not None:
+            beam=[rows for rows in beam if sum(r['source'] not in original_sources for r in rows)==1]
+        if not beam:return [],template['slots']
         positions={s['slot_id']:i for i,s in enumerate(template['slots'])}
         best=sorted(beam[0],key=lambda r:positions[r['slot_id']])
+        if accepted and accepted=={r['source'] for r in best}:
+            accepted_order={source:i for i,source in enumerate(request['accepted_sources'])}
+            best.sort(key=lambda r:accepted_order[r['source']])
         validate_menu(best,template,grouped,state)
         selected_ids={r['slot_id'] for r in best}
         missing=[s for s in template['slots'] if s['slot_id'] not in selected_ids]

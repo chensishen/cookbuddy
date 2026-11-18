@@ -16,6 +16,12 @@ class ProfileGuardTests(unittest.TestCase):
         self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
         self.store=ProfileStore(path=Path(self.tmp.name)/'prefs.db')
         self.hard=[{'dimension':'allergy','value':'花生','polarity':'avoid','strength':'hard'}]
+    def test_background_write_cannot_replace_explicit_spice_from_same_turn(self):
+        self.store.apply('u','s','s:10',Candidate('spice_level','3','like','soft'))
+        result=self.store.apply('u','s','s:10',Candidate('spice_level','2','like','soft'),expected_epoch=0)
+        self.assertEqual(result['decision'],'NOOP')
+        self.assertEqual([p.value for p in self.store.prefs('u',('active',))],['3'])
+
     def test_h1_search_filter_and_return_check(self):
         chunks=load_chunks();expr=build_milvus_filter(self.hard,chunks)
         self.assertTrue(expr.startswith('source in '))

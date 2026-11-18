@@ -15,6 +15,15 @@ class InventoryCoverageTests(unittest.TestCase):
                 covered=set().union(*(set(r['matched']) for r in rows))
                 self.assertTrue({normalize_ingredient(s) for s in ingredients}<=covered,rows)
 
+    def test_tomato_and_egg_are_used_in_both_top_recipes(self):
+        for tomato in ('西红柿','番茄'):
+            with self.subTest(tomato=tomato):
+                rows=recommend([tomato,'鸡蛋'],self.chunks,2)
+                self.assertEqual([r['title'] for r in rows],['西红柿炒鸡蛋','西红柿鸡蛋汤'])
+                self.assertTrue(all(set(r['matched'])=={'番茄','鸡蛋'} for r in rows))
+                self.assertIn('味素',rows[1]['optional'])
+                self.assertNotIn('味素',rows[1]['missing'])
+
     def test_constrained_inventory_can_use_different_ingredients_in_different_dishes(self):
         from cookbuddy.task_context import advance_task
         from preference_recommendation import recommend_preferences
@@ -50,6 +59,20 @@ class InventoryCoverageTests(unittest.TestCase):
         required,_,_,uncertain,_=recipe_ingredient_fields(rows,(ROOT/rows[0]['source']).read_text().splitlines())
         self.assertNotIn('向上取整',required)
         self.assertNotIn('向上取整',uncertain)
+
+    def test_conditional_calculation_notes_and_possessives_are_not_missing_ingredients(self):
+        from ingredient_recommendation import recipe_ingredient_fields
+        from check_embedding import ROOT
+        for title,expected in (
+            ('太阳蛋',{'油','鸡蛋','盐'}),
+            ('酸辣蕨根粉',{'油泼辣子','盐','糖','蕨根粉','酱油','香醋'}),
+            ('吐司果酱',{'新鲜吐司','果酱'}),
+            ('西红柿鸡蛋汤',{'番茄','鸡蛋','大蒜','姜','盐','葱','香油'}),
+        ):
+            with self.subTest(title=title):
+                rows=[r for r in self.chunks if r['title']==title]
+                required,_,_,_,_=recipe_ingredient_fields(rows,(ROOT/rows[0]['source']).read_text().splitlines())
+                self.assertEqual(required,expected)
 
     def test_named_stock_check_does_not_discard_other_conditions(self):
         from src.agent.turn_intents import named_ingredient_stock
@@ -102,12 +125,12 @@ class InventoryCoverageTests(unittest.TestCase):
         self.assertEqual([r['title'] for r in result['recommendations']],['菜甲','菜乙'])
 
     def test_uncovered_stock_is_reported_without_fabricating_matches(self):
-        from ingredient_recommendation import inventory_coverage_note
+        from ingredient_recommendation import unused_inventory_note
         chunks=[r for r in self.chunks if r['title']=='糖拌西红柿']
         rows=recommend(['番茄','马铃薯'],chunks,2)
         self.assertEqual(len(rows),1)
         self.assertEqual(rows[0]['matched'],['番茄'])
-        self.assertIn('土豆',inventory_coverage_note(['番茄','马铃薯'],rows))
+        self.assertIn('土豆',unused_inventory_note(['番茄','马铃薯'],rows))
 
     def test_explicit_per_dish_requirement_is_not_silently_relaxed(self):
         from cookbuddy.task_context import advance_task
@@ -130,7 +153,8 @@ class InventoryCoverageTests(unittest.TestCase):
         for row in rows:
             self.assertTrue(row['matched'])
             self.assertTrue(set(row['matched'])<=set(row['required']))
-            self.assertGreater(row['coverage'],0)
+            self.assertTrue(row['matched'])
+            self.assertNotIn('coverage',row)
 
 
 class InventoryDialogueTests(unittest.IsolatedAsyncioTestCase):

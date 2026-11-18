@@ -59,3 +59,40 @@ class ParameterFactRegressionTests(unittest.IsolatedAsyncioTestCase):
             self.assertIn(value,data['short_answer'])
         for ref in data['evidence']:
             self.assertEqual(ref['quote'],'\n'.join(text.splitlines()[ref['start_line']-1:ref['end_line']]))
+
+    async def test_original_oil_options_follow_substitution_discussion(self):
+        chat=DialogueHarness()
+        await chat.turn('查看基础牛奶面包的完整原文。')
+        await chat.turn('黄油能用橄榄油替换吗？原文没说明的请明确指出。')
+        _,result,handled=await chat.turn('如果原文没有说明，请不要推测替换比例，只告诉我原文允许使用什么油。')
+        self.assertTrue(handled)
+        data=result['outputs'][-1]['result']
+        self.assertEqual(data['answer_method'],'literal_ingredient_options')
+        self.assertIn('黄油或玉米油',data['short_answer'])
+        self.assertNotIn('橄榄油',data['short_answer'])
+        self.assertIn('黄油或玉米油',data['evidence'][0]['quote'])
+
+    def test_original_oil_options_do_not_bypass_constraints(self):
+        from cookbuddy.ltm.guard import policy
+        chunks=load_chunks()
+        question='基础牛奶面包原文可以用哪种油？'
+        self.assertIsNotNone(source_fact(question,chunks))
+        self.assertIsNone(source_fact(question+'我要替换成橄榄油。',chunks))
+        with policy([{'dimension':'allergy','value':'鸡蛋','strength':'hard','polarity':'avoid'}]):
+            self.assertIsNone(source_fact(question,chunks))
+
+    async def test_ordinal_title_question_answers_with_the_preserved_name(self):
+        chat=DialogueHarness()
+        _,initial,_=await chat.turn('我有番茄和鸡蛋，推荐两道菜，说明还缺什么。')
+        title=initial['outputs'][-1]['result']['recommendations'][0]['title']
+        await chat.turn('第二项换一道，第一项保留。')
+        _,result,_=await chat.turn('第一道叫什么？')
+        self.assertEqual(result['outputs'][-1]['result']['short_answer'],f'第1道是《{title}》。')
+
+    async def test_inventory_followup_includes_requested_characteristics(self):
+        chat=DialogueHarness()
+        await chat.turn('我有番茄和鸡蛋，推荐两道菜，说明还缺什么。')
+        _,result,_=await chat.turn('这次加上土豆，挑三道，分别说特点、推荐理由和缺料。')
+        rows=result['outputs'][-1]['result']['recommendations']
+        self.assertEqual(len(rows),3)
+        self.assertTrue(all(row.get('description') and row.get('reason') and 'missing' in row for row in rows))

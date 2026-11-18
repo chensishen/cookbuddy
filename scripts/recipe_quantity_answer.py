@@ -64,6 +64,7 @@ def parse_servings(question):
 
 def select_quantity_plan(question, chunks):
     chunks = list(chunks)
+    question = re.sub(r'[。！？!?；;]\s*(?:(?:请)?(?:给出|列出|附上)原文(?:公式(?:或依据)?|依据)|原文(?:没|没有)写换算方法的话(?:请)?直说)[。！？!? ]*$', '', question)
     if not re.search(r'多少|几个|用量|需要|各.*量', question): return None
     if re.search(r'过敏|忌口|替代|替换|缺|没有|我有|只有|库存|够不够|剩|换算|公斤|kg|毫克|mg|汤匙|勺|怎么做|步骤|温度|分钟|保存',question,re.I): return None
     servings = parse_servings(question)

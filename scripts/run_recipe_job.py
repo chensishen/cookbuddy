@@ -69,12 +69,14 @@ def main():
             frame=frame.tb_next
         failed={'question':payload.get('question','') if 'payload' in locals() else '', 'mode':payload.get('mode','agent') if 'payload' in locals() else 'agent', 'status':'agent_unavailable','outputs':[],'steps':[], 'elapsed_seconds':time.monotonic()-started,'error':'本次查询未完成，请稍后重试。','error_code':type(error).__name__,**metadata,
                 'trace':{'request_id':ident,'outcome':'failed','error_code':type(error).__name__,'frames':frames[-4:]}}
+        queue.finish(ident,'failed',result=failed,progress=failed['service_notice'])
         if 'payload' in locals() and payload.get('mode')=='auto':
+            snapshot=queue.get(ident)
+            failed['trace'].update({k:v for k,v in snapshot.items() if k!='result'})
             try:
                 from cookbuddy.store import Store
                 Store().append(payload['user_id'],payload['conversation_id'],ident,'assistant',failed['error'],failed)
             except Exception:pass
-        queue.finish(ident,'failed',result=failed,progress=failed['service_notice'])
 
 
 if __name__ == '__main__':

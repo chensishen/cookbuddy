@@ -46,6 +46,7 @@ def rule_extract(text):
     if alternative and alternative['constraint']:
         rows=rule_extract(alternative['constraint'])
         return [replace(c,scope='session',valid_to=None,evidence_text=text) for c in rows]
+    from .management import standalone_spice_preference
     result=[]
     for sentence in re.split(r'[，,。；;！!\n]+',text):
         s=sentence.strip()
@@ -57,6 +58,9 @@ def rule_extract(text):
             if dim=='avoid_ingredient' and reference_only(normalize(value)):return
             try:result.append(scoped(Candidate(dim,normalize(value),polarity,strength,source,'global',op,.95,s),s))
             except ValueError:pass
+        spice=standalone_spice_preference(s)
+        if spice is not None:
+            add('spice_level',spice);continue
         no_allergy=re.search(r'(?:我)?对(.{1,20}?)(?:已经)?(?:不再|不)过敏',s)
         if no_allergy:
             add('allergy',no_allergy[1],'avoid','hard','revoke');continue

@@ -4,8 +4,22 @@ from .guard import normalize
 from .models import Candidate,SESSION_ONLY
 
 
+def standalone_spice_preference(question):
+    """Recognize a complete first-person taste statement, without a recipe request."""
+    text=question.strip().rstrip('。！! ').strip()
+    match=re.fullmatch(r'(?:我(?:现在|以后|更)?(?:喜欢(?:吃)?|爱吃|偏好)|'
+                       r'(?:我的)?口味(?:改成|换成|改为|变成))'
+                       r'(不辣|微辣|中辣|重辣|特辣|麻辣|辣)(?:的?(?:菜|口味)|味|的)?(?:了)?',text)
+    if match:
+        return {'不辣':'0','微辣':'1','中辣':'2','重辣':'3','特辣':'3','麻辣':'3','辣':'3'}[match[1]]
+    if re.fullmatch(r'我(?:现在|以后)?(?:不再喜欢|不太喜欢|不喜欢)(?:吃)?辣(?:的?(?:菜|口味)|味|的)?(?:了)?',text):
+        return '0'
+    return None
+
+
 def memory_only_write(question):
     """An explicit save without a separate cooking request."""
+    if standalone_spice_preference(question) is not None:return True
     match=re.match(r'\s*(?:请(?:你)?|帮我)?(?:记住|记下|记一下)[\s，,：:]*',question)
     if not match:return False
     return not re.search(
@@ -71,7 +85,9 @@ def describe(pref):
     if dim=='flavor' and getattr(pref,'polarity','like')=='dislike':return '不喜欢'+value+'口味'
     if dim=='allergy':return '对'+value+'过敏'
     if dim=='avoid_ingredient':return ('不吃' if pref.strength=='hard' else '不太喜欢')+value
-    if dim=='spice_level':return '辣度：'+{'0':'不辣','1':'微辣','2':'中辣','3':'较辣'}.get(value,value)
+    if dim=='spice_level':
+        from .retriever import SPICE_LABELS
+        return '辣度：'+SPICE_LABELS.get(value,value)
     if dim=='equipment':return ('设备：' if value.startswith('有') else '设备限制：')+value
     labels={'flavor':'口味','cuisine':'菜系','equipment':'设备限制','inventory':'现有食材',
             'household_size':'用餐人数','time_budget':'时间预算（分钟）','max_difficulty':'难度上限','diet_type':'饮食类型'}

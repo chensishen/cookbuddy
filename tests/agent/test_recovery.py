@@ -75,6 +75,8 @@ class RecoveryTests(unittest.IsolatedAsyncioTestCase):
         async def call(op,args,context,**kwargs):
             r=await original(op,args,context,**kwargs)
             if op=='prepare':r['named_recipe']={'dish_name':'蒸水蛋','source_path':self.services.source}
+            if op in ('detail','images'):
+                self.assertEqual(kwargs['timeout'],configuration().retrieval.tool_timeout_s)
             if op=='detail':
                 r['evidence'][0]['quote']='逐字原文。'*1200;r['complete']=True
             return r

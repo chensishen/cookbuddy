@@ -13,6 +13,13 @@ def explicit_ordinal(question):
     return next(iter(values)) if len(values)==1 else None
 
 
+def ordinal_title_question(question):
+    return bool(re.fullmatch(
+        r'(?:现在|刚才|这次|那么|请问)?\s*第\s*(?:[一二两三四五六七八九十]|\d{1,2})'
+        r'\s*(?:道|项|个)(?:菜)?\s*(?:叫什么|叫啥|是什么|是哪一?道)(?:菜)?[。！!？? ]*',
+        question.strip()))
+
+
 def rejected_ordinal(text):
     match=re.fullmatch(r'(?:不要|别推荐|排除)(?:刚才|刚刚|之前|上次)?(?:的)?第([一二两三四五六七八九十]|\d{1,2})(?:道|个)(?:菜)?',text.strip())
     if not match:return None
@@ -31,17 +38,28 @@ def ingredient_followup(question):
 def named_ingredient_stock(question,title):
     """Recognize a named ingredient check plus fully understood stock clauses."""
     from cookbuddy.recommendation_turn import interpret
-    clauses=[s.strip() for s in re.split(r'[，,。；;！!？?\n]+',question) if s.strip()]
-    checks=[s for s in clauses if s.startswith(title) and ingredient_followup(s[len(title):].lstrip('的'))]
+    clauses=[s.strip() for s in re.split(r'[，,。.;；！!？?\n]+',question) if s.strip()]
+    checks=[s for s in clauses if (s.startswith(title) and ingredient_followup(s[len(title):].lstrip('的')))
+            or re.fullmatch(r'(?:请|帮我)?(?:核对|检查|对照)'+re.escape(title)+r'的?(?:用料|配料|原料|食材)',s)]
     if len(checks)!=1:return None
     stock=[]
     for clause in clauses:
-        if clause==checks[0]:continue
+        if clause==checks[0] or re.fullmatch(r'(?:请)?(?:把)?(?:已有|缺少|可选|必备|用料|食材|和|与|分开|分别|列出|、)+',clause):continue
         turn=interpret(clause)
         if turn.unresolved or not turn.edits or any(e.slot not in ('mode','ingredients') or e.operation!='set' for e in turn.edits):return None
         for edit in turn.edits:
             if edit.slot=='ingredients':stock.extend(edit.values)
     return list(dict.fromkeys(stock))
+
+
+def original_oil_options_request(question):
+    """Recognize a request for the source's oil choices, with no recipe edits."""
+    return bool(re.fullmatch(
+        r'(?:如果原文(?:没有|没)说明[，,]\s*)?'
+        r'(?:(?:请)?(?:不要|别)(?:推测|猜测)替换比例[，,]\s*)?'
+        r'(?:(?:只|仅)?(?:请)?告诉我)?(?:原文|原配方)(?:中|里)?'
+        r'(?:允许|可以|能)(?:使用|选用|用)(?:什么|哪些|哪种)油[。！!？? ]*',
+        question.strip()))
 
 
 def recipe_fact_request(question):
@@ -64,6 +82,12 @@ def change_dish_request(question):
                 and not re.search(r'记住|记一下|记下|忘记|忘掉|偏好设置|以后|从现在|长期|一直|我的偏好',question))
 
 
+def open_recommendation(question):
+    return bool(re.fullmatch(
+        r'(?:请)?(?:给我|帮我|随机)?(?:随机)?推荐(?:一下)?(?:几个|几道|几种)(?:菜|菜谱|菜品)[。.!！?？ ]*',
+        question.strip()))
+
+
 def alternative_request(question):
     q=question.strip()
     q=re.sub(r'[，,；;]\s*(?:其他|其它|其余)(?:的菜|菜品|条件|要求)?(?:保持)?不变[。！!？? ]*$','',q)
@@ -82,6 +106,12 @@ def alternative_request(question):
 
 
 def _alternative_request(question):
+    more=re.fullmatch(r'(?:请)?(?:再|继续|接着)(?:帮我|给我)?推荐(几|俩|[一二两三四五六七八九十]|\d{1,2})?(?:道|个|种)?(?:菜|菜谱)?[。.!！?？ ]*',question.strip())
+    if more:
+        from scripts.cookbuddy.recommendation_schema import NUMBERS
+        raw=more[1]
+        count=None if raw in (None,'几') else int(raw) if raw.isdigit() else 2 if raw=='俩' else NUMBERS[raw]
+        return {'single':False,'constraint':'','more':True,'count':count}
     replace_keep=re.fullmatch(r'第([一二两三四五六七八九十]|\d{1,2})(?:项|道|个)(?:菜)?(?:换一道|换一个|换掉|更换)(.*?)[，,；;]\s*第([一二两三四五六七八九十]|\d{1,2})(?:项|道|个)(?:菜)?(?:保留|不变|保持不变)(?:[，,；;]\s*(.+?))?[。！!？? ]*',question.strip())
     if replace_keep:
         from scripts.cookbuddy.recommendation_schema import NUMBERS
@@ -93,7 +123,10 @@ def _alternative_request(question):
     if counted:
         from scripts.cookbuddy.recommendation_schema import NUMBERS
         count=int(counted[1]) if counted[1].isdigit() else {'俩':2,**NUMBERS}.get(counted[1],0)
-        return {'single':count==1,'constraint':(counted[2] or '').rstrip('。！!？? '),'count':count}
+        constraint=(counted[2] or '').rstrip('。！!？? ')
+        index=rejected_ordinal(constraint) if count==1 else None
+        return {'single':count==1,'constraint':'' if index else constraint,'count':count,
+                **({'index':index} if index else {})}
     targeted=re.fullmatch(r'(?:请)?(?:帮我)?(?:更换|换掉|换)(?:刚才|刚刚|之前|上次)?第([一二两三四五六七八九十]|\d{1,2})(?:道|个)(?:菜)?(?:[，,；;]\s*(.+?))?[。！!？? ]*',question.strip())
     if not targeted:
         targeted=re.fullmatch(r'(?:请)?(?:帮我)?(?:把)?(?:刚才|刚刚|之前|上次)?第([一二两三四五六七八九十]|\d{1,2})(?:道|个|项)(?:菜)?(?:换一道|换一个|换掉|更换|换一下|换一换)(?:[，,；;]\s*(.+?))?[。！!？? ]*',question.strip())

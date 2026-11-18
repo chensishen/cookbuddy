@@ -1,4 +1,4 @@
-"""全库配料覆盖率推荐；不推断步骤里的必需性、替代方案或库存用量。"""
+"""按实际食材推荐；不推断步骤里的必需性、替代方案或库存用量。"""
 import re
 import json
 from functools import lru_cache
@@ -110,13 +110,25 @@ def ingredient_fields(rows,original,*,normalize_aliases=True,calculation=False):
             # Distributed quantities need the original combined names and amounts.
             if re.search(r'各\s*(?:\d|[一二两三四五六七八九十半]+(?:个|只|块|条|根|把))',match[1]):
                 uncertain.append(match[1]);continue
+            if calculation and re.match(r'^(?:如果|若|假如|可以加入|可酌情)',match[1]):
+                uncertain.append(match[1]);continue
             entries=ingredient_entries(match[1])
             if calculation and '=' in entries[0]:
                 # Formula notes after the assigned amount are instructions, not
                 # additional ingredients ("鸡蛋 = ...，向上取整").
                 entries=entries[:1]
             for raw in entries:
-                name,quantity_detail=ingredient_identity(raw,aliases=normalize_aliases)
+                if calculation and re.match(r'^(?:约\s*\d|(?:切碎|磨碎|去皮切块|掰成小朵)(?:[（(]|$))',raw):continue
+                identity=raw
+                if calculation:
+                    identity=re.sub(r'(?:的)?(?:用量|数量)(?=\s*=)', '',raw)
+                    identity=re.sub(r'(?:的)?用量(?:通常来说)?为(?=\s*\d)', ' = ',identity)
+                    if re.search(r'共(?:计)?\s*\d',identity):
+                        identity=re.sub(r'共(?:计)?(?=\s*\d)','',identity)
+                        uncertain.append(match[1])
+                    if re.search(r'足够.+的量$',identity):
+                        uncertain.append(raw);continue
+                name,quantity_detail=ingredient_identity(identity,aliases=normalize_aliases)
                 if quantity_detail:uncertain.append(raw+'（数量与规格需核对）')
                 counted=COUNTED_FOOD.match(raw)
                 if counted and counted['part']:uncertain.append(raw+'（部位和数量需核对）')
@@ -134,8 +146,12 @@ def recipe_ingredient_fields(rows,original):
     required,optional,tools,uncertain,evidence=ingredient_fields(tables,original)
     extra,extra_optional,extra_tools,extra_uncertain,extra_evidence=ingredient_fields(
         calculations,original,calculation=True)
-    required|=extra-optional
-    optional=(optional|extra_optional)-required
+    if '鸡腿肉' in required and '鸡腿' in extra and '鸡腿' not in required:
+        extra.remove('鸡腿')
+        extra_uncertain.append('原料表写鸡腿肉，计算章节按鸡腿个数计量，请核对规格和用量')
+    extra={name for name in extra if '新鲜'+name not in required|optional}
+    optional|=extra_optional
+    required=(required|extra)-optional
     return required,optional,tools|extra_tools,list(dict.fromkeys(uncertain+extra_uncertain)),evidence+extra_evidence
 
 
@@ -166,25 +182,26 @@ def ingredient_vocabulary():
 
 
 def select_inventory_recipes(ranked,ingredients,limit):
-    """Cover stock across the batch, then favor fewer missing ingredients."""
-    uncovered={normalize_ingredient(s) for s in ingredients};remaining=list(ranked);chosen=[]
+    """Use the available ingredients across the batch, then favor fewer missing ingredients."""
+    stock={normalize_ingredient(s) for s in ingredients}
+    uncovered=set(stock);remaining=list(ranked);chosen=[]
     while remaining and len(chosen)<limit:
-        # With enough remaining dishes, cover stock one dish at a time using
-        # fewer missing ingredients, rather than forcing a
-        # complex all-in-one recipe ahead of simpler complementary dishes.
-        enough_slots=limit-len(chosen)>=len(uncovered)
         def gain(i):
-            count=len(uncovered & set(remaining[i].get('inventory_matches',remaining[i].get('matched',[]))))
-            return (bool(count) if enough_slots else count,
-                    remaining[i].get('score',remaining[i].get('rerank_score',0)),
-                    -len(remaining[i].get('missing',[])))
+            row=remaining[i]
+            matches=set(row.get('inventory_matches',row.get('matched',[])))
+            title=normalize_ingredient(row['title'].replace('西红柿','番茄').replace('马铃薯','土豆'))
+            title_matches=sum(name in title for name in stock & matches)
+            newly_matched=len(uncovered & matches)
+            gain=bool(newly_matched) if limit-len(chosen)>=len(uncovered) else newly_matched
+            return (gain,len(stock & matches),title_matches,row.get('score',row.get('rerank_score',0)),
+                    -len(row.get('missing',[])))
         index=max(range(len(remaining)),key=gain)
         row=remaining.pop(index);chosen.append(row)
         uncovered.difference_update(row.get('inventory_matches',row.get('matched',[])))
     return chosen
 
 
-def inventory_coverage_note(ingredients,rows):
+def unused_inventory_note(ingredients,rows):
     covered={s for row in rows for s in row.get('inventory_matches',row.get('matched',[]))}
     missing=sorted({normalize_ingredient(s) for s in ingredients}-covered)
     return '本次推荐尚未用到你提供的：'+'、'.join(missing)+'。' if missing else ''
@@ -223,16 +240,15 @@ def recommend(ingredients, chunks, limit=3, *, category=None, max_difficulty=Non
             number,line,_=difficulty_rows[0]
             evidence.append({'title':rows[0]['title'],'section':'难度','source':source,
                 'quote':line,'start_line':number,'end_line':number})
-        # 不确定条目保留；覆盖率只使用原料表与计算中可识别的配料。
         candidates.append({'title':rows[0]['title'], 'source':source,
             'category':source_category,'difficulty':difficulty,
-            'coverage':len(matched)/len(required), 'matched':sorted(matched),
+            'matched':sorted(matched),
             'matched_optional':sorted(optional_matches),'matched_uncertain':sorted(uncertain_matches),
-            'reason':'推荐它是因为原文配料中有你手边的'+ '、'.join(sorted(matched))+'，可以用上现有食材；其余用料我列在下面，方便你准备。',
+            'reason':'这道菜能用上你手边的'+ '、'.join(sorted(matched))+'。',
             'missing':sorted(required-inventory), 'required':sorted(required),
             'optional':sorted(optional), 'tools':sorted(tools), 'unresolved':uncertain,
             'evidence':evidence})
-    ranked=sorted(candidates,key=lambda r:(-r['coverage'],-len(r['matched']),len(r['missing']),r['difficulty'] or 6,r['source']))
+    ranked=sorted(candidates,key=lambda r:(-len(r['matched']),len(r['missing']),r['difficulty'] or 6,r['source']))
     return select_inventory_recipes(ranked,inventory,limit)
 
 
@@ -252,7 +268,7 @@ def recommendation_answer(question, chunks):
     texts, evidence, sources = [], [], []
     for row in results:
         ident = len(evidence)+1
-        text = f"{row['title']}：已核对配料覆盖率 {row['coverage']:.0%}；已有：{'、'.join(row['matched'])}。"
+        text = f"{row['title']}：已有：{'、'.join(row['matched'])}。"
         if filters['category']:
             from recipe_catalog import CATEGORIES
             text+='原库分类：'+CATEGORIES[row['category']]+'。'
@@ -266,11 +282,7 @@ def recommendation_answer(question, chunks):
             item = {**item, 'reference_id':len(evidence)+1}
             evidence.append(item)
             sources.append({k:item[k] for k in ('reference_id','title','section','source')} | {'line':item['start_line']})
-    note = inventory_coverage_note(inventory,results)+'覆盖率按原料表和计算章节中可识别的非可选配料计算；未默认拥有油盐等调料。操作中可能另有用料，用量与替代仍需查原文。'
+    note = unused_inventory_note(inventory,results)+'已核对原料表和计算章节。未默认拥有油盐等调料。操作中可能另有用料，用量与替代仍需查原文。'
     return {'status':'verified_source', 'short_answer':'\n'.join(texts)+'\n'+note,
         'sources':sources, 'evidence':evidence, 'recommendations':results,
-        'coverage_policy':{'numerator':'原料表与计算章节中匹配用户明确库存的配料数',
-            'denominator':'可识别且非可选的原料表与计算章节配料数；工具不计入',
-            'unlisted_inventory':'用户未提及的食材状态未知，不默认拥有，也不等于明确缺少',
-            'scope':'核对原料表与计算章节；操作可能另有用料；用量与替代仍需查原文'},
-        'filters':filters,'answer_method':'ingredient_table_coverage', 'validation':note, 'images':[]}
+        'filters':filters,'answer_method':'ingredient_table_match', 'validation':note, 'images':[]}

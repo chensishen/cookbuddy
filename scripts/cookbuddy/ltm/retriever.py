@@ -2,9 +2,14 @@
 import re
 from .models import settings
 
+SPICE_LABELS={'0':'不辣','1':'微辣','2':'中辣','3':'较辣'}
+
 FLAVOR_FEATURES={
     '清淡':r'清淡|清爽',
     '重口':r'重口(?:味)?|口味浓郁|浓郁|浓香|酱香|麻辣|香辣|鲜辣',
+    '微辣':r'微微?辣(?:意|味)?|略带辣(?:意|味)?|略有辣(?:意|味)?',
+    '辣味备选':r'香辣|麻辣|鲜辣',
+    '较辣':r'重辣|较辣|特辣|爆辣|辣味突出|辣味十足|香辣过瘾',
     '酸甜':r'酸甜|糖醋',
     '少油':r'少油|低油',
     '少盐':r'少盐|低盐',
@@ -22,22 +27,28 @@ def taste_preference_match(text,pref):
     if pref['dimension']=='flavor':
         label=value
     elif pref['dimension']=='spice_level':
-        label={'0':'不辣','1':'微辣','2':'中辣','3':'重辣'}.get(value)
+        label=SPICE_LABELS.get(value)
     else:return None
     if not label:return None
     feature=flavor_feature(text,label)
     return (label,feature) if feature else None
 
 
-def personalize(rows,profile,temp=None,recent=(),k=3,strict_flavor=False,inventory=()):
+def preference_source_text(row):
+    """Use the verified introduction, including sentences after the card teaser."""
+    intro=[item['quote'] for item in row.get('evidence',[]) if item.get('section')=='简介']
+    return '\n'.join(intro) or row.get('description','')
+
+
+def personalize(rows,profile,temp=None,recent=(),k=3,strict_flavor=False,inventory=(),rng=None):
     if not rows:return []
     cfg=settings()['retrieval'];weights=cfg['personalization'];temp=temp or {}
     prefs=[p for p in profile['soft_prefs'] if p['dimension'] not in temp]
-    prefs.extend({'dimension':d,'value':v} for d,v in temp.items() if d in {'flavor','cuisine','max_difficulty','spice_level'})
+    prefs.extend({'dimension':d,'value':v,'polarity':'like'} for d,v in temp.items() if d in {'flavor','cuisine','max_difficulty','spice_level'})
     scored=[]
     for row in rows:
         row=dict(row);reasons=[]
-        score=row.get('rerank_score',row.get('score',0));text=row.get('description','')
+        score=row.get('rerank_score',row.get('score',0));text=preference_source_text(row)
         matched_flavor=False
         for pref in prefs:
             dim,value=pref['dimension'],str(pref['value'])
@@ -62,16 +73,17 @@ def personalize(rows,profile,temp=None,recent=(),k=3,strict_flavor=False,invento
     flavor_prefs=any(p['dimension']=='flavor' and p.get('polarity','like')=='like' for p in prefs)
     if strict_flavor and flavor_prefs:
         scored=[item for item in scored if item[2]]
+    if rng is not None:rng.shuffle(scored)
     ranked=[r for _,r,_ in sorted(scored,key=lambda item:item[0],reverse=True)]
     from ingredient_recommendation import select_inventory_recipes
     selected=select_inventory_recipes(ranked,inventory,k) if inventory else ranked[:k]
-    if k and scored and cfg['explore_slots'] and not inventory and not (strict_flavor and flavor_prefs):
+    if rng is None and k and scored and cfg['explore_slots'] and not inventory and not (strict_flavor and flavor_prefs):
         explore=max((r for _,r,_ in scored),key=lambda r:r.get('rerank_score',r.get('score',0)))
         if explore not in selected:selected=selected[:max(0,k-1)]+[explore]
     return selected
 
 
-def personalize_result(data,state,profile,session):
+def personalize_result(data,state,profile,session,*,rng=None):
     if not data or not data.get('recommendations'):return data
     import re
     recent=[r['dish_name'] for r in session.slots['last_recommendations']]
@@ -79,16 +91,16 @@ def personalize_result(data,state,profile,session):
     constraints={**temp,**temp.get('profile_overrides',{})}
     rows=personalize(data['recommendations'],profile,constraints,recent,state['limit'],
                      strict_flavor=bool(state.get('tastes')) and state.get('memory_tastes')!=state.get('tastes'),
-                     inventory=state['ingredients'] if state['mode']=='inventory' else ())
+                     inventory=state['ingredients'] if state['mode']=='inventory' else (),rng=rng)
     if not rows:
         return {'status':'insufficient','short_answer':'暂未找到原文简介能明确匹配当前口味、并同时满足本次限制的菜谱。可以换一类食材或具体说明想要的风味。','sources':[],'evidence':[],'recommendations':[],'images':[]}
     sources={r['source'] for r in rows}
     summary=re.sub(r'^给你推荐这\d+道菜','给你推荐这'+str(len(rows))+'道菜',data['short_answer'])
     if state['mode']=='inventory':
-        from ingredient_recommendation import inventory_coverage_note
-        old_note=inventory_coverage_note(state['ingredients'],data['recommendations'])
+        from ingredient_recommendation import unused_inventory_note
+        old_note=unused_inventory_note(state['ingredients'],data['recommendations'])
         if old_note:summary=summary.replace(old_note,'',1)
-        summary+=inventory_coverage_note(state['ingredients'],rows)
+        summary+=unused_inventory_note(state['ingredients'],rows)
     return {**data,'recommendations':rows,'short_answer':summary,
             'sources':[r for r in data['sources'] if r['source'] in sources],
             'evidence':[r for r in data['evidence'] if r['source'] in sources]}

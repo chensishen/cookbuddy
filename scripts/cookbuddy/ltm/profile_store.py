@@ -7,7 +7,7 @@ from contextlib import contextmanager
 from dataclasses import asdict,replace
 from datetime import timedelta,datetime
 from pathlib import Path
-from .models import identity,PrefItem,Candidate,Decision,item,stamp,now,effective,settings,SESSION_ONLY
+from .models import identity,PrefItem,Candidate,Decision,item,stamp,now,effective,settings,SESSION_ONLY,SINGLE
 from .resolver import resolve,conflicting_values
 
 class DB:
@@ -99,6 +99,10 @@ class ProfileStore:
             db.execute("UPDATE user_prefs SET status='archived' WHERE user_id=? AND status IN ('active','pending') AND valid_to IS NOT NULL AND valid_to<=?",(uid,stamp()))
             rows=[PrefItem(**dict(r)) for r in db.execute("SELECT * FROM user_prefs WHERE user_id=? AND status IN ('active','pending')",(uid,)).fetchall()
                 if not r['valid_to'] or r['valid_to']>stamp()]
+            if expected_epoch is not None and c.op=='set' and c.dimension in SINGLE and any(
+                    p.dimension==c.dimension and p.status=='active' and p.source=='explicit'
+                    and p.source_turn_ref==turn and p.value!=c.value for p in rows):
+                return {'decision':'NOOP','message':'已保留本轮明确保存的偏好','needs_confirmation':False}
             # Evidence accumulation is committed in the same transaction as resolve.
             rows.sort(key=lambda p:p.status!='active')
             same=next((p for p in rows if p.dimension==c.dimension and p.value==c.value and p.polarity==c.polarity),None)

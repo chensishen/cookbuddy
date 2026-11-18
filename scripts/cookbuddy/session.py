@@ -75,10 +75,13 @@ def update_slots(state, task, result=None):
         state.slots['selected_dish']=None
         state.slots.pop('selected_section',None)
         state.slots.pop('pending_meal_offer',None)
+        state.slots.pop('recommendation_state',None)
         state.slots['temp_constraints']={k:v for k,v in state.slots['temp_constraints'].items()
                                          if k in ('profile_overrides','hard_constraints')}
     prior=task.get('state')
     if prior:
+        if task.get('action') in ('recommend','clarify'):
+            state.slots['recommendation_state']=copy.deepcopy(prior)
         if prior.get('mode')=='inventory':state.slots['ingredients_on_hand']=list(prior['ingredients'])
         state.slots['temp_constraints'].update({
             'tastes':list(prior['tastes']),
@@ -97,6 +100,8 @@ def update_slots(state, task, result=None):
             if data.get('meal_plan') and state.slots.get('meal_request'):
                 state.slots['meal_request']['meal_type']=data['meal_plan']['meal_type']
             if data.get('meal_plan'):
+                state.slots['last_meal_menu']=[{k:r[k] for k in ('source','slot_id','role')}
+                    for r in data['recommendations'] if all(k in r for k in ('source','slot_id','role'))]
                 alternative=data['meal_plan'].get('alternative')
                 if alternative:
                     state.slots['pending_meal_offer']={'minutes':alternative['estimated_minutes'],

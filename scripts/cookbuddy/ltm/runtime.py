@@ -101,7 +101,7 @@ class MemoryRuntime:
                         from .management import describe
                         saved.append(record.id)
                 if (outcome.get('needs_confirmation') or
-                    stable and not recipe_request and (not self.previous_task or candidate.dimension=='flavor') or
+                    stable and not recipe_request and (memory_only_write(question) or not self.previous_task or candidate.dimension=='flavor') or
                     any(v in question for v in ('记住','以后都','忘掉','不用管','不用提醒'))):
                     if outcome['decision']=='SESSION_ONLY':
                         outcome={**outcome,'message':'已记录在本次对话中，不会保存为长期偏好。'}
@@ -115,7 +115,10 @@ class MemoryRuntime:
         temp.setdefault('profile_overrides',{})
         temp.setdefault('hard_constraints',[])
         for c in self.candidates:
-            if c.scope!='session' and c.op=='set':temp['profile_overrides'].pop(c.dimension,None)
+            if c.scope!='session' and c.op=='set':
+                temp['profile_overrides'].pop(c.dimension,None)
+                if c.dimension=='spice_level' and memory_only_write(question):
+                    self.session.slots.get('meal_request',{}).get('constraints',{}).pop('taste',None)
             if c.scope=='session' and c.op=='set':
                 if c.strength=='hard':
                     if not any(p['dimension']==c.dimension and p['value']==c.value for p in temp['hard_constraints']):temp['hard_constraints'].append(asdict(c))
@@ -188,7 +191,7 @@ class MemoryRuntime:
             state['memory_tastes']=list(state['tastes'])
         if 'spice_level' in temp and 'spice_level' not in current and not state['tastes']:
             inherit_spice(temp['spice_level'])
-        if not state['tastes'] and 'spice_level' not in current:
+        if not task.get('varied_recommendations') and not state['tastes'] and 'spice_level' not in current:
             pref=next((p for p in self.profile['soft_prefs'] if p['dimension']=='spice_level'),None)
             if pref:inherit_spice(pref['value'])
         from ..task_context import task_question

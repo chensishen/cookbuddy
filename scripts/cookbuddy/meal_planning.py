@@ -143,6 +143,11 @@ def meal_conditions(question,*,consume_constraints=True):
     return state,residual
 
 
+def single_dish_revision(question):
+    return bool(re.search(r'(?:只|仅)(?:想|要)?(?:换|替换|换掉)一(?:道|个)菜',question)
+                and re.search(r'汤(?:照旧|保留|不变|别换|不要换)|(?:保留|不换|别换|不要换)(?:原来的|原来那道|原本的)?汤',question))
+
+
 def plan_meal(request,chunks,*,seed=None,taste_preferences=()):
     people,budget,dishes,soups=(request[k] for k in ('people','minutes','dishes','soups'))
     if (people is not None and not 1<=people<=20) or (budget is not None and budget<1) or not 1<=dishes or not 0<=soups or dishes+soups>6:
@@ -185,6 +190,9 @@ def plan_meal(request,chunks,*,seed=None,taste_preferences=()):
         state,residual=meal_conditions(question)
         if residual:
             return clarification('已识别菜单结构，但还不能可靠核实“'+residual[:60]+'”这个条件。请说明食材、口味或做法限制。')
+    current_taste=next(iter(state['tastes']),None)
+    if current_taste:
+        taste_preferences=()
     state['extra_constraints']=[];state['limit']=10
     difficulty=meal_difficulty(request['question'])
     if difficulty is not None:
@@ -196,10 +204,12 @@ def plan_meal(request,chunks,*,seed=None,taste_preferences=()):
     seed=request.get('selection_seed',0) if seed is None else seed
     planner=MenuPlanner()
     best,missing=planner.plan(request,chunks,state,template,seed=seed,taste_preferences=taste_preferences)
-    alternative=None;completion_notice=''
+    if 'revise_menu' in request and not best:
+        return clarification('当前条件下没找到能保留原汤和其余菜、只换一道菜的方案；原菜单保留。')
+    alternative=None;completion_notice='只换了一道菜，原汤和其余菜保留。' if 'revise_menu' in request else ''
     if request.get('accepted_sources') and set(request['accepted_sources'])!={r['source'] for r in best}:
         completion_notice='原完整方案在当前限制下无法原样安排，以下为重新核对后的搭配。'
-    if template['budget'] is not None and any(not s.get('optional') for s in missing):
+    if 'revise_menu' not in request and template['budget'] is not None and any(not s.get('optional') for s in missing):
         expanded={**template,'budget':template.get('max_total_minutes')}
         rows,gaps=planner.plan(request,chunks,state,expanded,seed=seed,fastest=True,taste_preferences=taste_preferences)
         if rows and not any(not s.get('optional') for s in gaps):
@@ -230,10 +240,15 @@ def plan_meal(request,chunks,*,seed=None,taste_preferences=()):
     for index,row in enumerate(best):
         estimate=row['duration'];start=elapsed;elapsed+=estimate['minutes']
         duration=f'{estimate["minutes"]:g}';role=row['role_label']
-        chosen.append({**{k:v for k,v in row.items() if k not in ('duration','tie')},
+        chosen.append({**{k:v for k,v in row.items() if k not in ('duration','tie','preference_score')},
                        'reason':('作为这餐的'+role)+'，原文预计从准备到完成约'+duration+'分钟。'
+                       +(row['reason'] if current_taste and row.get('spice_match')!='none' else '')
                        +''.join('原文简介写明“'+feature+'”，与你的'+label+'口味偏好相符。'
-                                for label,feature in row.get('taste_matches',[]))})
+                                for label,feature in row.get('taste_matches',[]))
+                       +''.join('原文简介提到'+cuisine+'，与你的菜系偏好相符。'
+                                for cuisine in row.get('cuisine_matches',[]))
+                       +('原文描述为“'+row['spicy_alternative']+'”，作为有辣味的备选，具体辣度未标明。'
+                         if row.get('spicy_alternative') else '')})
         refs=list(row['evidence'])+[{'source':row['source'],'title':row['title'],'section':'简介',
               'start_line':estimate['line'],'end_line':estimate['line'],'quote':estimate['quote'],'evidence_type':'markdown_original'}]
         for ref in refs:
@@ -247,10 +262,30 @@ def plan_meal(request,chunks,*,seed=None,taste_preferences=()):
     summary+='（'+lexicon()['meal_types'][kind]['label']+'）\n'+ '、'.join(r['title'] for r in best)
     if meal_notice:summary+='\n\n'+meal_notice
     if completion_notice:summary+='\n\n'+completion_notice
+    if current_taste:
+        matched_names=[r['title'] for r in best if r.get('spice_match') in ('explicit','direct','source_no_spice')]
+        if matched_names:
+            summary+='\n\n已按本次的'+current_taste+'要求选菜。原文核实匹配：'+'、'.join(matched_names)+'。'
+        else:
+            summary+='\n\n已按本次的'+current_taste+'要求筛选；当前搭配没有核实到直接匹配的菜。'
+        adjustable=[r['title'] for r in best if r.get('spice_match')=='optional']
+        if adjustable:summary+='可按原文调整辣味：'+'、'.join(adjustable)+'。'
     if taste_preferences:
-        matched_names=[r['title'] for r in best if r.get('taste_matches')]
-        if matched_names:summary+='\n\n已按长期口味偏好优先选菜。原文能核实匹配的菜：'+'、'.join(matched_names)+'。'
-        else:summary+='\n\n没有从本次所选菜谱的原文核实到长期口味偏好的匹配。'
+        matched_names=[r['title'] for r in best if r.get('taste_matches') or r.get('cuisine_matches')]
+        if matched_names:summary+='\n\n已按长期饮食偏好优先选菜。原文能核实匹配的菜：'+'、'.join(matched_names)+'。'
+        else:
+            from .ltm.retriever import SPICE_LABELS
+            preferred=list(dict.fromkeys(SPICE_LABELS.get(str(p['value']),str(p['value']))
+                if p['dimension']=='spice_level' else str(p['value']) for p in taste_preferences
+                if p['polarity']=='like' and p['dimension'] in ('flavor','spice_level','cuisine')))
+            if preferred:
+                summary+='\n\n已优先满足本餐的时间、难度和菜汤数量。当前搭配未核实到符合你偏好的'+ '、'.join(preferred)+'菜谱。'
+        spicy_names=[r['title'] for r in best if r.get('spicy_alternative')]
+        if spicy_names:
+            summary+='\n'+ '、'.join(spicy_names)+'的菜谱明确描述有辣味，具体辣度未标明。'
+    from .ltm.guard import current,forbidden
+    avoided,_,_=forbidden(current())
+    if avoided:summary+='\n\n已按饮食限制筛选，避开'+ '、'.join(avoided)+'。'
     if missing_labels:
         requested=str(request.get('dishes',dishes))+'道菜＋'+str(request.get('soups',soups))+'道汤'
         actual=str(sum(r['category'] not in ('soup','drink') for r in best))+'道菜＋'+str(sum(r['category']=='soup' for r in best))+'道汤'

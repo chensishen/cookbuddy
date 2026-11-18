@@ -26,7 +26,7 @@ class BrowserRegressions(unittest.TestCase):
             ident,_=queue.submit({'mode':'auto','user_id':'u','conversation_id':'s','question':'安排早餐','memory_epoch':0})
             queue.claim('test-worker')
             with patch.dict(os.environ,{'RECIPE_JOB_ID':ident}),patch('run_recipe_job.JobQueue',return_value=queue), \
-                    patch('cookbuddy.pipeline.run',side_effect=TimeoutError('private-provider-body')),patch('cookbuddy.store.Store'):
+                    patch('cookbuddy.pipeline.run',side_effect=TimeoutError('private-provider-body')),patch('cookbuddy.store.Store') as store:
                 run_recipe_job.main()
             result=queue.get(ident)['result']
             self.assertEqual(result['request_id'],ident)
@@ -35,6 +35,10 @@ class BrowserRegressions(unittest.TestCase):
             self.assertIn(ident,queue.get(ident)['progress'])
             self.assertEqual(result['trace']['error_code'],'TimeoutError')
             self.assertNotIn('private-provider-body',json.dumps(result))
+            history=store.return_value.append.call_args.args[-1]['trace']
+            self.assertEqual(history['state'],'failed')
+            self.assertEqual(history['finished'],queue.get(ident)['finished'])
+            self.assertEqual(history['progress'],result['service_notice'])
 
     def test_job_history_preserves_engine_stage_timings(self):
         from job_queue import JobQueue

@@ -82,7 +82,7 @@ def prepare(p):
                    'answer_mode':'memory','errors':[],'original':q,'normalized':q,
                    'matches':[],'assumptions':[],'options':[],'elapsed_ms':0},
             'named_recipe':None}
-    previous=memory.previous_task if enabled and level>=2 else None
+    previous=(memory.previous_task or session.slots.get('recommendation_state')) if level>=2 else None
     nlu=understand(q,{'summary':session.summary,'slots':session.slots,'messages':session.messages,
         'previous_task':previous,'tenant':uid,'session':sid},use_model=bool(p.get('config')))
     task,named=reduce_turn(nlu,session,previous,load_chunks())
@@ -129,7 +129,7 @@ def prepare(p):
             session.slots['nlu_pending']['state']=copy.deepcopy(task['state'])
     else:session.slots.pop('nlu_pending',None)
     update_slots(session,task)
-    if named and task['action'] in ('none','followup'):
+    if named and task['action'] in ('none','followup','recipe_title'):
         session.slots['selected_section']=nlu['slots']['section']
         session.slots['selected_dish']={'idx':0,'dish_name':named[0],'source_path':named[1]}
     append_message(session,'user',q)
@@ -238,7 +238,7 @@ def execute(p):
             result=find_recipe_images(a['dish_name'],a.get('section',''))
             return check_result({**result,'answer':result['short_answer'],'answer_layout':'images_only'})
         if op=='recommend':
-            from ingredient_recommendation import recommend,normalize_ingredient,inventory_coverage_note
+            from ingredient_recommendation import recommend,normalize_ingredient,unused_inventory_note
             from search_filters import filter_chunks
             rows,_,_=filter_chunks(load_chunks(),category=a.get('category'),max_difficulty=a.get('max_difficulty'))
             rows=[r for r in rows if source_allowed(r['source'],p.get('hard',[]))]
@@ -253,12 +253,9 @@ def execute(p):
                 avoided,_,_=forbidden(p.get('hard',[]))
                 if avoided:shortage+='已应用你之前设置的饮食限制：避开'+ '、'.join(avoided)+'。'
                 shortage+='\n'
-            low=[r for r in candidates if r.get('coverage',1)<0.5]
-            low_note=('其中'+str(len(low))+'道需要补买较多用料，已逐项列在各菜“待备”。' if low else '')
             return {'status':'verified' if candidates else 'insufficient','recommendations':candidates,
                 'short_answer':shortage+('好呀，按你手边的食材，帮你挑了'+str(len(candidates))+'道菜。下面是推荐理由和需要补齐的用料。' if candidates else '这次还没找到能用上现有食材、又符合限制的新菜。你可以再告诉我几样食材，我帮你继续挑。')
-                    +(low_note+'\n' if low_note else '')
-                    +inventory_coverage_note(a['ingredients'],candidates)+'我已对照原料表和计算章节；操作中可能另有用料，开做前也请一起核对。',
+                    +unused_inventory_note(a['ingredients'],candidates)+'我已对照原料表和计算章节；操作中可能另有用料，开做前也请一起核对。',
                 'sources':[{'title':r['title'],'source':r['source'],'section':'必备原料','line':r['evidence'][0]['start_line']} for r in candidates],
                 'evidence':[e for r in candidates for e in r['evidence']]}
         if op=='recipe_ingredients':
@@ -276,7 +273,7 @@ def execute(p):
                 text+='\n'+('还需要确认或准备：'+'、'.join(missing)+'。' if missing else '可识别的必备原料已经齐了。')
             else:
                 text+='\n原文必备原料：'+'、'.join(sorted(required))+'。'
-            if optional:text+='\n可选用料：'+'、'.join(sorted(optional))+'。'
+            text+='\n可选用料：'+('、'.join(sorted(optional)) if optional else '原料表和计算章节未明确标注')+'。'
             if tools:text+='\n原文工具：'+'、'.join(sorted(tools))+'。'
             if uncertain:text+='\n这些条目还需按原文核对：'+'；'.join(uncertain)+'。'
             if inventory:text+='\n“还需准备”只按你告诉我的库存对照，不代表家里一定没有；具体用量及步骤中的其他配料请一起核对原文。'
@@ -296,10 +293,14 @@ def execute(p):
                              if p.get('dimension')=='equipment' and str(p.get('value','')).startswith('有')]
             from search_filters import filter_chunks
             rows,_,_=filter_chunks(load_chunks(),category=a.get('category'),max_difficulty=a.get('max_difficulty'))
+            varied=a.get('varied_recommendations',False)
             result=recommend_preferences(a['state'],rows,exclude_titles=a.get('exclude_dishes',[]),
-                candidate_limit=400 if personal else None,owned_equipment=owned_equipment)
-            if personal:
-                result=personalize_result(result,a['state'],profile,store.session_context(uid,sid,job))
+                candidate_limit=400 if personal or varied else None,owned_equipment=owned_equipment)
+            if personal or varied:
+                from random import Random
+                # Stable for a retry of this job, different for each request.
+                result=personalize_result(result,a['state'],profile,store.session_context(uid,sid,job),
+                    rng=Random(job) if varied else None)
             if result:return check_result(result)
             unresolved=a['state'].get('extra_constraints',[])
             detail='、'.join('“'+v+'”' for v in unresolved)
@@ -316,7 +317,7 @@ def execute(p):
                     from cookbuddy.ltm.profile_store import ProfileStore
                     try:
                         prefs=[row for row in ProfileStore(Store()).load_profile(uid)['soft_prefs']
-                               if row['dimension'] in ('flavor','spice_level') and row['polarity']=='like']
+                               if row['dimension'] in ('flavor','spice_level','cuisine','max_difficulty')]
                     except Exception:
                         # Taste preference is an ordering hint; the menu itself
                         # must still be planned when the profile is unavailable.

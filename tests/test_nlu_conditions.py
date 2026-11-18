@@ -10,6 +10,33 @@ from recipe_tools import load_chunks
 from preference_recommendation import recommend_preferences
 
 class ConditionTests(unittest.TestCase):
+    def test_exclusive_stock_and_missing_ingredients_are_not_clarifications(self):
+        for question in ('我只有鸡腿肉，另外推荐两道菜，告诉我还缺什么。',
+                         '手头只剩鸡腿肉，推荐两道菜，列出缺料。'):
+            with self.subTest(question=question):
+                plan=understand(question,use_model=False)
+                self.assertEqual(plan['answer_mode'],'grounded_recipe')
+                task,_=reduce_turn(plan,SessionState('u','s'),None,load_chunks())
+                state=task['state']
+                self.assertEqual(state['ingredients'],['鸡腿肉'])
+                self.assertEqual(state['limit'],2)
+                self.assertEqual(state['response_fields'],['missing_ingredients'])
+                self.assertEqual(state['extra_constraints'],[])
+                self.assertEqual(state['mode'],'inventory')
+
+    def test_chicken_leg_recipe_missing_ingredients_exclude_quantity_text(self):
+        from check_embedding import ROOT
+        from ingredient_recommendation import recipe_ingredient_fields
+        for title in ('意式烤鸡','姜葱捞鸡'):
+            with self.subTest(title=title):
+                rows=[row for row in load_chunks() if row['title']==title]
+                required,_,_,_,_=recipe_ingredient_fields(rows,(ROOT/rows[0]['source']).read_text().splitlines())
+                self.assertIn('盐',required)
+                self.assertIn('鸡腿肉',required)
+                self.assertNotIn('鸡腿',required)
+                self.assertNotIn('约',required)
+                self.assertFalse(any('用量' in item for item in required))
+
     def test_complete_profile_request_clears_model_invented_unknown(self):
         q='今天临时不要香菜，按我的口味推荐两道菜。'
         model=validate({'intent':'ingredient_recommend','confidence':.95,'slots':{

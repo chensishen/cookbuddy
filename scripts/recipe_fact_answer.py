@@ -4,7 +4,35 @@ from preference_recommendation import plain
 
 
 def source_fact(question,chunks):
-    return duration_relation_fact(question,chunks) or starter_fact(question,chunks) or baking_fact(question,chunks) or substitution_fact(question,chunks) or ingredient_fact(question,chunks) or quantity_table_fact(question,chunks) or procedure_fact(question,chunks)
+    return serving_quantity_fact(question,chunks) or duration_relation_fact(question,chunks) or starter_fact(question,chunks) or baking_fact(question,chunks) or substitution_fact(question,chunks) or oil_options_fact(question,chunks) or ingredient_fact(question,chunks) or quantity_table_fact(question,chunks) or procedure_fact(question,chunks)
+
+
+def serving_quantity_fact(question,chunks):
+    from cookbuddy.ltm.guard import current,source_allowed
+    from recipe_quantity_answer import select_quantity_plan
+
+    plan=select_quantity_plan(question,chunks)
+    if not plan or not source_allowed(plan['source'],current()):return None
+    source=plan['source']
+    rows=[row for row in chunks if row['source']==source]
+    evidence_by_line={}
+    claims=[]
+    for calculation in plan['calculations']:
+        refs=[]
+        for item in calculation['evidence']:
+            line=item['line']
+            if line not in evidence_by_line:
+                row=next(r for r in rows if r['source_start_line']<=line<=r['source_end_line'])
+                evidence_by_line[line]={'reference_id':len(evidence_by_line)+1,'source':source,
+                    'title':row['title'],'section':row['section'],'start_line':line,'end_line':line,
+                    'quote':item['quote'],'evidence_type':'markdown_original'}
+            refs.append(evidence_by_line[line]['reference_id'])
+        claims.append(calculation['text']+''.join(f'[{ref}]' for ref in refs))
+    answer='按原文核对 '+str(plan['servings'])+' 份的用量：\n\n'+'\n\n'.join(claims)
+    evidence=list(evidence_by_line.values())
+    return {'status':'verified','short_answer':answer,'answer':answer,'answer_method':'source_quantity_calculator',
+            'sources':[{**{k:e[k] for k in ('reference_id','source','title','section')},'line':e['start_line']} for e in evidence],
+            'evidence':evidence,'images':[]}
 
 
 def duration_relation_fact(question,chunks):
@@ -169,7 +197,8 @@ def substitution_fact(question,chunks):
     clean=re.sub(r'\n指定菜谱原文来源：'+re.escape(source)+r'\s*$','',question).strip()
     clean=re.sub(r'\n当前菜谱：'+re.escape(title)+r'\s*$','',clean).strip()
     clean=re.sub(r'^(?:请问|请)?'+re.escape(title)+r'(?:里面|里|中)?(?:的)?','',clean).strip()
-    match=re.search(r'(?P<target>[\u4e00-\u9fff]{1,12}?)(?:能|可以|能否|可不可以)(?:用|拿)?'
+    combined=re.match(r'(?P<target>[\u4e00-\u9fff]{1,12}?)(?:需要|要|用)多少[？?。；;，,]\s*(?:可以|能|能否)用(?P<replacement>[\u4e00-\u9fff]{1,12}?)(?:来)?(?:替换|替代|代替)(?:吗|么)?',clean)
+    match=combined or re.search(r'(?P<target>[\u4e00-\u9fff]{1,12}?)(?:能|可以|能否|可不可以)(?:用|拿)?'
                     r'(?P<replacement>[\u4e00-\u9fff]{1,12}?)(?:来)?(?:替换|替代|代替)(?:吗|么|嘛)?',clean)
     if not match:return None
     target,replacement=match['target'],match['replacement']
@@ -182,18 +211,61 @@ def substitution_fact(question,chunks):
         for offset,line in enumerate(row['content'].splitlines()):
             if target in plain(line):hits.append((row,row['source_start_line']+offset,line))
     if not hits:return None
-    row,line_no,line=next(((row,line_no,line) for row,line_no,line in hits if replacement in plain(line)),hits[0])
+    quantities=[hit for hit in hits if hit[0]['section'].split(' > ')[0]=='计算'
+                and re.search(r'=\s*\d',hit[2])]
+    if combined and len(quantities)!=1:return None
+    row,line_no,line=next(((row,line_no,line) for row,line_no,line in hits if replacement in plain(line)),quantities[0] if combined else hits[0])
     quoted=re.sub(r'^\s*[-*+]\s*','',line).strip()
     if replacement in plain(line):
         answer='原文在同一条原料说明中同时提到“'+target+'”和“'+replacement+'”；这里只确认原文列出了该选项，不推断二者在所有工序中完全等价。\n\n原文：'+quoted
     else:
         answer='原文没有提到可以用“'+replacement+'”替换“'+target+'”。当前原料表原文为：“'+quoted+'”。仅按原文判断，不推测替换比例、效果或工序等价性。'
+    if combined:
+        quantified=re.sub(r'^\s*[-*+]\s*','',quantities[0][2]).strip()
+        answer='原文给出的用量是：'+quantified+'。\n\n'+answer
     evidence={'reference_id':1,'source':source,'title':title,'section':row['section'],
               'start_line':line_no,'end_line':line_no,'quote':line,'evidence_type':'markdown_original'}
     return {'status':'verified','short_answer':answer,'answer':answer,'answer_method':'literal_substitution_boundary',
             'sources':[{'reference_id':1,'source':source,'title':title,'section':row['section'],'line':line_no}],
             'evidence':[evidence],'images':[],
             'validation':'仅核对当前菜谱原料说明是否出现被询问的替代食材；不生成比例、效果或未写入原文的替代关系。'}
+
+
+def oil_options_fact(question,chunks):
+    """Read explicitly listed oil options and their caveats from one source line."""
+    from cookbuddy.ltm.guard import current,source_allowed
+    from recipe_tools import checked_chunks,resolve_title
+    from src.agent.turn_intents import original_oil_options_request
+
+    named=resolve_title(question,chunks)
+    if not named:return None
+    title,source=named
+    if current() and not source_allowed(source,current()):return None
+    clean=re.sub(r'\n指定菜谱原文来源：'+re.escape(source)+r'\s*$','',question).strip()
+    clean=re.sub(r'\n当前菜谱：'+re.escape(title)+r'\s*$','',clean).strip()
+    clean=re.sub(r'^(?:请问)?'+re.escape(title)+r'(?:里|中)?(?:的)?','',clean)
+    if not original_oil_options_request(clean):return None
+
+    matches={}
+    for row in checked_chunks(source):
+        if row['section'].split(' > ')[0]!='必备原料和工具':continue
+        for offset,line in enumerate(row['content'].splitlines()):
+            bullet=re.match(r'^\s*[-*+]\s+(.+)',line)
+            if not bullet:continue
+            item=re.match(r'^([\u4e00-\u9fff]+?)\s*(?:[（(]|$)',plain(bullet[1]))
+            if not item:continue
+            choices=re.split(r'或(?:者)?',item[1])
+            if not all(re.fullmatch(r'[\u4e00-\u9fff]{1,10}油',v) for v in choices):continue
+            line_no=row['source_start_line']+offset
+            matches[line_no]=(row['section'],line,choices)
+    if len(matches)!=1:return None
+    line_no,(section,line,choices)=next(iter(matches.items()))
+    answer='原文列出的选项是'+'或'.join(choices)+'。[1]\n\n原料说明：'+re.sub(r'^[-*+]\s+','',line)
+    return {'status':'verified','short_answer':answer,'answer':answer,'answer_method':'literal_ingredient_options',
+            'sources':[{'reference_id':1,'source':source,'title':title,'section':section,'line':line_no}],
+            'evidence':[{'reference_id':1,'source':source,'title':title,'section':section,
+                         'start_line':line_no,'end_line':line_no,'quote':line,'evidence_type':'markdown_original'}],
+            'images':[],'validation':'仅引用原料表明确列出的选项及其说明。'}
 
 
 def procedure_fact(question,chunks):

@@ -359,3 +359,22 @@ test('SSE renders readable markdown and retains verified media across later toke
  assert.ok(!ids.messages.textContent.includes('!['));
  assert.equal(ids.status.textContent,'回答完成');
 });
+
+test('failed job timeline retains elapsed time and explains the failure',()=>{
+ const {page,UI}=performanceUI(),trace=new UI('details'),summary=new UI('summary'),list=new UI('ol');trace.append(summary,list);trace.open=true;
+ page.drawTimeline({trace},{created:100,started:101,finished:105,state:'failed',progress:'会话服务暂不可用',events:[],stages:[
+  {phase:'service',operation:'persist',status:'error',elapsed_ms:600}
+ ]});
+ assert.equal(summary.textContent,'本次未完成5.0 秒');
+ assert.match(list.textContent,/保存对话（失败）/);
+ assert.match(list.textContent,/会话服务暂不可用/);
+});
+
+test('an unanswered historical turn does not look like an active submission',async()=>{
+ const trace={hidden:false},page={historyRequest:1,performance:{now:()=>0},
+  createTurn:()=>({trace,body:{append(){}}})};
+ vm.createContext(page);
+ vm.runInContext(script.slice(script.indexOf('async function renderHistoryMessages'),script.indexOf('async function openConversation')),page);
+ await page.renderHistoryMessages([{role:'user',content:'执行中断的问题'}],1);
+ assert.equal(trace.hidden,true);
+});

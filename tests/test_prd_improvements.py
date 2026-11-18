@@ -75,7 +75,8 @@ class IngredientRecommendationTests(unittest.TestCase):
                 self.assertEqual(results[0]['missing'],['盐'])
                 self.assertEqual(results[0]['optional'],['糖'])
                 self.assertEqual(results[0]['tools'],['锅'])
-                self.assertAlmostEqual(results[0]['coverage'],2/3)
+                self.assertEqual(len(results[0]['matched']),2)
+                self.assertNotIn('coverage',results[0])
                 (root/'a.md').write_text('- 盐')
                 with self.assertRaises(ValueError):recommend(['鸡蛋'],rows)
     def test_recipe_alias(self):

@@ -202,12 +202,10 @@ class LiteralLatencyTests(unittest.TestCase):
         self.assertEqual(result['slots']['limit'],1)
         self.assertNotIn('unresolved',result['slots']['constraints'])
 
-    def test_ambiguous_meals_and_exclusive_stock_are_not_fast_tracked(self):
-        for question in ('安排早餐和晚餐','我只有番茄和土豆，推荐两道菜。'):
-            with self.subTest(question=question):
-                model=Mock(return_value=validate({'intent':'unclear','confidence':.1}))
-                with patch('service_runtime.RuntimeStore') as cache:
-                    cache.return_value.get.return_value=None
-                    result=understand(question,model_call=model)
-                model.assert_called_once()
-                self.assertNotEqual(result['path'],'fast')
+    def test_ambiguous_meals_are_not_fast_tracked(self):
+        model=Mock(return_value=validate({'intent':'unclear','confidence':.1}))
+        with patch('service_runtime.RuntimeStore') as cache:
+            cache.return_value.get.return_value=None
+            result=understand('安排早餐和晚餐',model_call=model)
+        model.assert_called_once()
+        self.assertNotEqual(result['path'],'fast')

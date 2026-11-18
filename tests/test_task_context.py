@@ -55,7 +55,8 @@ class TaskContextTests(unittest.TestCase):
         self.assertEqual(initial,original)
         self.assertEqual(advance_task('我有鸡肉和土豆',initial)['state']['ingredients'],['鸡肉','土豆'])
         restricted=advance_task('我只有鸡肉',initial)['state']
-        self.assertIn('我只有鸡肉',restricted['extra_constraints'])
+        self.assertEqual(restricted['ingredients'],['鸡肉'])
+        self.assertEqual(restricted['extra_constraints'],[])
         for q in ('我有鸡肉', '我有鸡肉过敏怎么办？', '我有鸡肉，能保存多久？'):
             turn=advance_task(q,None if q=='我有鸡肉' else initial)
             self.assertEqual(turn['action'],'none',q)

@@ -278,23 +278,29 @@ def literal_decision(text,context,allow_context_facts=True):
     from cookbuddy.recommendation_turn import interpret
     selection=pending_selection(text,context)
     if selection is not None:return selection
+    from src.agent.turn_intents import open_recommendation
+    if open_recommendation(text):
+        return validate({'intent':'ingredient_recommend','confidence':1.,'slots':{'limit':3}})
     from cookbuddy.meal_planning import meal_request,meal_conditions,NUMBER,number,PRICE_LIMIT
     from cookbuddy.lexicon import meal_match
-    from src.agent.turn_intents import alternative_request,rejected_ordinal,explicit_ordinal,ingredient_followup,recipe_fact_request
+    from src.agent.turn_intents import alternative_request,rejected_ordinal,explicit_ordinal,ingredient_followup,recipe_fact_request,original_oil_options_request,ordinal_title_question
     from cookbuddy.meal_planning import accepted_offer_minutes
     slots=context.get('slots',{});old_meal=slots.get('meal_request')
     selected=_selected_recipe(context)
     if selected and re.search(r'图片|照片|配图|图像',text) and re.search(r'只|仅|单|根据|凭|看',text) and re.search(r'熟|中心温度|内部|配比|比例|用量|温度',text):
         return validate({'intent':'recipe_lookup','confidence':1.,'slots':{
             'dish':selected['dish_name'],'request_kind':'images'}})
+    if selected and original_oil_options_request(text):
+        return validate({'intent':'recipe_lookup','confidence':1.,'slots':{
+            'dish':selected['dish_name'],'request_kind':'facts'}})
     if allow_context_facts and selected and recipe_fact_request(text):
         return validate({'intent':'recipe_lookup','confidence':1.,'slots':{
             'dish':selected['dish_name'],'request_kind':'facts'}})
     choices=slots.get('last_recommendations') or (context.get('previous_task') or {}).get('choices') or []
     ordinal=explicit_ordinal(text)
-    if choices and ordinal is not None and re.fullmatch(
+    if choices and ordinal is not None and (ordinal_title_question(text) or re.fullmatch(
             r'(?:请|我要|我想|只看|看|选|选择)?\s*第\s*(?:[一二两三四五六七八九十]|\d{1,2})\s*(?:道|项|个)(?:菜)?[。！!？? ]*',
-            text):
+            text)):
         return validate({'intent':'follow_up','confidence':1.,'slots':{
             'selected_ref':ordinal,'request_kind':'facts'}})
     if choices and ordinal is not None and re.fullmatch(
@@ -302,6 +308,29 @@ def literal_decision(text,context,allow_context_facts=True):
             text):
         return validate({'intent':'recipe_section','confidence':1.,'slots':{
             'selected_ref':ordinal,'section':'','request_kind':'source'}})
+    if selected and re.fullmatch(r'(?:请问)?(?:这道菜?|那道菜?|它)(?:包含|有)(?:哪些|什么)(?:章节|部分)[。！!？? ]*',text):
+        from recipe_tools import load_chunks
+        sections=list(dict.fromkeys(r['section'].split(' > ')[0] for r in load_chunks()
+                                    if r['source']==selected['source_path'] and r['section']!='简介'))
+        result=validate({'intent':'recipe_section','confidence':1.,'slots':{
+            'dish':selected['dish_name'],'request_kind':'source'}})
+        clarify(result,'《'+selected['dish_name']+'》有这些章节，你想看哪一段？',sections)
+        result['clarification_slot']='section'
+        result['section_listing']=True
+        return result
+    if re.search(r'核对|检查|对照|多少|用量',text):
+        from recipe_tools import resolve_title,load_chunks
+        from recipe_quantity_answer import select_quantity_plan
+        from src.agent.turn_intents import named_ingredient_stock
+        rows=load_chunks();named=resolve_title(text,rows)
+        if named:
+            stock=named_ingredient_stock(text,named[0])
+            if stock:
+                return validate({'intent':'recipe_lookup','confidence':1.,'slots':{
+                    'dish':named[0],'request_kind':'ingredients','ingredients':stock}})
+            if select_quantity_plan(text,rows):
+                return validate({'intent':'recipe_lookup','confidence':1.,'slots':{
+                    'dish':named[0],'request_kind':'facts'}})
     ingredient_check=re.fullmatch(
         r'(?:请|帮我)?(?:核对|检查|对照)?(?P<dish>[^，。；！？\n]{2,30}?)(?:的)?(?:用料|食材|原料|配料)(?:是否齐全|够不够|有哪些|是什么)?[。！!？? ]*',
         text)
@@ -335,6 +364,11 @@ def literal_decision(text,context,allow_context_facts=True):
         if result['intent']=='meal_plan':
             result['confidence']=1.
             return result
+    if old_meal and re.fullmatch(r'(?:(?:'+NUMBER+r')\s*(?:个)?人|(?:'+NUMBER+r')\s*(?:分钟|(?:个)?小时))[。.!！?？ ]*',text):
+        result=fallback(text.rstrip('。.!！?？ '),context)
+        if result['intent']=='meal_plan':
+            result['confidence']=1.
+            return result
     if old_meal and not meal_request(text):
         people=re.search(r'('+NUMBER+r')\s*(?:个)?人',text)
         minutes_match=re.search(r'('+NUMBER+r')\s*分钟',text)
@@ -356,6 +390,13 @@ def literal_decision(text,context,allow_context_facts=True):
         return validate({'intent':'meal_plan','confidence':1.,'slots':{'meal':meal,
             'constraints':copy.deepcopy(old_meal.get('constraints',{}))}})
     alternative=alternative_request(text)
+    if alternative and alternative.get('more'):
+        if alternative['count'] is not None and not 1<=alternative['count']<=10:
+            result=validate({'intent':'constraint_refine','confidence':1.})
+            clarify(result,'一次可以推荐 1–10 道菜，你想看几道？',[])
+            return result
+        return validate({'intent':'constraint_refine','confidence':1.,'slots':{
+            'replace_batch':True,'limit':alternative['count']}})
     if alternative:
         choices=context.get('slots',{}).get('last_recommendations') or (context.get('previous_task') or {}).get('choices')
         if not choices or alternative.get('clarification') or alternative.get('ambiguous_input'):return None
@@ -378,9 +419,10 @@ def literal_decision(text,context,allow_context_facts=True):
         complete=not residue and not meal_match(text)['ambiguous']
     else:
         turn=interpret(text)
-        complete=(turn.recommend and not turn.boundary and not turn.unresolved
-                  and (any(e.slot=='mode' and e.values==('inventory',) for e in turn.edits)
-                       or turn.max_difficulty is not None or turn.quick)
+        complete=(not turn.boundary and not turn.unresolved
+                  and ((turn.recommend and (any(e.slot=='mode' and e.values==('inventory',) for e in turn.edits)
+                                            or turn.max_difficulty is not None or turn.quick))
+                       or (context.get('previous_task') and any(e.slot=='ingredients' and e.operation in ('add','remove') for e in turn.edits)))
                   and all(e.slot!='extra_constraints' for e in turn.edits))
     if not complete:
         from recipe_tools import resolve_title,load_chunks
@@ -483,7 +525,7 @@ def ground(result,context,use_model):
     replacement=alternative_request(result['normalized'])
     literal=interpret(replacement['constraint'] if replacement else result['normalized'])
     old_meal=context.get('slots',{}).get('meal_request')
-    if (old_meal and replacement and not replacement['single'] and not replacement['constraint']
+    if (old_meal and replacement and not replacement.get('more') and not replacement['single'] and not replacement['constraint']
             and not replacement.get('ambiguous_input') and not replacement.get('clarification') and not s['reset_context']):
         s['meal']=Meal.model_validate({k:v for k,v in old_meal.items() if k in Meal.model_fields}).model_dump()
         s['constraints']=copy.deepcopy(old_meal.get('constraints',{}))
@@ -539,14 +581,14 @@ def ground(result,context,use_model):
     if result['needs_clarification'] and (context.get('previous_task') or context.get('slots',{}).get('last_recommendations')):
         from src.agent.turn_intents import alternative_request,rejected_ordinal
         alternative=alternative_request(result['original'])
-        if alternative and not alternative.get('clarification') and (alternative.get('count') is None or 1<=alternative['count']<=10) and (not alternative['constraint'] or rejected_ordinal(alternative['constraint'])):
+        if alternative and not alternative.get('clarification') and not alternative.get('ambiguous_input') and (alternative.get('count') is None or 1<=alternative['count']<=10) and (not alternative['constraint'] or rejected_ordinal(alternative['constraint'])):
             result.update(intent='constraint_refine',needs_clarification=False,answer_mode='grounded_recipe',options=[])
-            s['limit']=alternative.get('count') or 1;intent='constraint_refine'
+            s['limit']=alternative.get('count') if alternative.get('more') else alternative.get('count') or 1;intent='constraint_refine'
     choices=context.get('slots',{}).get('last_recommendations',[]) or [
         {'dish_name':r['title'],'source_path':r['source']} for r in (context.get('previous_task') or {}).get('choices',[])]
     from src.agent.turn_intents import alternative_request
-    replacement=alternative_request(result['normalized'])
-    if replacement and replacement.get('index') and choices:
+    replacement=alternative_request(result['original']) or alternative_request(result['normalized'])
+    if replacement and replacement.get('index') and choices and not replacement.get('ambiguous_input'):
         n,keep=replacement['index'],replacement.get('preserved_index',replacement['index'])
         if 1<=n<=len(choices) and 1<=keep<=len(choices):
             s.update(replace_ref=n,selected_ref=None,replace_batch=False,limit=1,exclude_refs=[])
@@ -629,7 +671,7 @@ def ground(result,context,use_model):
             and (s['request_kind']=='facts' or not s['section'] and s['request_kind'] in ('source','bundle'))):
         intent='recipe_lookup';result['intent']=intent
         if not s['dish'] and selected:s['dish']=selected['dish_name']
-    if intent=='recipe_section':
+    if intent=='recipe_section' and result.get('clarification_slot')!='section':
         if not s['dish'] and selected:s['dish']=selected['dish_name']
         if not s['dish']:
             candidates=sorted({r['title'] for r in rows if canonical(s['section']) and canonical(s['section']) in canonical(r['section'])})[:3]
@@ -738,7 +780,7 @@ def understand(original,context=None,*,use_model=True,model_call=None):
     except Exception:
         errors.append('matching_unavailable')
         result['answer_mode']='general_chat' if result['intent'] in ('identity_capability','chitchat','unclear') else 'grounded_recipe'
-    if (pending and result['answer_mode']=='clarify' and result.get('clarification_slot') in ('dish','section')
+    if (pending and not result.get('section_listing') and result['answer_mode']=='clarify' and result.get('clarification_slot') in ('dish','section')
             and pending.get('slot')==result['clarification_slot'] and pending.get('options')==result.get('options')
             and result.get('options') and result['confidence']>=cfg['fuzzy']['t_mid']):
         # Do not trap the user in the same low-risk name question. All factual
@@ -753,8 +795,8 @@ def understand(original,context=None,*,use_model=True,model_call=None):
     ignored.extend(v for v in result['slots']['raw_noise'] if v and v in original and (v in fillers or re.fullmatch(r'[\d\W_]+',v)))
     result.update(original=original,normalized=text,ignored_tokens=list(dict.fromkeys(ignored)),path=path,usage=usage,
                   fallback=path if path in ('rule','general_chat') else None,errors=errors,elapsed_ms=round((time.monotonic()-started)*1000,3))
-    if ignored:result['assumptions'].append('我按「'+text+'」理解了，末尾多余内容未作为新条件，不对请告诉我。')
-    elif inferred and result['answer_mode']=='grounded_recipe':
+    if ignored and not result.get('input_notice'):result['assumptions'].append('我按「'+text+'」理解了，末尾多余内容未作为新条件，不对请告诉我。')
+    elif not ignored and inferred and result['answer_mode']=='grounded_recipe':
         s=result['slots'];label=s['dish']+('的'+s['section'] if s['section'] else '')
         if s['exclude_refs']:label='不要第'+str(s['exclude_refs'][0]['value'])+'道'
         if label:result['assumptions'].append('我按「'+label+'」理解了，不对请告诉我。')

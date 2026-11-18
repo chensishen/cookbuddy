@@ -181,7 +181,8 @@ def recommend_preferences(state,chunks,exclude_titles=(),categories=None,candida
                 spice_score=4;spice_kind='source_no_spice'
                 reason.append('原文配方及步骤未列辣椒、胡椒、芥末等加辣用料，适合作为不辣口味的候选')
             elif taste=='微辣':
-                found=[n for n,line in intro if taste in line and not re.search(r'不喜欢|不能|如果',line)]
+                from cookbuddy.ltm.retriever import flavor_feature
+                found=[n for n,line in intro if flavor_feature(line,taste) and not re.search(r'不喜欢|不能|如果',line)]
                 if not found:continue
                 selected.add(found[0]);spice_score=4;spice_kind='explicit'
                 reason.append('菜谱明确描述为'+taste+'，符合你的口味要求')
@@ -270,8 +271,8 @@ def recommend_preferences(state,chunks,exclude_titles=(),categories=None,candida
         summary+='本轮按'+ '；'.join(others)+'筛选。'
     if state['mode']=='inventory':summary+='这里先按你提供的食材选菜，其他配料是否齐全还需确认。'
     if state['mode']=='inventory':
-        from ingredient_recommendation import inventory_coverage_note
-        summary+=inventory_coverage_note(state['ingredients'],chosen)
+        from ingredient_recommendation import unused_inventory_note
+        summary+=unused_inventory_note(state['ingredients'],chosen)
     return {'status':'verified','short_answer':summary,'recommendation_kind':'preference','recommendation_mode':state['mode'],'recommendations':chosen,
             'sources':sources,'evidence':evidence,'images':[],'answer_method':'source_preference_filter',
             'validation':'菜品介绍、主要食材和匹配理由绑定当前菜谱原文。优先明确辣味及配方加辣依据，可选加辣放在后面并注明。食材声明用于选菜，未证明库存齐全。排除油炸采用保守过滤。做法筛选按菜名或简介文本核对。设备匹配按原文工具表核对。'}

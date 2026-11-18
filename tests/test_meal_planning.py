@@ -21,7 +21,7 @@ class MealPlanningTests(unittest.TestCase):
                  'constraints':{'max_difficulty':1}}
         for dimension,value,notice in (
             ('flavor','清淡','清淡口味偏好相符'),
-            ('spice_level','1','没有从本次所选菜谱的原文核实到长期口味偏好的匹配'),
+            ('spice_level','1','当前搭配未核实到符合你偏好的微辣菜谱'),
         ):
             result=plan_meal(request,load_chunks(),seed='taste-test',
                              taste_preferences=[{'dimension':dimension,'value':value,'polarity':'like'}])
@@ -35,7 +35,7 @@ class MealPlanningTests(unittest.TestCase):
                              taste_preferences=[{'dimension':'flavor','value':'清淡','polarity':'like'}])
         self.assertTrue(result['meal_plan']['complete'])
         self.assertNotIn('皮蛋豆腐',[row['title'] for row in result['recommendations']])
-        self.assertIn('没有从本次所选菜谱的原文核实到长期口味偏好的匹配',result['short_answer'])
+        self.assertIn('当前搭配未核实到符合你偏好的清淡菜谱',result['short_answer'])
 
     def test_timed_dinner_recommendation_keeps_exact_dish_count_and_limits(self):
         import asyncio
